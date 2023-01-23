@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+body {
+    background-color: #F6FFF8;
+}
+
+.login-title {
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #6B9080;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-family: "Noto Sans";
+    font-size: 40px;
+    font-weight: 700;
+}
+
+hr {
+    border-color: #000000;
+    border: 2px solid;
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 400px;
+    margin-bottom: 30px;
+}
+
+form {
+    font-family: "Noto Sans";
+}
+/* form label */
+.form-outline {
+    font-weight: 600;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+/* form input */
+.form-control {
+    border-radius: 50px !important;
+    width: 435px;
+}
+
+.none-account {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* submit btn */
+.btn {
+    padding-left: 2.5rem; 
+    padding-right: 2.5rem;
+    background-color: #FB5607;
+    border-color: #FB5607;
+    align-items: center;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
