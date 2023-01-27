@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/createPetSitter.css">
+    <title>Creating Pet Sitter profile</title>
+    
+</head>
+<body>
+    <div class="container mw-100 container_edit">
+        <header class="d-flex flex-wrap justify-content-between mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center py-2 mb-md-0 me-md-auto text-dark text-docation-none title_edit">
+                <span class="fs-4">Companion Finder</span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link"> Pet Sitter Name </a></li>
+            </ul>
+        </header>
+    </div>
+
+    <h5 style="text-align: center; color: #6B9080; font-weight: bold;"> 
+        My Profile 
+    </h5>
+
+    <div class="container">
+        <div class="d-flex justify-content-center mw-100">
+            <form action="" class="form_input">
+
+                <!-- CREATE PET SITTER PROFILE -->
+
+                <label class="filebutton">
+                    <span>
+                        <input type="file" id="myImg" name="myImg" onchange="attachImg(this)" >
+                        <img src="/image/add-img.png" alt="Add your profile picture" id="imgCover" class="imgCover">
+                    </span>
+                    
+                </label>
+                <div class="row">
+                    <div class="inputs">
+                        <label class="email_edit">Email:</label>
+                        <input type="text" class="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="inputs">
+                        <label class="email_edit">Name:</label>
+                        <input type="text" class="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="location_input inputs">
+                        <label class="email_edit">Location:</label>
+                        <div class="location2_input">
+                            <input type="text" class="" placeholder="Province">
+                            <input type="text" class="city_input" placeholder="City">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="inputs">
+                        <label class="email_edit">Password:</label>
+                        <input type="text" class="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="inputs">
+                        <label class="email_edit" style="text-align: left;">Confirm <br> Password:</label>
+                        <input type="text" class="">
+                    </div>
+                </div>
+
+                <!-- HIRING INFORMATION -->
+
+                <div class="row hire_edit" style="margin-top: 4em;"><label>Hire Reasons:</label></div>
+                <div class="row hire_inputs">
+                    <textarea class="form-control" style="height:120px;" name="" id=""></textarea>
+                </div>
+                <div class="row hire_edit"><label>About Me:</label></div>
+                <div class="row hire_inputs">
+                    <textarea class="form-control" style="height:180px;" name="" id=""></textarea>
+                </div>
+                <div class="row hire_edit"><label>Experiences:</label></div>
+                <div class="row hire_inputs">
+                    <textarea class="form-control" style="height:120px;" name="" id=""></textarea>
+                </div>
+
+                <!-- PHOTOGRAPHY EXPERIENCES -->
+
+                <div class="row hire_edit"><label>Photography:</label></div>
+                <div class="row">
+                    <div class="col">
+                        <label class="photography">
+                            <span>
+                                <input type="file" id="photo1" name="photo1" onchange="attachPhoto1(this)" >
+                                <img src="/image/add-img.png" alt="Add photos" id="photoCover1" class="photoCover">
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="photography">
+                            <span>
+                                <input type="file" id="photo2" name="photo2" onchange="attachPhoto2(this)" >
+                                <img src="/image/add-img.png" alt="Add photos" id="photoCover2" class="photoCover">
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="photography">
+                            <span>
+                                <input type="file" id="photo3" name="photo3" onchange="attachPhoto3(this)" >
+                                <img src="/image/add-img.png" alt="Add photos" id="photoCover3" class="photoCover">
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <!-- SUBMIT BUTTON -->
+                <div class="text-right">
+                    <button type="submit" id="" class="btn btn-primary saveBtn">Save</button>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    // TEMPORARY SOLUTION 
+    function attachImg(input){
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var image = document.getElementById('imgCover');
+                image.src = e.target.result;
+                image.className = "profileImg_edit";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Maybe for this one..try use for loop to create the same function but diff nums?
+    function attachPhoto1(input){
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var image = document.getElementById('photoCover1');
+                image.src = e.target.result;
+                image.className = "profileImg_edit";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function attachPhoto2(input){
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var image = document.getElementById('photoCover2');
+                image.src = e.target.result;
+                image.className = "profileImg_edit";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function attachPhoto3(input){
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var image = document.getElementById('photoCover3');
+                image.src = e.target.result;
+                image.className = "profileImg_edit";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

@@ -28,17 +28,25 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
   }
 });
 
-// app.get('', (req, res) => {
-//   res.render('index')
-// })
+app.get('', (req, res) => {
+  res.render('index')
+})
 
-// app.get('/login', (req, res) => {
-//   res.render('login')
-// })
+app.get('/login', (req, res) => {
+  res.render('login')
+})
 
-// app.get('/register', (req, res) => {
-//   res.render('register')
-// })
+app.get('/register', (req, res) => {
+  res.render('register')
+})
+
+app.get('/createPetOwner', (req, res) => {
+  res.render('createPetOwner')
+})
+
+app.get('/createPetSitter', (req, res) => {
+  res.render('createPetSitter')
+})
 
 
 function userLogger(req, res, next) {
