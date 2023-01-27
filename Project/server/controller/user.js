@@ -9,27 +9,19 @@ const registerUser = async (request, response) => {
   // We are hashing/encrypting password based the data.password string and the salt value 10 which is the utmost encryption
   const encryptPassword = await bcrypt.hash(data.password, 10);
 
-  const profile = new Profile({
-    name:data.name,
-    province:data.province,
-    city:data.city
-  })
-  
+  //const profile = new Profile({});
+  const newUser = new User({
+    email: data.email,
+    hashedPassword: encryptPassword
+    
+  });
   try {
-    const p1 = await profile.save();
-    const newUser = new User({
-      email: data.email,
-      password: encryptPassword,
-      userType:data.userType,
-      profile:p1._id
-  
-    });
-    const output = await newUser.save();
-    return response.status(201).json({
-      message: "Succesfully Registered User",
-      data: output,
+     const p1 = await newUser.save();
+     return response.status(201).json({
+      message: "Succesfully Registered User"
     });
   } catch (error) {
+    console.log(error);
     return response.status(500).json({
       message: "There was an error",
       error,
