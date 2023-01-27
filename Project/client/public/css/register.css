@@ -69,6 +69,12 @@ h6 {
     align-items: center;
 }
 
+.btn:hover {
+    background-color: #FACC22;
+    border-color: #FACC22;
+    color: #000000;
+}
+
 .divider:after,
 .divider:before {
     content: "";
@@ -89,5 +95,21 @@ h6 {
 
     hr {
         width: 350px;
+    }
+
+    .form-control {
+        width: 390px;
+        margin-top: -5px;
+        margin-bottom: -20px;
+    }
+
+    .form-check {
+        margin-right: 50px;
+    }
+    
+    .btn {
+        padding-left: 2.5rem; 
+        padding-right: 2.5rem;
+        margin-top: -20px;
     }
 }

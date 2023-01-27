@@ -1,0 +1,53 @@
+/* font-family */
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+/* header */
+header {
+	/* position: fixed; */
+	z-index: 1;
+	width: 100%;
+    background-color: #EAF4F4;
+}
+
+.bg-light {
+	background-color: transparent !important;
+}
+
+.navbar-brand {
+	font-size: 2em;
+	font-weight: 800;
+    font-family: 'Bree Serif';
+    color: #6B9080;
+}
+
+.navbar-brand:hover {
+    color: #6B9080;
+}
+
+.nav-link {
+    font-weight: 300;
+    font-size: 20px;
+    color: #6B9080 !important;
+    font-family: 'Noto Sans';
+    margin-right: 25px;
+}
+
+/* .nav-item .nav-link:hover {
+	background-color: black;
+	color: white !important;
+} */
+
+/* .active {
+	background-color: black;
+	color: white !important;
+} */
+
+/* footer */
+footer {
+    /* position: fixed; */
+    padding-top: 300px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

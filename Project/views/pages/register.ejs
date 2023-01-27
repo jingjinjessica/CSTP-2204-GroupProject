@@ -11,7 +11,7 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/register.css">
-    <title>Register</title>
+    <title><%= title%></title>
 </head>
 
 <body>
@@ -23,18 +23,18 @@
                 class="img-fluid" alt="register image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <h1 class="register-title ">Register</h1>
+                <h1 class="register-title "><%= title%></h1>
                 <hr>
               <form>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="reg-email">Email address</label>
-                    <input type="email" id="reg-email" class="form-control form-control-lg"/>
+                    <input type="email" id="regEmail" class="form-control form-control-lg"/>
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-3">
                     <label class="form-label" for="reg-pwd">Password</label>
-                    <input type="password" id="reg-pwd" class="form-control form-control-lg"/>
+                    <input type="password" id="regPwd" class="form-control form-control-lg"/>
                 </div>
                 <!--Confirm Password input -->
                 <div class="form-outline mb-3">
@@ -46,7 +46,7 @@
                 </div>
                 <h6>Are You?</h6>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pet-owner" value="pet-owner" />
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pet-owner" value="pet-owner" checked="checked"/>
                     <label class="form-check-label" for="pet-owner">Pet Owner</label>
                   </div>
                   <div class="form-check form-check-inline">

@@ -28,6 +28,7 @@ hr {
 form {
     font-family: "Noto Sans";
 }
+
 /* form label */
 .form-outline {
     font-weight: 600;
@@ -36,6 +37,7 @@ form {
     padding-bottom: 5px;
 
 }
+
 /* form input */
 .form-control {
     border-radius: 50px !important;
@@ -49,25 +51,59 @@ form {
 
 /* submit btn */
 .btn {
-    padding-left: 2.5rem; 
+    padding-left: 2.5rem;
     padding-right: 2.5rem;
     background-color: #FB5607;
     border-color: #FB5607;
     align-items: center;
 }
 
+.btn:hover {
+    background-color: #FACC22;
+    border-color: #FACC22;
+    color: #000000;
+}
+
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
+
 .h-custom {
-height: calc(100% - 73px);
+    height: calc(100% - 73px);
 }
+
+
 @media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
+    .img-fluid {
+        margin-top: 50px;
+        border-radius: 30px !important; 
+    }
+
+    .h-custom {
+        height: 100%;
+    }
+
+    hr {
+        width: 350px;
+    }
+
+    /* .lead {
+        font-size: 15px;
+    } */
+
+    .third-party {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .form-control {
+        width: 390px;
+        margin-top: -5px;
+        margin-bottom: -20px;
+    }
+
 }
