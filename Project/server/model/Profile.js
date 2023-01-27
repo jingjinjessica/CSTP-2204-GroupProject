@@ -4,15 +4,15 @@ const ProfileSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: false,
+      required: true,
     },
     province: {
       type: String,
-      required: false,
+      required: true,
     },
     city: {
       type: String,
-      required: false,
+      required: true,
     },
     hireReasons: {
       type: String,

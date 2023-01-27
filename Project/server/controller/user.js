@@ -12,7 +12,7 @@ const registerUser = async (request, response) => {
   //const profile = new Profile({});
   const newUser = new User({
     email: data.email,
-    hashedPassword: encryptPassword
+    password: encryptPassword
     
   });
   try {
@@ -36,19 +36,15 @@ const loginUser = async (request, response) => {
 
   if (foundUser) {
     // Then we will check for password
-
     // This will be either true or false
-    const matchPassword = await bcrypt.compare(
-      data.password,
-      foundUser.password
-    );
+    const matchPassword = await bcrypt.compare(data.password,foundUser.password);
 
     if (matchPassword) {
       // We are trying to create an access token based on which the user will be able to interact with the website
       const accessToken = jwt.sign(
         {
-          email: foundUser.email,
-          name: foundUser.name,
+          email: foundUser.email
+          
         },
         process.env.SECRET_KEY
       );
@@ -80,9 +76,9 @@ const getAllUsers = async (request, response) => {
 
     const filteredData = data.map((user) => {
       return {
-        name: user.name,
+        //name: user.name,
         email: user.email,
-        id: user._id,
+        userID: user._id,
         createdAt: user.createdAt,
       };
     });
@@ -103,7 +99,7 @@ const editProfile = async(request, response) => {
 
   const updateClause = {$set: {avatar: user.avatar, name: user.name}};
   if(user.password){
-    const encryptPassword = await bcrypt.hash(user.password, 10);
+    const encryptPassword = await bcrypt.hash(user.hashedPassword, 10);
     updateClause["$set"]["password"] = encryptPassword;
   }
     User.findOneAndUpdate({_id: user._id}, updateClause, {new: true}).then((data) => {
