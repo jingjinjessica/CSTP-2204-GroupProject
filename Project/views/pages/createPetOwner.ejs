@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <!-- <div class="container">
+            <div class="d-flex justify-content-center mw-100">
+                <form action="" class="form_input">
+                    <h5 class="profile-title">My Profile</h5>
+                    CREATE PET OWNER PROFILE
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
+                            <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                    EMAIL
+                    <div class="row">
+                        <div class="inputs">
+                            <label class="email_edit">Email:</label>
+                            <input type="text" class="" id="">
+                        </div>
+                    </div>
+                    NAME
+                    <div class="row">
+                        <div class="inputs">
+                            <label class="email_edit">Name:</label>
+                            <input type="text" class="" id="">
+                        </div>
+                    </div>
+                    LOCATION
+                    <div class="row">
+                        <div class="location_input inputs">
+                            <label class="email_edit">Location:</label>
+                            <div class="location2_input">
+                                <input type="text" class="" id="" placeholder="Province">
+                                <input type="text" class="city_input" id="" placeholder="City">
+                            </div>
+                        </div>
+                    </div>
+                    PHONE
+                    <div class="row">
+                        <div class="inputs">
+                            <label class="email_edit">Phone:</label>
+                            <input type="text" class="" id="">
+                        </div>
+                    </div>
+                    PASSWORD
+                    <div class="row">
+                        <div class="inputs">
+                            <label class="email_edit">Password:</label>
+                            <input type="text" class="" id="">
+                        </div>
+                    </div>
+                    CONFIRM PASSWORD
+                    <div class="row">
+                        <div class="inputs">
+                            <label class="email_edit" style="text-align: left;">Confirm <br> Password:</label>
+                            <input type="text" class="" id="">
+                        </div>
+                    </div>
+                    REQUIREMENT
+                    <div class="row hire_edit" style="margin-top: 4em;"><label>Requirement:</label></div>
+                    <div class="row hire_inputs">
+                        <textarea class="form-control" style="height:120px;" name="" id=""></textarea>
+                    </div>
+
+                    MY PET PROFILE
+                    <h5 class="pet-profile-title">My Pet</h5>
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="" name="myImg" onchange="attachMyPetPic(this)">
+                            <img src="/image/add-img.png" alt="Add your profile picture" id="petProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                    PET INFORMATION DETAILS
+                    <div class="container">
+                        <div class="row">
+                            <div class="row inputs">
+                                <label for="">Name:</label>
+                                <input type="text" id="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row inputs">
+                                <label for="">Age:</label>
+                                <input type="text" id="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row inputs">
+                                <label for="">Weigth(lbs):</label>
+                                <input type="text" id="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row inputs">
+                                <label for="">Breed:</label>
+                                <input type="text" id="">
+                            </div>
+                        </div>
+                    </div>
+                    SUBMIT BUTTON
+                    <div class="text-right">
+                        <button type="submit" id="" class="btn btn-primary saveBtn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+        <div class="container justify-content-center">
+            <form class="row g-3">
+                <h5 class="profile-title">My Profile</h5>
+                <!-- CREATE PET OWNER PROFILE -->
+                <div class="col-12">
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
+                            <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Location</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label class="input-group-text">Province</label>
+                        <select class="form-select">
+                            <option selected>Choose...</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label class="input-group-text">City</label>
+                        <select class="form-select">
+                            <option selected>Choose...</option>
+                            <option>Vancouver</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="cnfpwd">
+                </div>
+
+                <h5 class="profile-title">My Pet</h5>
+                <div class="col-md-6">
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="" name="myImg" onchange="attachMyPetPic(this)">
+                            <img src="/image/add-img.png" alt="Add your profile picture" id="petProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="inputEmail4" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="petName">
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <div class="input-group">
+                                <label class="input-group-text">Age</label>
+                                <select class="form-select">
+                                    <option selected>Choose...</option>
+                                    <option>0 - 5</option>
+                                    <option>6 - 10</option>
+                                    <option>11 -15</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <div class="input-group">
+                                <label class="input-group-text">Weight (lbs)</label>
+                                <select class="form-select">
+                                    <option selected>Choose...</option>
+                                    <option>10 - 50</option>
+                                    <option>51 - 100</option>
+                                    <option>101 - 120</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <div class="input-group">
+                                <label class="input-group-text">Pet Type</label>
+                                <select class="form-select">
+                                    <option selected>Choose...</option>
+                                    <option>Dog</option>
+                                    <option>Cat</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>
+<!-- <script>
+    
+</script> -->
