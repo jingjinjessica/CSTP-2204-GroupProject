@@ -43,11 +43,11 @@ app.get('/register', (req, res) => {
 
 
 app.get('/createPetOwner', (req, res) => {
-  res.render('createPetOwner')
+  res.render('pages/createPetOwner')
 })
 
 app.get('/createPetSitter', (req, res) => {
-  res.render('createPetSitter')
+  res.render('pages/createPetSitter')
 })
 
 

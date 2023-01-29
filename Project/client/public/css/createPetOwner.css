@@ -1,0 +1,46 @@
+.profile-title {
+    color: #6B9080;
+}
+
+.imgPosition {
+    text-align: center;
+}
+
+.marginPosition {
+    margin-left: 30%;
+}
+
+.mw-100 {
+    max-width: 80%!important;;
+}
+
+.col-md-5 {
+    width: 50%;
+}
+
+/* PROFILE IMG CSS */
+
+label.filebutton {
+    overflow:hidden;
+    position:relative;
+    border: 2px solid #6B9080;
+    border-radius: 15px;
+    height: 250px;
+    width: 200px;
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding-top:0;
+}
