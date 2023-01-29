@@ -12,7 +12,8 @@ const registerUser = async (request, response) => {
   //const profile = new Profile({});
   const newUser = new User({
     email: data.email,
-    password: encryptPassword
+    password: encryptPassword,
+    userType: data.userType
     
   });
   try {

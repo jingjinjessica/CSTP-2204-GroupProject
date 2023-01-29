@@ -13,13 +13,16 @@ const setConfPassword = (event) => {
 };
 
 
-function handleClick(event){
-    var type = document.getElementsByName('inlineRadioOptions');
+const handleClick = (event) => {
+  var type = document.getElementsByName('inlineRadioOptions');
     for (i=0;i<type.length;i++){
-        if(type[i].checked)
+        if(type[i].checked){
          user.userType = type[i].value;
+         return 
+        }
+
     }
-};
+}
 
 
 
@@ -36,6 +39,9 @@ const submitRegisterForm = async (event) => {
       },
     });
     if (response) {
+      localStorage.removeItem("access-token");
+      localStorage.removeItem("user");
+      document.cookie = "";
       window.location.href = "/login";
     }
   } catch (error) {

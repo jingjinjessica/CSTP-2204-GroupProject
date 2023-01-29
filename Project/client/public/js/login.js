@@ -5,7 +5,7 @@ let baseUrl = "/api/v1";
   let accessToken = JSON.parse(localStorage.getItem("access-token"));
 
   if (accessToken) {
-    window.location.href = "/index";
+    window.location.href = "/";
   }
 })();
 
@@ -42,7 +42,8 @@ const submitLoginForm = async (event) => {
         "access-token",
         JSON.stringify(finalIncomingResponse.accessToken)
       );
-      window.location.href = "/index";
+      document.cookie = "access-token=" + JSON.stringify(finalIncomingResponse.accessToken);
+      window.location.href = "/";
     } else {
       alert(finalIncomingResponse.message);
     }
