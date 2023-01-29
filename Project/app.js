@@ -4,11 +4,15 @@ const PORT = 3000;
 const mongoose = require("mongoose");
 const path = require('path');
 const userRoutes = require("./server/routes/users");
-//const postRoute = require("./server/routes/posts");
+const profileRouter = require("./server/routes/profiles");
 //const editProfileRoute = require("./server/routes/editprofile");
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 require("dotenv").config();
+const cookieParser = require('cookie-parser');
+
+//cookie
+app.use(cookieParser());
 
 
 
@@ -41,6 +45,7 @@ app.get('/register', (req, res) => {
 })
 
 
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
@@ -56,6 +61,7 @@ app.use((req, res, next) => {
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
+app.use("/profile", profileRouter);
 //app.use("/api/v1/posts", postLogger, postRoute);
 //app.use("/api/v1/editprofile", editProfileRoute);
 
