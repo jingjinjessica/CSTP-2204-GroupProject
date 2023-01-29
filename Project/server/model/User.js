@@ -12,7 +12,7 @@ const UserSchema = mongoose.Schema(
       required: true,
     },
     userType: {
-      type: [String],
+      type: String,
       required: true,
     },
     // profile: {

@@ -55,7 +55,7 @@ const ProfileSchema = mongoose.Schema(
       required: false,
     },
     userID: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
