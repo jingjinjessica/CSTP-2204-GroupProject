@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+label.filebutton {
+    overflow:hidden;
+    position:relative;
+    border: 2px solid #6B9080;
+    border-radius: 15px;
+    height: 250px;
+    width: 200px;
+}
+
+label.photography {
+    overflow:hidden;
+    position:relative;
+    border: 2px solid #6B9080;
+    border-radius: 15px;
+    height: 150px;
+    width: 150px;
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding-top:0;
+}
+
+.form_input {
+    text-align: center;
+}
+
+.profileImg_edit {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.inputs {
+    margin-top: 20px;
+}
+
+.text_edit {
+    margin-right: 4em;
+    color: #6B9080;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.inputs input {
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 13px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    
+}
+
+.imgCover {
+    padding-top: 50%;
+    color: #F6FFF8;
+}
+
+.photoCover {
+    padding-top: 30%;
+    padding-left: 30%;
+}
+
+.hire_edit {
+    margin-top: 1.5em;
+    color: #6B9080;
+    /* margin-left: 32%; */
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bolder;
+}
+
+.form-control{
+    border: 1px solid black;
+    border-radius: 13px;
+}
+
+.saveBtn {
+    background-color: #6B9080;
+    border: 1px solid #6B9080;
+    padding: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.aboutEdit {
+    margin-left: 32%;
+}
