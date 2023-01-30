@@ -4,14 +4,14 @@ const PORT = 3000;
 const mongoose = require("mongoose");
 const path = require('path');
 const userRoutes = require("./server/routes/users");
-//const postRoute = require("./server/routes/posts");
-//const editProfileRoute = require("./server/routes/editprofile");
+const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 require("dotenv").config();
 
 
-
+//cookie
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname + '/client/public')))
