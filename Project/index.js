@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname + '/client/public')))
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -32,16 +32,36 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.render('index')
+// app.get('/', (req, res) => {
+//   res.render('index')
+// })
+
+// app.get('/login', (req, res) => {
+//   res.render('login')
+// })
+
+// app.get('/register', (req, res) => {
+//   res.render('register')
+// })
+app.get('/index', (req, res) => {
+  res.render('pages/index', { 'title': 'Home', })
 })
 
 app.get('/login', (req, res) => {
-  res.render('login')
+  res.render('pages/login', { 'title': 'Login' })
 })
 
 app.get('/register', (req, res) => {
-  res.render('register')
+  res.render('pages/register', { 'title': 'Register' })
+})
+
+
+app.get('/createPetOwner', (req, res) => {
+  res.render('pages/createPetOwner')
+})
+
+app.get('/createPetSitter', (req, res) => {
+  res.render('pages/createPetSitter')
 })
 
 
@@ -62,6 +82,7 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/profile", profileRouter);
+app.use("/api/v1/profile", profileRouter);
 //app.use("/api/v1/posts", postLogger, postRoute);
 //app.use("/api/v1/editprofile", editProfileRoute);
 

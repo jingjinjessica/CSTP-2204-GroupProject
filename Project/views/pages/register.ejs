@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="./js/register.js"></script>
     <link rel="stylesheet" href="/css/register.css">
-    <title>Register</title>
+    <title><%= title%></title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                 class="img-fluid" alt="register image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <h1 class="register-title ">Register</h1>
+              <h1 class="register-title "><%= title%></h1>
                 <hr>
                 <form onsubmit="submitRegisterForm(event)">
                 <!-- Email input -->
