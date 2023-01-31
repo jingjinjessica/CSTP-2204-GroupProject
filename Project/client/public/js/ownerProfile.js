@@ -27,7 +27,9 @@ function attachMyPetPic(input){
 }
 
 function validateForm()
-{
+{   
+    
     return true;
 }
+
 

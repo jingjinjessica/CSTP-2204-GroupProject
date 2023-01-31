@@ -2,8 +2,9 @@ const bcrypt = require("bcryptjs"); // This library/package will be used to encr
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
 const User = require("../model/User");
-// const cloudinary = require("../library/cloudinary");
+//const cloudinary = require("../library/cloudinary");
 const { response } = require("express");
+
 
 
 //GET
@@ -15,12 +16,12 @@ const getProfile = async (req,res) => {
 };
    
 const createPetOwner = async (req,res) => {
-    const data =req.body;
+   
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+    const profileInform = await getProfileByUserEmail(decodedValues.email);
     res.render('pages/createPetOwner',{
-        email:decodedValues.email});
-
+        email:decodedValues.email, name:profileInform.name});
 };
 
 const createPetSitter = async(req,res) =>{
@@ -33,8 +34,8 @@ const getUser = (req) => {
 }
 const hasProfile = async (req) => {
     const user = getUser(req);
-    const profile = getProfileByUserEmail(user.email);
-
+    const profile = await getProfileByUserEmail(user.email);
+    //console.info(user);
     return JSON.stringify(profile) !== "{}";
 }
 //find req user
@@ -58,9 +59,32 @@ const getProfileByUserEmail = async (email) => {
 // owner profile post
 const createOwnerPost = async(req,res) => {
     const data = req.body;
-    const hasP = await hasProfile(req);
-    if (! hasP ){
 
+    if(data.password && data.password === data.cnfpwd){
+        const encryptPassword = await bcrypt.hash(data.password, 10);
+        await User.findOneAndUpdate({email:data.email},{$set: {password: encryptPassword}},{new:false});
+    }
+    const hasP = await hasProfile(req);
+    if (hasP){
+        const userEntity =await getUserEntity(req);
+        const updateClause = {$set:{name:data.name,city:data.city}};
+          Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
+          return res.status(200).json({
+            message: "updated Succesfully",
+            data
+          })
+          
+        }).catch((error) => {
+            console.log(error);
+            return res.status(500). json({
+              message: "fail to update user",
+              error
+            })
+          });
+
+        
+    }
+    else {
         const userEntity = await getUserEntity(req);
         const newProfile = new Profile({
             name: data.name,
@@ -83,11 +107,14 @@ const createOwnerPost = async(req,res) => {
             });
         }catch (error) {
             console.info(error);
-            return response.status(500).json({
+            return res.status(500).json({
             message: "There was an error",
             error,
             });
         }
+        
+
+
     }
     // console.info(req.body);
 };

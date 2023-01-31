@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+//const multer = require("../library/multer");
 
 const {createPetOwner, createPetSitter, getProfile,createOwnerPost} = require("../controller/profile");
 

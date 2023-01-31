@@ -17,7 +17,7 @@
                 <div class="col-12 imgPosition">
                     <label class="filebutton">
                         <span>
-                            <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
+                            <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
                             <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
                                 class="imgCover">
                         </span>
@@ -27,7 +27,7 @@
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label for="inputEmail4" class="form-label text_edit">Name:</label>
                     <div class="col-md-5">
-                        <input type="text" name="name" class="form-control" id="name" >
+                        <input type="text" name="name" class="form-control" id="name" value="<%= name%>" >
                     </div>
                 </div>
 
@@ -82,14 +82,14 @@
                     <label class="form-label text_edit">Password:</label>
                     <div class="col-md-5">
                         
-                        <input type="password" class="form-control" id="pwd">
+                        <input name="password" type="password" class="form-control" id="pwd">
                     </div>
                 </div>
                 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Confirm <br> Password:</label>
                     <div class="col-md-5">
-                        <input type="password" class="form-control" id="cnfpwd">
+                        <input name="cnfpwd" type="password" class="form-control" id="cnfpwd">
                     </div>
                 </div>
                 
@@ -176,5 +176,8 @@
             </form>
         </div>
 </body>
+<script type="text/javascript">
+    loadProfile();
+  </script>
 
 </html>
