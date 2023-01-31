@@ -1,11 +1,10 @@
 {
   "name": "companionfinder",
   "version": "1.0.0",
-
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "bootstrap-icons": "^1.10.3",
+    "cloudinary": "^1.33.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",

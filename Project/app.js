@@ -4,11 +4,11 @@ const PORT = 3000;
 const mongoose = require("mongoose");
 const path = require('path');
 const userRoutes = require("./server/routes/users");
+const profileRoutes = require("./server/routes/profiles");
 const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 require("dotenv").config();
-
 
 //cookie
 app.use(cookieParser());
@@ -42,13 +42,11 @@ app.get('/register', (req, res) => {
 })
 
 
-app.get('/createPetOwner', (req, res) => {
-  res.render('pages/createPetOwner')
-})
 
-app.get('/createPetSitter', (req, res) => {
-  res.render('pages/createPetSitter')
-})
+
+// app.get('/createPetSitter', (req, res) => {
+//   res.render('pages/createPetSitter')
+// })
 
 
 function userLogger(req, res, next) {
@@ -60,6 +58,11 @@ function postLogger(req, res, next) {
   console.log("Loading Post requests....");
   next();
 }
+
+function profileLogger(req,res,next) {
+
+  next();
+}
 app.use((req, res, next) => {
   next();
 });
@@ -67,7 +70,8 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 //app.use("/api/v1/posts", postLogger, postRoute);
-//app.use("/api/v1/editprofile", editProfileRoute);
+app.use("/profile", profileRoutes);
+
 
 
 

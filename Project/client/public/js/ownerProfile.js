@@ -25,3 +25,9 @@ function attachMyPetPic(input){
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function validateForm()
+{
+    return true;
+}
+
