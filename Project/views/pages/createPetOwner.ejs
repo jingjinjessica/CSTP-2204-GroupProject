@@ -43,7 +43,7 @@
                     <label class="form-label text_edit">Phone:</label>
                     <div class="col-md-5">
                         
-                        <input id="phone" name="phone" type="text" class="form-control" id="phone">
+                        <input id="phone" name="phone" type="text" class="form-control" id="phone" value="<%= phone%>">
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                         
                         <div class="input-group">
                             <label  class="input-group-text">Province</label>
-                            <select id="province" name="province" class="form-select">
+                            <select id="province" name="province" class="form-select" value="<%= province%>">
                                 <option selected>Choose...</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -68,7 +68,7 @@
                     <div class="col-md-5 marginPosition">
                         <div class="input-group">
                             <label  class="input-group-text">City</label>
-                            <select id="city" name="city" class="form-select">
+                            <select id="city" name="city" class="form-select" value="<%= city%>">
                                 <option selected>Choose...</option>
                                 <option value="Vancouver">Vancouver</option>
                                 <option value="Richmond">Richmond</option>
@@ -110,7 +110,7 @@
                     <div class="col-md-5">
                         <div class="row g-3">
                             <div class="col">
-                                <input type="text" class="form-control" id="petName" name="petName">
+                                <input type="text" class="form-control" id="petName" name="petName" value="<%= petName%>">
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label class="input-group-text">Age</label>
-                                    <select id="petAge" name="petAge" class="form-select">
+                                    <select id="petAge" name="petAge" class="form-select" value="<%= petAge%>">
                                         <option selected>Choose...</option>
                                         <option value="05">0 - 5</option>
                                         <option value="610">6 - 10</option>
@@ -140,7 +140,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label class="input-group-text">Weight (lbs)</label>
-                                    <select name="petWeight" id="petWeight" class="form-select">
+                                    <select name="petWeight" id="petWeight" class="form-select" value="<%= petWeight %>">
                                         <option selected>Choose...</option>
                                         <option value="1050">10 - 50</option>
                                         <option value="51100">51 - 100</option>
@@ -158,7 +158,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label class="input-group-text">Pet Type</label>
-                                    <select id="petType" name="petType" class="form-select">
+                                    <select id="petType" name="petType" class="form-select" value="<%= petType%>">
                                         <option selected>Choose...</option>
                                         <option value="dog">Dog</option>
                                         <option value="cat">Cat</option>

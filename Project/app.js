@@ -8,10 +8,11 @@ const profileRoutes = require("./server/routes/profiles");
 const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
-//const multer = require("../library/multer");
+// const multer = require("../library/multer");
 
+// const cloudinary = require("../library/cloudinary");
+require('dotenv').config()
 
-require("dotenv").config();
 
 //cookie
 app.use(cookieParser());

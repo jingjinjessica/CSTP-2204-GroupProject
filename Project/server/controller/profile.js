@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs"); // This library/package will be used to encr
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
 const User = require("../model/User");
-//const cloudinary = require("../library/cloudinary");
+// const cloudinary = require("../library/cloudinary");
 const { response } = require("express");
 
 
@@ -16,12 +16,19 @@ const getProfile = async (req,res) => {
 };
    
 const createPetOwner = async (req,res) => {
-   
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
     const profileInform = await getProfileByUserEmail(decodedValues.email);
     res.render('pages/createPetOwner',{
-        email:decodedValues.email, name:profileInform.name});
+        email:decodedValues.email, 
+        name:profileInform.name,
+        phone:profileInform.phone,
+        province:profileInform.province,
+        city:profileInform.city,
+        petName:profileInform.petName,
+        petAge:profileInform.petAge,
+        petWeight:profileInform.petWeight,
+        petType:profileInform.petType});
 };
 
 const createPetSitter = async(req,res) =>{
@@ -32,6 +39,7 @@ const createPetSitter = async(req,res) =>{
 const getUser = (req) => {
     return jwt.verify(req.cookies["access-token"], process.env.SECRET_KEY);
 }
+//check has profile or not
 const hasProfile = async (req) => {
     const user = getUser(req);
     const profile = await getProfileByUserEmail(user.email);
@@ -44,8 +52,7 @@ const getUserEntity = async (req) =>{
     const entity = await User.findOne({email: user.email});
     return entity;
 }
-
-
+// get profile by user email
 const getProfileByUserEmail = async (email) => {
     //console.info(email);
     const user = await User.findOne({email: email});
@@ -56,18 +63,28 @@ const getProfileByUserEmail = async (email) => {
 }
 
 
-// owner profile post
+// owner profile post and update
 const createOwnerPost = async(req,res) => {
     const data = req.body;
-
+    // password update
     if(data.password && data.password === data.cnfpwd){
         const encryptPassword = await bcrypt.hash(data.password, 10);
         await User.findOneAndUpdate({email:data.email},{$set: {password: encryptPassword}},{new:false});
     }
     const hasP = await hasProfile(req);
+
+    // profile update
     if (hasP){
         const userEntity =await getUserEntity(req);
-        const updateClause = {$set:{name:data.name,city:data.city}};
+        const updateClause = {$set:{name:data.name,
+                                    phone:data.phone,
+                                    province:data.province,
+                                    city:data.city,
+                                    petName:data.petName,
+                                    petAge:data.petAge,
+                                    petWeight:data.petWeight,
+                                    petType:data.petType
+                                }};
           Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
           return res.status(200).json({
             message: "updated Succesfully",
