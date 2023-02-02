@@ -1,4 +1,5 @@
-const cloudinary = require("../library/cloudinary");
+// const cloudinary = require("../library/cloudinary");
+
 
 const uploadImage = async (request, response) => {
   try {

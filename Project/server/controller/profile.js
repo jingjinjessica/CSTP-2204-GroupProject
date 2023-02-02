@@ -9,7 +9,7 @@ const { response } = require("express");
 
 //GET
 const getProfile = async (req,res) => {
-    const token = request.cookies["access-token"];
+    const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
     console.log(decodedValues, "decoded values");
     res.render("pages/createPetOwner");    
@@ -64,7 +64,7 @@ const getProfileByUserEmail = async (email) => {
 
 
 // owner profile post and update
-const createOwnerPost = async(req,res) => {
+const createOwnerProfilePost = async(req,res) => {
     const data = req.body;
     // password update
     if(data.password && data.password === data.cnfpwd){
@@ -101,9 +101,22 @@ const createOwnerPost = async(req,res) => {
 
         
     }
+    // create a new profile
     else {
         const userEntity = await getUserEntity(req);
+
+        // const imageURL = URL.createObjectURL(data.myImg);
+        // imagePreview.src = imageURL;
+        // const {url: imageurl} = await fetch("/profile/uploadImage",{
+        //     headers:{
+        //         Authorization:``
+        //     }
+        // });
+
+
+
         const newProfile = new Profile({
+            myImg:data.myImg,
             name: data.name,
             province:data.province,
             city:data.city,
@@ -129,12 +142,9 @@ const createOwnerPost = async(req,res) => {
             error,
             });
         }
-        
-
-
     }
     // console.info(req.body);
 };
 
 
-module.exports= { createPetOwner,createPetSitter, getProfile,createOwnerPost};
+module.exports= { createPetOwner,createPetSitter, getProfile,createOwnerProfilePost};
