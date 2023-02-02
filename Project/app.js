@@ -4,13 +4,19 @@ const PORT = 3000;
 const mongoose = require("mongoose");
 const path = require('path');
 const userRoutes = require("./server/routes/users");
-//const postRoute = require("./server/routes/posts");
-//const editProfileRoute = require("./server/routes/editprofile");
+
+const profileRoutes = require("./server/routes/profiles");
+const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
-require("dotenv").config();
+// const multer = require("../library/multer");
+
+// const cloudinary = require("../library/cloudinary");
+require('dotenv').config()
 
 
+//cookie
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -42,6 +48,7 @@ app.get('/register', (req, res) => {
 })
 
 
+
 app.get('/createPetOwner', (req, res) => {
   res.render('pages/createPetOwner')
 })
@@ -59,6 +66,7 @@ app.get('/petSitterPost', (req, res) => {
 })
 
 
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
@@ -68,6 +76,12 @@ function postLogger(req, res, next) {
   console.log("Loading Post requests....");
   next();
 }
+
+
+function profileLogger(req,res,next) {
+
+  next();
+}
 app.use((req, res, next) => {
   next();
 });
@@ -75,7 +89,10 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 //app.use("/api/v1/posts", postLogger, postRoute);
-//app.use("/api/v1/editprofile", editProfileRoute);
+
+app.use("/profile", profileRoutes);
+
+
 
 
 
