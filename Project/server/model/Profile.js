@@ -50,7 +50,7 @@ const ProfileSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    petBreed: {
+    petType: {
       type: String,
       required: false,
     },
