@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const userRoutes = require("./server/routes/users");
 const profileRoutes = require("./server/routes/profiles");
+const petRoutes = require("./server/routes/petposts");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -35,33 +36,33 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
   }
 });
 
-app.get("/index", (req, res) => {
-  res.render("pages/index", { title: "Home" });
-});
+// app.get("/index", (req, res) => {
+//   res.render("pages/index", { title: "Home" });
+// });
 
-app.get("/login", (req, res) => {
-  res.render("pages/login", { title: "Login" });
-});
+// app.get("/login", (req, res) => {
+//   res.render("pages/login", { title: "Login" });
+// });
 
-app.get("/register", (req, res) => {
-  res.render("pages/register", { title: "Register" });
-});
+// app.get("/register", (req, res) => {
+//   res.render("pages/register", { title: "Register" });
+// });
 
-app.get("/createpetowner", (req, res) => {
-  res.render("pages/createPetOwner");
-});
+// app.get("/createpetowner", (req, res) => {
+//   res.render("pages/createPetOwner");
+// });
 
-app.get("/createPetSitter", (req, res) => {
-  res.render("pages/createPetSitter");
-});
+// app.get("/createPetSitter", (req, res) => {
+//   res.render("pages/createPetSitter");
+// });
 
-app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost");
-});
+// app.get("/petOwnerPost", (req, res) => {
+//   res.render("pages/petOwnerPost");
+// });
 
-app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost");
-});
+// app.get("/petSitterPost", (req, res) => {
+//   res.render("pages/sitterPost");
+// });
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
@@ -83,7 +84,7 @@ app.use((req, res, next) => {
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
-//app.use("/api/v1/posts", postLogger, postRoute);
+app.use("/api/v1/petposts", postLogger, petRoutes);
 
 app.use("/profile", profileRoutes);
 

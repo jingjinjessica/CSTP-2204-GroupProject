@@ -5,10 +5,10 @@ const multer = require("../library/multer");
 
 // Here we are using destructuring
 const {
-  createPost,
+  createPetPost,
   getAllPosts,
-  updatePost,
-  deletePost,
+  updatePetPost,
+  deletePetPost,
 } = require("../controller/post");
 
 const { uploadImage } = require("../controller/image");
@@ -22,13 +22,12 @@ router.post(
 
 router.get("/", getAllPosts);
 
-router.post("/create", validateToken, createPost);
+router.post("/create", validateToken, createPetPost);
 
 // router.get("/:id", getPostById);
 
-router.put("/:id", validateToken, updatePost);
+router.put("/:id", validateToken, updatePetPost);
 
-router.delete("/delete/:id", validateToken, deletePost);
-
+router.delete("/delete/:id", validateToken, deletePetPost);
 
 module.exports = router;
