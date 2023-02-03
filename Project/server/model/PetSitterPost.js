@@ -6,7 +6,7 @@ const PetSitterPostSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    location: {
+    province: {
       type: String,
       required: true,
     },
@@ -18,7 +18,7 @@ const PetSitterPostSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    desc: {
+    experience: {
       type: String,
       required: true,
     },
