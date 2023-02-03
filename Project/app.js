@@ -78,7 +78,6 @@ app.use("/api/v1/users", userLogger, userRoutes);
 //app.use("/api/v1/editprofile", editProfileRoute);
 
 
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
