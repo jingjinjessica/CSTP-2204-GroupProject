@@ -6,7 +6,7 @@ const PetPostSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    location: {
+    province: {
       type: String,
       required: true,
     },

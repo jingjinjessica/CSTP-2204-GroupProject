@@ -3,63 +3,55 @@
 <head>
     <%- include('../partials/head') %>   
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="./js/petsitterpost.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    
+
 </head>
 <body>
     <%- include('../partials/header') %>
-
     <div class="container justify-content-center">
-        <form action="" class="row g-3 d-flex flex-column align-items-center align-content-center">
+        <form onsubmit="sitterPost(event)" class="row g-3 d-flex flex-column align-items-center align-content-center">
             <div class=" d-flex justify-content-evenly titlePost">
                 <label for="ownerPostTitle" class="form-label">Title:</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" id="">
+                    <input type="text" class="form-control" id="title" onchange="setTitle(event)">
                 </div>
             </div>  
-
             <div class="d-flex justify-content-evenly">
                 <label class="form-label">Location:</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" id="" placeholder="Province">
-                    
+                    <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)">
                 </div>
             </div>
-
             <div class="mw-100 d-flex justify-content-around">
                 <div class="col-md-5 marginPosition">
-                    <input type="text" class="form-control" id="" placeholder="City">
-                    
+                    <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)">
                 </div>
             </div>
-
             <div>
                 <p>
                     <label for="amount">Rate(CAD):</label>
-                    <input type="text" id="amount" readonly style="border:0; color:#6B9080; font-weight:bold; background-color: #F6FFF8;">
+                    <input type="text" id="rate" readonly style="border:0; color:#6B9080; font-weight:bold; background-color: #F6FFF8;" onchange="setRate(event)">
                 </p>
                 <div id="slider-range"></div>
                 <div class="d-flex flex-row justify-content-between mt-2">
-                    <label for="" style="color: #6B9080; font-weight: bold;">$0</label>              
-                    <label for="" style="color: #6B9080; font-weight: bold;">$250</label>
+                    <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
+                    <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
                 </div>
             </div>
-
             <div class="mb-3">
                 <label for="" class="form-label">Experiences:</label>
-                <textarea class="form-control" id="" rows="3"></textarea>
+                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"></textarea>
             </div>
 
             <!-- SUBMIT BUTTON -->
             <div class="col-12 text-end">
                 <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
             </div>
-            
-
         </form>
     </div>
-    
+
 </body>
 </html>
 <script>
@@ -73,21 +65,4 @@
               $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
             }
           });
-
-          // Getting the values of the range
-          $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-        } );
-</script>
-
-
-<script>
-    // JQuery test
-    // To get a value from the slides after button save is clicked
-    // $(document).ready(function () {
-    //     $('#getValue').click(function () {
-    //         var inputs = $("#amount").val();
-    //         alert(inputs)
-    //     });
-    // });
 </script>
