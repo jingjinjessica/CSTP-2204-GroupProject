@@ -99,7 +99,6 @@ app.use("/profile", profileRoutes);
 
 
 
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
