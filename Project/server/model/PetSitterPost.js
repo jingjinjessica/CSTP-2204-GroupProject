@@ -16,7 +16,7 @@ const PetSitterPostSchema = mongoose.Schema(
     },
     rate: {
       type: String,
-      required: true,
+      required: false,
     },
     experience: {
       type: String,
