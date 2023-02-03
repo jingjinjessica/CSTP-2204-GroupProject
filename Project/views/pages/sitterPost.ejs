@@ -2,31 +2,12 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>   
-    <!-- Font Awesome -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
-    rel="stylesheet"
-    /> 
-    <!-- MDB -->
-    <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
-    ></script>
-    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
     <%- include('../partials/header') %>
-
     <div class="container justify-content-center">
         <form action="" class="row g-3 d-flex flex-column align-items-center align-content-center">
             <div class=" d-flex justify-content-evenly titlePost">
@@ -35,7 +16,6 @@
                     <input type="text" class="form-control" id="">
                 </div>
             </div>  
-
             <div class="d-flex justify-content-evenly">
                 <label class="form-label">Location:</label>
                 <div class="col-md-5">
@@ -43,25 +23,60 @@
                     
                 </div>
             </div>
-
             <div class="mw-100 d-flex justify-content-around">
                 <div class="col-md-5 marginPosition">
                     <input type="text" class="form-control" id="" placeholder="City">
                     
                 </div>
             </div>
-
-            <label for="customRange3" class="form-label">Example range</label>
-            <div class="range">
-                <input type="range" class="form-range" min="1" max="250" step="0.5" id="customRange3" />
+            <div>
+                <p>
+                    <label for="amount">Rate(CAD):</label>
+                    <input type="text" id="amount" readonly style="border:0; color:#6B9080; font-weight:bold; background-color: #F6FFF8;">
+                </p>
+                <div id="slider-range"></div>
+                <div class="d-flex flex-row justify-content-between mt-2">
+                    <label for="" style="color: #6B9080; font-weight: bold;">$0</label>              
+                    <label for="" style="color: #6B9080; font-weight: bold;">$250</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Experiences:</label>
+                <textarea class="form-control" id="" rows="3"></textarea>
             </div>
 
-
+            <!-- SUBMIT BUTTON -->
+            <div class="col-12 text-end">
+                <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
+            </div>
         </form>
     </div>
-    
+
 </body>
 </html>
 <script>
-    
+    $( function() {
+          $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 250,
+            values: [ 0, 250 ],
+            slide: function( event, ui ) {
+              $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            }
+          });
+          // Getting the values of the range
+          $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        } );
+</script>
+<script>
+    // JQuery test
+    // To get a value from the slides after button save is clicked
+    // $(document).ready(function () {
+    //     $('#getValue').click(function () {
+    //         var inputs = $("#amount").val();
+    //         alert(inputs)
+    //     });
+    // });
 </script>
