@@ -52,9 +52,9 @@ app.get("/login", (req, res) => {
 //   res.render("pages/createPetOwner");
 // });
 
-// app.get("/createPetSitter", (req, res) => {
-//   res.render("pages/createPetSitter");
-// });
+app.get("/createPetSitter", (req, res) => {
+  res.render("pages/createPetSitter");
+});
 
 // app.get("/petOwnerPost", (req, res) => {
 //   res.render("pages/petOwnerPost");
