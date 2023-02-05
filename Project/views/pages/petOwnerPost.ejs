@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+    <script src="./js/ownerpost.js"></script>
 </head>
 <body>
     <%- include('../partials/header') %>
 
     <div class="container justify-content-center">
-        <form onsubmit="" class="row g-3 d-flex flex-column align-items-center align-content-center">
+        <form onsubmit="ownerPost(event)" class="row g-3 d-flex flex-column align-items-center align-content-center">
 
             <div class=" d-flex justify-content-evenly titlePost">
                 <label for="ownerPostTitle" class="form-label">Title:</label>
@@ -20,14 +21,12 @@
                 <label class="form-label">Location:</label>
                 <div class="col-md-5">
                     <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)">
-                    
                 </div>
             </div>
 
             <div class="mw-100 d-flex justify-content-around">
                 <div class="col-md-5 marginPosition">
                     <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)">
-                    
                 </div>
             </div>
 

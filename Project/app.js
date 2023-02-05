@@ -6,6 +6,7 @@ const path = require("path");
 const userRoutes = require("./server/routes/users");
 const profileRoutes = require("./server/routes/profiles");
 const sitterRoutes = require("./server/routes/sitterposts");
+const ownerRoutes = require("./server/routes/ownerposts");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -85,6 +86,7 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
+app.use("/api/v1/ownerposts", postLogger, ownerRoutes);
 
 app.use("/profile", profileRoutes);
 

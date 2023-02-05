@@ -4,20 +4,20 @@ const validateToken = require("../../middleware/validate");
 
 // Here we are using destructuring
 const {
-  createSitterPost,
-  getAllPosts,
-  updateSitterPost,
-  deleteSitterPost,
+  createPetPost,
+  getAllPetPosts,
+  updatePetPost,
+  deletePetPost,
 } = require("../controller/ownerpost");
 
 // router.get("/", getAllPosts);
 
-router.post("/create", validateToken, createOwnerPost);
+router.post("/create", validateToken, createPetPost);
 
 // router.get("/:id", getPostById);
 
-router.put("/:id", updateOwnerPost);
+router.put("/:id", updatePetPost);
 
-router.delete("/delete/:id", deleteOwnerPost);
+router.delete("/delete/:id", deletePetPost);
 
 module.exports = router;
