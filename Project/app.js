@@ -56,9 +56,9 @@ app.get("/createPetSitter", (req, res) => {
   res.render("pages/createPetSitter");
 });
 
-// app.get("/petOwnerPost", (req, res) => {
-//   res.render("pages/petOwnerPost");
-// });
+app.get("/petOwnerPost", (req, res) => {
+  res.render("pages/petOwnerPost");
+});
 
 app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
