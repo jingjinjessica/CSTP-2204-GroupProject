@@ -6,6 +6,7 @@
     <script src="./js/petsitterpost.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 </head>
 <body>
     <%- include('../partials/header') %>
@@ -60,7 +61,9 @@
             max: 250,
             values: [ 0, 250 ],
             slide: function( event, ui ) {
-              $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            //   $( "#rate" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+              $( "#startrate" ).text( "$" + ui.values[ 0 ]);
+              $( "#endrate" ).text( "$" + ui.values[ 1 ]);
             }
           });
           // Getting the values of the range
