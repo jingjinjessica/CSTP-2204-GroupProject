@@ -14,6 +14,7 @@ const setCity = (event) => {
 
 const setRate = (event) => {
   newPetsitterPost.rate = event.target.value;
+  console.log(setRate);
 };
 
 const setExp = (event) => {
@@ -27,7 +28,7 @@ const sitterPost = async (event) => {
     !newPetsitterPost.title ||
     !newPetsitterPost.province ||
     !newPetsitterPost.city ||
-    // !newPetsitterPost.rate ||
+    !newPetsitterPost.rate ||
     !newPetsitterPost.experience
   ) {
     alert("Please fill all the fields");

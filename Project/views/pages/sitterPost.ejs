@@ -29,15 +29,14 @@
                 </div>
             </div>
             <div>
-                <p>
-                    <label for="amount">Rate(CAD):</label>
-                    <input type="text" id="rate" readonly style="border:0; color:#6B9080; font-weight:bold; background-color: #F6FFF8;" onchange="setRate(event)">
-                </p>
-                <div id="slider-range"></div>
+                <label for="amount">Rate(CAD):</label>
+                <input type="text" id="rate" placeholder="$" onchange="setRate(event)">
+               
+                <!-- <div id="slider-range"></div>
                 <div class="d-flex flex-row justify-content-between mt-2">
                     <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
                     <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
-                </div>
+                </div> -->
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Experiences:</label>
@@ -53,7 +52,7 @@
 
 </body>
 </html>
-<script>
+<!-- <script>
     $( function() {
           $( "#slider-range" ).slider({
             range: true,
@@ -68,4 +67,4 @@
           $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
             " - $" + $( "#slider-range" ).slider( "values", 1 ) );
         } );
-</script>
+</script> -->

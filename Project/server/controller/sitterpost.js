@@ -19,7 +19,7 @@ const createSitterPost = async (request, response) => {
           title: data.title,
           province: data.province,
           city: data.city,
-          // rate: data.rate,
+          rate: data.rate,
           experience: data.experience,
           userID: findUser._id,
         });
