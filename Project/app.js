@@ -48,21 +48,22 @@ app.get("/login", (req, res) => {
 //   res.render("pages/register", { title: "Register" });
 // });
 
-// app.get("/createpetowner", (req, res) => {
-//   res.render("pages/createPetOwner");
-// });
+app.get("/createPetOwner", (req, res) => {
+  res.render("pages/createPetOwner");
+});
 
-// app.get("/createPetSitter", (req, res) => {
-//   res.render("pages/createPetSitter");
-// });
+app.get("/createPetSitter", (req, res) => {
+  res.render("pages/createPetSitter");
+});
 
-// app.get("/petOwnerPost", (req, res) => {
-//   res.render("pages/petOwnerPost");
-// });
+app.get("/petOwnerPost", (req, res) => {
+  res.render("pages/petOwnerPost");
+});
 
 app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
 });
+
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");

@@ -5,136 +5,161 @@
 </head>
 <body>
     <%- include('../partials/header') %>
-        
+
         <!-- the design chage to here: Bootstrap -->
-        <div class="container justify-content-center">
-            <h5 class="profile-title text-center mt-5">My Profile</h5>
-            <form class="row g-3 d-flex flex-column align-items-center">
-                
-                <!-- CREATE PET SITTER PROFILE -->
-                <div class="col-12 imgPosition">
-                    <label class="filebutton">
-                        <span>
-                            <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
-                            <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
-                                class="imgCover">
-                        </span>
-                    </label>
-                </div>
-
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Name:</label>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control" id="inputEmail4">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Email:</label>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Phone:</label>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Location:</label>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <label class="input-group-text">Province</label>
-                            <select class="form-select">
-                                <option selected>Choose...</option>
-                                <option>France</option>
-                                <option>Germany</option>
-                                <option>Hungary</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-around">
-                    <div class="col-md-6 marginPosition">
-                        <div class="input-group">
-                            <label class="input-group-text">City</label>
-                            <select class="form-select">
-                                <option selected>Choose...</option>
-                                <option>One</option>
-                                <option>Two</option>
-                                <option>Three</option>
-                            </select>
-                        </div>
+        <div class="container">
+            <form>
+                <div class="text-center">
+                    <h5 class="profile-title">My Profile</h5>
+                    <!-- CREATE PET SITTER PROFILE -->
+                    <div class="col-12">
+                        <label class="filebutton">
+                            <span>
+                                <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
+                                <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
+                                    class="imgCover">
+                            </span>
+                        </label>
                     </div>
                 </div>
                 
 
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label for="inputEmail4" class="form-label text_edit">Password:</label>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control" id="inputEmail4">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label for="inputPassword4" class="form-label text_edit">Confirm <br> Password:</label>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="text_edit" for="exampleFormControlTextarea1">About Me:</label>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7 mt-4">
+                        <label class="col-sm-2 col-form-label text_edit">Name</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail4">
                         </div>
+                
                     </div>
                 </div>
                 
-                <div class="hire_edit text-center mt-5"><label>Photography:</label></div>
-                <div class="col-md-3">
-                    
-                    <div class="d-flex flex-row justify-content-evenly mt-1 flex-wrap">
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7">
+                        <label class="col-sm-2 col-form-label text_edit">Email</label>
+                        <div class="col-sm-10"> 
+                            <input type="password" class="form-control" id="inputPassword4">
+                        </div>
                         
-                        <div class="col mx-3">
-                            <label class="photography">
-                                <span>
-                                    <input type="file" id="photo1" name="photo1" onchange="attachPhoto1(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover1" class="photoCover">
-                                </span>
-                            </label>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7">
+                        <label class="col-sm-2 col-form-label text_edit">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword4">
                         </div>
+                        
+                    </div>
+                </div>
+                
 
-                        <div class="col mx-3">
-                            <label class="photography">
-                                <span>
-                                    <input type="file" id="photo2" name="photo2" onchange="attachPhoto2(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover2" class="photoCover">
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="col mx-3">
-                            <label class="photography">
-                                <span>
-                                    <input type="file" id="photo3" name="photo3" onchange="attachPhoto3(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover3" class="photoCover">
-                                </span>
-                            </label>
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7">
+                        <label class="col-form-label col-sm-2 pt-0 text_edit">Location</label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                
+                                <div class="input-group">
+                                    <label class="input-group-text">Province</label>
+                                    <select class="form-select">
+                                        <option selected>Choose...</option>
+                                        <option>France</option>
+                                        <option>Germany</option>
+                                        <option>Hungary</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <div class="form-check">
+                                <div class="input-group">
+                                    <label class="input-group-text">City</label>
+                                    <select class="form-select">
+                                        <option selected>Choose...</option>
+                                        <option>One</option>
+                                        <option>Two</option>
+                                        <option>Three</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
+                
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7">
+                        <label for="inputEmail4" class="col-sm-2 col-form-label text_edit">Password</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail4">
+                        </div>
+                        
+                    </div>    
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-3 col-md-7">
+                        <label for="inputPassword4" class="col-sm-2 col-form-label text_edit">Confirm <br> Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword4">
+                        </div>
+                        
+                    </div>
+                </div>  
+                
+
+                <div class="d-flex flex-column align-items-center ">
+                    <div class="row mb-3 col-md-7">
+                        <div class="form-group">
+                            <label class="hire_edit form-label" for="exampleFormControlTextarea1">About Me</label>
+                            <textarea class="form-control hire_inputs" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="d-flex justify-content-center">
+                    
+                    <div class="col-md-3 ">
+                        <label for="inputPassword4" class="form-label text_edit">Photography</label>
+                        <div class="row flex-wrap">
+                            <div class="col">
+                                <label class="photography">
+                                    <span>
+                                        <input type="file" id="photo1" name="photo1" onchange="attachPhoto1(this)">
+                                        <img src="/image/add-img.png" alt="Add photos" id="photoCover1" class="photoCover">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label class="photography">
+                                    <span>
+                                        <input type="file" id="photo1" name="photo1" onchange="attachPhoto2(this)">
+                                        <img src="/image/add-img.png" alt="Add photos" id="photoCover2" class="photoCover">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label class="photography">
+                                    <span>
+                                        <input type="file" id="photo1" name="photo1" onchange="attachPhoto3(this)">
+                                        <img src="/image/add-img.png" alt="Add photos" id="photoCover3" class="photoCover">
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+                
+
                 <!-- SUBMIT BUTTON -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary saveBtn">Save</button>
                 </div>
+                
             </form>
         </div>
 </body>
