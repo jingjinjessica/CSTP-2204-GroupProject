@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {createPetOwner, createPetSitter, getProfile,createOwnerPost,post} = require("../controller/profile");
+const {createPetOwner, createPetSitter, getProfile,createOwnerPost} = require("../controller/profile");
 
 
 router.get("/getProfile",getProfile);
@@ -12,7 +12,7 @@ router.get("/createPetSitter",createPetSitter);
 
 
 router.post("/create",createOwnerPost);
-
+// router.post("/post",post);
 
 
 module.exports = router;

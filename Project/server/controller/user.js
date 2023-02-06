@@ -67,7 +67,7 @@ const loginUser = async (request, response) => {
       }
       // has not profile by type
       else if(foundUser.userType === "owner"){
-        response.redirect("/profile/createPetOwner");
+        response.redirect("/profile/getPetOwnerProfile");
       }
       else if(foundUser.userType === "sitter"){
 

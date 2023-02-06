@@ -55,9 +55,9 @@
                             <label  class="input-group-text">Province</label>
                             <select id="province" name="province" class="form-select" value="<%= province%>">
                                 <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="BC" <%= province==="BC"?"selected":"" %>>BC</option>
-                                <option value="AC" <%= province==="AC"?"selected":"" %>>AC</option>
-                                <option value="DC" <%= province==="DC"?"selected":"" %>>DC</option>
+                                <option value="BritishColumbia" <%= province==="BritishColumbia"?"selected":"" %>>British Columbia</option>
+                                <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
+                                <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
                             </select>
                             
                         </div>
@@ -69,10 +69,10 @@
                         <div class="input-group">
                             <label  class="input-group-text">City</label>
                             <select id="city" name="city" class="form-select" value="<%= city%>">
-                                <option selected>Choose...</option>
-                                <option value="Vancouver">Vancouver</option>
-                                <option value="Richmond">Richmond</option>
-                                <option value="Burnaby">Burnaby</option>
+                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
+                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
+                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
                             </select>
                         </div>
                     </div>
@@ -123,10 +123,10 @@
                                 <div class="input-group">
                                     <label class="input-group-text">Age</label>
                                     <select id="petAge" name="petAge" class="form-select" value="<%= petAge%>">
-                                        <option selected>Choose...</option>
-                                        <option value="05">0 - 5</option>
-                                        <option value="610">6 - 10</option>
-                                        <option value="1115">11 -15</option>
+                                        <option value="Choose" <%= petAge==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="05" <%= petAge==="05"?"selected":"" %>>0 - 5</option>
+                                        <option value="610" <%= petAge==="610"?"selected":"" %>>6 - 10</option>
+                                        <option value="1115" <%= petAge==="1115"?"selected":"" %>>11 -15</option>
                                     </select>
                                 </div>
                             </div>
@@ -141,10 +141,10 @@
                                 <div class="input-group">
                                     <label class="input-group-text">Weight (lbs)</label>
                                     <select name="petWeight" id="petWeight" class="form-select" value="<%= petWeight %>">
-                                        <option selected>Choose...</option>
-                                        <option value="1050">10 - 50</option>
-                                        <option value="51100">51 - 100</option>
-                                        <option value="101120">101 - 120</option>
+                                        <option value="Choose" <%= petWeight==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="1050" <%= petWeight==="1050"?"selected":"" %>>10 - 50</option>
+                                        <option value="51100" <%= petWeight==="51100"?"selected":"" %>>51 - 100</option>
+                                        <option value="101120" <%= petWeight==="101120"?"selected":"" %>>101 - 120</option>
                                     </select>
                                 </div>
                             </div>
@@ -159,9 +159,9 @@
                                 <div class="input-group">
                                     <label class="input-group-text">Pet Type</label>
                                     <select id="petType" name="petType" class="form-select" value="<%= petType%>">
-                                        <option selected>Choose...</option>
-                                        <option value="dog">Dog</option>
-                                        <option value="cat">Cat</option>
+                                        <option value="Choose" <%= petType==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="dog" <%= petType==="dog"?"selected":"" %>>Dog</option>
+                                        <option value="cat" <%= petType==="cat"?"selected":"" %>>Cat</option>
                                     </select>
                                 </div>
                             </div>
