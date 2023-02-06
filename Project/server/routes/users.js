@@ -5,8 +5,6 @@ const validateToken = require("../../middleware/validate");
 // Here we are using destructuring
 const { registerUser, loginUser, getAllUsers } = require("../controller/user");
 
-// router.get("/", userController.getAllUsers)
-
 router.get("/", validateToken, getAllUsers);
 
 // Registering

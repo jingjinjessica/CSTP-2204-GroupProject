@@ -9,24 +9,20 @@ const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 const fileUpload = require("express-fileupload");
-
 // const multer = require("../library/multer");
-
 // const cloudinary = require("../library/cloudinary");
 require('dotenv').config()
 
 
 //cookie
 app.use(cookieParser());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname + '/client/public')))
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-app.use(
-  fileUpload()
-);
+app.use(fileUpload());
+
 app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
@@ -42,46 +38,21 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 app.get('/index', (req, res) => {
   res.render('pages/index', { 'title': 'Home', })
 })
-
 app.get('/login', (req, res) => {
   res.render('pages/login', { 'title': 'Login' })
 })
-
 app.get('/register', (req, res) => {
   res.render('pages/register', { 'title': 'Register' })
 })
-
-
-
-// app.get('/createPetOwner', (req, res) => {
-//   res.render('pages/createPetOwner')
-// })
-
-// app.get('/createPetSitter', (req, res) => {
-//   res.render('pages/createPetSitter')
-// })
-
-// app.get('/petOwnerPost', (req, res) => {
-//   res.render('pages/petOwnerPost')
-// })
-
-// app.get('/petSitterPost', (req, res) => {
-//   res.render('pages/sitterPost')
-// })
-
-
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
 }
-
 function postLogger(req, res, next) {
   console.log("Loading Post requests....");
   next();
 }
-
-
 function profileLogger(req,res,next) {
   console.log("Loading Profile Post requests....");
   next();
@@ -92,6 +63,7 @@ app.use((req, res, next) => {
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
+app.use("/users", userRoutes );
 //app.use("/api/v1/posts", postLogger, postRoute);
 
 app.use("/profile", profileRoutes);

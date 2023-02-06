@@ -10,26 +10,44 @@ const getProfile = async (req,res) => {
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
     console.log(decodedValues, "decoded values");
-    res.render("pages/createPetOwner");    
+    res.render("pages/createPetOwnerProfile");   
 };
-//GET Pet Owner Profile 
+//GET to satrt create Pet Owner Profile 
 const createPetOwner = async (req,res) => {
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
     const profileInform = await getProfileByUserEmail(decodedValues.email);
-    res.render('pages/createPetOwner',{
-        email:decodedValues.email, 
-        name:profileInform.name,
-        phone:profileInform.phone,
-        province:profileInform.province,
-        city:profileInform.city,
-        petName:profileInform.petName,
-        petAge:profileInform.petAge,
-        petWeight:profileInform.petWeight,
-        petType:profileInform.petType,
-        avatarImage: profileInform.avatar??"/image/add-img.png",
-        petImage: profileInform.petImage??"/image/add-img.png"
-    });
+    if ( profileInform === null || JSON.stringify(profileInform) === "{}"){
+        res.render('pages/createPetOwnerProfile',{
+            email:decodedValues.email,
+            name:"",
+            phone:"",
+            province:"Choose",
+            city:"",
+            petName:"",
+            petAge:"",
+            petWeight:"",
+            petType:"",
+            avatarImage: "/image/add-img.png",
+            petImage: "/image/add-img.png"
+        });
+    }
+    else {
+        res.render('pages/createPetOwnerProfile',{
+            email:decodedValues.email, 
+            name:profileInform.name,
+            phone:profileInform.phone,
+            province:profileInform.province,
+            city:profileInform.city,
+            petName:profileInform.petName,
+            petAge:profileInform.petAge,
+            petWeight:profileInform.petWeight,
+            petType:profileInform.petType,
+            avatarImage: profileInform.avatar??"/image/add-img.png",
+            petImage: profileInform.petImage??"/image/add-img.png"
+        } );
+    }
+   
 };
 
 //Get user
@@ -40,8 +58,7 @@ const getUser = (req) => {
 const hasProfile = async (req) => {
     const user = getUser(req);
     const profile = await getProfileByUserEmail(user.email);
-    //console.info(user);
-    return JSON.stringify(profile) !== "{}";
+    return profile !== null;
 }
 //Find req user
 const getUserEntity = async (req) =>{
@@ -166,6 +183,7 @@ const createOwnerPost = async(req,res) => {
     }
     // console.info(req.body);
 };
+
 const createPetSitter = async(req,res) =>{
     const data = req.body;
 };
