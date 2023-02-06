@@ -10,7 +10,7 @@ const {
   deletePetPost,
 } = require("../controller/ownerpost");
 
-// router.get("/", getAllPosts);
+router.get("/allpetposts", getAllPetPosts);
 
 router.post("/create", validateToken, createPetPost);
 

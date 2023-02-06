@@ -65,6 +65,10 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
 });
 
+app.get("/petposts", (req, res) => {
+  res.render("pages/petposts");
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
