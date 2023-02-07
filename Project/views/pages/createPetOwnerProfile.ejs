@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <script src="./js/ownerProfile.js"></script>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        
+        <div class="container justify-content-center">
+            <h5 class="profile-title text-center mt-5">My Profile</h5>
+            <canvas id="c" style="display:none ;"></canvas>
+            <form class="row g-3 d-flex flex-column align-items-center" id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+                
+                <!-- CREATE PET OWNER PROFILE -->
+                <div class="col-12 imgPosition">
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
+                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="petOwnerProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                </div>
+                
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label for="inputEmail4" class="form-label text_edit">Name:</label>
+                    <div class="col-md-5">
+                        <input type="text" name="name" class="form-control" id="name" value="<%= name%>" >
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label class="form-label text_edit">Email:</label>
+                    <div class="col-md-5">
+                        
+                        <input name="email" type="email" class="form-control" id="email"  value="<%= email%>" >
+                    </div>
+                </div>
+                
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label class="form-label text_edit">Phone:</label>
+                    <div class="col-md-5">
+                        
+                        <input id="phone" name="phone" type="text" class="form-control" id="phone" value="<%= phone%>">
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label class="form-label text_edit">Location:</label>
+                    <div class="col-md-5">
+                        
+                        <div class="input-group">
+                            <label  class="input-group-text">Province</label>
+                            <select id="province" name="province" class="form-select" value="<%= province%>">
+                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                <option value="BritishColumbia" <%= province==="BritishColumbia"?"selected":"" %>>British Columbia</option>
+                                <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
+                                <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mw-100 d-flex justify-content-around">
+                    <div class="col-md-5 marginPosition">
+                        <div class="input-group">
+                            <label  class="input-group-text">City</label>
+                            <select id="city" name="city" class="form-select" value="<%= city%>">
+                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
+                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
+                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label class="form-label text_edit">Password:</label>
+                    <div class="col-md-5">
+                        
+                        <input name="password" type="password" class="form-control" id="pwd">
+                    </div>
+                </div>
+                
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label class="form-label text_edit">Confirm <br> Password:</label>
+                    <div class="col-md-5">
+                        <input name="cnfpwd" type="password" class="form-control" id="cnfpwd">
+                    </div>
+                </div>
+                
+
+                <h5 class="profile-title text-center">My Pet</h5>
+                <div class="col-md-5 imgPosition">
+                    <label class="filebutton">
+                        <span>
+                            <input type="file" id="petImg" name="petImg" onchange="attachMyPetPic(this)">
+                            <img src="<%= petImage%>" alt="Add your profile picture" id="petProfile"
+                                class="imgCover">
+                        </span>
+                    </label>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-evenly">
+                    <label for="inputEmail4" class="form-label text_edit">My Pet Name</label>
+                    <div class="col-md-5">
+                        <div class="row g-3">
+                            <div class="col">
+                                <input type="text" class="form-control" id="petName" name="petName" value="<%= petName%>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-center">
+                    <div class="col-md-5 marginPosition">
+                        <div class="row g-3">
+                            <div class="col">
+                                <div class="input-group">
+                                    <label class="input-group-text">Age</label>
+                                    <select id="petAge" name="petAge" class="form-select" value="<%= petAge%>">
+                                        <option value="Choose" <%= petAge==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="05" <%= petAge==="05"?"selected":"" %>>0 - 5</option>
+                                        <option value="610" <%= petAge==="610"?"selected":"" %>>6 - 10</option>
+                                        <option value="1115" <%= petAge==="1115"?"selected":"" %>>11 -15</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-center">
+                    <div class="col-md-5 marginPosition">
+                        <div class="row g-3">
+                            <div class="col">
+                                <div class="input-group">
+                                    <label class="input-group-text">Weight (lbs)</label>
+                                    <select name="petWeight" id="petWeight" class="form-select" value="<%= petWeight %>">
+                                        <option value="Choose" <%= petWeight==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="1050" <%= petWeight==="1050"?"selected":"" %>>10 - 50</option>
+                                        <option value="51100" <%= petWeight==="51100"?"selected":"" %>>51 - 100</option>
+                                        <option value="101120" <%= petWeight==="101120"?"selected":"" %>>101 - 120</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mw-100 d-flex justify-content-center">
+                    <div class="col-md-5 marginPosition">
+                        <div class="row g-3">
+                            <div class="col">
+                                <div class="input-group">
+                                    <label class="input-group-text">Pet Type</label>
+                                    <select id="petType" name="petType" class="form-select" value="<%= petType%>">
+                                        <option value="Choose" <%= petType==="Choose"?"selected":"" %>>Choose...</option>
+                                        <option value="dog" <%= petType==="dog"?"selected":"" %>>Dog</option>
+                                        <option value="cat" <%= petType==="cat"?"selected":"" %>>Cat</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
+                </div>
+            </form>
+        </div>
+</body>
+<script type="text/javascript">
+    loadProfile();
+  </script>
+
+</html>

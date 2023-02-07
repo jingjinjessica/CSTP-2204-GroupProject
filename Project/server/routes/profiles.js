@@ -12,6 +12,7 @@ router.get("/createPetSitter",createPetSitter);
 
 
 router.post("/create",createOwnerPost);
+// router.post("/post",post);
 
 
 module.exports = router;

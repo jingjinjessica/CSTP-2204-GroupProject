@@ -1,7 +1,7 @@
 const User = require("../model/User");
 const bcrypt = require("bcryptjs"); // This library/package will be used to encrypt the password
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
-
+const Profile = require("../model/Profile");
 
 
 
@@ -32,9 +32,18 @@ const registerUser = async (request, response) => {
   }
 };
 
+
+const getProfileByUserEmail = async (email) => {
+  //console.info(email);
+  const user = await User.findOne({email: email});
+  //console.info(user);
+  const profile = await Profile.findOne({userID: user._id.toString()});
+  //console.info(profile);
+  return profile;
+}
+
 const loginUser = async (request, response) => {
   const data = request.body;
-
   let foundUser = await User.findOne({ email: data.email });
 
   if (foundUser) {
@@ -43,35 +52,35 @@ const loginUser = async (request, response) => {
     const matchPassword = await bcrypt.compare(data.password,foundUser.password);
 
     if (matchPassword) {
-      // We are trying to create an access token based on which the user will be able to interact with the website
-      const accessToken = jwt.sign(
-        {
+      // // We are trying to create an access token based on which the user will be able to interact with the website
+      const accessToken = jwt.sign({
           email: foundUser.email
-          
         },
         process.env.SECRET_KEY
       );
+      response.cookie("access-token", accessToken);
 
-      return response.status(200).json({
-        message: "User Succesfully Logged In",
-        accessToken,
-        data: foundUser
-      });
-    } else {
-      // User password is incorrect
-      return response.status(401).json({
-        message: "User Password is incorrect",
-        data: null,
-      });
+      const profileInform = await getProfileByUserEmail(data.email);
+      // has profile
+      if (profileInform){
+        response.redirect("/index");
+      }
+      // has not profile by type
+      else if(foundUser.userType === "owner"){
+        response.redirect("/profile/getPetOwnerProfile");
+      }
+      else if(foundUser.userType === "sitter"){
+
+      }
+
+    
+
+      return;
     }
-  } else {
-    // If user doesn't exist
-    return response.status(404).json({
-      message: "User does not exist, please register",
-      data: null,
-    });
   }
-};
+    // If user doesn't exist
+  response.render("pages/login", {title: "Login"});
+  };
 
 const getAllUsers = async (request, response) => {
   try {

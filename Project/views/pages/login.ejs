@@ -25,16 +25,16 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <h1 class="login-title "><%= title%></h1>
                     <hr>
-                    <form onsubmit="submitLoginForm(event)">
+                    <form id="login" action="/users/login" method="POST" >
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">Email address</label>
-                            <input type="email" id="form3Example3" class="form-control form-control-lg" onkeyup="setEmail(event)"/>
+                            <input name="email" type="email" id="form3Example3" class="form-control form-control-lg" onkeyup="setEmail(event)"/>
                         </div>
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label class="form-label" for="form3Example4">Password</label>
-                            <input type="password" id="form3Example4" class="form-control form-control-lg" onkeyup="setPassword(event)" />
+                            <input name="password" type="password" id="form3Example4" class="form-control form-control-lg" onkeyup="setPassword(event)" />
                         </div>
                         <div class="none-account d-flex justify-content-between align-items-center">
                             <a href="/register">Don't have an account?</a>
