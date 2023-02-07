@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body>
+    <%- include('../partials/header'); -%>
+        <div class="container justify-content-center list-area">
+            <h3 class="job-title">Looking for a job?</h3>
+            <button class="post-job-btn">Post A Job</button>
+            <div class="filter-area">
+                <div class="row filter">
+                    <div class="col-sm-2 filter-title">
+                        <h5>Filter : </h5>
+                    </div>
+                    <div class="col-sm-4 province">
+                        <select id="province" onchange="selectCity(this.value)" class="selectpicker multiple">
+                            <option>- Select Province or Territory -</option>
+                            <optgroup label="Provinces">
+                                <option value="0">Alberta</option>
+                                <option value="1">British Columbia</option>
+                                <option value="2">Manitoba</option>
+                                <option value="3">New Brunswick</option>
+                                <option value="4">Newfoundland and Labrador</option>
+                                <option value="5">Nova Scotia</option>
+                                <option value="6">Ontario</option>
+                                <option value="7">Prince Edward Island</option>
+                                <option value="8">Quebec</option>
+                                <option value="9">Saskatchewan</option>
+                            </optgroup>
+                            <optgroup label="Territories">
+                                <option value="10">Northwest Territories</option>
+                                <option value="11">Yukon</option>
+                                <option value="12">Nunavut</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 city">
+                        <select id="city" class="selectpicker">
+                            <option>- Select City -</option>
+                            <option value="calgary">Calgary</option>
+                            <option value="charlottetown">Charlottetown</option>
+                            <option value="edmonton">Edmonton</option>
+                            <option value="moncton">Moncton</option>
+                            <option value="montreal">Montreal</option>
+                            <option value="fredericton">Fredericton</option>
+                            <option value="halifax">Halifax</option>
+                            <option value="iqaluit">Iqaluit</option>
+                            <option value="quebeccity">Quebec City</option>
+                            <option value="regina">Regina</option>
+                            <option value="stjohns">St. John's</option>
+                            <option value="saskatoon">Saskatoon</option>
+                            <option value="toronto">Toronto"</option>
+                            <option value="victoria">Victoria</option>
+                            <option value="vancouver">Vancouver</option>
+                            <option value="winnipeg">Winnipeg</option>
+                            <option value="whitehorse">Whitehorse</option>
+                            <option value="yellowknife">Yellowknife</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 type">
+                        <select id="type" class="selectpicker">
+                            <option>- Select Type -</option>
+                            <option value="cat">Cat</option>
+                            <option value="dog">Dog</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 weight">
+                        <select id="weight" class="selectpicker">
+                            <option selected>- Select Weight (lb) -</option>
+                            <option value="1050">10 - 50</option>
+                            <option value="51100">51 - 100</option>
+                            <option value="101120">101 - 120</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row post-list" id="joblistsview">
+                <div class="card mb-3 post-card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 img-area">
+                            <img id="petimg" src="/image/pet.jpg" class="card-img" alt="pet-img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Pet Name</h4>
+                                <h5 class="location">Province, City</h5>
+                                <p class="card-text info text-break">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero volutpat sed
+                                    cras ornare arcu.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Libero volutpat sed cras ornare arcu.
+                                <a href="#" id="learnmore" class="btn stretched-link learn-more">Learn more...</a>
+                                </p>
+                                <p class="card-text card-date"><small class="text-muted">Date: YYYY-MM-DD</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <%- include('../partials/footer'); -%>
+</body>
+
+</html>
