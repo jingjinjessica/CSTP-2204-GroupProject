@@ -15,7 +15,10 @@
 
 var cities = new Array(4);
 cities[0] = new Array("Edmonton", "Calgary");
-cities[1] = new Array("Victoria", "Vancouver");
+cities[1] = new Array("Burnaby", "Coquitlam",
+    "North Vancouver", "Richmond",
+    "Surrey", "Victoria", "Vancouver",
+    "White Rock", "Williams Lake");
 cities[2] = new Array("Winnipeg");
 cities[3] = new Array("Fredericton", "Moncton");
 cities[4] = new Array("St. John's");
