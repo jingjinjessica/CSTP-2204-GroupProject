@@ -26,7 +26,15 @@ const ProfileSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    petSitterImage: {
+    photo1: {
+      type: String,
+      required: false,
+    },
+    photo2: {
+      type: String,
+      required: false,
+    },
+    photo3: {
       type: String,
       required: false,
     },

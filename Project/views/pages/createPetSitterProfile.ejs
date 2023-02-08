@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+    <script src="./js/sitterProfile.js"></script>
 </head>
 <body>
     <%- include('../partials/header') %>
@@ -9,14 +10,14 @@
         <!-- the design chage to here: Bootstrap -->
         <div class="container justify-content-center">
             <h5 class="profile-title text-center mt-5">My Profile</h5>
-            <form class="row g-3 d-flex flex-column align-items-center">
+            <form class="row g-3 d-flex flex-column align-items-center" id="sitterprofile" action="/profile/createsitter" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                 
                 <!-- CREATE PET SITTER PROFILE -->
                 <div class="col-12 imgPosition">
                     <label class="filebutton">
                         <span>
-                            <input type="file" id="" name="myImg" onchange="attachMyProfile(this)">
-                            <img src="/image/add-img.png" alt="Add your profile picture" id="petOwnerProfile"
+                            <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
+                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="petSitterProfile"
                                 class="imgCover">
                         </span>
                     </label>
@@ -25,21 +26,21 @@
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Name:</label>
                     <div class="col-md-6">
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input type="text" class="form-control" id="name" name="name" value="<%= name%>">
                     </div>
                 </div>
                 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Email:</label>
                     <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
+                        <input name="email" type="email" class="form-control" id="email"  value="<%= email%>">
                     </div>
                 </div>
                 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Phone:</label>
                     <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
+                        <input id="phone" name="phone" type="text" class="form-control" value="<%= phone%>">
                     </div>
                 </div>
                 
@@ -48,11 +49,11 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <label class="input-group-text">Province</label>
-                            <select class="form-select">
-                                <option selected>Choose...</option>
-                                <option>France</option>
-                                <option>Germany</option>
-                                <option>Hungary</option>
+                            <select id="province" name="province" class="form-select" value="<%= province%>">
+                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                <option value="BritishColumbia" <%= province==="BritishColumbia"?"selected":"" %>>British Columbia</option>
+                                <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
+                                <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
                             </select>
                         </div>
                     </div>
@@ -62,11 +63,11 @@
                     <div class="col-md-6 marginPosition">
                         <div class="input-group">
                             <label class="input-group-text">City</label>
-                            <select class="form-select">
-                                <option selected>Choose...</option>
-                                <option>One</option>
-                                <option>Two</option>
-                                <option>Three</option>
+                            <select id="city" name="city" class="form-select" value="<%= city%>">
+                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
+                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
+                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
                             </select>
                         </div>
                     </div>
@@ -76,14 +77,14 @@
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label for="inputEmail4" class="form-label text_edit">Password:</label>
                     <div class="col-md-6">
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input name="password" type="password" class="form-control" id="pwd">
                     </div>
                 </div>
                 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label for="inputPassword4" class="form-label text_edit">Confirm <br> Password:</label>
                     <div class="col-md-6">
-                        <input type="password" class="form-control" id="inputPassword4">
+                        <input name="cnfpwd" type="password" class="form-control" id="cnfpwd">
                     </div>
                 </div>
                 
@@ -92,7 +93,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="aboutme" name="aboutme" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -106,7 +107,7 @@
                             <label class="photography">
                                 <span>
                                     <input type="file" id="photo1" name="photo1" onchange="attachPhoto1(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover1" class="photoCover">
+                                    <img src="<%= photo1%>" alt="Add photos" id="photoCover1" name="photoCover1" class="photoCover">
                                 </span>
                             </label>
                         </div>
@@ -115,7 +116,7 @@
                             <label class="photography">
                                 <span>
                                     <input type="file" id="photo2" name="photo2" onchange="attachPhoto2(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover2" class="photoCover">
+                                    <img src="<%= photo2%>" alt="Add photos" id="photoCover2" name="photoCover2" class="photoCover">
                                 </span>
                             </label>
                         </div>
@@ -124,7 +125,7 @@
                             <label class="photography">
                                 <span>
                                     <input type="file" id="photo3" name="photo3" onchange="attachPhoto3(this)">
-                                    <img src="/image/add-img.png" alt="Add photos" id="photoCover3" class="photoCover">
+                                    <img src="<%= photo3%>" alt="Add photos" id="photoCover3" name="photoCover3" class="photoCover">
                                 </span>
                             </label>
                         </div>
@@ -138,7 +139,5 @@
             </form>
         </div>
 </body>
+
 </html>
-<!-- <script>
-   
-</script> -->
