@@ -42,7 +42,7 @@ const submitLoginForm = async (event) => {
         "access-token",
         JSON.stringify(finalIncomingResponse.accessToken)
       );
-      document.cookie = "access-token=" + JSON.stringify(finalIncomingResponse.accessToken);
+      // document.cookie = "access-token=" + JSON.stringify(finalIncomingResponse.accessToken);
       window.location.href = "/index";
     } else {
       alert(finalIncomingResponse.message);

@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken"); // This Library will help us give and verif
 const Profile = require("../model/Profile");
 const User = require("../model/User");
 const cloudinary = require("../library/cloudinary");
-const fs = require('fs');
+const fs = require("fs");
 
 //GET
+
 const getProfile = async (req,res) => {
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
@@ -48,33 +49,36 @@ const createPetOwner = async (req,res) => {
         } );
     }
    
+
 };
 
 //Get user
 const getUser = (req) => {
-    return jwt.verify(req.cookies["access-token"], process.env.SECRET_KEY);
-}
+  return jwt.verify(req.cookies["access-token"], process.env.SECRET_KEY);
+};
 //Check has profile or not
 const hasProfile = async (req) => {
+
     const user = getUser(req);
     const profile = await getProfileByUserEmail(user.email);
     return profile !== null;
 }
+
 //Find req user
-const getUserEntity = async (req) =>{
-    const user = getUser(req);
-    const entity = await User.findOne({email: user.email});
-    return entity;
-}
+const getUserEntity = async (req) => {
+  const user = getUser(req);
+  const entity = await User.findOne({ email: user.email });
+  return entity;
+};
 // Get profile by user email
 const getProfileByUserEmail = async (email) => {
-    //console.info(email);
-    const user = await User.findOne({email: email});
-    //console.info(user);
-    const profile = await Profile.findOne({userID: user._id.toString()});
-    //console.info(profile);
-    return profile;
-}
+  //console.info(email);
+  const user = await User.findOne({ email: email });
+  //console.info(user);
+  const profile = await Profile.findOne({ userID: user._id.toString() });
+  //console.info(profile);
+  return profile;
+};
 
 // Upload Image to cloudinary
 const uploadImage = async(req, name) =>{
