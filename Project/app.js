@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const sitterPost = require("./server/model/PetSitterPost");
 const userProfile = require("./server/model/Profile");
+const ownerPost = require("./server/model/PetPost")
 
 // const multer = require("../library/multer");
 
@@ -80,6 +81,17 @@ app.get("/petsitterlists", async (req,res) => {
     res.status(500).json(error);
   }
 })
+
+app.get("/petownerlists", async (req,res) => {
+  try {
+    const petphoto = await userProfile.find();
+    const petposts = await ownerPost.find();
+    res.render("pages/petownerlists",{petphoto,petposts})
+  }catch(error){
+    res.status(500).json(error);
+  }
+})
+
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
