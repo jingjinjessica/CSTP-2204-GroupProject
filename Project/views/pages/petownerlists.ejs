@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <div class="jumbotron">
+            <div class="container">
+                <ul>
+                    <% petprofile.forEach((petp)=>{ %>
+                      <li>
+                        <img src="<% petp.petImage %>" alt="" height="150" width="150">
+                      </li>
+                    <% }) %>
+                    <% petposts.forEach((pet)=> { %>
+                        <li>
+                            <h2>
+                                <%= pet.title %>
+                            </h2>
+                            <p>
+                                <%= pet.province %>, <%= pet.city %>
+                            </p>
+                            <p>
+                                <%= pet.desc %>
+                            </p>
+                        </li>
+                        <hr />
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        <%- include('../partials/footer') %>
+</body>
+
+</html>

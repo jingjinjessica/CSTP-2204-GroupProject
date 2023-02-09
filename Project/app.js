@@ -12,7 +12,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const sitterPost = require("./server/model/PetSitterPost");
-const userProfile = require("./server/model/Profile");
+const profile = require("./server/model/Profile");
 const ownerPost = require("./server/model/PetPost")
 
 // const multer = require("../library/multer");
@@ -74,7 +74,7 @@ app.get("/petposts", (req, res) => {
 
 app.get("/petsitterlists", async (req,res) => {
   try {
-    const sitterphoto = await userProfile.find();
+    const sitterphoto = await profile.find();
     const sitterposts = await sitterPost.find();
     res.render("pages/petsitterlists",{sitterphoto,sitterposts})
   }catch(error){
@@ -84,9 +84,9 @@ app.get("/petsitterlists", async (req,res) => {
 
 app.get("/petownerlists", async (req,res) => {
   try {
-    const petphoto = await userProfile.find();
+    const petprofile = await profile.find();
     const petposts = await ownerPost.find();
-    res.render("pages/petownerlists",{petphoto,petposts})
+    res.render("pages/petownerlists",{petprofile,petposts})
   }catch(error){
     res.status(500).json(error);
   }
