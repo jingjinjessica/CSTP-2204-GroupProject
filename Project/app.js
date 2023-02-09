@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const sitterPost = require("./server/model/PetSitterPost");
 
 // const multer = require("../library/multer");
 
@@ -68,6 +69,15 @@ app.get("/petSitterPost", (req, res) => {
 app.get("/petposts", (req, res) => {
   res.render("pages/petposts");
 });
+
+app.get("/petsitterlists", async (req,res) => {
+  try {
+    const sitterposts = await sitterPost.find();
+    res.render("pages/petsitterlists",{sitterposts})
+  }catch(error){
+    res.status(500).json(error);
+  }
+})
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
