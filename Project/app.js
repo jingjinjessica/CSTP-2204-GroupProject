@@ -15,19 +15,19 @@ const sitterPost = require("./server/model/PetSitterPost");
 const userProfile = require("./server/model/Profile");
 
 // const multer = require("../library/multer");
-
 // const cloudinary = require("../library/cloudinary");
 require("dotenv").config();
 
 //cookie
 app.use(cookieParser());
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname + "/client/public")));
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname + '/client/public')))
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
+
 app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
@@ -43,29 +43,16 @@ app.get("/index", (req, res) => {
   res.render("pages/index", { title: "Home" });
 });
 
-app.get("/login", (req, res) => {
-  res.render("pages/login", { title: "Login" });
-});
+app.get('/index', (req, res) => {
+  res.render('pages/index', { 'title': 'Home', })
+})
+app.get('/login', (req, res) => {
+  res.render('pages/login', { 'title': 'Login' })
+})
+app.get('/register', (req, res) => {
+  res.render('pages/register', { 'title': 'Register' })
+})
 
-// app.get("/register", (req, res) => {
-//   res.render("pages/register", { title: "Register" });
-// });
-
-// app.get("/createpetowner", (req, res) => {
-//   res.render("pages/createPetOwner");
-// });
-
-app.get("/createPetSitter", (req, res) => {
-  res.render("pages/createPetSitter");
-});
-
-app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost");
-});
-
-app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost");
-});
 
 app.get("/petposts", (req, res) => {
   res.render("pages/petposts");
@@ -85,13 +72,13 @@ function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
 }
-
 function postLogger(req, res, next) {
   console.log("Loading Post requests....");
   next();
 }
 
-function profileLogger(req, res, next) {
+function profileLogger(req,res,next) {
+
   console.log("Loading Profile Post requests....");
   next();
 }
@@ -101,9 +88,9 @@ app.use((req, res, next) => {
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
+app.use("/users", userRoutes );
 app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
 app.use("/api/v1/ownerposts", postLogger, ownerRoutes);
-
 app.use("/profile", profileRoutes);
 
 app.listen(PORT, () => {
