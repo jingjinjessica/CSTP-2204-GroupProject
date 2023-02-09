@@ -12,6 +12,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const sitterPost = require("./server/model/PetSitterPost");
+const userProfile = require("./server/model/Profile");
 
 // const multer = require("../library/multer");
 
@@ -72,8 +73,9 @@ app.get("/petposts", (req, res) => {
 
 app.get("/petsitterlists", async (req,res) => {
   try {
+    const sitterphoto = await userProfile.find();
     const sitterposts = await sitterPost.find();
-    res.render("pages/petsitterlists",{sitterposts})
+    res.render("pages/petsitterlists",{sitterphoto,sitterposts})
   }catch(error){
     res.status(500).json(error);
   }

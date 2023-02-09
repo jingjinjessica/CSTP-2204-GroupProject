@@ -3,14 +3,30 @@
 
 <head>
     <%- include('../partials/head') %>
-    <script src="./js/petposts.js" defer></script>
 </head>
 
 <body>
     <%- include('../partials/header') %>
         <div class="jumbotron">
             <div class="container">
-                <div class="row" id="postsview"></div>
+                <ul>
+                    <% sitterposts.forEach((sitterpost)=> { %>
+                        <li>
+                            <img src="<%= sitterphoto.avatar %>" alt="" height="150" width="150">
+                            <h2>
+                                <%= sitterpost.title %>
+                            </h2>
+                            <p>
+                                <%= sitterpost.province %>, <%= sitterpost.city %>
+                            </p>
+                            <p>
+                                <%= sitterpost.experience %>
+                            </p>
+
+                        </li>
+                        <hr />
+                    <% }) %>
+                </ul>
             </div>
         </div>
         <%- include('../partials/footer') %>
