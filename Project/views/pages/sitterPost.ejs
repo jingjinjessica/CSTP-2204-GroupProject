@@ -11,37 +11,77 @@
 <body>
     <%- include('../partials/header') %>
     <div class="container justify-content-center">
+
         <form onsubmit="sitterPost(event)" class="row g-3 d-flex flex-column align-items-center align-content-center">
-            <div class=" d-flex justify-content-evenly titlePost">
-                <label for="ownerPostTitle" class="form-label">Title:</label>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+
+            <div class=" d-flex justify-content-center titlePost">
+                <div class="row mb-2 col-md-7 mt-3">
+                    <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+                    </div>
                 </div>
+                
             </div>  
-            <div class="d-flex justify-content-evenly">
-                <label class="form-label">Location:</label>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)">
+
+            <div class=" d-flex justify-content-center">
+                <div class="row mb-2 col-md-7 mt-2">
+                    <label class="col-sm-2 col-form-label text_edit">Location</label>
+                    <div class="col-md-10">
+                        <div class="form-check">
+                            <div class="input-group">
+                                <label class="input-group-text">Province</label>
+                                <select class="form-select" id="province" onchange="setProvince(event)">
+                                    <option selected>Choose...</option>
+                                    <option>France</option>
+                                    <option>Germany</option>
+                                    <option>Hungary</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <div class="input-group mt-2">
+                                <label class="input-group-text">City</label>
+                                <select class="form-select" id="city" onchange="setCity(event)">
+                                    <option selected>Choose...</option>
+                                    <option>One</option>
+                                    <option>Two</option>
+                                    <option>Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)"> -->
+                        <!-- <input type="text" class="form-control mt-2" id="city" placeholder="City" onchange="setCity(event)"> -->
+                    </div>
                 </div>
-            </div>
-            <div class="mw-100 d-flex justify-content-around">
-                <div class="col-md-5 marginPosition">
-                    <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)">
-                </div>
-            </div>
-            <div>
-                <label for="amount">Rate(CAD):</label>
-                <input type="text" id="rate" placeholder="$" onchange="setRate(event)">
                
-                <!-- <div id="slider-range"></div>
+            </div>
+            
+            <div class=" d-flex justify-content-center">
+                <div class="row mb-2 col-md-7 mt-3">
+                    <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
+                    <div class="col-md-9">
+                        <input type="text"  class="form-control" id="rate" placeholder="$" onchange="setRate(event)">
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- <div id="slider-range"></div>
                 <div class="d-flex flex-row justify-content-between mt-2">
                     <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
                     <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
                 </div> -->
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Experiences:</label>
-                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"></textarea>
+
+            <div class="d-flex flex-column align-items-center">
+                <div class="row mb-2 col-md-7 mt-3">
+                    <div class="col-md-12 col-md-10">
+                        <label for="" class="col-sm-3 col-form-label text_edit">Experiences</label>
+                        <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"></textarea>
+                    </div>
+                </div>
+                
             </div>
 
             <!-- SUBMIT BUTTON -->
@@ -66,6 +106,7 @@
               $( "#endrate" ).text( "$" + ui.values[ 1 ]);
             }
           });
+
           // Getting the values of the range
           $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
             " - $" + $( "#slider-range" ).slider( "values", 1 ) );

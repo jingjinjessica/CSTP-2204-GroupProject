@@ -49,9 +49,9 @@ app.get("/login", (req, res) => {
 //   res.render("pages/register", { title: "Register" });
 // });
 
-// app.get("/createpetowner", (req, res) => {
-//   res.render("pages/createPetOwner");
-// });
+app.get("/createPetOwner", (req, res) => {
+  res.render("pages/createPetOwner");
+});
 
 app.get("/createPetSitter", (req, res) => {
   res.render("pages/createPetSitter");
