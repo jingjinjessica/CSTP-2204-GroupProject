@@ -49,7 +49,7 @@ app.get("/login", (req, res) => {
 //   res.render("pages/register", { title: "Register" });
 // });
 
-app.get("/createPetOwner", (req, res) => {
+app.get("/createpetowner", (req, res) => {
   res.render("pages/createPetOwner");
 });
 
