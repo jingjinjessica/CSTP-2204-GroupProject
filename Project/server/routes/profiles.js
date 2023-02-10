@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const validateToken = require("../../middleware/validate");
 
-const {createPetOwner, createPetSitter, getProfile,createOwnerPost,createSitterPost} = require("../controller/profile");
+const {
+    createPetOwner, 
+    createPetSitter, 
+    getProfile,
+    createOwnerPost,
+    createSitterPost} = require("../controller/profile");
 
 
 router.get("/getProfile",getProfile);
