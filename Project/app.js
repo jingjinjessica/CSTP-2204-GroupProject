@@ -39,10 +39,6 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 app.get("/index", (req, res) => {
   res.render("pages/index", { title: "Home" });
 });
-
-app.get("/index", (req, res) => {
-  res.render("pages/index", { title: "Home" });
-});
 app.get("/login", (req, res) => {
   res.render("pages/login", { title: "Login" });
 });

@@ -73,9 +73,6 @@ const loginUser = async (request, response) => {
         response.redirect("/profile/createPetSitter");
 
       }
-
-    
-
       return;
     }
   }
