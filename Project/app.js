@@ -11,6 +11,9 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const sitterPost = require("./server/model/PetSitterPost");
+const profile = require("./server/model/Profile");
+const ownerPost = require("./server/model/PetPost");
 // const multer = require("../library/multer");
 // const cloudinary = require("../library/cloudinary");
 require("dotenv").config();
@@ -39,10 +42,6 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 app.get("/index", (req, res) => {
   res.render("pages/index", { title: "Home" });
 });
-
-app.get("/index", (req, res) => {
-  res.render("pages/index", { title: "Home" });
-});
 app.get("/login", (req, res) => {
   res.render("pages/login", { title: "Login" });
 });
@@ -56,6 +55,16 @@ app.get("/petOwnerPost", (req, res) => {
 
 app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
+});
+
+app.get("/petownerlists", async (req, res) => {
+  try {
+    const petprofile = await profile.find({});
+    const petposts = await ownerPost.find({});
+    res.render("pages/petownerlists", { petprofile, petposts });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 function userLogger(req, res, next) {
@@ -79,7 +88,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
-app.use("/api/v1/ownerposts", postLogger, ownerRoutes);
+app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
 
 app.listen(PORT, () => {
