@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mongo Chat only using mongodb and socketIO</title>
+    <script src="/socket.io/socket.io.js"></script>
+    
+</head>
+<body>
+    <div id="error-container"></div>
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <h1>
+                    MongoChat
+                    <button type="button" id="clear" onclick="clear()">
+                        Clear
+                    </button>
+                </h1>
+                <div id="status"></div>
+                <div class="chat">
+                    <input type="text" id="username" placeholder="Enter Name...">
+                    <button type="button" name="button" onclick="setUsername()"> Let me Chat! </button>
+
+                    <br>
+
+                    <div class="card">
+                        
+                        <div id="messages" class="cardBlock"></div>
+                        
+                       
+                    </div>
+
+                    <br>
+                    
+                    <textarea class="textarea" 
+                            id="textarea" 
+                            placeholder="Enter message..."
+                            value="hello">
+                    </textarea>
+                    <button type="button" name="button" onclick="sendMessage()">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var socket = io();
+
+        function setUsername(){
+            const username = document.getElementById('username').value;
+            socket.emit('setUsername',  username);
+        };
+
+        var user;
+
+        socket.on('userExists', function(data){
+            document.getElementById('error-container').innerHTML = data;
+            
+        });
+
+        socket.on('userSet', function(data){
+            user = data;
+            document.getElementById('messages').innerHTML += '<p class="enteredChat">' + user + ' has entered the chat</p>'; 
+        });
+
+        function sendMessage(){
+            var msg = document.getElementById('textarea').value;
+            if(msg){
+                socket.emit('msg', {message: msg , username: user});
+                //socket.emit('msg', msg);
+            }
+        }
+
+        socket.on('newMsg', function(data){
+            // if(user) {
+            //     document.getElementById('messages').innerHTML += '<div class="profImg"><div class="columnImg"><img src="imgs/person.png"><p>' + data.user + '</p></div><p>' + data.message + '</p></div>'
+            // }
+            document.getElementById('messages').innerHTML += '<div class="profImg"><div class="columnImg"><img src="imgs/person.png"><p>' + data.username + '</p></div><p>' + data.message + '</p></div>'
+            //document.getElementById('messages').innerHTML += '<h5>' + data.username + '</h5>' + data.message
+            
+        });
+        
+        socket.on('output-messages', (data) => {
+            
+            var i = 0;
+            
+            // If there's a message here
+            if(data.length) {
+                document.getElementById('messages').innerHTML += '<h3>Previously on chat history</h5>';
+                data.forEach(message => {
+                    document.getElementById('messages').innerHTML += '<div class="profImg"><div class="columnImg"><img src="imgs/person.png"><p>' + message.name + '</p></div><p>' + message.message + '</p></div>'
+                   
+                });
+            }
+        })
+
+        function clear(){
+            document.getElementById('messages').innerHTML = ''
+        }
+
+
+    </script>
+</body>
+</html>
