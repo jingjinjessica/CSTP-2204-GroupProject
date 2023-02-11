@@ -67,6 +67,16 @@ app.get("/petownerlists", async (req, res) => {
   }
 });
 
+app.get("/petsitterlists", async (req, res) => {
+  try {
+    const sitterphoto = await profile.find();
+    const sitterposts = await sitterPost.find();
+    res.render("pages/petsitterlists", { sitterphoto, sitterposts });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
