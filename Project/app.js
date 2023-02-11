@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
 
 app.set("view engine", "ejs");
+// app.set('views', path.join(__dirname, './views/pages')); 
 
 app.use(morgan("dev"));
 mongoose.connect(process.env.MONGO_URL, (error) => {
