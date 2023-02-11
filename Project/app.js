@@ -69,9 +69,9 @@ app.get("/petownerlists", async (req, res) => {
 
 app.get("/petsitterlists", async (req, res) => {
   try {
-    const sitterphoto = await profile.find();
-    const sitterposts = await sitterPost.find();
-    res.render("pages/petsitterlists", { sitterphoto, sitterposts });
+    const sitterprofile = await profile.find({});
+    const sitterposts = await sitterPost.find({});
+    res.render("pages/petsitterlists", { sitterprofile, sitterposts });
   } catch (error) {
     res.status(500).json(error);
   }
