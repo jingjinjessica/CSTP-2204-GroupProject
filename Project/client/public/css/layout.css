@@ -46,8 +46,49 @@ header {
 /* footer */
 footer {
     /* position: fixed; */
-    padding-top: 300px;
+    background-color: #EAF4F4 !important;
+    margin-top: 50px;
+    padding-top: 20px;
     left: 0;
     bottom: 0;
     width: 100%;
+    font-family: "Noto Sans";
+    color: #6B9080;
+}
+.footer-title {
+    font-weight: 800;
+}
+.list-unstyled {
+    padding-bottom: 10px;
+}
+
+.item-list a{
+    text-decoration: none;
+    color: #6B9080 !important;
+}
+
+.item-list a:hover{
+    text-decoration: none;
+    color: #FB5607 !important;
+}
+
+.copyright {
+    padding-top: 10px;
+}
+
+/* contact us form */
+.btn-primary {
+    background-color: #FB5607;
+    border: #FB5607;
+}
+
+.btn-primary:hover {
+    background-color: #FACC22;
+    color: #339141;
+}
+
+@media (max-width: 991px) {
+    .me-auto {
+        padding-left: 0px;
+    }
 }

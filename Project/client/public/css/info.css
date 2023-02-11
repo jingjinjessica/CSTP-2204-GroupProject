@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+body {
+    background-color: #F6FFF8;
+}
+
+/* live chat  */
+/* .live-chat-area {
+    position: absolute;
+    top: 1300px;
+    left: 1250px;
+} */
+
+.live-chat-title {
+    font-size: 20px;
+    color: #FB5607;
+}
+
+.live-chat {
+    font-size: 60px;
+    color: #FB5607;
+    margin-top: -10px;
+    padding-left: 13px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 800,
+        'GRAD' 0,
+        'opsz' 100
+}
+
+.floating-container {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    right: 0;
+    margin: 35px 25px;
+}
+
+.floating-container:hover {
+    height: 300px;
+}
+
+.floating-container:hover .floating-button {
+    transform: scale(1.2);
+}
+
+.floating-container .floating-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    line-height: 65px;
+    text-align: center;
+    font-size: 23px;
+    z-index: 100;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+
+/* Owner Info */
+.owner-info {
+    background-color: #CCE3DE;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    position: relative;
+}
+
+.pet-info {
+    padding-top: 150px;
+    position: relative;
+}
+
+.info-img {
+    max-width: 100%;
+}
+
+.info-img {
+    vertical-align: middle;
+    border-style: none;
+    box-sizing: border-box;
+    width: 500px;
+    /* height: 360px; */
+    border: 3px solid #6B9080;
+    border-radius: 40px;
+
+}
+
+.pet-img {
+    margin-top: 30px;
+}
+
+/* Pet Owner detail
+---------------------*/
+.info-list {
+    padding-top: 10px;
+}
+
+.info-list {
+    padding: 5px 40px;
+}
+
+.info-area {
+    margin-top: -50px;
+}
+
+.username {
+    font-size: 50px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 500;
+}
+
+.location {
+    font-size: 25px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+}
+
+.requirement-area {
+    margin-top: 20px;
+}
+
+.requirement-title {
+    font-size: 30px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 600;
+}
+
+.requirement {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+/* Pet detail
+---------------------*/
+
+.petname {
+    font-size: 50px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 500;
+}
+
+.intro-area {
+    margin-top: 20px;
+}
+
+.intro-title {
+    font-size: 30px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 600;
+}
+
+.introduction {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+/* pet owner mobile view */
+@media (max-width: 991px) {
+    .about-info {
+        margin-top: 30px;
+    }
+
+    .info-area {
+        margin-top: 20px;
+    }
+
+    .owner-info {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    .username {
+        font-size: 30px;
+    }
+
+    .location {
+        font-size: 20px;
+    }
+
+    .requirement-title {
+        font-size: 25px;
+
+    }
+
+    .requirement {
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    /* pet mobile view */
+    .intro-area {
+        margin-top: 22px;
+    }
+
+    .pet-info {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    .petname {
+        font-size: 30px;
+    }
+
+    .intro-title {
+        font-size: 25px;
+
+    }
+
+    .introduction {
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .floating-container {
+        width: 90px;
+        height: 90px;
+        margin: 30px 15px;
+    }
+
+    .live-chat-title {
+        font-size: 15px;
+        color: #FB5607;
+        margin-bottom: -2px;
+    }
+
+    .live-chat {
+        font-size: 35px;
+    }
+}
