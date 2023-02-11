@@ -97,7 +97,7 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
-app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
+app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
 
