@@ -67,6 +67,16 @@ app.get("/petownerlists", async (req, res) => {
   }
 });
 
+app.get("/petsitterlists", async (req, res) => {
+  try {
+    const sitterprofile = await profile.find({});
+    const sitterposts = await sitterPost.find({});
+    res.render("pages/petsitterlists", { sitterprofile, sitterposts });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
@@ -87,7 +97,7 @@ app.use((req, res, next) => {
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
-app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
+app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
 

@@ -7,6 +7,12 @@ const createSitterPost = async (request, response) => {
   const data = request.body;
   console.log(data);
 
+  const token = request.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+
+  request.decodedEmail = decodedValues.email;
+  console.log("decodedemail", request.decodedEmail);
+
   if (request.decodedEmail) {
     //const decodedValue = jwt.decode(token, { complete: true });
 
