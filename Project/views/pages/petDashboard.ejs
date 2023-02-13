@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head') %>
+</head>
+
+<body>
+	<%- include('../partials/header') %>
+		<div class="container">
+			<section>
+				<h3 class="display-3">
+					<small class="dashboard-title">Dashboard </small>
+				</h3>
+				<div class="container-fluid">
+					<div class="row">
+						<button class="edit-profile-btn-dashboard">Edit Profile</button>
+						<button class="post-job-btn-dashboard">Post A Job</button>
+						<div class="col-sm-12">
+							<div id="inam" class="carousel slide carousel-dark" data-interval="false">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<div class="container w-100 d-block">
+											<div class="row card-row">
+												<% for(var i=0; i < posts.length; i++) {%>
+													<div class="col-sm-4 card-col">
+														<div class="card card-area">
+															<img src="<%= petImage%>" alt="dashboard-item-img"
+																class="card-img-top">
+															<div class="card-body card-content-dashboard">
+																<h4 class="card-title card-title-dashboard"
+																	id="title-dashboard">
+																	<%= posts[i].title %>
+																</h4>
+																<p class="card-text" id="description">
+																	<%= posts[i].desc %>
+																</p>
+																<span class="card-text card-date-dashboard">
+																	<%= fd(posts[i].createdAt) %>
+																</span>
+																<div class="btn-dashboard">
+																	<a href="" class="edit-btn">Edit</a>
+																	<!-- <a href="" class="delete-btn">Delete</a> -->
+																	<button onclick="deletePost('<%= posts[i]._id %>')">
+																		delete
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="carousel-item">
+								<div class="container w-100 d-block">
+									<div class="row">
+										<div class="col-sm-12 col-md-4">
+											<div class="card h-100">
+												<img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" class="card-img-top" >
+												<div class="card-body">
+													<h4 class="card-title" id="title">Card 4</h4>
+													<p class="card-text" id="description">Some description</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-md-4">
+											<div class="card h-100">
+												<img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" class="card-img-top" >
+												<div class="card-body">
+													<h4 class="card-title">Card 5</h4>
+													<p class="card-text" id="description">Some description</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-md-4">
+											<div class="card h-100">
+												<img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" class="card-img-top" >
+												<div class="card-body">
+													<h4 class="card-title" id="title">Card 6</h4>
+													<p class="card-text" id="description">Some description</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+								</div>
+								<!-- btn for prev and next -->
+								<a href="#inam" class="carousel-control-prev" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon"></span>
+								</a>
+								<a href="#inam" class="carousel-control-next" data-bs-slide="next">
+									<span class="carousel-control-next-icon"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+</body>

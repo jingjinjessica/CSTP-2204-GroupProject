@@ -3,14 +3,13 @@
 
 <head>
     <%- include('../partials/head') %>
-
 </head>
 <body>
     <%- include('../partials/header') %>
     <div class="container">
 		<section>
 			<h3 class="display-3">
-				<small class="text-primary">Dashboard </small>
+				<small class="text-primary dashboard-title">Dashboard </small>
 			</h3>
 			<div class="container-fluid">
 				<div class="row">
@@ -20,23 +19,16 @@
 							<div class="carousel-item active">
 								<div class="container w-100 d-block">
 									<div class="row">
-										<% for(var i=0; i < posts.length; i++) {%>
 										<div class="col-sm-12 col-lg-4">
 											<div class="card h-100" style="width: 300px; margin: auto;">
-												<img src="<%= petImage%>" alt="Card image cap" class="card-img-top" >
+												<img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" class="card-img-top" >
 												<div class="card-body">
-													<h4 class="card-title" id="title"><%= posts[i].title %></h4>
-													<p class="card-text" id="description"><%= posts[i].desc %></p>
-													<p class="card-text" id="date"><%= fd(posts[i].createdAt) %></p>
-													<button onclick="deletePost('<%= posts[i]._id %>')" >
-														delete
-													</button>
+													<h4 class="card-title" id="title">Card 1</h4>
+													<p class="card-text" id="description">Some description</p>
 												</div>
 											</div>
 										</div>
-									    <%}%>
-
-										<!-- <div class="col-sm-12 col-lg-4">
+										<div class="col-sm-12 col-lg-4">
 											<div class="card h-100" style="width: 300px; margin: auto;">
 												<img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" class="card-img-top" >
 												<div class="card-body">
@@ -80,7 +72,7 @@
 													<p class="card-text" id="description">Some description</p>
 												</div>
 											</div>
-										</div> -->
+										</div>
 									</div>
 								</div>
 							</div>

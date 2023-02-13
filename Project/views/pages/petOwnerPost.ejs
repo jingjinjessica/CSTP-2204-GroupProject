@@ -15,8 +15,7 @@
                 <div class="col-md-5">
                     <input type="text" class="form-control" id="title" onchange="setTitle(event)">
                 </div>
-            </div>  
-
+            </div>
             <div class="d-flex justify-content-evenly">
                 <label class="form-label">Location:</label>
                 <div class="col-md-5">
@@ -29,7 +28,37 @@
                     <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)">
                 </div>
             </div>
-
+            <!-- 省市2級聯動方式 function在 public/js/location.js -->
+            <!-- <div class="mw-100 d-flex justify-content-evenly">
+                <label class="form-label text_edit">Location:</label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <label class="input-group-text">Province</label>
+                        <select id="province" name="province" onchange="selectCity(this.value)" class="form-select" value="<%= province%>" >
+                            <option value="Choose" <%=province==="Choose" ?"selected":"" %>>Choose...</option>
+                            <option id="0" value="0" <%=province==="Alberta" ?"selected":"" %>>Alberta</option>
+                            <option id="1" value="1" <%=province==="BritishColumbia" ?"selected":"" %>>British Columbia</option>
+                            <option id="2" value="2" <%=province==="Manitoba" ?"selected":"" %>>Manitoba</option>
+                            <option id="3" value="3" <%=province==="NewBrunswick" ?"selected":"" %>>New Brunswick
+                            </option>
+                            <option id="4" value="4" <%=province==="NewfoundlandandLabrador" ?"selected":"" %>
+                                >Newfoundland and Labrador</option>
+                            <option id="5" value="5" <%=province==="NovaScotia" ?"selected":"" %>>Nova Scotia
+                            </option>
+                            <option id="6" value="6" <%=province==="Ontario" ?"selected":"" %>>Ontario</option>
+                            <option id="7" value="7" <%=province==="PrinceEdwardIsland" ?"selected":"" %>>Prince
+                                Edward Island</option>
+                            <option id="8" value="8" <%=province==="Quebec" ?"selected":"" %>>Quebec</option>
+                            <option id="9" value="9" <%=province==="Saskatchewan" ?"selected":"" %>>Saskatchewan
+                            </option>
+                            <option id="10" value="10" <%=province==="NorthwestTerritories" ?"selected":"" %>
+                                >Northwest Territories</option>
+                            <option id="11" value="11" <%=province==="Yukon" ?"selected":"" %>>Yukon</option>
+                            <option id="12" value="12" <%=province==="Nunavut" ?"selected":"" %>>Nunavut</option>
+                        </select>
+                    </div>
+                </div>
+            </div> -->
             <div class="mb-3">
                 <label for="" class="form-label">Description:</label>
                 <textarea class="form-control" id="desc" rows="3" onchange="setDesc(event)"></textarea>

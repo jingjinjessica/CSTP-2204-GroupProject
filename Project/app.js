@@ -50,18 +50,26 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost");
+  res.render("pages/petOwnerPost", { title: "Post A Job" });
 });
 
 app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost");
+  res.render("pages/sitterPost", { title: "Post your " });
+});
+
+app.get("/petDashboard", (req, res) => {
+  res.render("pages/petDashboard");
+});
+
+app.get("/sitterDashboard", (req, res) => {
+  res.render("pages/sitterDashboard", { title: "Sitter Dashboard" });
 });
 
 app.get("/petownerlists", async (req, res) => {
   try {
     const petprofile = await profile.find({});
     const petposts = await ownerPost.find({});
-    res.render("pages/petownerlists", { petprofile, petposts });
+    res.render("pages/petownerlists", { petprofile, petposts, title: "Get A Job" });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -71,7 +79,7 @@ app.get("/petsitterlists", async (req, res) => {
   try {
     const sitterprofile = await profile.find({});
     const sitterposts = await sitterPost.find({});
-    res.render("pages/petsitterlists", { sitterprofile, sitterposts });
+    res.render("pages/petsitterlists", { sitterprofile, sitterposts, title: "Find Pet Sitters" });
   } catch (error) {
     res.status(500).json(error);
   }
