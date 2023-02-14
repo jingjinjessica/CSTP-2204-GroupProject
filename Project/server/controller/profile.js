@@ -154,12 +154,12 @@ const createOwnerPost = async(req,res) => {
     else {
         const userEntity = await getUserEntity(req);
         const newProfile = new Profile({
-            avatar:data.myImg,
+            avatar:avatarImageResult.url,
             name: data.name,
             province:data.province,
             city:data.city,
             phone:data.phone,
-            petImage:data.petImg,
+            petImage:petImageResult.url,
             petName:data.petName,
             petAge:data.petAge,
             petWeight:data.petWeight,

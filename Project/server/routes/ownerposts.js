@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const validateToken = require("../../middleware/validate");
+//const validateToken = require("../../middleware/validate");
 
 // Here we are using destructuring
 const {

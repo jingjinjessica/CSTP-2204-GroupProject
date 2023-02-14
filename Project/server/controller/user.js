@@ -2,6 +2,7 @@ const User = require("../model/User");
 const bcrypt = require("bcryptjs"); // This library/package will be used to encrypt the password
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
+const PetPost = require("../model/PetPost");
 
 
 
@@ -106,10 +107,32 @@ const getAllUsers = async (request, response) => {
     });
   }
 };
+function formatDate(date){
+  return "Create date: " +
+  date.getFullYear() +
+  "-" +
+  (date.getMonth() + 1) +
+  "-" +
+  date.getDate();
+}
+const getHistoryPost = async (req,res) => {
+  const token = req.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+  const post = await getPostByEmail(decodedValues.email);
+  const profile = await getProfileByUserEmail(decodedValues.email);
+
+  res.render("pages/dashboard", {posts: post, petImage:profile.petImage, fd:formatDate})
+}
+const getPostByEmail = async (email) => {
+  const user = await User.findOne({ email: email });
+  const post = await PetPost.find({userID: user._id.toString() })
+  return post;
+}
 
 
 module.exports = {
   registerUser,
   loginUser,
+  getHistoryPost,
   getAllUsers
 };
