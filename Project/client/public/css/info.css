@@ -67,13 +67,13 @@ body {
 /* Owner Info */
 .owner-info {
     background-color: #CCE3DE;
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     position: relative;
 }
 
 .pet-info {
-    padding-top: 150px;
+    padding-top: 80px;
     position: relative;
 }
 
@@ -85,10 +85,11 @@ body {
     vertical-align: middle;
     border-style: none;
     box-sizing: border-box;
-    width: 500px;
-    /* height: 360px; */
+    width: 400px;
+    height: 300px;
     border: 3px solid #6B9080;
     border-radius: 40px;
+    object-fit: cover;
 
 }
 
@@ -106,19 +107,19 @@ body {
     padding: 5px 40px;
 }
 
-.info-area {
+/* .info-area {
     margin-top: -50px;
-}
+} */
 
 .username {
-    font-size: 50px;
+    font-size: 25px;
     color: #6B9080;
     font-family: "Noto Sans";
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .location {
-    font-size: 25px;
+    font-size: 20px;
     color: #6B9080;
     font-family: "Noto Sans";
     font-weight: 300;
@@ -130,10 +131,10 @@ body {
 }
 
 .requirement-title {
-    font-size: 30px;
+    font-size: 25px;
     color: #6B9080;
     font-family: "Noto Sans";
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .requirement {
@@ -149,10 +150,10 @@ body {
 ---------------------*/
 
 .petname {
-    font-size: 50px;
+    font-size: 25px;
     color: #6B9080;
     font-family: "Noto Sans";
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .intro-area {
@@ -160,10 +161,10 @@ body {
 }
 
 .intro-title {
-    font-size: 30px;
+    font-size: 25px;
     color: #6B9080;
     font-family: "Noto Sans";
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .introduction {
@@ -175,14 +176,78 @@ body {
     text-align: justify;
 }
 
+/* Pet Sitter INFO */
+.sitter-info {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.aboutMe-description {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+.experiences {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+.photo-experiences {
+   width: 250px;
+   height: 250px;
+   object-fit: cover;
+   border: 3px solid black;
+   margin-left: 12px;
+   margin-right: 12px;
+}
+
+.photo-inColumns {
+    text-align: center;
+}
+
+.rate-title {
+    font-size: 25px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: bold;
+}
+
+.rate-from {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: 300;
+    padding-left: 20px;
+    text-align: justify;
+}
+
 /* pet owner mobile view */
 @media (max-width: 991px) {
+    .info-img {
+        width: 400px;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .info-avatar {
+        text-align: center;
+    }
+
     .about-info {
         margin-top: 30px;
     }
 
     .info-area {
         margin-top: 20px;
+        text-align: center;
     }
 
     .owner-info {
@@ -191,16 +256,17 @@ body {
     }
 
     .username {
-        font-size: 30px;
+        font-size: 25px;
+        
     }
 
     .location {
         font-size: 20px;
+        padding-left: 0;
     }
 
     .requirement-title {
         font-size: 25px;
-
     }
 
     .requirement {
@@ -209,8 +275,13 @@ body {
     }
 
     /* pet mobile view */
+    .about-avatar {
+        text-align: center;
+    }
+
     .intro-area {
         margin-top: 22px;
+        text-align: center;
     }
 
     .pet-info {
@@ -219,7 +290,7 @@ body {
     }
 
     .petname {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .intro-title {
@@ -230,6 +301,7 @@ body {
     .introduction {
         font-size: 20px;
         padding-top: 10px;
+        text-align: center;
     }
 
     .floating-container {
@@ -247,4 +319,35 @@ body {
     .live-chat {
         font-size: 35px;
     }
+
+    /* Pet Sitter Info Mobile View */
+    .sitter-info {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .photo-inColumns {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        
+    }
+
+    .photo-experiences {
+        margin-top: 12px;
+        width: 100%;
+        height: 300px;
+    }
+
+    .rate-title {
+        font-size: 25px;
+    }
+
+    .rate-from {
+        font-size: 20px;
+        padding-top: 10px;
+        text-align: center;
+    }
+
 }

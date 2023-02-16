@@ -51,6 +51,19 @@ app.get('/register', (req, res) => {
   res.render('pages/register', { 'title': 'Register' })
 })
 
+// PET OR USER VIEW
+app.get('/sitterinfo', (req, res) => {
+  res.render('pages/sitterInfo')
+})
+
+app.get('/ownerinfo', (req, res) => {
+  res.render('pages/ownerInfo')
+})
+
+// app.get('/test', (req, res) => {
+//   res.render('pages/test')
+// })
+
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
