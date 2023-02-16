@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 // This will be beaving as a middleware to authorize if the user request is valid
 const validateToken = (req, res, next) => {
-  console.info("hhhhhh");
   if (req.headers?.authorization?.split(" ")[1]) {
     const token = req.headers?.authorization?.split(" ")[1];
 

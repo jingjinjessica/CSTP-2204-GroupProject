@@ -7,15 +7,12 @@ const userRoutes = require("./server/routes/users");
 const profileRoutes = require("./server/routes/profiles");
 const sitterRoutes = require("./server/routes/sitterposts");
 const ownerRoutes = require("./server/routes/ownerposts");
+const listRoutes = require("./server/routes/lists");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const sitterPost = require("./server/model/PetSitterPost");
-const profile = require("./server/model/Profile");
-const ownerPost = require("./server/model/PetPost");
-// const multer = require("../library/multer");
-// const cloudinary = require("../library/cloudinary");
+
 require("dotenv").config();
 
 //cookie
@@ -40,13 +37,13 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 });
 
 app.get("/index", (req, res) => {
-  res.render("pages/index", { title: "Home" });
+  res.render("pages/index");
 });
 app.get("/login", (req, res) => {
-  res.render("pages/login", { title: "Login" });
+  res.render("pages/login");
 });
 app.get("/register", (req, res) => {
-  res.render("pages/register", { title: "Register" });
+  res.render("pages/register");
 });
 
 app.get("/petOwnerPost", (req, res) => {
@@ -57,39 +54,11 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
 });
 
-app.get("/petownerlists", async (req, res) => {
-  try {
-    const petprofile = await profile.find({});
-    const petposts = await ownerPost.find({});
-    res.render("pages/petownerlists", { petprofile, petposts });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-app.get("/petsitterlists", async (req, res) => {
-  try {
-    const sitterprofile = await profile.find({});
-    const sitterposts = await sitterPost.find({});
-    res.render("pages/petsitterlists", { sitterprofile, sitterposts });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
 }
-function postLogger(req, res, next) {
-  console.log("Loading Post requests....");
-  next();
-}
 
-function profileLogger(req, res, next) {
-  console.log("Loading Profile Post requests....");
-  next();
-}
 app.use((req, res, next) => {
   next();
 });
@@ -100,6 +69,7 @@ app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
+app.use("/list",listRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -10,15 +10,15 @@
         <div class="jumbotron">
             <div class="container">
                 <ul>
-                  <% for(var i=0; i < petprofile.length; i++) {%>
+                  <% for(var i=0; i < result.length; i++) {%>
                         <li>
-                            <img src="<%= petprofile[i].petImage %>" alt="" width="100" height="100">
-                            <h2> <%= petprofile[i].petName %></h2>
+                            <img src="<%= result[i].profile[0].petImage%>" alt="" width="100" height="100">
+                            <h2> <%=  result[i].profile[0].petName %></h2>
                             <p>
-                                <%= petposts[i].province %>, <%= petposts[i].city %>
+                                <%=  result[i].profile[0].province %>, <%=  result[i].profile[0].city %>
                             </p>
                             <p>
-                                <%= petposts[i].desc %>
+                                <%= result[i].desc %>
                             </p>
                         </li>
                         <hr />

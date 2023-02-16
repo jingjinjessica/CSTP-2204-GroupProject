@@ -50,7 +50,7 @@ const ownerPost = async (event) => {
       },
     });
     if (response) {
-      window.location.href = "/petownerlists";
+      window.location.href = "/list/listpost";
     }
   } catch (error) {
     console.log(error);
