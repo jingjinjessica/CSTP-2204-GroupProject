@@ -58,6 +58,41 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="mw-100 d-flex justify-content-around">
+                <div class="col-md-5 marginPosition">
+                    <div class="input-group">
+                        <label class="input-group-text">City</label>
+                        <select id="city" name="city" class="form-select selectpicker" onchange="setCity(event)" value="<%= city%>">
+                            <option value="Choose" <%=city==="Choose" ?"selected":"" %>>Choose...</option>
+                            <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>>Burnaby</option>
+                            <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>>Coquitlam</option>
+                            <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>>Calgary</option>
+                            <option value="Charlottetown" <%=city==="Charlottetown" ?"selected":"" %>>Charlottetown</option>
+                            <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>>Edmonton</option>
+                            <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>>Moncton</option>
+                            <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>>Montreal</option>
+                            <option value="Northvancouver" <%=city==="NorthVancouver" ?"selected":"" %>>North Vancouver</option>
+                            <option value="Fredericton" <%=city==="Fredericton" ?"selected":"" %>>Fredericton</option>
+                            <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>>Halifax</option>
+                            <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>>Iqaluit</option>
+                            <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>>Quebec City</option>
+                            <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>>Richmond</option>
+                            <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina</option>
+                            <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey</option>
+                            <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St. John's</option>
+                            <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>>Saskatoon</option>
+                            <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>>Toronto</option>
+                            <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>>Victoria</option>
+                            <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>>Vancouver</option>
+                            <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>>White Rock</option>
+                            <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":"" %>>Williams Lake</option>
+                            <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>>Winnipeg</option>
+                            <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>>Whitehorse</option>
+                            <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":"" %>>Yellowknife</option>
+                        </select>
+                    </div>
+                </div>
             </div> -->
             <div class="mb-3">
                 <label for="" class="form-label">Description:</label>
