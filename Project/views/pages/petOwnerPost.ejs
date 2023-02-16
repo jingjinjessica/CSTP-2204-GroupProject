@@ -26,26 +26,64 @@
                     <div class="col-md-10">
                         <div class="form-check">
                             <div class="input-group">
-                                <label class="input-group-text">Province</label>
-                                <select class="form-select" id="province" onchange="setProvince(event)">
-                                    <option selected>Choose...</option>
-                                    <option>France</option>
-                                    <option>Germany</option>
-                                    <option>Hungary</option>
-                                </select>
-                            </div>
+                        <label class="input-group-text">Province</label>
+                        <select id="province" name="province" onchange="selectCity(this.value)" class="form-select" value="<%= province%>" >
+                            <option value="Choose" <%=province==="Choose" ?"selected":"" %>>Choose...</option>
+                            <option id="0" value="0" <%=province==="Alberta" ?"selected":"" %>>Alberta</option>
+                            <option id="1" value="1" <%=province==="BritishColumbia" ?"selected":"" %>>British Columbia</option>
+                            <option id="2" value="2" <%=province==="Manitoba" ?"selected":"" %>>Manitoba</option>
+                            <option id="3" value="3" <%=province==="NewBrunswick" ?"selected":"" %>>New Brunswick
+                            </option>
+                            <option id="4" value="4" <%=province==="NewfoundlandandLabrador" ?"selected":"" %>
+                                >Newfoundland and Labrador</option>
+                            <option id="5" value="5" <%=province==="NovaScotia" ?"selected":"" %>>Nova Scotia
+                            </option>
+                            <option id="6" value="6" <%=province==="Ontario" ?"selected":"" %>>Ontario</option>
+                            <option id="7" value="7" <%=province==="PrinceEdwardIsland" ?"selected":"" %>>Prince
+                                Edward Island</option>
+                            <option id="8" value="8" <%=province==="Quebec" ?"selected":"" %>>Quebec</option>
+                            <option id="9" value="9" <%=province==="Saskatchewan" ?"selected":"" %>>Saskatchewan
+                            </option>
+                            <option id="10" value="10" <%=province==="NorthwestTerritories" ?"selected":"" %>
+                                >Northwest Territories</option>
+                            <option id="11" value="11" <%=province==="Yukon" ?"selected":"" %>>Yukon</option>
+                            <option id="12" value="12" <%=province==="Nunavut" ?"selected":"" %>>Nunavut</option>
+                        </select>
+                    </div>
                         </div>
 
                         <div class="form-check">
-                            <div class="input-group mt-2">
-                                <label class="input-group-text">City</label>
-                                <select class="form-select" id="city" onchange="setCity(event)">
-                                    <option selected>Choose...</option>
-                                    <option>One</option>
-                                    <option>Two</option>
-                                    <option>Three</option>
-                                </select>
-                            </div>
+                            <div class="input-group">
+                        <label class="input-group-text">City</label>
+                        <select id="city" name="city" class="form-select selectpicker" value="<%= city%>">
+                            <option value="Choose" <%=city==="Choose" ?"selected":"" %>>Choose...</option>
+                            <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>>Burnaby</option>
+                            <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>>Coquitlam</option>
+                            <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>>Calgary</option>
+                            <option value="Charlottetown" <%=city==="Charlottetown" ?"selected":"" %>>Charlottetown</option>
+                            <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>>Edmonton</option>
+                            <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>>Moncton</option>
+                            <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>>Montreal</option>
+                            <option value="Northvancouver" <%=city==="NorthVancouver" ?"selected":"" %>>North Vancouver</option>
+                            <option value="Fredericton" <%=city==="Fredericton" ?"selected":"" %>>Fredericton</option>
+                            <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>>Halifax</option>
+                            <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>>Iqaluit</option>
+                            <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>>Quebec City</option>
+                            <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>>Richmond</option>
+                            <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina</option>
+                            <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey</option>
+                            <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St. John's</option>
+                            <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>>Saskatoon</option>
+                            <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>>Toronto</option>
+                            <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>>Victoria</option>
+                            <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>>Vancouver</option>
+                            <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>>White Rock</option>
+                            <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":"" %>>Williams Lake</option>
+                            <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>>Winnipeg</option>
+                            <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>>Whitehorse</option>
+                            <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":"" %>>Yellowknife</option>
+                        </select>
+                    </div>
                         </div>
                         <!-- <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)"> -->
                         <!-- <input type="text" class="form-control mt-3" id="city" placeholder="City" onchange="setCity(event)"> -->
@@ -85,7 +123,64 @@
 
         </form>
     </div>
+<script>
+    // Level 2 linkage of provinces and cities
 
+    // set the array of cities for each province
+    var cities = new Array(12);
+    cities[0] = new Array("Edmonton", "Calgary");
+    cities[1] = new Array("Burnaby", "Coquitlam",
+        "North Vancouver", "Richmond",
+        "Surrey", "Victoria", "Vancouver",
+        "White Rock", "Williams Lake");
+    cities[2] = new Array("Winnipeg");
+    cities[3] = new Array("Fredericton", "Moncton");
+    cities[4] = new Array("St. John's");
+    cities[5] = new Array("Halifax");
+    cities[6] = new Array("Toronto");
+    cities[7] = new Array("Charlottetown");
+    cities[8] = new Array("Quebec City", "Montreal");
+    cities[9] = new Array("Regina", "Saskatoon");
+    cities[10] = new Array("Yellowknife");
+    cities[11] = new Array("Whitehorse");
+    cities[12] = new Array("Iqaluit");
+
+    // linkage provinces and cities
+    function selectCity(value) {
+
+        // find the select id 
+        var cityEle = document.getElementById("city");
+        // set the option length
+        cityEle.options.length = 0;
+
+        // Get cities according to different provinces
+        for (var i = 0; i < cities.length; i++) {
+            // check the value of provinces to get city from array
+            if (value == i) {
+                // loop array to get correct element of cities
+                for (var j = 0; j < cities[i].length; j++) {
+                    var textNode = document.createTextNode(cities[i][j]);
+                    var opEle = document.createElement('option');
+                    opEle.appendChild(textNode);
+                    cityEle.appendChild(opEle);
+                }
+            }
+            document.getElementById('0').value = 'Alberta';
+            document.getElementById('1').value = 'BritishColumbia';
+            document.getElementById('2').value = 'Manitoba';
+            document.getElementById('3').value = 'NewBrunswick';
+            document.getElementById('4').value = 'NewfoundlandandLabrador';
+            document.getElementById('5').value = 'Nova Scotia';
+            document.getElementById('6').value = 'Ontario';
+            document.getElementById('7').value = 'PrinceEdwardIsland';
+            document.getElementById('8').value = 'Saskatchewan';
+            document.getElementById('9').value = 'Quebec';
+            document.getElementById('10').value = 'NorthwestTerritories';
+            document.getElementById('11').value = 'Yukon';
+            document.getElementById('12').value = 'Nunavut';
+        }
+    }
+</script>
 
     
 </body>
