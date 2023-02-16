@@ -48,17 +48,15 @@ const createPetOwner = async (req,res) => {
             petImage: profileInform.petImage??"/image/add-img.png"
         } );
     }
-   
-
 };
 
 //Get user
 const getUser = (req) => {
   return jwt.verify(req.cookies["access-token"], process.env.SECRET_KEY);
 };
+
 //Check has profile or not
 const hasProfile = async (req) => {
-
     const user = getUser(req);
     const profile = await getProfileByUserEmail(user.email);
     return profile !== null;
@@ -70,6 +68,7 @@ const getUserEntity = async (req) => {
   const entity = await User.findOne({ email: user.email });
   return entity;
 };
+
 // Get profile by user email
 const getProfileByUserEmail = async (email) => {
   //console.info(email);
@@ -106,6 +105,7 @@ const uploadImage = async(req, name) =>{
         fs.unlinkSync(fileName) ;
       } 
 }
+
 // Owner profile post and update
 const createOwnerPost = async(req,res) => {
     const avatarImageResult = await uploadImage(req, "myImg");

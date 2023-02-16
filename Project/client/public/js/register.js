@@ -24,9 +24,6 @@ const handleClick = (event) => {
     }
 }
 
-
-
-
 const submitRegisterForm = async (event) => {
   event.preventDefault();
   //console.log(user);
@@ -41,6 +38,7 @@ const submitRegisterForm = async (event) => {
     if (response) {
       localStorage.removeItem("access-token");
       localStorage.removeItem("user");
+      // cookie setup
       document.cookie = "";
       window.location.href = "/login";
     }

@@ -18,5 +18,5 @@ const uploadImage = async (request, response) => {
 };
 
 module.exports = {
-  uploadImage,
+  uploadImage
 };
