@@ -7,26 +7,129 @@
 
 <body>
     <%- include('../partials/header') %>
-        <div class="jumbotron">
-            <div class="container">
-                <ul>
-                  <% for(var i=0; i < result.length; i++) {%>
-                        <li>
-                            <img src="<%= result[i].profile[0].petImage%>" alt="" width="100" height="100">
-                            <h2> <%=  result[i].profile[0].petName %></h2>
-                            <p>
-                                <%=  result[i].profile[0].province %>, <%=  result[i].profile[0].city %>
-                            </p>
-                            <p>
-                                <%= result[i].desc %>
-                            </p>
-                        </li>
-                        <hr />
-                    <% } %>
-                </ul>
+        <div class="container justify-content-center list-area">
+            <h3 class="job-title">Looking for a job?</h3>
+            <button class="post-job-btn">Post A Job</button>
+            <!-- filter -->
+            <div class="filter-area">
+                <div class="row filter">
+                    <div class="col-sm-2 filter-title-area">
+                        <h5 class="filter-title">Filter : </h5>
+                    </div>
+                    <div class="col-sm-2 type">
+                        <select id="type" class="selectpicker type-selectpicker">
+                            <option>- Select Type -</option>
+                            <option value="cat">Cat</option>
+                            <option value="dog">Dog</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 age">
+                        <select id="type" class="selectpicker age-selectpicker">
+                            <option>- Select Age -</option>
+                            <option value="05">0 - 5</option>
+                            <option value="610">6 - 10</option>
+                            <option value="1115">11 - 15</option>
+                            <!-- <option value="above16">Above 16</option> -->
+                        </select>
+                    </div>
+                    <div class="col-sm-3 weight">
+                        <select id="weight" class="selectpicker weight-selectpicker">
+                            <option selected>- Select Weight (lb) -</option>
+                            <option value="1050">10 - 50</option>
+                            <option value="51100">51 - 100</option>
+                            <option value="101120">101 - 120</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 province">
+                        <!-- call the location function -->
+                        <select id="province" onchange="selectCity(this.value)"
+                            class="selectpicker multiple province-selectpicker">
+                            <option class="province-option">- Select Province or Territory -</option>
+                            <optgroup label="Provinces">
+                                <option value="0">Alberta</option>
+                                <option value="1">British Columbia</option>
+                                <option value="2">Manitoba</option>
+                                <option value="3">New Brunswick</option>
+                                <option value="4">Newfoundland and Labrador</option>
+                                <option value="5">Nova Scotia</option>
+                                <option value="6">Ontario</option>
+                                <option value="7">Prince Edward Island</option>
+                                <option value="8">Quebec</option>
+                                <option value="9">Saskatchewan</option>
+                            </optgroup>
+                            <optgroup label="Territories">
+                                <option value="10">Northwest Territories</option>
+                                <option value="11">Yukon</option>
+                                <option value="12">Nunavut</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 city">
+                        <select id="city" class="selectpicker multiple city-selectpicker">
+                            <option>- Select City -</option>
+                            <option value="Burnaby">Burnaby</option>
+                            <option value="Coquitlam">Coquitlam</option>
+                            <option value="Calgary">Calgary</option>
+                            <option value="Charlottetown">Charlottetown</option>
+                            <option value="Edmonton">Edmonton</option>
+                            <option value="Moncton">Moncton</option>
+                            <option value="Montreal">Montreal</option>
+                            <option value="Northvancouver">North Vancouver</option>
+                            <option value="Fredericton">Fredericton</option>
+                            <option value="Halifax">Halifax</option>
+                            <option value="Iqaluit">Iqaluit</option>
+                            <option value="Quebeccity">Quebec City</option>
+                            <option value="Richmond">Richmond</option>
+                            <option value="Regina">Regina</option>
+                            <option value="Surrey">Surrey</option>
+                            <option value="Stjohns">St. John's</option>
+                            <option value="Saskatoon">Saskatoon</option>
+                            <option value="Toronto">Toronto"</option>
+                            <option value="Victoria">Victoria</option>
+                            <option value="Vancouver">Vancouver</option>
+                            <option value="Whiterock">White Rock</option>
+                            <option value="Williamslake">Williams Lake</option>
+                            <option value="Winnipeg">Winnipeg</option>
+                            <option value="Whitehorse">Whitehorse</option>
+                            <option value="Yellowknife">Yellowknife</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- filter end -->
+            <div class="row post-list" id="joblistsview">
+                <% for(var i=0; i < result.length; i++) {%>
+                    <div class="card mb-3 post-card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 img-area">
+                                <img id="petimg" src="<%= result[i].profile[0].petImage%>" class="card-img"
+                                    alt="pet-img">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body card-content-list">
+                                    <h4 class="card-title">
+                                        <%= result[i].profile[0].petName %>
+                                    </h4>
+                                    <h5 class="location">
+                                        <%= result[i].profile[0].province %>, <%= result[i].profile[0].city %>
+                                    </h5>
+                                    <p class="card-text info text-break">
+                                        <%= result[i].desc %>
+                                            <a href="#" id="learnmore" class="btn stretched-link learn-more">Learn
+                                                more...</a>
+                                    </p>
+                                    <p class="card-text card-date"><small class="text-muted">
+                                            <%= fd(result[i].createdAt) %>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 <% } %>
             </div>
         </div>
-        <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
 </body>
 
 </html>

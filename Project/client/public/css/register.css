@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
 
-body {
-    background-color: #F6FFF8;
-}
-
 .register-title {
     font-family: "Noto Sans";
     text-align: center;
     color: #6B9080;
     padding-top: 30px;
     padding-bottom: 20px;
+    margin-left: -15px;
+    margin-right: 15px;
     font-family: "Noto Sans";
     font-size: 40px;
     font-weight: 700;
 }
 
-hr {
-    border-color: #000000;
-    border: 2px solid;
+.register-hr {
+    border-color: #B4B1B1;
+    border: 1px solid;
     margin-top: -10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -25,43 +23,50 @@ hr {
     margin-bottom: 30px;
 }
 
-form {
+.register-form {
     font-family: "Noto Sans";
 }
 /* form label */
-.form-outline {
+.register-form-outline {
     font-weight: 600;
     font-size: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    color: #6B9080;
 
 }
 /* form input */
-.form-control {
+.register-form-control {
     border-radius: 50px !important;
     width: 435px;
 }
 
 .have-an-account {
     font-size: 20px;
+    margin-top: -10px;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* radio option */
-h6 {
+.are-you {
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 15px;
+    color: #26A69A;
 }
 
-.form-check {
+.user-type {
     font-size: 18px;
     font-weight: 300;
-    margin-right: 100px;
+    margin-left: 40px;
+    margin-right: 50px;
+    color: #26A69A;
 }
 
 /* submit btn */
-.btn {
+.sign-up-btn {
     padding-left: 2.5rem; 
     padding-right: 2.5rem;
     background-color: #FB5607;
@@ -69,47 +74,56 @@ h6 {
     align-items: center;
 }
 
-.btn:hover {
+.sign-up-btn:hover {
     background-color: #FACC22;
     border-color: #FACC22;
-    color: #000000;
+    color: #339141;
 }
 
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
-}
-
-.h-custom {
+.register-h-custom {
     height: calc(100% - 73px);
 }
 
-@media (max-width: 450px) {
-    .h-custom {
+@media (max-width: 991px) {
+    .register-h-custom {
         height: 100%;
-
     }
 
-    hr {
-        width: 350px;
+    .register-title {
+        margin-left: -5px;
+        margin-right: 0px;
+    }
+    .register-hr {
+        width: 330px;
     }
 
-    .form-control {
-        width: 390px;
+    .register-form-control {
+        width: 360px;
         margin-top: -5px;
         margin-bottom: -20px;
     }
 
-    .form-check {
-        margin-right: 50px;
+    .have-an-account {
+        margin-top: 3px;
+    }
+
+    .are-you {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .user-type {
+        margin-left: 30px;
+        margin-right: 20px;
+        font-size: 20px;
+        font-weight: 600;
     }
     
-    .btn {
+    .sign-up-btn {
         padding-left: 2.5rem; 
         padding-right: 2.5rem;
-        margin-top: -20px;
+        margin-top: -17px;
+        margin-bottom: 15px;
     }
 }
