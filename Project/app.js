@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 const mongoose = require("mongoose");
 const path = require("path");
 const userRoutes = require("./server/routes/users");
@@ -54,6 +54,14 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
 });
 
+app.get("/sitterPostInfo", (req, res) => {
+  res.render("pages/sitterPostInfo");
+});
+
+app.get("/ownerPostInfo", (req, res) => {
+  res.render("pages/ownerPostInfo");
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
@@ -69,7 +77,7 @@ app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
-app.use("/list",listRoutes);
+app.use("/list", listRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
