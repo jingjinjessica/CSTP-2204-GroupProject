@@ -21,7 +21,7 @@
             <div class="d-flex justify-content-evenly">
                 <label class="form-label">Location:</label>
                 <div class="col-md-5">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <label class="input-group-text">Province</label>
                         <select id="province" onchange="selectCity(this.value)">
                             class="selectpicker multiple post-province-selectpicker">
@@ -44,14 +44,21 @@
                                 <option value="12">Nunavut</option>
                             </optgroup>
                         </select>
+                    </div> -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Province or Territory</span>
+                        </div>
+                        <input type="text" class="form-control" id="province" placeholder="Enter full province or territory name"
+                        onchange="setProvince(event)">
                     </div>
-                    <!-- <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)"> -->
+                    
                 </div>
             </div>
 
             <div class="mw-100 d-flex justify-content-around">
                 <div class="col-md-5 marginPosition">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <label class="input-group-text">City</label>
                         <select id="city" class="selectpicker post-city-selectpicker">
                             <option>- Select City -</option>
@@ -81,8 +88,14 @@
                             <option value="Whitehorse">Whitehorse</option>
                             <option value="Yellowknife">Yellowknife</option>
                         </select>
+                    </div> -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">City</span>
+                        </div>
+                        <input type="text" class="form-control" id="city" placeholder="Enter full city name"
+                            onchange="setCity(event)">
                     </div>
-                    <!-- <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)"> -->
                 </div>
             </div>
             <div>
@@ -97,7 +110,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Experiences:</label>
-                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"></textarea>
+                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)" placeholder="Type..."></textarea>
             </div>
 
             <!-- SUBMIT BUTTON -->
