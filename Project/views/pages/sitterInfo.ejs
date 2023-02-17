@@ -124,10 +124,21 @@
                                 </div>
 
                                 <div id="chat-content">
-
+                                    
                                     <!-- You can use this id or manually create it from server -->
-                                    <div id="Ownermessage"></div>
-                                    <div id="Sittermessage"></div>
+                                    <!-- For the pet Sitter page, pet owner will placed of the right side -->
+                                    <!-- while pet sitter will be the left side -->
+                                    <div class="owner-right" id="ownerMsg">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" class="photoSizeEdit"/>
+                                        <div class="text-bubble">
+                                            <p class="owner-rightMsg">Hello</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="sitter-left" id="sitterMsg">
+                                        <img src="/image/person-window.jpg" alt="pet sitter" class="photoSizeEdit">
+                                        <p>BELLLOO</p>
+                                    </div>
                                 </div>
         
                                 <div id="sendmessage">
@@ -225,11 +236,12 @@
             $("#profileInfo p").html(name);
             $("#profileInfo span").html(email);			
             
-            $(".message").not(".right").find("img").attr("src", $(clone).attr("src"));									
+            $(".message").not(".right").find("img").attr("src", $(clone).attr("src"));
+
             $('#friendslist').fadeOut();
             $('#chatview').fadeIn();
         
-            
+            // CLOSING THE CHAT CONTENT (WORKS)
             $('#close').unbind("click").click(function(){				
                 $("#chat-content, #profileInfo, #profileInfo p").removeClass("animate");
                 $('.cx, .cy').removeClass("s1 s2 s3");
