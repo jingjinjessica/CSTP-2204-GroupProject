@@ -6,12 +6,16 @@ const User = require("../model/User");
 const createPetPost = async (request, response) => {
   const data = request.body;
   console.log(data);
-
-  if (request.decodedEmail) {
+  const token = request.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+  //request.decodedEmail = decodedValues.email;
+  //console.log("decodedemail", request.decodedEmail);
+  
+  if (decodedValues.email) {
     //const decodedValue = jwt.decode(token, { complete: true });
 
-    const findUser = await User.findOne({ email: request.decodedEmail });
-    console.log(findUser);
+    const findUser = await User.findOne({ email: decodedValues.email });
+    console.log("finduser", findUser);
 
     if (findUser) {
       try {
@@ -53,7 +57,7 @@ const createPetPost = async (request, response) => {
 const updatePetPost = async (request, response) => {
   try {
     const post = await PetPost.findById(request.params.id);
-    console.log(post);
+    // console.log(post);
     if (post.userID == request.body.userID) {
       console.log("this is post userid", post.userID);
       console.log("this is userid", request.body.userID);
@@ -82,18 +86,19 @@ const updatePetPost = async (request, response) => {
 //delete post
 const deletePetPost = async (request, response) => {
   try {
+
     const post = await PetPost.findById(request.params.id);
-    console.log(post);
-    if (post.userID == request.body.userID) {
+    /////////改了
+    // if (post.userID == request.body.userID) {
       try {
         await post.delete();
         response.status(200).json("Post already deleted.");
       } catch (error) {
         response.status(500).json(error);
       }
-    } else {
-      response.status(401).json("You can't delete this post.");
-    }
+    // } else {
+    //   response.status(401).json("You can't delete this post.");
+    // }
   } catch (error) {
     console.log(error);
   }

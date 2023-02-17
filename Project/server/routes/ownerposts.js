@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const validateToken = require("../../middleware/validate");
+//const validateToken = require("../../middleware/validate");
 
 // Here we are using destructuring
 const {
@@ -12,7 +12,7 @@ const {
 
 // router.get("/", getAllPosts);
 
-router.post("/create", validateToken, createPetPost);
+router.post("/create", createPetPost);
 
 // router.get("/:id", getPostById);
 

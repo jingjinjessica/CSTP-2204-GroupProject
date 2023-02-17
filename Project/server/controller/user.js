@@ -2,8 +2,7 @@ const User = require("../model/User");
 const bcrypt = require("bcryptjs"); // This library/package will be used to encrypt the password
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
-
-
+const PetPost = require("../model/PetPost");
 
 const registerUser = async (request, response) => {
   const data = request.body;
@@ -16,7 +15,6 @@ const registerUser = async (request, response) => {
     email: data.email,
     password: encryptPassword,
     userType: data.userType
-    
   });
   try {
      const p1 = await newUser.save();
@@ -45,12 +43,10 @@ const getProfileByUserEmail = async (email) => {
 const loginUser = async (request, response) => {
   const data = request.body;
   let foundUser = await User.findOne({ email: data.email });
-
   if (foundUser) {
     // Then we will check for password
     // This will be either true or false
     const matchPassword = await bcrypt.compare(data.password,foundUser.password);
-
     if (matchPassword) {
       // // We are trying to create an access token based on which the user will be able to interact with the website
       const accessToken = jwt.sign({
@@ -59,7 +55,6 @@ const loginUser = async (request, response) => {
         process.env.SECRET_KEY
       );
       response.cookie("access-token", accessToken);
-
       const profileInform = await getProfileByUserEmail(data.email);
       // has profile
       if (profileInform){
@@ -71,11 +66,7 @@ const loginUser = async (request, response) => {
       }
       else if(foundUser.userType === "sitter"){
         response.redirect("/profile/createPetSitter");
-
       }
-
-    
-
       return;
     }
   }
@@ -86,10 +77,8 @@ const loginUser = async (request, response) => {
 const getAllUsers = async (request, response) => {
   try {
     const data = await User.find();
-
     const filteredData = data.map((user) => {
       return {
-        //name: user.name,
         email: user.email,
         userID: user._id,
         createdAt: user.createdAt,
@@ -107,9 +96,32 @@ const getAllUsers = async (request, response) => {
   }
 };
 
+//Dashboard
+function formatDate(date){
+  return "Create date: " +
+  date.getFullYear() +
+  "-" +
+  (date.getMonth() + 1) +
+  "-" +
+  date.getDate();
+}
+const getHistoryPost = async (req,res) => {
+  const token = req.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+  const post = await getPostByEmail(decodedValues.email);
+  const profile = await getProfileByUserEmail(decodedValues.email);
+  res.render("pages/dashboard", {posts: post, petImage:profile.petImage, fd:formatDate})
+}
+const getPostByEmail = async (email) => {
+  const user = await User.findOne({ email: email });
+  const post = await PetPost.find({userID: user._id.toString() })
+  return post;
+}
+
 
 module.exports = {
   registerUser,
   loginUser,
+  getHistoryPost,
   getAllUsers
 };

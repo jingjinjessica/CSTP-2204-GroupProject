@@ -12,7 +12,7 @@ const {
 
 // router.get("/", getAllPosts);
 
-router.post("/create", validateToken, createSitterPost);
+router.post("/create", createSitterPost);
 
 // router.get("/:id", getPostById);
 

@@ -7,22 +7,22 @@ const userRoutes = require("./server/routes/users");
 const profileRoutes = require("./server/routes/profiles");
 const sitterRoutes = require("./server/routes/sitterposts");
 const ownerRoutes = require("./server/routes/ownerposts");
+const listRoutes = require("./server/routes/lists");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-// const multer = require("../library/multer");
-// const cloudinary = require("../library/cloudinary");
+
 require("dotenv").config();
 
 //cookie
 app.use(cookieParser());
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname + '/client/public')))
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname + "/client/public")));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
 app.set("view engine", "ejs");
@@ -38,18 +38,19 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 });
 
 app.get("/index", (req, res) => {
-  res.render("pages/index", { title: "Home" });
+  res.render("pages/index");
+});
+app.get("/login", (req, res) => {
+  res.render("pages/login");
+});
+app.get("/register", (req, res) => {
+  res.render("pages/register");
 });
 
-app.get('/index', (req, res) => {
-  res.render('pages/index', { 'title': 'Home', })
-})
-app.get('/login', (req, res) => {
-  res.render('pages/login', { 'title': 'Login' })
-})
-app.get('/register', (req, res) => {
-  res.render('pages/register', { 'title': 'Register' })
-})
+app.get("/petOwnerPost", (req, res) => {
+  res.render("pages/petOwnerPost");
+});
+
 
 // PET OR USER VIEW
 app.get('/sitterinfo', (req, res) => {
@@ -60,35 +61,27 @@ app.get('/ownerinfo', (req, res) => {
   res.render('pages/ownerInfo')
 })
 
-// app.get('/test', (req, res) => {
-//   res.render('pages/test')
-// })
+//app.get("/petSitterPost", (req, res) => {
+//  res.render("pages/sitterPost");
+//});
 
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
 }
-function postLogger(req, res, next) {
-  console.log("Loading Post requests....");
-  next();
-}
 
-function profileLogger(req,res,next) {
-
-  console.log("Loading Profile Post requests....");
-  next();
-}
 app.use((req, res, next) => {
   next();
 });
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
-app.use("/users", userRoutes );
-app.use("/api/v1/sitterposts", postLogger, sitterRoutes);
-app.use("/api/v1/ownerposts", postLogger, ownerRoutes);
+app.use("/users", userRoutes);
+app.use("/api/v1/sitterposts", sitterRoutes);
+app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
+app.use("/list",listRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

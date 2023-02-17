@@ -46,7 +46,7 @@ const sitterPost = async (event) => {
       },
     });
     if (response) {
-      window.location.href = "/index";
+      window.location.href = "/petsitterlists";
     }
   } catch (error) {
     console.log(error);

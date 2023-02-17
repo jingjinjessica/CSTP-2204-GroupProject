@@ -7,10 +7,16 @@ const createSitterPost = async (request, response) => {
   const data = request.body;
   console.log(data);
 
-  if (request.decodedEmail) {
+  const token = request.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+
+  // request.decodedEmail = decodedValues.email;
+  // console.log("decodedemail", request.decodedEmail);
+
+  if (decodedValues.email) {
     //const decodedValue = jwt.decode(token, { complete: true });
 
-    const findUser = await User.findOne({ email: request.decodedEmail });
+    const findUser = await User.findOne({ email: decodedValues.email });
     console.log(findUser);
 
     if (findUser) {

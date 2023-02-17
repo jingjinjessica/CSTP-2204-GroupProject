@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <div class="jumbotron">
+            <div class="container">
+                <ul>
+                  <% for(var i=0; i < result.length; i++) {%>
+                        <li>
+                            <img src="<%= result[i].profile[0].petImage%>" alt="" width="100" height="100">
+                            <h2> <%=  result[i].profile[0].petName %></h2>
+                            <p>
+                                <%=  result[i].profile[0].province %>, <%=  result[i].profile[0].city %>
+                            </p>
+                            <p>
+                                <%= result[i].desc %>
+                            </p>
+                        </li>
+                        <hr />
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <%- include('../partials/footer') %>
+</body>
+
+</html>

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
-    <script src="./js/ownerProfile.js"></script>
 </head>
 
 <body>
@@ -17,7 +16,7 @@
                     <label class="filebutton">
                         <span>
                             <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
-                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="petOwnerProfile"
+                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="profile"
                                 class="imgCover">
                         </span>
                     </label>
@@ -175,8 +174,5 @@
             </form>
         </div>
 </body>
-<script type="text/javascript">
-    loadProfile();
-  </script>
 
 </html>
