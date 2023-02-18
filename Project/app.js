@@ -71,11 +71,6 @@ app.get("/ownerlist/:postid", async function (req, res, next) {
     const post = await petPost.findById(postid);
     const petowner = post.userID;
     const owner = await profile.findOne({ userID: petowner });
-
-    console.log("this is petowner", petowner);
-    console.log("this is owner", owner);
-
-    console.log("this is post from server", post);
     res.render("[postid]", { post, owner });
   } catch (error) {
     res.status(500).json(error);
