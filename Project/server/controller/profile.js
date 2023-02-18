@@ -169,11 +169,11 @@ const createOwnerPost = async(req,res) => {
         })
         try{
             const output = await newProfile.save();
-            return res.status(201).json({
-                message: "Post Succesfully Created",
-            data: output
-
-            });
+            // return res.status(201).json({
+            //     message: "Post Succesfully Created",
+            // data: output
+            // });
+            return res.redirect("/list/listpost");
         }catch (error) {
             console.info(error);
             return res.status(500).json({

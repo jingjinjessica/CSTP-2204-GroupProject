@@ -14,20 +14,21 @@
             <!-- <button class="post-job-btn"> <a href="/pages/petOwnerPost.ejs"></a>Post a job</button> -->
             <!-- filter -->
             <div class="filter-area">
+                <form action="/list/listpost" method="post">
                 <div class="row filter">
                     <div class="col-sm-2 filter-title-area">
                         <h5 class="filter-title">Filter : </h5>
                     </div>
                     <div class="col-sm-2 type">
-                        <select id="type" class="selectpicker type-selectpicker">
-                            <option>- Select Type -</option>
+                        <select id="type" name="petType" class="selectpicker type-selectpicker">
+                            <option value="any">- Select Type -</option>
                             <option value="cat">Cat</option>
                             <option value="dog">Dog</option>
                         </select>
                     </div>
                     <div class="col-sm-2 age">
-                        <select id="type" class="selectpicker age-selectpicker">
-                            <option>- Select Age -</option>
+                        <select id="type" name="age" class="selectpicker age-selectpicker">
+                            <option value="any">- Select Age -</option>
                             <option value="05">0 - 5</option>
                             <option value="610">6 - 10</option>
                             <option value="1115">11 - 15</option>
@@ -35,8 +36,8 @@
                         </select>
                     </div>
                     <div class="col-sm-3 weight">
-                        <select id="weight" class="selectpicker weight-selectpicker">
-                            <option selected>- Select Weight (lb) -</option>
+                        <select id="weight" name="weight" class="selectpicker weight-selectpicker">
+                            <option selected value="any">- Select Weight (lb) -</option>
                             <option value="1050">10 - 50</option>
                             <option value="51100">51 - 100</option>
                             <option value="101120">101 - 120</option>
@@ -44,9 +45,9 @@
                     </div>
                     <div class="col-sm-2 province">
                         <!-- call the location function -->
-                        <select id="province" onchange="selectCity(this.value)"
+                        <select id="province" name="province" onchange="selectCity(this.value)"
                             class="selectpicker multiple province-selectpicker">
-                            <option class="province-option">- Select Province or Territory -</option>
+                            <option class="province-option" value="any">- Select Province or Territory -</option>
                             <optgroup label="Provinces">
                                 <option value="0">Alberta</option>
                                 <option value="1">British Columbia</option>
@@ -67,8 +68,8 @@
                         </select>
                     </div>
                     <div class="col-sm-2 city">
-                        <select id="city" class="selectpicker multiple city-selectpicker">
-                            <option>- Select City -</option>
+                        <select id="city" name="city" class="selectpicker multiple city-selectpicker">
+                            <option value="any">- Select City -</option>
                             <option value="Burnaby">Burnaby</option>
                             <option value="Coquitlam">Coquitlam</option>
                             <option value="Calgary">Calgary</option>
@@ -96,7 +97,11 @@
                             <option value="Yellowknife">Yellowknife</option>
                         </select>
                     </div>
+                    <div>
+                        <button type="submit" id="searchbtn">Search</button>
+                    </div>
                 </div>
+                </form>
             </div>
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
@@ -104,16 +109,16 @@
                     <div class="card mb-3 post-card">
                         <div class="row no-gutters">
                             <div class="col-md-4 img-area">
-                                <img id="petimg" src="<%= result[i].profile[0].petImage%>" class="card-img"
+                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img"
                                     alt="pet-img">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile[0].petName %>
+                                        <%= result[i].profile.petName %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile[0].province %>, <%= result[i].profile[0].city %>
+                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].desc %>
