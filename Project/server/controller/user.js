@@ -58,7 +58,7 @@ const loginUser = async (request, response) => {
       const profileInform = await getProfileByUserEmail(data.email);
       // has profile
       if (profileInform){
-        response.redirect("/index");
+        response.redirect("/list/listpost");
       }
       // has not profile by type
       else if(foundUser.userType === "owner"){
