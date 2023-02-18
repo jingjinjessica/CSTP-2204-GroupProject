@@ -12,6 +12,8 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const petPost = require("./server/model/PetPost");
+const profile = require("./server/model/Profile");
 
 require("dotenv").config();
 
@@ -54,12 +56,26 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost");
 });
 
-app.get("/ownerinfo", (req, res) => {
-  res.render("pages/ownerinfo");
+app.get("/sitterPostInfo", (req, res) => {
+  res.render("pages/sitterPostInfo");
 });
 
-app.get("/sitterinfo", (req, res) => {
-  res.render("pages/sitterinfo");
+app.get("/ownerPostInfo", (req, res) => {
+  res.render("pages/ownerPostInfo");
+});
+
+app.get("/ownerlist/:postid", async function (req, res, next) {
+  const { postid } = req.params;
+  console.log("this is post id from server", postid);
+  try {
+    const post = await petPost.findById(postid);
+    const petowner = post.userID;
+    const owner = await profile.findOne({ userID: petowner });
+    res.render("[postid]", { post, owner });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+
 });
 
 function userLogger(req, res, next) {
@@ -77,7 +93,7 @@ app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/profile", profileRoutes);
-app.use("/list",listRoutes);
+app.use("/list", listRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

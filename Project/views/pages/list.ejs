@@ -7,6 +7,7 @@
 
 <body>
     <%- include('../partials/header') %>
+
         <div class="container justify-content-center list-area">
             <h3 class="job-title">Looking for a job?</h3>
             <a href="/petOwnerPost" class="btn btn-info post-job-btn" role="button">Post a job</a>
@@ -116,7 +117,7 @@
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].desc %>
-                                            <a href="#" id="learnmore" class="btn stretched-link learn-more">Learn
+                                            <a href="/ownerlist/<%=result[i]._id% id="learnmore" class="btn stretched-link learn-more">Learn
                                                 more...</a>
                                     </p>
                                     <p class="card-text card-date"><small class="text-muted">
