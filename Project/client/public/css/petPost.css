@@ -7,11 +7,11 @@
     flex-direction: row;
     margin-top: 30px;
 }
-  
+
 #slider-div>div {
     margin: 8px;
 }
-  
+
 .slider-label {
     position: absolute;
     background-color: #eee;
@@ -28,6 +28,28 @@
     color: #6B9080;
 }
 
+.province-post-input-group {
+    color: #6B9080;
+    justify-content: center;
+    background: #EAF4F4;
+}
+
+.city-post-input-group {
+    color: #6B9080;
+    width: 80px;
+    justify-content: center;
+    background: #EAF4F4;
+}
+
+.post-desc-area {
+    margin-top: -15px;
+}
+
+.post-textarea {
+    width: 733px;
+    height: 150px;
+}
+
 .startDate {
     margin-right: 7%;
 }
@@ -36,9 +58,32 @@
     margin-left: 7%;
 }
 
-@media (max-width: 750px) {
-    .mediaTest {
-        display: flex;
-        flex-direction: column;
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    .post-form {
+        margin-top: 30px;
+        margin-bottom: -30px;
+    }
+
+    .post-title {
+        width: 358px;
+    }
+
+    .location-area {
+        margin-top: -5px;
+    }
+
+    .post-desc-area {
+        margin-top: -15px;
+    }
+
+    .post-textarea {
+        width: 358px;
+        height: 150px;
+    }
+
+    .post-save-btn {
+        margin-top: 50px;
+        margin-left: -250px;
     }
 }

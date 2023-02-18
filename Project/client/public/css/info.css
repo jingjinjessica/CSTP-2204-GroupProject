@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
 
-body {
-    background-color: #F6FFF8;
-}
-
 /* live chat  */
 /* .live-chat-area {
     position: absolute;
@@ -66,7 +62,7 @@ body {
 
 /* Owner Info */
 .owner-info {
-    background-color: #CCE3DE;
+    /* background-color: #CCE3DE; */
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
@@ -118,7 +114,19 @@ body {
     font-weight: bold;
 }
 
-.location {
+.detail-area {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.location-media,
+.age-media,
+.weight-media,
+.date-media {
+    padding-bottom: 8px;
+}
+
+.location, .date-span,.age-span, .weight-span {
     font-size: 20px;
     color: #6B9080;
     font-family: "Noto Sans";
@@ -126,12 +134,21 @@ body {
     padding-left: 20px;
 }
 
+.post-view-location-label,
+.post-view-age-label,
+.post-view-weight-label {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: bold;
+}
+
 .requirement-area {
     margin-top: 20px;
 }
 
 .requirement-title {
-    font-size: 25px;
+    font-size: 20px;
     color: #6B9080;
     font-family: "Noto Sans";
     font-weight: bold;
@@ -144,6 +161,13 @@ body {
     font-weight: 300;
     padding-left: 20px;
     text-align: justify;
+}
+
+.post-view-date {
+    font-size: 20px;
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: bold;
 }
 
 /* Pet detail
@@ -201,12 +225,12 @@ body {
 }
 
 .photo-experiences {
-   width: 250px;
-   height: 250px;
-   object-fit: cover;
-   border: 3px solid black;
-   margin-left: 12px;
-   margin-right: 12px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 3px solid black;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .photo-inColumns {
@@ -257,7 +281,7 @@ body {
 
     .username {
         font-size: 25px;
-        
+
     }
 
     .location {
@@ -331,7 +355,7 @@ body {
         flex-direction: column;
         /* justify-content: center; */
         align-items: center;
-        
+
     }
 
     .photo-experiences {

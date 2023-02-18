@@ -1,4 +1,5 @@
-.profile-title {
+.profile-title,
+.pet-profile-title {
     color: #6B9080;
 }
 
@@ -11,18 +12,63 @@
 }
 
 .mw-100 {
-    max-width: 80%!important;;
+    max-width: 80% !important;
+    ;
 }
 
 .col-md-5 {
     width: 50%;
 }
 
+.province-input-group-text {
+    color: #6B9080;
+    justify-content: center;
+    background: #EAF4F4;
+}
+
+.city-area {
+    margin-left: -93px;
+}
+
+.city-input-group-text {
+    color: #6B9080;
+    justify-content: center;
+    width: 90px;
+    background: #EAF4F4;
+}
+
+
+.type-area,
+.age-area,
+.weight-area {
+    margin-left: -93px;
+}
+
+.type-input-group-text {
+    color: #6B9080;
+    justify-content: center;
+    width: 114px;
+    background: #EAF4F4;
+}
+
+.age-input-group-text {
+    color: #6B9080;
+    justify-content: center;
+    width: 114px;
+    background: #EAF4F4;
+}
+
+.weight-input-group-text {
+    color: #6B9080;
+    justify-content: center;
+    background: #EAF4F4;
+}
+
 /* PROFILE IMG CSS */
 
 label.filebutton {
-    overflow:hidden;
-    position:relative;
+    overflow: hidden;
+    position: relative;
     border: 2px solid #6B9080;
     border-radius: 15px;
     height: 250px;
@@ -37,10 +83,131 @@ label span input {
     top: -2px;
     left: -700px;
     opacity: 0;
-    filter: alpha(opacity = 0);
+    filter: alpha(opacity=0);
     -ms-filter: "alpha(opacity=0)";
     cursor: pointer;
     _cursor: hand;
     margin: 0;
-    padding-top:0;
+    padding-top: 0;
+}
+
+.owner-imgCover {
+    width: 100%;
+    height: 100%;
+}
+
+.saveBtn {
+    background: #FB5607;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.saveBtn:hover {
+    background: #FACC22;
+    color: #339141;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+
+    .profile-title {
+        padding-bottom: 5px;
+    }
+
+    .pet-profile-title {
+        margin-bottom: -5px;
+    }
+
+    label.filebutton {
+        height: 100px;
+        width: 150px;
+    }
+/* 
+    .imgCover {
+        margin-top: -45px;
+
+        width: 40px;
+    } */
+
+    .profile-name,
+    .profile-email,
+    .profile-phone,
+    .profile-password,
+    .profile-cnfpawd,
+    .profile-petname {
+        width: 250px;
+        margin-left: -30px;
+    }
+
+    .form-label-name,
+    .form-label-email,
+    .form-label-phone,
+    .form-label-pwd,
+    .form-label-cnfpwd,
+    .form-label-petname {
+        margin-left: -80px;
+    }
+
+    .province-area,
+    .city-area {
+        margin-left: -98px;
+    }
+
+    .province-input-group-text {
+        margin-top: 40px;
+        margin-left: -75px;
+        width: 75px !important;
+        height: 38px !important;
+        font-size: 15px !important;
+    }
+
+    .city-input-group-text {
+        margin-top: 5px;
+        margin-left: -70px;
+        width: 75px !important;
+        height: 38px !important;
+        font-size: 15px !important;
+    }
+
+    .province-select {
+        margin-top: 40px;
+        height: 38px !important;
+    }
+
+    .province-group {
+        width: 230px;
+    }
+
+    .city-group {
+        width: 234px;
+    }
+
+    .city-select {
+        margin-top: 5px;
+        height: 38px !important;
+    }
+
+    .type-group {
+        width: 230px;
+    }
+
+    .age-group {
+        width: 230px;
+    }
+
+    .weight-group {
+        width: 230px;
+    }
+
+    .type-input-group-text,
+    .age-input-group-text,
+    .weight-input-group-text {
+        margin-left: -80px;
+    }
+
+    .save-btn-area {
+        margin-left: -235px;
+    }
+
 }
