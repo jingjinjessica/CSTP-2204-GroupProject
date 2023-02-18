@@ -1,57 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('../partials/head') %>   
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="./js/petsitterpost.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <%- include('../partials/head') %>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="./js/petsitterpost.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 </head>
+
 <body>
     <%- include('../partials/header') %>
-    <div class="container justify-content-center">
-        <form onsubmit="sitterPost(event)" class="row g-3 d-flex flex-column align-items-center align-content-center">
-            <div class=" d-flex justify-content-evenly titlePost">
-                <label for="ownerPostTitle" class="form-label">Title:</label>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+        <div class="container justify-content-center">
+            <form onsubmit="sitterPost(event)"
+                class="row g-3 d-flex flex-column align-items-center align-content-center">
+
+                <div class=" d-flex justify-content-center titlePost">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+                        </div>
+                    </div>
                 </div>
-            </div>  
-            <div class="d-flex justify-content-evenly">
-                <label class="form-label">Location:</label>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="province" placeholder="Province" onchange="setProvince(event)">
+
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-2 col-md-7 mt-2">
+                        <label class="col-sm-2 col-form-label text_edit">Location:</label>
+                        <div class="col-md-10">
+                            <div class="form-check">
+                                <div class="input-group">
+                                    <!-- <div class="input-group-prepend">
+                                        <span class="input-group-text">Province or Territory</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="province"
+                                        placeholder="Enter full province or territory name"
+                                        onchange="setProvince(event)"> -->
+                                    <label class="input-group-text">Province or Territory</label>
+                                    <input type="text" class="form-control" id="province" placeholder="Enter full province or territory name" onchange="setProvince(event)">
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="input-group mt-2">
+                                    <!-- <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">City</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter full city name"
+                                        onchange="setCity(event)"> -->
+                                    <label class="input-group-text">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter full city name" onchange="setCity(event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <div class="mw-100 d-flex justify-content-around">
-                <div class="col-md-5 marginPosition">
-                    <input type="text" class="form-control" id="city" placeholder="City" onchange="setCity(event)">
+
+                <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <div class="col-md-12 col-md-10">
+                            <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
+                            <input type="text" id="rate" placeholder="$" onchange="setRate(event)" class="form-control">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label for="amount">Rate(CAD):</label>
-                <input type="text" id="rate" placeholder="$" onchange="setRate(event)">
-               
+
                 <!-- <div id="slider-range"></div>
                 <div class="d-flex flex-row justify-content-between mt-2">
                     <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
                     <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
                 </div> -->
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Experiences:</label>
-                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"></textarea>
-            </div>
 
-            <!-- SUBMIT BUTTON -->
-            <div class="col-12 text-end">
-                <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
-            </div>
-        </form>
-    </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <div class="col-md-12 col-md-10">
+                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                            <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"
+                                    placeholder="Type..."></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="col-12 text-end">
+                    <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
+                </div>
+            </form>
+        </div>
 
 </body>
+
 </html>
 <!-- <script>
     $( function() {

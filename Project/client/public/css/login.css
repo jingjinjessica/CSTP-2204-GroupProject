@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
 
-body {
-    background-color: #F6FFF8;
-}
-
 .login-title {
     font-family: "Noto Sans";
     text-align: center;
     color: #6B9080;
+    margin-left: -20px;
+    margin-right: 20;
     padding-top: 30px;
     padding-bottom: 20px;
     font-family: "Noto Sans";
@@ -15,42 +13,46 @@ body {
     font-weight: 700;
 }
 
-hr {
-    border-color: #000000;
-    border: 2px solid;
+.login-hr {
+    border-color: #B4B1B1;
+    border: 1px solid;
+    width: 400px;
     margin-top: -10px;
     margin-left: 20px;
     margin-right: 20px;
-    width: 400px;
     margin-bottom: 30px;
 }
 
-form {
+.login-form {
     font-family: "Noto Sans";
 }
 
 /* form label */
-.form-outline {
+.login-form-outline {
     font-weight: 600;
     font-size: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    color: #6B9080;
 
 }
 
 /* form input */
-.form-control {
+.login-form-control {
     border-radius: 50px !important;
     width: 435px;
 }
 
 .none-account {
     font-size: 20px;
+    margin-top: -10px;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* submit btn */
-.btn {
+.sign-in-btn {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
     background-color: #FB5607;
@@ -58,10 +60,30 @@ form {
     align-items: center;
 }
 
-.btn:hover {
+.sign-in-btn:hover {
     background-color: #FACC22;
     border-color: #FACC22;
-    color: #000000;
+    color: #339141;
+}
+
+/* Third party */
+.third-party-title {
+    color: #6B9080;
+    font-family: "Noto Sans";
+}
+
+.facebook-btn, .google-btn, .twitter-btn {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    background-color: #FB5607;
+    border-color: #FB5607;
+    align-items: center;
+}
+
+.facebook-btn:hover, .google-btn:hover, .twitter-btn:hover {
+    background-color: #FACC22;
+    border-color: #FACC22;
+    color: #339141;
 }
 
 .divider:after,
@@ -72,36 +94,60 @@ form {
     background: #eee;
 }
 
-.h-custom {
+.divider-or {
+    color: #6B9080;
+    font-family: "Noto Sans";
+    font-weight: bold;
+}
+/* Third party end */
+
+.login-h-custom {
     height: calc(100% - 73px);
 }
 
 
-@media (max-width: 450px) {
-    .img-fluid {
+@media (max-width: 991px) {
+    .login-img {
         margin-top: 50px;
         border-radius: 30px !important; 
     }
 
-    .h-custom {
+    .login-h-custom {
         height: 100%;
     }
 
-    hr {
-        width: 350px;
+    .login-title {
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+    
+    .login-hr {
+        width: 330px;
     }
 
     /* .lead {
         font-size: 15px;
     } */
-
+    .none-account {
+        margin-top: 3px;
+        /* margin-left: 20px;
+        margin-right: 20px; */
+    }
+    
+    .third-party-title {
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+    
     .third-party {
         padding-left: 1rem;
         padding-right: 1rem;
+        margin-top: -10px;
+        margin-bottom: 10px;
     }
 
-    .form-control {
-        width: 390px;
+    .login-form-control {
+        width: 360px;
         margin-top: -5px;
         margin-bottom: -20px;
     }

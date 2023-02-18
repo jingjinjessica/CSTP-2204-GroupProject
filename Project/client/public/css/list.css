@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+/* body {
+    background-color: #CCE3DE;
+} */
+
+.list-area {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.job-title {
+    /* margin-top: 40px;
+    margin-bottom: 40px; */
+    padding-top: 40px;
+    padding-bottom: 60px;
+    width: 377px;
+    height: 58px;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 35px;
+    /* line-height: 58px; */
+    text-shadow:
+        -1px 0px 0px #A4C3B2,
+        4px 0px 0px #A4C3B2,
+        0px -1px 0px #A4C3B2,
+        0px 4px 0px #A4C3B2;
+    color: #6B9080;
+}
+
+.sitter-title {
+    /* margin-top: 40px;
+    margin-bottom: 40px; */
+    padding-top: 40px;
+    padding-bottom: 60px;
+    width: 450px;
+    height: 58px;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 35px;
+    /* line-height: 58px; */
+    text-shadow:
+        -1px 0px 0px #A4C3B2,
+        4px 0px 0px #A4C3B2,
+        0px -1px 0px #A4C3B2,
+        0px 4px 0px #A4C3B2;
+    color: #6B9080;
+}
+
+/* filter */
+.filter-title-area {
+    margin-top: -1px;
+    margin-right: -85px;
+    font-family: 'Noto Sans';
+    color: #6B9080;
+}
+
+.filter-title {
+    font-size: 20px !important;
+}
+
+.filter-area {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.province {
+    margin-left: -70px;
+}
+
+.city {
+    margin-left: 67px;
+}
+
+.type {
+    margin-left: -3px;
+}
+
+.age {
+    margin-left: -30px;
+}
+
+.weight {
+    margin-left: -36px;
+}
+
+.type-selectpicker,
+.weight-selectpicker,
+.province-selectpicker,
+.city-selectpicker,
+.age-selectpicker {
+    font-size: 15px;
+    padding: 2px 3px;
+    border-radius: 10px;
+    border: 2px #A4C3B2 solid;
+    color: #6B9080;
+    font-size: 13px !important;
+    text-align: center;
+}
+
+.province-selectpicker {
+    width: 218px;
+    font-size: 13px !important;
+}
+
+.city-selectpicker {
+    width: 200px;
+}
+
+.post-job-btn {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 1080px;
+    top: 118px;
+    background: #FB5607;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 35px;
+    color: #F6FFF8;
+}
+
+.post-job-btn:hover {
+    background-color: #FACC22;
+    color: #339141;
+}
+
+.post-card {
+    border: #6B9080 2px solid;
+    border-radius: 15px 50px;
+    background-color: #CCE3DE;
+}
+
+.card-img {
+    /* padding: 30px 20px; */
+    /* width: 300px;
+    height: 250px; */
+    margin: 30px 10px;
+    border: #6B9080 3px dotted;
+    border-radius: 10px;
+    box-shadow: rgba(38, 166, 154, 1) 0px 7px 29px 0px;
+}
+
+.card-title {
+    font-family: 'Noto Sans';
+    color: #6B9080;
+    font-weight: 600;
+}
+
+.card-content-list {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.location {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Noto Sans';
+    color: #6B9080;
+}
+
+.info {
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Noto Sans';
+    color: #6B9080;
+    text-align: justify;
+}
+
+.learn-more {
+    font-size: 14px;
+    font-weight: 600;
+    /* width: 150px; */
+    border: none;
+    color: #6B9080;
+}
+
+.learn-more:hover {
+    color: #FB5607;
+    /* transform: scale(1.1); */
+
+}
+
+.text-muted {
+    margin-left: 450px;
+    /* margin-right: 20px; */
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Noto Sans';
+}
+
+@media (max-width: 991px) {
+    .job-title {
+        padding-top: 40px;
+        padding-bottom: 10px;
+        font-size: 25px;
+        width: 210px;
+    }
+
+    .sitter-title {
+        padding-top: 40px;
+        padding-bottom: 10px;
+        font-size: 25px;
+        width: 300px;
+    }
+
+    .list-area {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .filter-title {
+        font-size: 18px !important;
+    }
+
+    .filter-title-area {
+        margin-top: 3px;
+        margin-right: -85px;
+    }
+
+    .filter-area {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+
+    .type-selectpicker,
+    .weight-selectpicker,
+    .province-selectpicker,
+    .city-selectpicker,
+    .age-selectpicker {
+        width: 300px;
+        text-align: center;
+    }
+
+    .province {
+        margin-left: 0px;
+    }
+
+    .city {
+        margin-left: 0px;
+    }
+
+    .type {
+        margin-left: 0px;
+    }
+
+    .age {
+        margin-left: 0px;
+    }
+
+    .weight {
+        margin-left: 0px;
+    }
+
+    .card-img {
+        margin: 20px 0px;
+        border-radius: 15px 50px;
+    }
+
+    .text-muted {
+        margin-left: 200px;
+    }
+
+    .post-job-btn {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        font-size: 14px;
+        left: 270px;
+        top: 20px;
+    }
+
+}
+
+/* 
+.edit-profile-btn {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 1000px;
+    top: 100px;
+    background: #6B9080;
+    border-radius: 10px;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 35px;
+    color: #F6FFF8;
+    border: none;
+} */
+
+
+/* @media (max-width: 450px) {
+    .edit-profile-btn {
+        width: 100px;
+        height: 50px;
+        left: 280px;
+        top: 355px;
+    }
+
+    .post-job-btn {
+        width: 100px;
+        height: 50px;
+        left: 280px;
+        top: 410px;
+    }
+}
+
+@media (max-width: 375px) {
+    .edit-profile-btn {
+        width: 100px;
+        height: 50px;
+        left: 254px;
+        top: 320px;
+    }
+
+    .post-job-btn {
+        width: 100px;
+        height: 50px;
+        left: 254px;
+        top: 375px;
+    }
+} */

@@ -75,6 +75,7 @@ app.get("/ownerlist/:postid", async function (req, res, next) {
   } catch (error) {
     res.status(500).json(error);
   }
+
 });
 
 function userLogger(req, res, next) {
