@@ -13,6 +13,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const petPost = require("./server/model/PetPost");
+const profile = require("./server/model/Profile");
 
 require("dotenv").config();
 
@@ -68,8 +69,14 @@ app.get("/ownerlist/:postid", async function (req, res, next) {
   console.log("this is post id from server", postid);
   try {
     const post = await petPost.findById(postid);
+    const petowner = post.userID;
+    const owner = await profile.findOne({ userID: petowner });
+
+    console.log("this is petowner", petowner);
+    console.log("this is owner", owner);
+
     console.log("this is post from server", post);
-    res.render("[postid]", { post });
+    res.render("[postid]", { post, owner });
   } catch (error) {
     res.status(500).json(error);
   }
