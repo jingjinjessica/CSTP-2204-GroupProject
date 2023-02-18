@@ -137,10 +137,11 @@ const createOwnerPost = async(req,res) => {
             updateClause["$set"]["petImage"] = petImageResult.url;
           }
           Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
-          return res.status(200).json({
-            message: "updated Succesfully",
-            data
-          })
+          // return res.status(200).json({
+          //   message: "updated Succesfully",
+          //   data
+          // })
+          return res.redirect("/list/listpost")
           
         }).catch((error) => {
             console.log(error);
