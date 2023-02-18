@@ -1,126 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('../partials/head') %>   
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="./js/petsitterpost.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <%- include('../partials/head') %>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="./js/petsitterpost.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 </head>
+
 <body>
     <%- include('../partials/header') %>
-    <div class="container justify-content-center">
-        <form onsubmit="sitterPost(event)" class="row g-3 d-flex flex-column align-items-center align-content-center">
-            <div class=" d-flex justify-content-evenly titlePost">
-                <label for="ownerPostTitle" class="form-label">Title:</label>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="title" onchange="setTitle(event)">
-                </div>
-            </div>  
-            <div class="d-flex justify-content-evenly">
-                <label class="form-label">Location:</label>
-                <div class="col-md-5">
-                    <!-- <div class="input-group">
-                        <label class="input-group-text">Province</label>
-                        <select id="province" onchange="selectCity(this.value)">
-                            class="selectpicker multiple post-province-selectpicker">
-                            <option class="province-option">- Select Province or Territory -</option>
-                            <optgroup label="Provinces">
-                                <option value="0">Alberta</option>
-                                <option value="1">British Columbia</option>
-                                <option value="2">Manitoba</option>
-                                <option value="3">New Brunswick</option>
-                                <option value="4">Newfoundland and Labrador</option>
-                                <option value="5">Nova Scotia</option>
-                                <option value="6">Ontario</option>
-                                <option value="7">Prince Edward Island</option>
-                                <option value="8">Quebec</option>
-                                <option value="9">Saskatchewan</option>
-                            </optgroup>
-                            <optgroup label="Territories">
-                                <option value="10">Northwest Territories</option>
-                                <option value="11">Yukon</option>
-                                <option value="12">Nunavut</option>
-                            </optgroup>
-                        </select>
-                    </div> -->
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Province or Territory</span>
-                        </div>
-                        <input type="text" class="form-control" id="province" placeholder="Enter full province or territory name"
-                        onchange="setProvince(event)">
-                    </div>
-                    
-                </div>
-            </div>
+        <div class="container justify-content-center">
+            <form onsubmit="sitterPost(event)"
+                class="row g-3 d-flex flex-column align-items-center align-content-center">
 
-            <div class="mw-100 d-flex justify-content-around">
-                <div class="col-md-5 marginPosition">
-                    <!-- <div class="input-group">
-                        <label class="input-group-text">City</label>
-                        <select id="city" class="selectpicker post-city-selectpicker">
-                            <option>- Select City -</option>
-                            <option value="Burnaby">Burnaby</option>
-                            <option value="Coquitlam">Coquitlam</option>
-                            <option value="Calgary">Calgary</option>
-                            <option value="Charlottetown">Charlottetown</option>
-                            <option value="Edmonton">Edmonton</option>
-                            <option value="Moncton">Moncton</option>
-                            <option value="Montreal">Montreal</option>
-                            <option value="Northvancouver">North Vancouver</option>
-                            <option value="Fredericton">Fredericton</option>
-                            <option value="Halifax">Halifax</option>
-                            <option value="Iqaluit">Iqaluit</option>
-                            <option value="Quebeccity">Quebec City</option>
-                            <option value="Richmond">Richmond</option>
-                            <option value="Regina">Regina</option>
-                            <option value="Surrey">Surrey</option>
-                            <option value="Stjohns">St. John's</option>
-                            <option value="Saskatoon">Saskatoon</option>
-                            <option value="Toronto">Toronto"</option>
-                            <option value="Victoria">Victoria</option>
-                            <option value="Vancouver">Vancouver</option>
-                            <option value="Whiterock">White Rock</option>
-                            <option value="Williamslake">Williams Lake</option>
-                            <option value="Winnipeg">Winnipeg</option>
-                            <option value="Whitehorse">Whitehorse</option>
-                            <option value="Yellowknife">Yellowknife</option>
-                        </select>
-                    </div> -->
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">City</span>
+                <div class=" d-flex justify-content-center titlePost">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="title" onchange="setTitle(event)">
                         </div>
-                        <input type="text" class="form-control" id="city" placeholder="Enter full city name"
-                            onchange="setCity(event)">
                     </div>
                 </div>
-            </div>
-            <div>
-                <label for="amount">Rate(CAD):</label>
-                <input type="text" id="rate" placeholder="$" onchange="setRate(event)">
-               
+
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-2 col-md-7 mt-2">
+                        <label class="col-sm-2 col-form-label text_edit">Location:</label>
+                        <div class="col-md-10">
+                            <div class="form-check">
+                                <div class="input-group">
+                                    <!-- <div class="input-group-prepend">
+                                        <span class="input-group-text">Province or Territory</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="province"
+                                        placeholder="Enter full province or territory name"
+                                        onchange="setProvince(event)"> -->
+                                    <label class="input-group-text">Province or Territory</label>
+                                    <input type="text" class="form-control" id="province" placeholder="Enter full province or territory name" onchange="setProvince(event)">
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <div class="input-group mt-2">
+                                    <!-- <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">City</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter full city name"
+                                        onchange="setCity(event)"> -->
+                                    <label class="input-group-text">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter full city name" onchange="setCity(event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <div class="col-md-12 col-md-10">
+                            <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
+                            <input type="text" id="rate" placeholder="$" onchange="setRate(event)" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
                 <!-- <div id="slider-range"></div>
                 <div class="d-flex flex-row justify-content-between mt-2">
                     <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
                     <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
                 </div> -->
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Experiences:</label>
-                <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)" placeholder="Type..."></textarea>
-            </div>
 
-            <!-- SUBMIT BUTTON -->
-            <div class="col-12 text-end">
-                <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
-            </div>
-        </form>
-    </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <div class="col-md-12 col-md-10">
+                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                            <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"
+                                    placeholder="Type..."></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="col-12 text-end">
+                    <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
+                </div>
+            </form>
+        </div>
 
 </body>
+
 </html>
 <!-- <script>
     $( function() {
