@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); -%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <body>
+        <%- include('../partials/header'); -%>
+            <section class="section owner-info">
+                <div class="container">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-5">
+                            <div class="info-avatar">
+                                <img id="userImg" src="/image/person-window.jpg" class="info-img" alt="user-image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-text go-to">
+                                <div class="row info-list">
+                                    <div class="col-md-12">
+                                        <div class="info-area">
+                                            <div class="media username">
+                                                <span id="username">Name</span>
+                                            </div>
+                                            <div class="media">
+                                                <span class="location">Province&sbquo; City</span>
+                                            </div>
+                                            <div class="media requirement-area">
+                                                <span class="rate-title">Rate:</span>
+                                                <p class="rate-from text-break" id="rate">From $</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section sitter-info">
+                <div class="container">
+                    <div class="row align-items-center">
+                        
+                        <div class="info-text go-to">
+                            <div class="row info-list">
+                                <div class="col-md-12">
+                                    <div class="intro-area">
+                                        <div class="media">
+                                            <span class="petname" id="aboutMe">About me</span>
+                                            <p class="aboutMe-description">
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                        <div class="media intro-area">
+                                            <span class="intro-title">Experiences:</span>
+                                            <p class="experiences" id="experiences">
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.
+                                            </p>
+                                            <div class="photo-inColumns">
+                                                <img src="/image/black-cat.jpg" alt="photo1" class="photo-experiences">
+                                                <img src="/image/cat-dog-cuddle.jpg" alt="photo2" class="photo-experiences">
+                                                <img src="/image/three-pets-laying.jpg" alt="photo3" class="photo-experiences">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIVE CHAT -->
+
+            <div id="chatBox">
+                <header class="clearfix">
+                   
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Recent Chat</h4>
+                   
+                </header>
+          
+                <div class="chat">
+                    <div id="chatContainer">
+                        <div id="friendslist">
+                            <div id="friends">
+                                <div class="friend">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                                    <p>
+                                        <strong>Miro Badev</strong>
+                                        <span>mirobadev@gmail.com</span>
+                                    </p>
+                                    <!-- <div class="status available"></div> -->
+                                </div>
+        
+                                <div id="search">
+                                    <input type="text" id="searchfield" value="Search contacts..." />
+                                </div>
+        
+                            </div>                
+        
+                        </div>	
+        
+                            <div id="chatview" class="p1">   
+                                <!--FRIEND EXAMPLE -->
+                                <div id="profileInfo">
+            
+                                    <div id="close">
+                                        <div class="cy"></div>
+                                        <div class="cx"></div>
+                                    </div>
+            
+                                    <p>Miro Badev</p>
+                                    <span>miro@badev@gmail.com</span>
+                                </div>
+
+                                <div id="chat-content">
+                                    
+                                    <!-- You can use this id or manually create it from server -->
+                                    <!-- For the pet Sitter page, pet owner will placed of the right side -->
+                                    <!-- while pet sitter will be the left side -->
+                                    <div class="owner-right" id="ownerMsg">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" class="photoSizeEdit"/>
+                                        <div class="text-bubble">
+                                            <p class="owner-rightMsg">Hello</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="sitter-left" id="sitterMsg">
+                                        <img src="/image/person-window.jpg" alt="pet sitter" class="photoSizeEdit">
+                                        <div class="text-bubble">
+                                            <p class="sitter-leftMsg">BELLLOO</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+        
+                                <div id="sendmessage">
+                                    <input type="text" value="Send message..." />
+                                    <button id="send">Send</button>
+                                </div>
+        
+                            </div>        
+                    </div>	
+                        <!-- end live-chat -->
+          
+                </div> <!-- end chat -->
+          
+            </div> <!-- end live-chat -->
+          
+
+            
+
+            <!-- <div class="floating-container">
+                <div class="floating-button">
+                    <h4 class="live-chat-title">Live Chat</h4>
+                    <img src="https://img.icons8.com/ios/50/00000/chat-message--v1.png" class="live-chat" alt="live-chat" onclick="openLiveChat()" />
+                    <a><i class="material-symbols-outlined live-chat"><!--sms--></i></a></div>
+            </div> -->
+            <%- include('../partials/footer') %>
+    </body>
+</html>
+<script>
+    (function() {
+ 
+    $('#chatBox header').on('click', function() {
+ 
+       $('.chat').slideToggle(300, 'swing');
+ 
+    });
+ 
+    }) ();
+ 
+    $(document).ready(function(){
+ 
+        var preloadbg = document.createElement("img");
+        preloadbg.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/timeline1.png";
+    
+        $("#searchfield").focus(function(){
+        if($(this).val() == "Search contacts..."){
+            $(this).val("");
+        }
+        });
+        $("#searchfield").focusout(function(){
+        if($(this).val() == ""){
+            $(this).val("Search contacts...");
+            
+        }
+        });
+    
+        $("#sendmessage input").focus(function(){
+        if($(this).val() == "Send message..."){
+            $(this).val("");
+        }
+        });
+        $("#sendmessage input").focusout(function(){
+        if($(this).val() == ""){
+            $(this).val("Send message...");
+            
+        }
+        });
+       
+ 
+        $(".friend").each(function(){		
+        $(this).click(function(){
+            var childOffset = $(this).offset();
+            var parentOffset = $(this).parent().parent().offset();
+            var childTop = childOffset.top - parentOffset.top;
+            var clone = $(this).find('img').eq(0).clone();
+            var top = childTop+17+"px";
+            
+            $(clone).css({'top': top}).addClass("floatingImg").appendTo("#chatContainer");									
+            
+            setTimeout(function(){$("#profileInfo p").addClass("animate");$("#profileInfo").addClass("animate");}, 100);
+            setTimeout(function(){
+                $("#chat-content").addClass("animate");
+                $('.cx, .cy').addClass('s1');
+                setTimeout(function(){$('.cx, .cy').addClass('s2');}, 100);
+                setTimeout(function(){$('.cx, .cy').addClass('s3');}, 200);			
+            }, 150);														
+            
+            $('.floatingImg').animate({
+                'width': "50px",
+                'left':'15px',
+                'top':'20px'
+            }, 200);
+            
+            var name = $(this).find("p strong").html();
+            var email = $(this).find("p span").html();														
+            $("#profileInfo p").html(name);
+            $("#profileInfo span").html(email);			
+            
+            $(".message").not(".right").find("img").attr("src", $(clone).attr("src"));
+
+            $('#friendslist').fadeOut();
+            $('#chatview').fadeIn();
+        
+            // CLOSING THE CHAT CONTENT (WORKS)
+            $('#close').unbind("click").click(function(){				
+                $("#chat-content, #profileInfo, #profileInfo p").removeClass("animate");
+                $('.cx, .cy').removeClass("s1 s2 s3");
+                $('.floatingImg').animate({
+                    'width': "50px",
+                    'top':top,
+                    'left': '15px'
+                }, 200, function(){$('.floatingImg').remove()});				
+                
+                setTimeout(function(){
+                    $('#chatview').fadeOut();
+                    $('#friendslist').fadeIn();				
+                }, 50);
+            });   
+        });
+    });			
+});
+</script>
