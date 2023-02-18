@@ -62,6 +62,22 @@ app.get("/ownerPostInfo", (req, res) => {
   res.render("pages/ownerPostInfo");
 });
 
+app.get("/list/:postid", async function (req, res, next) {
+  const { postid } = req.params;
+  console.log("this is post id from server", postid);
+  try {
+    const post = await PetPost.findById(postid);
+    console.log("this is post from server", post);
+    //res.status(200).json(post);
+    res.render("[postid]", { post });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+  // if (!post) {
+  //   res.status(500).json(error);
+  // }
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
