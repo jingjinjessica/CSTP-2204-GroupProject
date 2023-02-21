@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../partials/head') %>
 </head>
 
 <body>
     <%- include('../partials/header') %>
-        
+
         <div class="container justify-content-center">
             <h5 class="profile-title text-center mt-5">My Profile</h5>
-            <form class="row g-3 d-flex flex-column align-items-center" id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-                
+            <form class="row g-3 d-flex flex-column align-items-center" id="ownerprofile" action="/profile/create"
+                method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+
                 <!-- CREATE PET OWNER PROFILE -->
                 <div class="col-12 imgPosition">
                     <label class="filebutton">
                         <span>
                             <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
-                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="profile"
-                                class="imgCover">
+                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="profile" class="imgCover">
                         </span>
                     </label>
                 </div>
-                
+
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label for="inputEmail4" class="form-label text_edit">Name:</label>
                     <div class="col-md-5">
-                        <input type="text" name="name" class="form-control" id="name" value="<%= name%>" >
+                        <input type="text" name="name" class="form-control" id="name" value="<%= name%>">
                     </div>
                 </div>
 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Email:</label>
                     <div class="col-md-5">
-                        
-                        <input name="email" type="email" class="form-control" id="email"  value="<%= email%>" >
+
+                        <input name="email" type="email" class="form-control" id="email" value="<%= email%>">
                     </div>
                 </div>
-                
+
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Phone:</label>
                     <div class="col-md-5">
-                        
+
                         <input id="phone" name="phone" type="text" class="form-control" id="phone" value="<%= phone%>">
                     </div>
                 </div>
@@ -48,8 +49,7 @@
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Location:</label>
                     <div class="col-md-5">
-                        
-                        <div class="input-group">
+                        <!-- <div class="input-group">
                             <label  class="input-group-text">Province</label>
                             <select id="province" name="province" class="form-select" value="<%= province%>">
                                 <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
@@ -57,48 +57,151 @@
                                 <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
                                 <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
                             </select>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-around">
-                    <div class="col-md-5 marginPosition">
+                        </div> -->
+                        <!-- <div class="input-group">
+                            <label class="input-group-text">Province</label>
+                            <select id="province" name="province" onchange="selectCity(this.value)" class="form-select"
+                                value="<%= province%>">
+                                <option value="Choose" <%=province==="Choose" ?"selected":"" %>>Choose...</option>
+                                <option id="0" value="0" <%=province==="Alberta" ?"selected":"" %>>Alberta</option>
+                                <option id="1" value="1" <%=province==="BritishColumbia" ?"selected":"" %>>British
+                                    Columbia</option>
+                                <option id="2" value="2" <%=province==="Manitoba" ?"selected":"" %>>Manitoba</option>
+                                <option id="3" value="3" <%=province==="NewBrunswick" ?"selected":"" %>>New Brunswick
+                                </option>
+                                <option id="4" value="4" <%=province==="NewfoundlandandLabrador" ?"selected":"" %>
+                                    >Newfoundland and Labrador</option>
+                                <option id="5" value="5" <%=province==="NovaScotia" ?"selected":"" %>>Nova Scotia
+                                </option>
+                                <option id="6" value="6" <%=province==="Ontario" ?"selected":"" %>>Ontario</option>
+                                <option id="7" value="7" <%=province==="PrinceEdwardIsland" ?"selected":"" %>>Prince
+                                    Edward Island</option>
+                                <option id="8" value="8" <%=province==="Quebec" ?"selected":"" %>>Quebec</option>
+                                <option id="9" value="9" <%=province==="Saskatchewan" ?"selected":"" %>>Saskatchewan
+                                </option>
+                                <option id="10" value="10" <%=province==="NorthwestTerritories" ?"selected":"" %>
+                                    >Northwest Territories</option>
+                                <option id="11" value="11" <%=province==="Yukon" ?"selected":"" %>>Yukon</option>
+                                <option id="12" value="12" <%=province==="Nunavut" ?"selected":"" %>>Nunavut</option>
+                            </select>
+                        </div> -->
                         <div class="input-group">
-                            <label  class="input-group-text">City</label>
-                            <select id="city" name="city" class="form-select" value="<%= city%>">
-                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
-                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
-                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
+                            <label class="input-group-text">Province</label>
+                            <select id="province" name="province" onchange="optionCities()" class="form-select"
+                                value="<%= province%>">
+                                <option value="" <%=province==="Choose" ?"selected":"" %>>Choose...</option>
+                                <option id="0" value="Alberta" <%=province==="Alberta" ?"selected":"" %>>Alberta
+                                </option>
+                                <option id="1" value="British Columbia" <%=province==="British Columbia" ?"selected":""
+                                    %>>British
+                                    Columbia</option>
+                                <option id="2" value="Manitoba" <%=province==="Manitoba" ?"selected":"" %>>Manitoba
+                                </option>
+                                <option id="3" value="New Brunswick" <%=province==="New Brunswick" ?"selected":"" %>>New
+                                    Brunswick
+                                </option>
+                                <option id="4" value="Newfoundland and Labrador"
+                                    <%=province==="Newfound landand Labrador" ?"selected":"" %>
+                                    >Newfoundland and Labrador</option>
+                                <option id="5" value="Nova Scotia" <%=province==="Nova Scotia" ?"selected":"" %>>Nova
+                                    Scotia
+                                </option>
+                                <option id="6" value="Ontario" <%=province==="Ontario" ?"selected":"" %>>Ontario
+                                </option>
+                                <option id="7" value="Prince
+                                Edward Island" <%=province==="Prince Edward Island" ?"selected":"" %>>Prince
+                                    Edward Island</option>
+                                <option id="8" value="Quebec" <%=province==="Quebec" ?"selected":"" %>>Quebec</option>
+                                <option id="9" value="Saskatchewan" <%=province==="Saskatchewan" ?"selected":"" %>
+                                    >Saskatchewan
+                                </option>
+                                <option id="10" value="Northwest Territories" <%=province==="Northwest Territories"
+                                    ?"selected":"" %>
+                                    >Northwest Territories</option>
+                                <option id="11" value="Yukon" <%=province==="Yukon" ?"selected":"" %>>Yukon</option>
+                                <option id="12" value="Nunavut" <%=province==="Nunavut" ?"selected":"" %>>Nunavut
+                                </option>
                             </select>
                         </div>
+
+                        <div class="col-md-5">
+                            <!-- <div class="input-group">
+                                <label  class="input-group-text">City</label>
+                                <select id="city" name="city" class="form-select" value="<%= city%>">
+                                    <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
+                                    <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
+                                    <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
+                                    <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
+                                </select>
+                            </div> -->
+                            <div class="input-group">
+                                <label class="input-group-text">City</label>
+                                <select id="city" name="city" class="form-select selectpicker" onchange="setCity(event)"
+                                    value="<%= city%>">
+                                    <option value="Choose" <%=city==="Choose" ?"selected":"" %>>Choose...</option>
+                                    <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>>Burnaby</option>
+                                    <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>>Coquitlam</option>
+                                    <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>>Calgary</option>
+                                    <option value="Charlottetown" <%=city==="Charlottetown" ?"selected":"" %>
+                                        >Charlottetown
+                                    </option>
+                                    <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>>Edmonton</option>
+                                    <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>>Moncton</option>
+                                    <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>>Montreal</option>
+                                    <option value="Northvancouver" <%=city==="NorthVancouver" ?"selected":"" %>>North
+                                        Vancouver</option>
+                                    <option value="Fredericton" <%=city==="Fredericton" ?"selected":"" %>>Fredericton
+                                    </option>
+                                    <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>>Halifax</option>
+                                    <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>>Iqaluit</option>
+                                    <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>>Quebec City
+                                    </option>
+                                    <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>>Richmond</option>
+                                    <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina</option>
+                                    <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey</option>
+                                    <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St. John's</option>
+                                    <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>>Saskatoon</option>
+                                    <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>>Toronto</option>
+                                    <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>>Victoria</option>
+                                    <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>>Vancouver</option>
+                                    <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>>White Rock
+                                    </option>
+                                    <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":"" %>>Williams
+                                        Lake
+                                    </option>
+                                    <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>>Winnipeg</option>
+                                    <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>>Whitehorse
+                                    </option>
+                                    <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":"" %>>Yellowknife
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Password:</label>
                     <div class="col-md-5">
-                        
                         <input name="password" type="password" class="form-control" id="pwd">
                     </div>
                 </div>
-                
+
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Confirm <br> Password:</label>
                     <div class="col-md-5">
                         <input name="cnfpwd" type="password" class="form-control" id="cnfpwd">
                     </div>
                 </div>
-                
+
 
                 <h5 class="profile-title text-center">My Pet</h5>
                 <div class="col-md-5 imgPosition">
                     <label class="filebutton">
                         <span>
                             <input type="file" id="petImg" name="petImg" onchange="attachMyPetPic(this)">
-                            <img src="<%= petImage%>" alt="Add your profile picture" id="petProfile"
-                                class="imgCover">
+                            <img src="<%= petImage%>" alt="Add your profile picture" id="petProfile" class="imgCover">
                         </span>
                     </label>
                 </div>
@@ -108,7 +211,26 @@
                     <div class="col-md-5">
                         <div class="row g-3">
                             <div class="col">
-                                <input type="text" class="form-control" id="petName" name="petName" value="<%= petName%>">
+                                <input type="text" class="form-control" id="petName" name="petName"
+                                    value="<%= petName%>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mw-100 d-flex justify-content-center">
+                    <div class="col-md-5 marginPosition">
+                        <div class="row g-3">
+                            <div class="col">
+                                <div class="input-group">
+                                    <label class="input-group-text">Pet Type</label>
+                                    <select id="petType" name="petType" class="form-select" onchange="optionWeight()"
+                                        value="<%= petType%>">
+                                        <option value="Choose" <%=petType==="Choose" ?"selected":"" %>>Choose...
+                                        </option>
+                                        <option value="Dog" <%=petType==="dog" ?"selected":"" %>>Dog</option>
+                                        <option value="Cat" <%=petType==="cat" ?"selected":"" %>>Cat</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,10 +243,10 @@
                                 <div class="input-group">
                                     <label class="input-group-text">Age</label>
                                     <select id="petAge" name="petAge" class="form-select" value="<%= petAge%>">
-                                        <option value="Choose" <%= petAge==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="05" <%= petAge==="05"?"selected":"" %>>0 - 5</option>
-                                        <option value="610" <%= petAge==="610"?"selected":"" %>>6 - 10</option>
-                                        <option value="1115" <%= petAge==="1115"?"selected":"" %>>11 -15</option>
+                                        <option value="Choose" <%=petAge==="Choose" ?"selected":"" %>>Choose...</option>
+                                        <option value="Puppy" <%=petAge==="Puddy" ?"selected":"" %>>Puppy</option>
+                                        <option value="Audlt" <%=petAge==="Audlt" ?"selected":"" %>>Audlt</option>
+                                        <option value="Oldest" <%=petAge==="Oldest" ?"selected":"" %>>Oldest</option>
                                     </select>
                                 </div>
                             </div>
@@ -138,11 +260,33 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label class="input-group-text">Weight (lbs)</label>
-                                    <select name="petWeight" id="petWeight" class="form-select" value="<%= petWeight %>">
-                                        <option value="Choose" <%= petWeight==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="1050" <%= petWeight==="1050"?"selected":"" %>>10 - 50</option>
-                                        <option value="51100" <%= petWeight==="51100"?"selected":"" %>>51 - 100</option>
-                                        <option value="101120" <%= petWeight==="101120"?"selected":"" %>>101 - 120</option>
+                                    <select name="petWeight" id="petWeight" class="form-select"
+                                        value="<%= petWeight %>">
+                                        <option value="Choose" <%=petWeight==="Choose" ?"selected":"" %>>Choose...
+                                        </option>
+                                        <option value="less than 5 lbs" <%=petWeight==="less than 5 lbs" ?"selected":"" %>>less than 5 lbs
+                                        </option>
+                                        <option value="less than 7 lbs" <%=petWeight==="less than 7 lbs" ?"selected":"" %>>less than 7 lbs
+                                        </option>
+                                        <option value="5 - 10 lbs" <%=petWeight==="5 - 10 lbs" ?"selected":"" %>>5 - 10
+                                            lbs</option>
+                                        <option value="7 - 10 lbs" <%=petWeight==="7 - 10 lbs" ?"selected":"" %>>7 - 10
+                                            lbs</option>
+                                        <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs" ?"selected":"" %>>10 -
+                                            20 lbs</option>
+                                        <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs" ?"selected":"" %>>10 -
+                                            20 lbs
+                                        </option>
+                                        <option value="20 - 30 lbs" <%=petWeight==="20 - 30 lbs" ?"selected":"" %>>20 -
+                                            30 lbs</option>
+                                        <option value="30 - 40 lbs" <%=petWeight==="30 - 40 lbs" ?"selected":"" %>>30 -
+                                            40 lbs</option>
+                                        <option value="Greater than 20 lbs" <%=petWeight==="Greater than 20 lbs"
+                                            ?"selected":"" %>>Greater than 20 lbs
+                                        </option>
+                                        <option value="Greater than 50 lbs" <%=petWeight==="Greater than 50 lbs" ?"selected":"" %>
+                                            >Greater than 50 lbs
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -150,24 +294,9 @@
                     </div>
                 </div>
 
-                <div class="mw-100 d-flex justify-content-center">
-                    <div class="col-md-5 marginPosition">
-                        <div class="row g-3">
-                            <div class="col">
-                                <div class="input-group">
-                                    <label class="input-group-text">Pet Type</label>
-                                    <select id="petType" name="petType" class="form-select" value="<%= petType%>">
-                                        <option value="Choose" <%= petType==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="dog" <%= petType==="dog"?"selected":"" %>>Dog</option>
-                                        <option value="cat" <%= petType==="cat"?"selected":"" %>>Cat</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                
+
+
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary saveBtn">Save</button>
                 </div>
