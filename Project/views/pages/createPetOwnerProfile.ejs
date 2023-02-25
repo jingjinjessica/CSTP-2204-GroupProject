@@ -14,14 +14,14 @@
                         <h3>My Profile</h3>
                         <hr>
                     </div>
-                    <form class="file-upload">
+                    <form class="file-upload" id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                         <div class="row mb-5 gx-3">
                             <div class="col">
                                 <!-- User detail -->
                                 <div class="bg-secondary-soft px-4 py-5 rounded">
                                     <div class="row g-3">
                                         <div class="text-center file-input-container">
-                                            <input type="file" id="avatar-file-input" onchange="attachMyProfile(this)" />
+                                            <input type="file" id="avatar-file-input" name="myImg" onchange="attachMyProfile(this)" />
                                             <label for="avatar-file-input">
                                                 <div class="square position-relative display-2 mb-3">
                                                     <i id="avatar-icon"
@@ -212,20 +212,19 @@
                                 <h3>My Pet</h3>
                                 <hr>
                             </div>
-                            <form class="file-upload">
                                 <div class="row mb-5 gx-3">
                                     <div class="col">
                                         <div class="bg-secondary-soft px-4 py-5 rounded">
                                             <div class="row g-3">
                                                 <div class="text-center file-input-container">
-                                                    <input type="file" id="pet-img" onchange="attachMyPetPic(this)" />
+                                                    <input type="file" id="pet-img" name="petImg" onchange="attachMyPetPic(this)" >
                                                     <label for="pet-img">
                                                         <div class="square position-relative display-2 mb-3">
                                                             <i id="pet-icon"
                                                                 class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
                                                                 alt="Choose File">
                                                             </i>
-                                                            <img id="pet-preview" src="<%= petImage%>" alt="Pet Preview"
+                                                            <img id="petProfile" src="<%= petImage%>" alt="Pet Preview"
                                                                 class="pet-preview-img" />
                                                         </div>
                                                     </label>
@@ -262,10 +261,10 @@
                                                                     ?"selected":"" %>
                                                                     >Choose...
                                                                 </option>
-                                                                <option value="Dog" <%=petType==="dog" ?"selected":"" %>
+                                                                <option value="Dog" <%=petType==="Dog" ?"selected":"" %>
                                                                     >Dog
                                                                 </option>
-                                                                <option value="Cat" <%=petType==="cat" ?"selected":"" %>
+                                                                <option value="Cat" <%=petType==="Cat" ?"selected":"" %>
                                                                     >Cat
                                                                 </option>
                                                             </select>
