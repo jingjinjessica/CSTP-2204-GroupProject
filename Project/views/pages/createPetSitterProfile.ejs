@@ -1,17 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../partials/head') %>
 </head>
+
 <body>
     <%- include('../partials/header') %>
-        
-        <!-- the design chage to here: Bootstrap -->
-        <div class="container justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5">
+                        <h3>My Profile</h3>
+                        <hr>
+                    </div>
+                    <form class="file-upload">
+                        <div class="row mb-5 gx-3">
+                            <div class="col">
+                                <!-- User detail -->
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <div class="text-center file-input-container">
+                                            <input type="file" id="avatar-file-input"
+                                                onchange="attachMyProfile(this)" />
+                                            <label for="avatar-file-input">
+                                                <div class="square position-relative display-2 mb-3">
+                                                    <i id="avatar-icon" src="/image/add-img.png"
+                                                        class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                        alt="Choose File">
+                                                    </i>
+                                                    <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
+                                                        class="preview-img" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <!-- <p class="text-muted"><span class="me-1">Note:</span>Minimum size 300px x 300px</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-8 mb-5 mb-xxl-0">
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
+                                        <div class="col-lg-6">
+                                            <label class="form-label profile-form-label">Name</label>
+                                            <input type="text" class="form-control profile-form-control" id="name"
+                                                value="<%= name%>" placeholder="Name" aria-label="First name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label profile-form-label">Phone number</label>
+                                            <input type="text" class="form-control profile-form-control"
+                                                placeholder="Phone Number" aria-label="Phone number" id="phone"
+                                                value="<%= phone%>">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="email" class="form-label profile-form-label">Email</label>
+                                            <input type="email" class="form-control profile-form-control" id="email"
+                                                value="<%= email%>" disabled readonly>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label profile-form-label" for="">Province</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label profile-form-label" for="">City</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <label class="input-group-text"><img class="profile-province-icon"
+                                                        src="/image/canada.png" /></label>
+                                                <select id="province" name="province" onchange="optionCities()"
+                                                    class="form-select" value="<%= province%>">
+                                                    <option value="" <%=province==="Choose" ?"selected":"" %>>Choose...
+                                                    </option>
+                                                    <option id="0" value="Alberta" <%=province==="Alberta"
+                                                        ?"selected":"" %>>Alberta
+                                                    </option>
+                                                    <option id="1" value="British Columbia"
+                                                        <%=province==="British Columbia" ?"selected":"" %>>British
+                                                        Columbia</option>
+                                                    <option id="2" value="Manitoba" <%=province==="Manitoba"
+                                                        ?"selected":"" %>>Manitoba
+                                                    </option>
+                                                    <option id="3" value="New Brunswick" <%=province==="New Brunswick"
+                                                        ?"selected":"" %>>New
+                                                        Brunswick
+                                                    </option>
+                                                    <option id="4" value="Newfoundland and Labrador"
+                                                        <%=province==="Newfound landand Labrador" ?"selected":"" %>
+                                                        >Newfoundland and Labrador</option>
+                                                    <option id="5" value="Nova Scotia" <%=province==="Nova Scotia"
+                                                        ?"selected":"" %>>Nova
+                                                        Scotia
+                                                    </option>
+                                                    <option id="6" value="Ontario" <%=province==="Ontario"
+                                                        ?"selected":"" %>>Ontario
+                                                    </option>
+                                                    <option id="7" value="Prince
+                                                Edward Island" <%=province==="Prince Edward Island" ?"selected":"" %>
+                                                        >Prince
+                                                        Edward Island</option>
+                                                    <option id="8" value="Quebec" <%=province==="Quebec" ?"selected":""
+                                                        %>>Quebec</option>
+                                                    <option id="9" value="Saskatchewan" <%=province==="Saskatchewan"
+                                                        ?"selected":"" %>
+                                                        >Saskatchewan
+                                                    </option>
+                                                    <option id="10" value="Northwest Territories"
+                                                        <%=province==="Northwest Territories" ?"selected":"" %>
+                                                        >Northwest Territories</option>
+                                                    <option id="11" value="Yukon" <%=province==="Yukon" ?"selected":""
+                                                        %>>Yukon</option>
+                                                    <option id="12" value="Nunavut" <%=province==="Nunavut"
+                                                        ?"selected":"" %>>Nunavut
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <label class="input-group-text"><img class="profile-city-icon"
+                                                        src="/image/city-hall.png" /></label>
+                                                <select id="city" name="city" class="form-select selectpicker"
+                                                    onchange="setCity(event)" value="<%= city%>">
+                                                    <option value="Choose" <%=city==="Choose" ?"selected":"" %>
+                                                        >Choose...</option>
+                                                    <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>
+                                                        >Burnaby</option>
+                                                    <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>
+                                                        >Coquitlam</option>
+                                                    <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>
+                                                        >Calgary</option>
+                                                    <option value="Charlottetown" <%=city==="Charlottetown"
+                                                        ?"selected":"" %>
+                                                        >Charlottetown
+                                                    </option>
+                                                    <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>
+                                                        >Edmonton</option>
+                                                    <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>
+                                                        >Moncton</option>
+                                                    <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>
+                                                        >Montreal</option>
+                                                    <option value="Northvancouver" <%=city==="NorthVancouver"
+                                                        ?"selected":"" %>>North
+                                                        Vancouver</option>
+                                                    <option value="Fredericton" <%=city==="Fredericton" ?"selected":""
+                                                        %>>Fredericton
+                                                    </option>
+                                                    <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>
+                                                        >Halifax</option>
+                                                    <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>
+                                                        >Iqaluit</option>
+                                                    <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>
+                                                        >Quebec City
+                                                    </option>
+                                                    <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>
+                                                        >Richmond</option>
+                                                    <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina
+                                                    </option>
+                                                    <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey
+                                                    </option>
+                                                    <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St.
+                                                        John's</option>
+                                                    <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>
+                                                        >Saskatoon</option>
+                                                    <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>
+                                                        >Toronto</option>
+                                                    <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>
+                                                        >Victoria</option>
+                                                    <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>
+                                                        >Vancouver</option>
+                                                    <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>
+                                                        >White Rock
+                                                    </option>
+                                                    <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":""
+                                                        %>>Williams
+                                                        Lake
+                                                    </option>
+                                                    <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>
+                                                        >Winnipeg</option>
+                                                    <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>
+                                                        >Whitehorse
+                                                    </option>
+                                                    <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":""
+                                                        %>>Yellowknife
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="pwd" class="form-label profile-form-label">New Password</label>
+                                            <input type="password" placeholder="New Passowrd"
+                                                class="form-control profile-form-control" id="pwd">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="cnfpwd" class="form-label profile-form-label">Confirm
+                                                Password</label>
+                                            <input type="password" placeholder="Confirm Password"
+                                                class="form-control profile-form-control" id="cnfpwd">
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="about-me" class="form-label profile-form-label" for="">About
+                                                    Me</label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea class="form-control profile-form-control" id="aboutme"
+                                                name="aboutme" rows="5" placeholder="Introduce Yourself..."></textarea>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label profile-form-label" for="">Photography</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="row g-3">
+                                                <div class="col-md-4 ">
+                                                    <div class="text-center file-input-container">
+                                                        <input type="file" id="photo1-file-input"
+                                                            onchange="attachPhoto1(this)" />
+                                                        <label for="photo1-file-input">
+                                                            <div class="photo-square position-relative display-2 mb-3">
+                                                                <i id="icon"
+                                                                    class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                                    alt="Choose File">
+                                                                </i>
+                                                                <img id="photo1preview" src="<%= photo1%>"
+                                                                    alt="Image Preview" class="preview-img" />
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="text-center file-input-container">
+                                                        <input type="file" id="photo-file-input2 myImg"
+                                                            onchange="attachPhoto2(this)" />
+                                                        <label class="form-label profile-form-label"
+                                                            for="photo-file-input2 ">
+                                                            <div class="photo-square position-relative display-2 mb-3">
+                                                                <i id="photo-icon-2"
+                                                                    class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                                    alt="Choose File">
+                                                                </i>
+                                                                <img id="photo2preview" src="<%= photo2%>"
+                                                                    alt="Image Preview" class="photo-cover-2" />
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="text-center file-input-container">
+                                                        <input type="file" id="photo-file-input3 myImg"
+                                                            onchange="attachPhoto3(this)" />
+                                                        <label class="form-label profile-form-label"
+                                                            for="photo-file-input3 myImg">
+                                                            <div class="photo-square position-relative display-2 mb-3">
+                                                                <i id="photo-icon-3"
+                                                                    class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                                    alt="Choose File">
+                                                                </i>
+                                                                <img id="photoCover3" name="photo-cover-1"
+                                                                    src="<%= photo3%>" alt="Image Preview"
+                                                                    class="photo-cover-3" />
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- button -->
+                        <div class="gap-3 d-md-flex justify-content-md-end text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary skip-btn">Skip</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container justify-content-center">
             <h5 class="profile-title text-center mt-5">My Profile</h5>
             <form class="row g-3 d-flex flex-column align-items-center" id="sitterprofile" action="/profile/createsitter" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                 
-                <!-- CREATE PET SITTER PROFILE -->
                 <div class="col-12 imgPosition">
                     <label class="filebutton">
                         <span>
@@ -21,7 +304,6 @@
                         </span>
                     </label>
                 </div>
-
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Name:</label>
                     <div class="col-md-6">
@@ -46,15 +328,7 @@
                 <div class="mw-100 d-flex justify-content-evenly">
                     <label class="form-label text_edit">Location:</label>
                     <div class="col-md-6">
-                        <!-- <div class="input-group">
-                            <label class="input-group-text">Province</label>
-                            <select id="province" name="province" class="form-select" value="<%= province%>">
-                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="BritishColumbia" <%= province==="BritishColumbia"?"selected":"" %>>British Columbia</option>
-                                <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
-                                <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
-                            </select>
-                        </div> -->
+                        
                         <div class="input-group">
                             <label class="input-group-text">Province</label>
                             <select id="province" name="province" onchange="optionCities()" class="form-select"
@@ -88,15 +362,6 @@
                 
                 <div class="mw-100 d-flex justify-content-around">
                     <div class="col-md-6 marginPosition">
-                        <!-- <div class="input-group">
-                            <label class="input-group-text">City</label>
-                            <select id="city" name="city" class="form-select" value="<%= city%>">
-                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
-                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
-                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
-                            </select>
-                        </div> -->
                         <div class="input-group">
                             <label class="input-group-text">City</label>
                             <select id="city" name="city" class="form-select selectpicker" onchange="setCity(event)"
@@ -196,12 +461,11 @@
                     </div>
                 </div>
                 
-                <!-- SUBMIT BUTTON -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary saveBtn">Save</button>
                 </div>
             </form>
-        </div>
+        </div> -->
 </body>
 
 </html>
