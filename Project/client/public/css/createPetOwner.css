@@ -1,4 +1,7 @@
-.profile-title {
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+
+/* .profile-title {
     color: #6B9080;
 }
 
@@ -16,10 +19,10 @@
 
 .col-md-5 {
     width: 50%;
-}
+} */
 
 /* PROFILE IMG CSS */
-
+/* 
 label.filebutton {
     overflow:hidden;
     position:relative;
@@ -43,4 +46,158 @@ label span input {
     _cursor: hand;
     margin: 0;
     padding-top:0;
+} */
+
+.rounded {
+    border-radius: 5px !important;
+}
+
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: rgba(107, 144, 128, 0.5) !important;
+}
+
+.profile-province-icon,
+.profile-city-icon,
+.pet-type-icon,
+.pet-age-icon,
+.pet-weight-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.profile-form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #29292e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e5dfe4;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+/* image upload */
+.square {
+    /* margin: auto;
+    vertical-align: middle; */
+    /* border: 1px solid #e5dfe4; */
+    /* background-color: #fff; */
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.file-input-container {
+    position: relative;
+}
+
+.file-input-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input-container label {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+.file-input-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.file-input-container #preview {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+}
+
+.photo-square {
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+#pet-preview {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+}
+
+#photo1-preview {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+}
+
+#photoCover2 {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+}
+
+.saveBtn {
+    background-color: #6B9080;
+    border: 1px solid #6B9080;
+    padding: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.skip-btn {
+    background: none;
+    border: none;
+    color: #6B9080;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }

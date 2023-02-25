@@ -27,6 +27,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
@@ -62,6 +63,10 @@ app.get("/sitterPostInfo", (req, res) => {
 
 app.get("/ownerPostInfo", (req, res) => {
   res.render("pages/ownerPostInfo");
+});
+
+app.get("/test", (req, res) => {
+  res.render("pages/test");
 });
 
 app.get("/ownerlist/:postid", async function (req, res, next) {

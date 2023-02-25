@@ -1,177 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../partials/head') %>
 </head>
 
 <body>
     <%- include('../partials/header') %>
-        
-        <div class="container justify-content-center">
-            <h5 class="profile-title text-center mt-5">My Profile</h5>
-            <form class="row g-3 d-flex flex-column align-items-center" id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-                
-                <!-- CREATE PET OWNER PROFILE -->
-                <div class="col-12 imgPosition">
-                    <label class="filebutton">
-                        <span>
-                            <input type="file" id="myImg" name="myImg" onchange="attachMyProfile(this)">
-                            <img src="<%= avatarImage%>" alt="Add your profile picture" id="profile"
-                                class="imgCover">
-                        </span>
-                    </label>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label for="inputEmail4" class="form-label text_edit">Name:</label>
-                    <div class="col-md-5">
-                        <input type="text" name="name" class="form-control" id="name" value="<%= name%>" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5">
+                        <h3>My Profile</h3>
+                        <hr>
                     </div>
-                </div>
-
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Email:</label>
-                    <div class="col-md-5">
-                        
-                        <input name="email" type="email" class="form-control" id="email"  value="<%= email%>" >
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Phone:</label>
-                    <div class="col-md-5">
-                        
-                        <input id="phone" name="phone" type="text" class="form-control" id="phone" value="<%= phone%>">
-                    </div>
-                </div>
-
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Location:</label>
-                    <div class="col-md-5">
-                        
-                        <div class="input-group">
-                            <label  class="input-group-text">Province</label>
-                            <select id="province" name="province" class="form-select" value="<%= province%>">
-                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="BritishColumbia" <%= province==="BritishColumbia"?"selected":"" %>>British Columbia</option>
-                                <option value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta</option>
-                                <option value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba</option>
-                            </select>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-around">
-                    <div class="col-md-5 marginPosition">
-                        <div class="input-group">
-                            <label  class="input-group-text">City</label>
-                            <select id="city" name="city" class="form-select" value="<%= city%>">
-                                <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...</option>
-                                <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>>Vancouver</option>
-                                <option value="Richmond" <%= city==="Richmond"?"selected":"" %>>Richmond</option>
-                                <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>>Burnaby</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Password:</label>
-                    <div class="col-md-5">
-                        
-                        <input name="password" type="password" class="form-control" id="pwd">
-                    </div>
-                </div>
-                
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label class="form-label text_edit">Confirm <br> Password:</label>
-                    <div class="col-md-5">
-                        <input name="cnfpwd" type="password" class="form-control" id="cnfpwd">
-                    </div>
-                </div>
-                
-
-                <h5 class="profile-title text-center">My Pet</h5>
-                <div class="col-md-5 imgPosition">
-                    <label class="filebutton">
-                        <span>
-                            <input type="file" id="petImg" name="petImg" onchange="attachMyPetPic(this)">
-                            <img src="<%= petImage%>" alt="Add your profile picture" id="petProfile"
-                                class="imgCover">
-                        </span>
-                    </label>
-                </div>
-
-                <div class="mw-100 d-flex justify-content-evenly">
-                    <label for="inputEmail4" class="form-label text_edit">My Pet Name</label>
-                    <div class="col-md-5">
-                        <div class="row g-3">
+                    <form class="file-upload">
+                        <div class="row mb-5 gx-3">
                             <div class="col">
-                                <input type="text" class="form-control" id="petName" name="petName" value="<%= petName%>">
+                                <!-- User detail -->
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <div class="text-center file-input-container">
+                                            <input type="file" id="avatar-file-input" onchange="attachMyProfile(this)" />
+                                            <label for="avatar-file-input">
+                                                <div class="square position-relative display-2 mb-3">
+                                                    <i id="avatar-icon"
+                                                        class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                        alt="Choose File">
+                                                    </i>
+                                                    <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
+                                                        class="preview-img" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <!-- <p class="text-muted"><span class="me-1">Note:</span>Minimum size 300px x 300px</p> -->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-xxl-8 mb-5 mb-xxl-0">
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
+                                        <!-- First Name -->
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Name</label>
+                                            <input type="text" class="form-control profile-form-control" id="name"
+                                                value="<%= name%>" placeholder="Name" aria-label="First name">
+                                        </div>
+                                        <!-- Phone number -->
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Phone number</label>
+                                            <input type="text" class="form-control profile-form-control"
+                                                placeholder="Phone Number" aria-label="Phone number" id="phone"
+                                                value="<%= phone%>">
+                                        </div>
+                                        <!-- Email -->
+                                        <div class="col-lg-6">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control profile-form-control" id="email"
+                                                value="<%= email%>" disabled readonly>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="">Province</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">City</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <label class="input-group-text"><img class="profile-province-icon"
+                                                        src="/image/canada.png" /></label>
+                                                <select id="province" name="province" onchange="optionCities()"
+                                                    class="form-select" value="<%= province%>">
+                                                    <option value="" <%=province==="Choose" ?"selected":"" %>>Choose...
+                                                    </option>
+                                                    <option id="0" value="Alberta" <%=province==="Alberta"
+                                                        ?"selected":"" %>>Alberta
+                                                    </option>
+                                                    <option id="1" value="British Columbia"
+                                                        <%=province==="British Columbia" ?"selected":"" %>>British
+                                                        Columbia</option>
+                                                    <option id="2" value="Manitoba" <%=province==="Manitoba"
+                                                        ?"selected":"" %>>Manitoba
+                                                    </option>
+                                                    <option id="3" value="New Brunswick" <%=province==="New Brunswick"
+                                                        ?"selected":"" %>>New
+                                                        Brunswick
+                                                    </option>
+                                                    <option id="4" value="Newfoundland and Labrador"
+                                                        <%=province==="Newfound landand Labrador" ?"selected":"" %>
+                                                        >Newfoundland and Labrador</option>
+                                                    <option id="5" value="Nova Scotia" <%=province==="Nova Scotia"
+                                                        ?"selected":"" %>>Nova
+                                                        Scotia
+                                                    </option>
+                                                    <option id="6" value="Ontario" <%=province==="Ontario"
+                                                        ?"selected":"" %>>Ontario
+                                                    </option>
+                                                    <option id="7" value="Prince
+                                                    Edward Island" <%=province==="Prince Edward Island" ?"selected":""
+                                                        %>>Prince
+                                                        Edward Island</option>
+                                                    <option id="8" value="Quebec" <%=province==="Quebec" ?"selected":""
+                                                        %>>Quebec</option>
+                                                    <option id="9" value="Saskatchewan" <%=province==="Saskatchewan"
+                                                        ?"selected":"" %>
+                                                        >Saskatchewan
+                                                    </option>
+                                                    <option id="10" value="Northwest Territories"
+                                                        <%=province==="Northwest Territories" ?"selected":"" %>
+                                                        >Northwest Territories</option>
+                                                    <option id="11" value="Yukon" <%=province==="Yukon" ?"selected":""
+                                                        %>>Yukon</option>
+                                                    <option id="12" value="Nunavut" <%=province==="Nunavut"
+                                                        ?"selected":"" %>>Nunavut
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                <div class="mw-100 d-flex justify-content-center">
-                    <div class="col-md-5 marginPosition">
-                        <div class="row g-3">
-                            <div class="col">
-                                <div class="input-group">
-                                    <label class="input-group-text">Age</label>
-                                    <select id="petAge" name="petAge" class="form-select" value="<%= petAge%>">
-                                        <option value="Choose" <%= petAge==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="05" <%= petAge==="05"?"selected":"" %>>0 - 5</option>
-                                        <option value="610" <%= petAge==="610"?"selected":"" %>>6 - 10</option>
-                                        <option value="1115" <%= petAge==="1115"?"selected":"" %>>11 -15</option>
-                                    </select>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <label class="input-group-text"><img class="profile-city-icon"
+                                                        src="/image/city-hall.png" /></label>
+                                                <select id="city" name="city" class="form-select selectpicker"
+                                                    onchange="setCity(event)" value="<%= city%>">
+                                                    <option value="Choose" <%=city==="Choose" ?"selected":"" %>
+                                                        >Choose...</option>
+                                                    <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>
+                                                        >Burnaby</option>
+                                                    <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>
+                                                        >Coquitlam</option>
+                                                    <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>
+                                                        >Calgary</option>
+                                                    <option value="Charlottetown" <%=city==="Charlottetown"
+                                                        ?"selected":"" %>
+                                                        >Charlottetown
+                                                    </option>
+                                                    <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>
+                                                        >Edmonton</option>
+                                                    <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>
+                                                        >Moncton</option>
+                                                    <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>
+                                                        >Montreal</option>
+                                                    <option value="Northvancouver" <%=city==="NorthVancouver"
+                                                        ?"selected":"" %>>North
+                                                        Vancouver</option>
+                                                    <option value="Fredericton" <%=city==="Fredericton" ?"selected":""
+                                                        %>>Fredericton
+                                                    </option>
+                                                    <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>
+                                                        >Halifax</option>
+                                                    <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>
+                                                        >Iqaluit</option>
+                                                    <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>
+                                                        >Quebec City
+                                                    </option>
+                                                    <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>
+                                                        >Richmond</option>
+                                                    <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina
+                                                    </option>
+                                                    <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey
+                                                    </option>
+                                                    <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St.
+                                                        John's</option>
+                                                    <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>
+                                                        >Saskatoon</option>
+                                                    <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>
+                                                        >Toronto</option>
+                                                    <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>
+                                                        >Victoria</option>
+                                                    <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>
+                                                        >Vancouver</option>
+                                                    <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>
+                                                        >White Rock
+                                                    </option>
+                                                    <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":""
+                                                        %>>Williams
+                                                        Lake
+                                                    </option>
+                                                    <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>
+                                                        >Winnipeg</option>
+                                                    <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>
+                                                        >Whitehorse
+                                                    </option>
+                                                    <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":""
+                                                        %>>Yellowknife
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="pwd" class="form-label">New Password</label>
+                                            <input type="password" placeholder="New Passowrd"
+                                                class="form-control profile-form-control" id="pwd">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="cnfpwd" class="form-label">Confirm Password</label>
+                                            <input type="password" placeholder="Confirm Password"
+                                                class="form-control profile-form-control" id="cnfpwd">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <!-- Pet Detail -->
+                        <div class="col-12">
+                            <div class="my-5">
+                                <h3>My Pet</h3>
+                                <hr>
+                            </div>
+                            <form class="file-upload">
+                                <div class="row mb-5 gx-3">
+                                    <div class="col">
+                                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                                            <div class="row g-3">
+                                                <div class="text-center file-input-container">
+                                                    <input type="file" id="pet-img" onchange="attachMyPetPic(this)" />
+                                                    <label for="pet-img">
+                                                        <div class="square position-relative display-2 mb-3">
+                                                            <i id="pet-icon"
+                                                                class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
+                                                                alt="Choose File">
+                                                            </i>
+                                                            <img id="pet-preview" src="<%= petImage%>" alt="Pet Preview"
+                                                                class="pet-preview-img" />
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <!-- <p class="text-muted"><span class="me-1">Note:</span>Minimum size 300px x 300px</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-8 mb-5 mb-xxl-0">
+                                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                                            <div class="row g-3">
+                                                <div class="col-lg-6">
+                                                    <label class="form-label">Name</label>
+                                                    <input type="text" class="form-control profile-form-control"
+                                                        id="petName" name="petName" value="<%= petName%>"
+                                                        placeholder="Pet Name" aria-label="pet name">
+                                                </div>
+                                                <div class="row g-3">
+                                                    <div class="row g-3">
+                                                        <div class="col-md-6">
+                                                            <label for="">Type</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="">Age</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group">
+                                                            <label class="input-group-text"><img class="pet-type-icon"
+                                                                    src="/image/pet-type.png" alt=""></label>
+                                                            <select id="petType" name="petType" class="form-select"
+                                                                onchange="petFeature()" value="<%= petType%>">
+                                                                <option value="Choose" <%=petType==="Choose"
+                                                                    ?"selected":"" %>
+                                                                    >Choose...
+                                                                </option>
+                                                                <option value="Dog" <%=petType==="dog" ?"selected":"" %>
+                                                                    >Dog
+                                                                </option>
+                                                                <option value="Cat" <%=petType==="cat" ?"selected":"" %>
+                                                                    >Cat
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
-                <div class="mw-100 d-flex justify-content-center">
-                    <div class="col-md-5 marginPosition">
-                        <div class="row g-3">
-                            <div class="col">
-                                <div class="input-group">
-                                    <label class="input-group-text">Weight (lbs)</label>
-                                    <select name="petWeight" id="petWeight" class="form-select" value="<%= petWeight %>">
-                                        <option value="Choose" <%= petWeight==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="1050" <%= petWeight==="1050"?"selected":"" %>>10 - 50</option>
-                                        <option value="51100" <%= petWeight==="51100"?"selected":"" %>>51 - 100</option>
-                                        <option value="101120" <%= petWeight==="101120"?"selected":"" %>>101 - 120</option>
-                                    </select>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group">
+                                                            <label class="input-group-text"><img class="pet-age-icon"
+                                                                    src="/image/age.png" alt=""></label>
+                                                            <select id="petAge" name="petAge" class="form-select"
+                                                                value="<%= petAge%>">
+                                                                <option value="Choose" <%=petAge==="Choose"
+                                                                    ?"selected":"" %>
+                                                                    >Choose...</option>
+                                                                <option value="Puppy" <%=petAge==="Puppy" ?"selected":""
+                                                                    %>
+                                                                    >Puppy
+                                                                </option>
+                                                                <option value="Kitty" <%=petAge==="Kitty" ?"selected":""
+                                                                    %>
+                                                                    >Kitty
+                                                                </option>
+                                                                <option value="Adult" <%=petAge==="Adult" ?"selected":""
+                                                                    %>
+                                                                    >Adult
+                                                                </option>
+                                                                <option value="Oldest" <%=petAge==="Oldest"
+                                                                    ?"selected":"" %>
+                                                                    >Oldest
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row g-3">
+                                                        <div class="col-md-6">
+                                                            <label for="">Weight</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group">
+                                                            <label class="input-group-text"><img class="pet-weight-icon"
+                                                                    src="/image/weight-pound.png" alt=""></label>
+                                                            <select name="petWeight" id="petWeight" class="form-select"
+                                                                value="<%= petWeight %>">
+                                                                <option value="Choose" <%=petWeight==="Choose"
+                                                                    ?"selected":"" %>
+                                                                    >Choose...
+                                                                </option>
+                                                                <option value="less than 5 lbs"
+                                                                    <%=petWeight==="less than 5 lbs" ?"selected":"" %>
+                                                                    >less than 5 lbs
+                                                                </option>
+                                                                <option value="less than 7 lbs"
+                                                                    <%=petWeight==="less than 7 lbs" ?"selected":"" %>
+                                                                    >less than 7 lbs
+                                                                </option>
+                                                                <option value="5 - 10 lbs" <%=petWeight==="5 - 10 lbs"
+                                                                    ?"selected":"" %>>5 - 10
+                                                                    lbs</option>
+                                                                <option value="7 - 10 lbs" <%=petWeight==="7 - 10 lbs"
+                                                                    ?"selected":"" %>>7 - 10
+                                                                    lbs</option>
+                                                                <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs"
+                                                                    ?"selected":"" %>>10 -
+                                                                    20 lbs</option>
+                                                                <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs"
+                                                                    ?"selected":"" %>>10 -
+                                                                    20 lbs
+                                                                </option>
+                                                                <option value="20 - 30 lbs" <%=petWeight==="20 - 30 lbs"
+                                                                    ?"selected":"" %>>20 -
+                                                                    30 lbs</option>
+                                                                <option value="30 - 40 lbs" <%=petWeight==="30 - 40 lbs"
+                                                                    ?"selected":"" %>>30 -
+                                                                    40 lbs</option>
+                                                                <option value="Greater than 20 lbs"
+                                                                    <%=petWeight==="Greater than 20 lbs" ?"selected":""
+                                                                    %>
+                                                                    >Greater
+                                                                    than 20 lbs
+                                                                </option>
+                                                                <option value="Greater than 50 lbs"
+                                                                    <%=petWeight==="Greater than 50 lbs" ?"selected":""
+                                                                    %>
+                                                                    >Greater than 50 lbs
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- button -->
+                        <div class="gap-3 d-md-flex justify-content-md-end text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary skip-btn">Skip</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-
-                <div class="mw-100 d-flex justify-content-center">
-                    <div class="col-md-5 marginPosition">
-                        <div class="row g-3">
-                            <div class="col">
-                                <div class="input-group">
-                                    <label class="input-group-text">Pet Type</label>
-                                    <select id="petType" name="petType" class="form-select" value="<%= petType%>">
-                                        <option value="Choose" <%= petType==="Choose"?"selected":"" %>>Choose...</option>
-                                        <option value="dog" <%= petType==="dog"?"selected":"" %>>Dog</option>
-                                        <option value="cat" <%= petType==="cat"?"selected":"" %>>Cat</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
-                </div>
-            </form>
+            </div>
         </div>
 </body>
 
