@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken"); // This Library will help us give and verif
 const Profile = require("../model/Profile");
 const PetPost = require("../model/PetPost");
 
+//Registe 7
 const registerUser = async (request, response) => {
   const data = request.body;
 
@@ -40,6 +41,7 @@ const getProfileByUserEmail = async (email) => {
   return profile;
 }
 
+// Login
 const loginUser = async (request, response) => {
   const data = request.body;
   let foundUser = await User.findOne({ email: data.email });

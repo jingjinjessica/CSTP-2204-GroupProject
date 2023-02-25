@@ -141,6 +141,8 @@ const createOwnerPost = async(req,res) => {
           //   message: "updated Succesfully",
           //   data
           // })
+
+          // console.info(data);
           return res.redirect("/list/listpost")
           
         }).catch((error) => {

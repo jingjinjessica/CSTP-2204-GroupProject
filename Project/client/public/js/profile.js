@@ -25,9 +25,9 @@ function attachMyPetPic(petInput) {
             // var image = document.getElementById('petProfile');
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
-            document.getElementById("pet-preview").setAttribute("src", pet.target.result);
+            document.getElementById("petProfile").setAttribute("src", pet.target.result);
             document.getElementById("pet-icon").style.display = "none";
-            document.getElementById("pet-preview").style.display = "block";
+            document.getElementById("petProfile").style.display = "block";
         };
 
         reader.readAsDataURL(petInput.files[0]);
