@@ -17,17 +17,17 @@ const getPost = async (req, res) => {
     const queryBody = req.body;
     const query ={};
     // looking for have pet type or not , != mean we click the type for search
-    if (queryBody.hasOwnProperty("petType") && queryBody.petType !== "any"){
+    if (queryBody.hasOwnProperty("petType") && queryBody.petType !== "- Select Type -"){
         query["profile.petType"] = queryBody.petType;
     }
     // if (queryBody.hasOwnProperty("province") && queryBody.province !== "any"){
     //     query["profile.province"] = queryBody.;
     // }
     // AND 
-    if (queryBody.hasOwnProperty("weight") && queryBody.weight !== "any"){
+    if (queryBody.hasOwnProperty("weight") && queryBody.weight !== "- Select Weight -"){
         query["profile.petWeight"] = queryBody.weight;
     }
-    if (queryBody.hasOwnProperty("age") && queryBody.age !== "any"){
+    if (queryBody.hasOwnProperty("age") && queryBody.age !== "- Select Age -"){
         query["profile.petAge"] = queryBody.age;
     }
 
@@ -48,7 +48,6 @@ const getPost = async (req, res) => {
     // console.info(result[1].profile[0]);
     res.render("pages/list", { result: result, fd: formatDate })
 }
-
 
 module.exports = {
     getPost
