@@ -9,7 +9,7 @@
     <%- include('../partials/header') %>
 
         <div class="container justify-content-center list-area">
-            <h3 class="job-title">Looking for a job?</h3>
+            <h3 class="sitter-title">Find the sitter?</h3>
             <!-- filter -->
             <div class="filter-area">
                 <form action="/list/listpost" method="post">
@@ -18,7 +18,8 @@
                             <h5 class="filter-title">Filter : </h5>
                         </div> -->
                         <div class="col-sm-2 province">
-                            <select id="province" name="province" onchange="filterCities()" class="selectpicker multiple province-selectpicker" value="">
+                            <select id="province" name="province" onchange="filterCities()"
+                                class="selectpicker multiple province-selectpicker" value="">
                                 <option value="- Select Province -">- Select Province -</option>
                                 <option value="Alberta">Alberta</option>
                                 <option value="British Columbia">British Columbia</option>
@@ -66,7 +67,8 @@
                             </select>
                         </div>
                         <div class="col-sm-2 type">
-                            <select id="petType" name="petType" onchange="filterfeatures()" class="selectpicker type-selectpicker">
+                            <select id="type" name="type" onchange="filterfeatures()"
+                                class="selectpicker type-selectpicker">
                                 <option value="- Select Type -">- Select Type -</option>
                                 <option value="Cat">Cat</option>
                                 <option value="Dog">Dog</option>
@@ -103,35 +105,35 @@
             </div>
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
-                <% for(var i=0; i < result.length; i++) {%>
-                    <div class="card mb-3 post-card">
-                        <div class="row no-gutters">
-                            <div class="col-md-4 img-area">
-                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img" alt="pet-img">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body card-content-list">
-                                    <h4 class="card-title">
-                                        <%= result[i].profile.petName %>
-                                    </h4>
-                                    <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
-                                    </h5>
-                                    <p class="card-text info text-break">
-                                        <%= result[i].desc %>
-                                            <a href="/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                                class="btn stretched-link learn-more">Learn
-                                                more...</a>
-                                    </p>
-                                    <p class="card-text card-date"><small class="text-muted list-text-muted">
-                                            <%= fd(result[i].createdAt) %>
-                                        </small>
-                                    </p>
-                                </div>
+                <div class="card mb-3 post-card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 img-area">
+                            <img id="petimg" src="" class="card-img" alt="pet-img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body card-content-list">
+                                <h4 class="card-title">
+                                    sitter name
+                                </h4>
+                                <h5 class="location">
+                                    Province, City
+                                </h5>
+                                <p class="card-text info text-break">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes
+                                    nascetur ridiculus mus. Quisque non tellus orci ac auctor augue mauris augue neque.
+                                    <a href="#" id="learnmore"
+                                        class="btn stretched-link learn-more">Learn
+                                        more...</a>
+                                </p>
+                                <p class="card-text card-date"><small class="text-muted list-text-muted">
+                                        Date: DD-MM-YYYY
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <% } %>
+                </div>
             </div>
         </div>
         <%- include('../partials/footer') %>
