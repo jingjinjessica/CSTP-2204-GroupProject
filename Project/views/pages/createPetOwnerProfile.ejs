@@ -44,20 +44,20 @@
                                         <!-- First Name -->
                                         <div class="col-lg-6">
                                             <label class="form-label">Name</label>
-                                            <input type="text" class="form-control profile-form-control" id="name"
+                                            <input type="text" class="form-control profile-form-control" id="name" name="name"
                                                 value="<%= name%>" placeholder="Name" aria-label="First name">
                                         </div>
                                         <!-- Phone number -->
                                         <div class="col-lg-6">
                                             <label class="form-label">Phone number</label>
                                             <input type="text" class="form-control profile-form-control"
-                                                placeholder="Phone Number" aria-label="Phone number" id="phone"
+                                                placeholder="Phone Number" aria-label="Phone number" id="phone" name="phone"
                                                 value="<%= phone%>">
                                         </div>
                                         <!-- Email -->
                                         <div class="col-lg-6">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control profile-form-control" id="email"
+                                            <input type="email" class="form-control profile-form-control" id="email" name="email"
                                                 value="<%= email%>" disabled readonly>
                                         </div>
                                         <div class="row g-3">
@@ -74,48 +74,41 @@
                                                         src="/image/canada.png" /></label>
                                                 <select id="province" name="province" onchange="optionCities()"
                                                     class="form-select" value="<%= province%>">
-                                                    <option value="" <%=province==="Choose" ?"selected":"" %>>Choose...
+                                                    <option value="Choose" <%= province==="Choose"?"selected":"" %>>Choose...
                                                     </option>
-                                                    <option id="0" value="Alberta" <%=province==="Alberta"
-                                                        ?"selected":"" %>>Alberta
+                                                    <option id="0" value="Alberta" <%= province==="Alberta"?"selected":"" %>>Alberta
                                                     </option>
                                                     <option id="1" value="British Columbia"
-                                                        <%=province==="British Columbia" ?"selected":"" %>>British
+                                                        <%= province==="British Columbia"?"selected":"" %>>British
                                                         Columbia</option>
-                                                    <option id="2" value="Manitoba" <%=province==="Manitoba"
-                                                        ?"selected":"" %>>Manitoba
+                                                    <option id="2" value="Manitoba" <%= province==="Manitoba"?"selected":"" %>>Manitoba
                                                     </option>
-                                                    <option id="3" value="New Brunswick" <%=province==="New Brunswick"
-                                                        ?"selected":"" %>>New
+                                                    <option id="3" value="New Brunswick" <%= province==="New Brunswick"?"selected":"" %>>New
                                                         Brunswick
                                                     </option>
                                                     <option id="4" value="Newfoundland and Labrador"
-                                                        <%=province==="Newfound landand Labrador" ?"selected":"" %>
+                                                        <%= province==="Newfound landand Labrador"?"selected":"" %>
                                                         >Newfoundland and Labrador</option>
-                                                    <option id="5" value="Nova Scotia" <%=province==="Nova Scotia"
-                                                        ?"selected":"" %>>Nova
+                                                    <option id="5" value="Nova Scotia" <%= province==="Nova Scotia"?"selected":"" %>>Nova
                                                         Scotia
                                                     </option>
-                                                    <option id="6" value="Ontario" <%=province==="Ontario"
-                                                        ?"selected":"" %>>Ontario
+                                                    <option id="6" value="Ontario" <%= province==="Ontario"?"selected":"" %>>Ontario
                                                     </option>
                                                     <option id="7" value="Prince
-                                                    Edward Island" <%=province==="Prince Edward Island" ?"selected":""
+                                                    Edward Island" <%= province==="Prince Edward Island"?"selected":""
                                                         %>>Prince
                                                         Edward Island</option>
-                                                    <option id="8" value="Quebec" <%=province==="Quebec" ?"selected":""
+                                                    <option id="8" value="Quebec" <%= province==="Quebec"?"selected":""
                                                         %>>Quebec</option>
-                                                    <option id="9" value="Saskatchewan" <%=province==="Saskatchewan"
-                                                        ?"selected":"" %>
+                                                    <option id="9" value="Saskatchewan" <%= province==="Saskatchewan"?"selected":"" %>
                                                         >Saskatchewan
                                                     </option>
                                                     <option id="10" value="Northwest Territories"
-                                                        <%=province==="Northwest Territories" ?"selected":"" %>
+                                                        <%= province==="Northwest Territories"?"selected":"" %>
                                                         >Northwest Territories</option>
-                                                    <option id="11" value="Yukon" <%=province==="Yukon" ?"selected":""
+                                                    <option id="11" value="Yukon" <%= province==="Yukon"?"selected":""
                                                         %>>Yukon</option>
-                                                    <option id="12" value="Nunavut" <%=province==="Nunavut"
-                                                        ?"selected":"" %>>Nunavut
+                                                    <option id="12" value="Nunavut" <%= province==="Nunavut"?"selected":"" %>>Nunavut
                                                     </option>
                                                 </select>
                                             </div>
@@ -127,66 +120,64 @@
                                                         src="/image/city-hall.png" /></label>
                                                 <select id="city" name="city" class="form-select selectpicker"
                                                     onchange="setCity(event)" value="<%= city%>">
-                                                    <option value="Choose" <%=city==="Choose" ?"selected":"" %>
+                                                    <option value="Choose" <%= city==="Choose"?"selected":"" %>
                                                         >Choose...</option>
-                                                    <option value="Burnaby" <%=city==="Burnaby" ?"selected":"" %>
+                                                    <option value="Burnaby" <%= city==="Burnaby"?"selected":"" %>
                                                         >Burnaby</option>
-                                                    <option value="Coquitlam" <%=city==="Coquitlam" ?"selected":"" %>
+                                                    <option value="Coquitlam" <%= city==="Coquitlam"?"selected":"" %>
                                                         >Coquitlam</option>
-                                                    <option value="Calgary" <%=city==="Calgary" ?"selected":"" %>
+                                                    <option value="Calgary" <%= city==="Calgary"?"selected":"" %>
                                                         >Calgary</option>
-                                                    <option value="Charlottetown" <%=city==="Charlottetown"
-                                                        ?"selected":"" %>
+                                                    <option value="Charlottetown" <%= city==="Charlottetown"?"selected":"" %>
                                                         >Charlottetown
                                                     </option>
-                                                    <option value="Edmonton" <%=city==="Edmonton" ?"selected":"" %>
+                                                    <option value="Edmonton" <%= city==="Edmonton"?"selected":"" %>
                                                         >Edmonton</option>
-                                                    <option value="Moncton" <%=city==="Moncton" ?"selected":"" %>
+                                                    <option value="Moncton" <%= city==="Moncton"?"selected":"" %>
                                                         >Moncton</option>
-                                                    <option value="Montreal" <%=city==="Montreal" ?"selected":"" %>
+                                                    <option value="Montreal" <%= city==="Montreal"?"selected":"" %>
                                                         >Montreal</option>
-                                                    <option value="Northvancouver" <%=city==="NorthVancouver"
-                                                        ?"selected":"" %>>North
+                                                    <option value="Northvancouver" <%= city==="NorthVancouver"?"selected":"" %>>North
                                                         Vancouver</option>
-                                                    <option value="Fredericton" <%=city==="Fredericton" ?"selected":""
+                                                    <option value="Fredericton" <%= city==="Fredericton"?"selected":""
                                                         %>>Fredericton
                                                     </option>
-                                                    <option value="Halifax" <%=city==="Halifax" ?"selected":"" %>
+                                                    <option value="Halifax" <%= city==="Halifax"?"selected":"" %>
                                                         >Halifax</option>
-                                                    <option value="Iqaluit" <%=city==="Iqaluit" ?"selected":"" %>
+                                                    <option value="Iqaluit" <%= city==="Iqaluit"?"selected":"" %>
                                                         >Iqaluit</option>
-                                                    <option value="Quebeccity" <%=city==="QuebecCity" ?"selected":"" %>
+                                                    <option value="Quebeccity" <%= city==="QuebecCity"?"selected":"" %>
                                                         >Quebec City
                                                     </option>
-                                                    <option value="Richmond" <%=city==="Richmond" ?"selected":"" %>
+                                                    <option value="Richmond" <%= city==="Richmond"?"selected":"" %>
                                                         >Richmond</option>
-                                                    <option value="Regina" <%=city==="Regina" ?"selected":"" %>>Regina
+                                                    <option value="Regina" <%= city==="Regina"?"selected":"" %>>Regina
                                                     </option>
-                                                    <option value="Surrey" <%=city==="Surrey" ?"selected":"" %>>Surrey
+                                                    <option value="Surrey" <%= city==="Surrey"?"selected":"" %>>Surrey
                                                     </option>
-                                                    <option value="Stjohns" <%=city==="St.John's" ?"selected":"" %>>St.
+                                                    <option value="Stjohns" <%= city==="St.John's"?"selected":"" %>>St.
                                                         John's</option>
-                                                    <option value="Saskatoon" <%=city==="Saskatoon" ?"selected":"" %>
+                                                    <option value="Saskatoon" <%= city==="Saskatoon"?"selected":"" %>
                                                         >Saskatoon</option>
-                                                    <option value="Toronto" <%=city==="Toronto" ?"selected":"" %>
+                                                    <option value="Toronto" <%= city==="Toronto"?"selected":"" %>
                                                         >Toronto</option>
-                                                    <option value="Victoria" <%=city==="Victoria" ?"selected":"" %>
+                                                    <option value="Victoria" <%= city==="Victoria"?"selected":"" %>
                                                         >Victoria</option>
-                                                    <option value="Vancouver" <%=city==="Vancouver" ?"selected":"" %>
+                                                    <option value="Vancouver" <%= city==="Vancouver"?"selected":"" %>
                                                         >Vancouver</option>
-                                                    <option value="White Rock" <%=city==="WhiteRock" ?"selected":"" %>
+                                                    <option value="White Rock" <%= city==="WhiteRock"?"selected":"" %>
                                                         >White Rock
                                                     </option>
-                                                    <option value="Williamslake" <%=city==="WilliamsLake" ?"selected":""
+                                                    <option value="Williamslake" <%= city==="WilliamsLake"?"selected":""
                                                         %>>Williams
                                                         Lake
                                                     </option>
-                                                    <option value="Winnipeg" <%=city==="Winnipeg" ?"selected":"" %>
+                                                    <option value="Winnipeg" <%= city==="Winnipeg"?"selected":"" %>
                                                         >Winnipeg</option>
-                                                    <option value="Whitehorse" <%=city==="Whitehorse" ?"selected":"" %>
+                                                    <option value="Whitehorse" <%= city==="Whitehorse"?"selected":"" %>
                                                         >Whitehorse
                                                     </option>
-                                                    <option value="Yellowknife" <%=city==="Yellowknife" ?"selected":""
+                                                    <option value="Yellowknife" <%= city==="Yellowknife"?"selected":""
                                                         %>>Yellowknife
                                                     </option>
                                                 </select>
@@ -257,14 +248,13 @@
                                                                     src="/image/pet-type.png" alt=""></label>
                                                             <select id="petType" name="petType" class="form-select"
                                                                 onchange="petFeature()" value="<%= petType%>">
-                                                                <option value="Choose" <%=petType==="Choose"
-                                                                    ?"selected":"" %>
+                                                                <option value="Choose" <%= petType==="Choose"?"selected":"" %>
                                                                     >Choose...
                                                                 </option>
-                                                                <option value="Dog" <%=petType==="Dog" ?"selected":"" %>
+                                                                <option value="Dog" <%= petType==="Dog"?"selected":"" %>
                                                                     >Dog
                                                                 </option>
-                                                                <option value="Cat" <%=petType==="Cat" ?"selected":"" %>
+                                                                <option value="Cat" <%= petType==="Cat"?"selected":"" %>
                                                                     >Cat
                                                                 </option>
                                                             </select>
@@ -277,23 +267,19 @@
                                                                     src="/image/age.png" alt=""></label>
                                                             <select id="petAge" name="petAge" class="form-select"
                                                                 value="<%= petAge%>">
-                                                                <option value="Choose" <%=petAge==="Choose"
-                                                                    ?"selected":"" %>
-                                                                    >Choose...</option>
-                                                                <option value="Puppy" <%=petAge==="Puppy" ?"selected":""
-                                                                    %>
+                                                                <option value="Choose" <%= petAge==="Choose"?"selected":"" %>
+                                                                    >Choose.. 
+                                                                </option>
+                                                                <option value="Puppy" <%= petAge==="Puppy"?"selected":"" %>
                                                                     >Puppy
                                                                 </option>
-                                                                <option value="Kitty" <%=petAge==="Kitty" ?"selected":""
-                                                                    %>
+                                                                <option value="Kitty" <%= petAge==="Kitty"?"selected":"" %>
                                                                     >Kitty
                                                                 </option>
-                                                                <option value="Adult" <%=petAge==="Adult" ?"selected":""
-                                                                    %>
+                                                                <option value="Adult" <%= petAge==="Adult"?"selected":"" %>
                                                                     >Adult
                                                                 </option>
-                                                                <option value="Oldest" <%=petAge==="Oldest"
-                                                                    ?"selected":"" %>
+                                                                <option value="Oldest" <%= petAge==="Oldest"?"selected":"" %>
                                                                     >Oldest
                                                                 </option>
                                                             </select>
@@ -310,46 +296,34 @@
                                                                     src="/image/weight-pound.png" alt=""></label>
                                                             <select name="petWeight" id="petWeight" class="form-select"
                                                                 value="<%= petWeight %>">
-                                                                <option value="Choose" <%=petWeight==="Choose"
-                                                                    ?"selected":"" %>
-                                                                    >Choose...
+                                                                <option value="Choose" <%= petWeight==="Choose"?"selected":"" %>>Choose...
                                                                 </option>
                                                                 <option value="less than 5 lbs"
-                                                                    <%=petWeight==="less than 5 lbs" ?"selected":"" %>
-                                                                    >less than 5 lbs
+                                                                    <%= petWeight==="less than 5 lbs"?"selected":"" %>>less than 5 lbs
                                                                 </option>
                                                                 <option value="less than 7 lbs"
-                                                                    <%=petWeight==="less than 7 lbs" ?"selected":"" %>
-                                                                    >less than 7 lbs
+                                                                    <%= petWeight==="less than 7 lbs"?"selected":"" %>>less than 7 lbs
                                                                 </option>
-                                                                <option value="5 - 10 lbs" <%=petWeight==="5 - 10 lbs"
-                                                                    ?"selected":"" %>>5 - 10
+                                                                <option value="5 - 10 lbs" <%= petWeight==="5 - 10 lbs"?"selected":"" %>>5 - 10
                                                                     lbs</option>
-                                                                <option value="7 - 10 lbs" <%=petWeight==="7 - 10 lbs"
-                                                                    ?"selected":"" %>>7 - 10
+                                                                <option value="7 - 10 lbs" <%= petWeight==="7 - 10 lbs"?"selected":"" %>>7 - 10
                                                                     lbs</option>
-                                                                <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs"
-                                                                    ?"selected":"" %>>10 -
+                                                                <option value="10 - 20 lbs" <%= petWeight==="10 - 20 lbs"?"selected":"" %>>10 -
                                                                     20 lbs</option>
-                                                                <option value="10 - 20 lbs" <%=petWeight==="10 - 20 lbs"
-                                                                    ?"selected":"" %>>10 -
+                                                                <option value="10 - 20 lbs" <%= petWeight==="10 - 20 lbs"?"selected":"" %>>10 -
                                                                     20 lbs
                                                                 </option>
-                                                                <option value="20 - 30 lbs" <%=petWeight==="20 - 30 lbs"
-                                                                    ?"selected":"" %>>20 -
+                                                                <option value="20 - 30 lbs" <%= petWeight==="20 - 30 lbs"?"selected":"" %>>20 -
                                                                     30 lbs</option>
-                                                                <option value="30 - 40 lbs" <%=petWeight==="30 - 40 lbs"
-                                                                    ?"selected":"" %>>30 -
+                                                                <option value="30 - 40 lbs" <%= petWeight==="30 - 40 lbs"?"selected":"" %>>30 -
                                                                     40 lbs</option>
                                                                 <option value="Greater than 20 lbs"
-                                                                    <%=petWeight==="Greater than 20 lbs" ?"selected":""
-                                                                    %>
+                                                                    <%= petWeight==="Greater than 20 lbs"?"selected":"" %>
                                                                     >Greater
                                                                     than 20 lbs
                                                                 </option>
                                                                 <option value="Greater than 50 lbs"
-                                                                    <%=petWeight==="Greater than 50 lbs" ?"selected":""
-                                                                    %>
+                                                                    <%= petWeight==="Greater than 50 lbs"?"selected":"" %>
                                                                     >Greater than 50 lbs
                                                                 </option>
                                                             </select>

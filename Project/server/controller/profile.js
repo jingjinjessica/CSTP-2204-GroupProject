@@ -143,7 +143,7 @@ const createOwnerPost = async(req,res) => {
           // })
 
           // console.info(data);
-          return res.redirect("/list/listpost")
+          return res.redirect("/users/dashboard")
           
         }).catch((error) => {
             console.log(error);
@@ -175,7 +175,7 @@ const createOwnerPost = async(req,res) => {
             //     message: "Post Succesfully Created",
             // data: output
             // });
-            return res.redirect("/list/listpost");
+            return res.redirect("/users/dashboard");
         }catch (error) {
             console.info(error);
             return res.status(500).json({
