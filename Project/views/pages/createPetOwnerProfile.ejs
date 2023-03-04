@@ -14,8 +14,8 @@
                         <h3>My Profile</h3>
                         <hr>
                     </div>
-                    <form class="file-upload" id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-                        <div class="row mb-5 gx-3">
+                    <form class="file-upload " id="ownerprofile" action="/profile/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+                        <div class="row mb-5 gx-3 screen-change">
                             <div class="col">
                                 <!-- User detail -->
                                 <div class="bg-secondary-soft px-4 py-5 rounded">
@@ -23,13 +23,13 @@
                                         <div class="text-center file-input-container">
                                             <input type="file" id="avatar-file-input" name="myImg" onchange="attachMyProfile(this)" />
                                             <label for="avatar-file-input">
-                                                <div class="square position-relative display-2 mb-3">
+                                                <div class="square position-relative display-2 mb-3 frameCenter">
                                                     <i id="avatar-icon"
                                                         class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
                                                         alt="Choose File">
                                                     </i>
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
-                                                        class="preview-img" />
+                                                        class="preview-img" style="display: none;" />
                                                 </div>
                                             </label>
                                         </div>
@@ -43,32 +43,40 @@
                                         <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
                                         <!-- First Name -->
                                         <div class="col-lg-6">
-                                            <label class="form-label">Name</label>
+                                            <label class="form-label label-text">Name</label>
                                             <input type="text" class="form-control profile-form-control" id="name"
                                                 value="<%= name%>" placeholder="Name" aria-label="First name">
                                         </div>
                                         <!-- Phone number -->
                                         <div class="col-lg-6">
-                                            <label class="form-label">Phone number</label>
+                                            <label class="form-label label-text">Phone number</label>
                                             <input type="text" class="form-control profile-form-control"
                                                 placeholder="Phone Number" aria-label="Phone number" id="phone"
                                                 value="<%= phone%>">
                                         </div>
                                         <!-- Email -->
                                         <div class="col-lg-6">
-                                            <label for="email" class="form-label">Email</label>
+                                            <label for="email" class="form-label label-text">Email</label>
                                             <input type="email" class="form-control profile-form-control" id="email"
                                                 value="<%= email%>" disabled readonly>
                                         </div>
+
+                                        <!-- PROVINCE AND CITY -->
+                                        <!-- The code below helps css media screen size -->
                                         <div class="row g-3">
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <label for="">Province</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">City</label>
-                                            </div>
+                                            </div> -->
                                         </div>
+
                                         <div class="col-lg-6">
+                                            <div class="col-md-6">
+                                                <label for="" class="label-text">Province</label>
+                                            </div>
+                                            
                                             <div class="input-group">
                                                 <label class="input-group-text"><img class="profile-province-icon"
                                                         src="/image/canada.png" /></label>
@@ -122,6 +130,9 @@
                                         </div>
 
                                         <div class="col-lg-6">
+                                            <div class="col-md-6">
+                                                <label for="" class="label-text">City</label>
+                                            </div>
                                             <div class="input-group">
                                                 <label class="input-group-text"><img class="profile-city-icon"
                                                         src="/image/city-hall.png" /></label>
@@ -193,12 +204,12 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="pwd" class="form-label">New Password</label>
-                                            <input type="password" placeholder="New Passowrd"
+                                            <label for="pwd" class="form-label label-text">New Password</label>
+                                            <input type="password" placeholder="New Password"
                                                 class="form-control profile-form-control" id="pwd">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="cnfpwd" class="form-label">Confirm Password</label>
+                                            <label for="cnfpwd" class="form-label label-text">Confirm Password</label>
                                             <input type="password" placeholder="Confirm Password"
                                                 class="form-control profile-form-control" id="cnfpwd">
                                         </div>
@@ -206,26 +217,27 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Pet Detail -->
                         <div class="col-12">
                             <div class="my-5">
                                 <h3>My Pet</h3>
                                 <hr>
                             </div>
-                                <div class="row mb-5 gx-3">
+                                <div class="row mb-5 gx-3 screen-change">
                                     <div class="col">
                                         <div class="bg-secondary-soft px-4 py-5 rounded">
                                             <div class="row g-3">
                                                 <div class="text-center file-input-container">
                                                     <input type="file" id="pet-img" name="petImg" onchange="attachMyPetPic(this)" >
                                                     <label for="pet-img">
-                                                        <div class="square position-relative display-2 mb-3">
+                                                        <div class="square position-relative display-2 mb-3 frameCenter">
                                                             <i id="pet-icon"
                                                                 class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
                                                                 alt="Choose File">
                                                             </i>
                                                             <img id="petProfile" src="<%= petImage%>" alt="Pet Preview"
-                                                                class="pet-preview-img" />
+                                                                class="pet-preview-img" style="display: none;"/>
                                                         </div>
                                                     </label>
                                                 </div>
@@ -237,21 +249,28 @@
                                         <div class="bg-secondary-soft px-4 py-5 rounded">
                                             <div class="row g-3">
                                                 <div class="col-lg-6">
-                                                    <label class="form-label">Name</label>
+                                                    <label class="form-label label-text">Name</label>
                                                     <input type="text" class="form-control profile-form-control"
                                                         id="petName" name="petName" value="<%= petName%>"
                                                         placeholder="Pet Name" aria-label="pet name">
                                                 </div>
+
+                                                <!-- TYPE AND AGE -->
                                                 <div class="row g-3">
-                                                    <div class="row g-3">
+
+                                                    <!-- <div class="row g-3">
                                                         <div class="col-md-6">
                                                             <label for="">Type</label>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Age</label>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
+
                                                     <div class="col-lg-6">
+                                                        <div class="col-md-6">
+                                                            <label for="" class="label-text">Type</label>
+                                                        </div>
                                                         <div class="input-group">
                                                             <label class="input-group-text"><img class="pet-type-icon"
                                                                     src="/image/pet-type.png" alt=""></label>
@@ -272,6 +291,9 @@
                                                     </div>
 
                                                     <div class="col-lg-6">
+                                                        <div class="col-md-6">
+                                                            <label for="" class="label-text">Age</label>
+                                                        </div>
                                                         <div class="input-group">
                                                             <label class="input-group-text"><img class="pet-age-icon"
                                                                     src="/image/age.png" alt=""></label>
@@ -301,7 +323,7 @@
                                                     </div>
                                                     <div class="row g-3">
                                                         <div class="col-md-6">
-                                                            <label for="">Weight</label>
+                                                            <label for="" class="label-text">Weight</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
