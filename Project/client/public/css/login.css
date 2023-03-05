@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
 
 .login-title {
-    font-family: "Noto Sans";
     text-align: center;
     color: #6B9080;
     margin-left: -20px;
-    margin-right: 20;
+    margin-right: 40px;
     padding-top: 30px;
     padding-bottom: 20px;
     font-family: "Noto Sans";
@@ -18,8 +17,6 @@
     border: 1px solid;
     width: 400px;
     margin-top: -10px;
-    margin-left: 20px;
-    margin-right: 20px;
     margin-bottom: 30px;
 }
 
@@ -40,7 +37,7 @@
 /* form input */
 .login-form-control {
     border-radius: 50px !important;
-    width: 435px;
+    width: 380px;
 }
 
 .none-account {
@@ -105,11 +102,77 @@
     height: calc(100% - 73px);
 }
 
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    .login-img {
+        margin-top: 20px;
+    }
+    .login-form-area {
+        margin-top: -30px;
+    }
+    .login-title {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 
-@media (max-width: 991px) {
+    .login-hr {
+        width: 370px;
+    }
+
+    .login-form-outline {
+        margin-top: -10px;
+        margin-right: 5px;
+    }
+    .login-form-control {
+        width: 360px;
+    }
+    
+    .are-you {
+        margin-top: -5px;
+        margin-bottom: 10px;
+    }
+
+    .user-type {
+        margin-left: 65px;
+        margin-right: 10px;
+    }
+
+    .sign-in-btn {
+        padding-left: 2.5rem; 
+        padding-right: 2.5rem;
+        margin-top: 0px;
+    }
+
+    .google-btn, .facebook-btn, .twitter-btn {
+        border-radius: 40px 40px 40px 40px !important;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .bi-google, .bi-twitter, .bi-facebook {
+        margin-top: -3px;
+    }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+    /* body {
+        background-color: yellow;
+    } */
+}
+  
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    /* body {
+        background-color: blue;
+    } */
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){ 
     .login-img {
         margin-top: 50px;
-        border-radius: 30px !important; 
+        border-radius: 30px; 
     }
 
     .login-h-custom {
@@ -117,7 +180,7 @@
     }
 
     .login-title {
-        margin-left: 15px;
+        margin-left: 40px;
         margin-right: 20px;
     }
     
@@ -125,14 +188,26 @@
         width: 330px;
     }
 
-    /* .lead {
-        font-size: 15px;
-    } */
+    .login-form-outline {
+        margin-left: 10px;
+    }
+
+    .login-form-control {
+        width: 350px;
+    }
+
     .none-account {
         margin-top: 3px;
         /* margin-left: 20px;
         margin-right: 20px; */
     }
+
+    .sign-in-btn {
+        margin-left: 0px;
+    }
+    /* .or-area {
+        margin-left: 0px;
+    } */
     
     .third-party-title {
         margin-top: -20px;
@@ -151,5 +226,11 @@
         margin-top: -5px;
         margin-bottom: -20px;
     }
+}
 
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+    /* body {
+        background-color: white;
+    } */
 }
