@@ -8,7 +8,6 @@ const fs = require("fs");
 //GET
 
 const getProfile = async (req,res) => {
-  
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   let foundUser = await User.findOne({ email: decodedValues.email });
@@ -117,6 +116,7 @@ const uploadImage = async(req, name) =>{
 // Owner profile post and update
 const createOwnerPost = async(req,res) => {
     const avatarImageResult = await uploadImage(req, "myImg");
+    //console.info(avatarImageResult);
     const petImageResult = await uploadImage(req, "petImg");
     const data = req.body;
 
