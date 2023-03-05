@@ -65,9 +65,15 @@ app.get("/ownerPostInfo", (req, res) => {
   res.render("pages/ownerPostInfo");
 });
 
-app.get("/test", (req, res) => {
-  res.render("pages/test");
+// app.get("/test", (req, res) => {
+//   res.render("pages/test");
+// });
+
+
+app.get("/listSitterPost", (req, res) => {
+  res.render("pages/listSitterPost");
 });
+
 
 app.get("/ownerlist/:postid", async function (req, res, next) {
   const { postid } = req.params;

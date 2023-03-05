@@ -66,37 +66,31 @@
                                 <option value="Yellowknife">Yellowknife</option>
                             </select>
                         </div>
-                        <div class="col-sm-2 type">
-                            <select id="type" name="type" onchange="filterfeatures()"
-                                class="selectpicker type-selectpicker">
-                                <option value="- Select Type -">- Select Type -</option>
-                                <option value="Cat">Cat</option>
-                                <option value="Dog">Dog</option>
+                        <div class="col-sm-2 services">
+                            <select class="selectpicker services-selectpicker">
+                                <option value="Select Services">- Select Services -</option>
+                                <option value="Walking">Walking</option>
+                                <optgroup label="Caring">
+                                    <option value="Boarding">Boarding</option>
+                                    <option value="House Sitting">House Sitting</option>
+                                </optgroup>
                             </select>
                         </div>
-                        <div class="col-sm-2 age">
-                            <select id="age" name="age" class="selectpicker age-selectpicker">
-                                <option value="- Select Age -">- Select Age -</option>
-                                <option value="Puppy">Puppy</option>
-                                <option value="Kitty">Kitty</option>
-                                <option value="Audlt">Audlt</option>
-                                <option value="Oldest">Oldest</option>
-                            </select>
+                        <div class="col-sm-2">
+                            <div id="mingroup" class="input-group">
+                                <!-- <span class="input-group-addon">$</span> -->
+                                <input type="text" id="pricemin" name="pricemin" class="form-control price-min-control" placeholder="Min Price" value="">
+                            </div>
                         </div>
-                        <div class="col-sm-2 weight">
-                            <select id="weight" name="weight" class="selectpicker weight-selectpicker">
-                                <option value="- Select Weight -">- Select Weight -</option>
-                                <option value="less than 5 lbs">less than 5 lbs</option>
-                                <option value="less than 7 lbs">less than 7 lbs</option>
-                                <option value="5 - 10 lbs">5 - 10 lbs</option>
-                                <option value="7 - 10 lbs">7 - 10 lbs</option>
-                                <option value="10 - 20 lbs">10 - 20 lbs</option>
-                                <option value="20 - 30 lbs">20 - 30 lbs</option>
-                                <option value="30 - 40 lbs">30 - 40 lbs</option>
-                                <option value="Greater than 20 lbs">Greater than 20 lbs</option>
-                                <option value="Greater than 50 lbs">Greater than 50 lbs</option>
-                            </select>
+                      <div class="col-sm-2">
+                        <p> - </p>
+                      </div>
+                      <div class="col-sm-2">
+                        <div id="maxgroup" class="input-group ">
+                            <!-- <span class="input-group-addon">$</span> -->
+                            <input type="text" id="pricemax" name="pricemax" class="form-control price-max-control" placeholder="Max Price" value="">
                         </div>
+                      </div>
                         <div class="col-sm-2">
                             <button type="submit" id="searchbtn" class="search-btn">Search</button>
                         </div>
@@ -122,8 +116,7 @@
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes
                                     nascetur ridiculus mus. Quisque non tellus orci ac auctor augue mauris augue neque.
-                                    <a href="#" id="learnmore"
-                                        class="btn stretched-link learn-more">Learn
+                                    <a href="#" id="learnmore" class="btn stretched-link learn-more">Learn
                                         more...</a>
                                 </p>
                                 <p class="card-text card-date"><small class="text-muted list-text-muted">
