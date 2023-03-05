@@ -8,7 +8,7 @@ function attachMyProfile(input) {
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
             document.getElementById("avatar-preview").setAttribute("src", e.target.result);
-            document.getElementById("avatar-icon").style.display = "none";
+            //document.getElementById("avatar-icon").style.display = "none";
             document.getElementById("avatar-preview").style.display = "block";
         };
 
@@ -26,7 +26,7 @@ function attachMyPetPic(petInput) {
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
             document.getElementById("petProfile").setAttribute("src", pet.target.result);
-            document.getElementById("pet-icon").style.display = "none";
+            //document.getElementById("pet-icon").style.display = "none";
             document.getElementById("petProfile").style.display = "block";
         };
 
@@ -44,7 +44,7 @@ function attachPhoto1(photoInput1) {
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
             document.getElementById("photo1preview").setAttribute("src", photo1.target.result);
-            document.getElementById("icon").style.display = "none";
+            //document.getElementById("icon").style.display = "none";
             document.getElementById("photo1preview").style.display = "block";
         };
 
@@ -62,7 +62,7 @@ function attachPhoto2(photoInput2) {
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
             document.getElementById("photo2preview").setAttribute("src", photo2.target.result);
-            document.getElementById("photo-icon-2").style.display = "none";
+            //document.getElementById("photo-icon-2").style.display = "none";
             document.getElementById("photo2preview").style.display = "block";
         };
 
@@ -79,7 +79,7 @@ function attachPhoto3(photoInput3) {
             // image.src = e.target.result;
             // image.className = "profileImg_edit";
             document.getElementById("photoCover3").setAttribute("src", photo3.target.result);
-            document.getElementById("photo-icon-3").style.display = "none";
+            //document.getElementById("photo-icon-3").style.display = "none";
             document.getElementById("photoCover3").style.display = "block";
         };
 

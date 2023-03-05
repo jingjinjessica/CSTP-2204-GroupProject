@@ -8,10 +8,17 @@ const fs = require("fs");
 //GET
 
 const getProfile = async (req,res) => {
-    const token = req.cookies["access-token"];
-    const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
-    console.log(decodedValues, "decoded values");
-    res.render("pages/createPetOwnerProfile");   
+  const token = req.cookies["access-token"];
+  const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+  let foundUser = await User.findOne({ email: decodedValues.email });
+
+  //console.log(decodedValues, "decoded values");
+      if(foundUser.userType === "owner"){
+        res.redirect("/profile/createPetOwner");
+      }
+      if(foundUser.userType === "sitter"){
+        res.redirect("/profile/createPetSitter");
+      }  
 };
 //GET to satrt create Pet Owner Profile 
 const createPetOwner = async (req,res) => {
@@ -109,6 +116,7 @@ const uploadImage = async(req, name) =>{
 // Owner profile post and update
 const createOwnerPost = async(req,res) => {
     const avatarImageResult = await uploadImage(req, "myImg");
+    //console.info(avatarImageResult);
     const petImageResult = await uploadImage(req, "petImg");
     const data = req.body;
 
@@ -223,8 +231,9 @@ const createPetSitter = async(req,res) =>{
 
 const createSitterPost = async(req,res) => {
     const avatarImageResult = await uploadImage(req, "myImg");
-    console.info(avatarImageResult);
+    //console.info(avatarImageResult);
     const photo1Result = await uploadImage(req, "photo1");
+    //console.info(photo1Result);
     const photo2Result = await uploadImage(req, "photo2");
     const photo3Result = await uploadImage(req, "photo3");
     const data = req.body;
@@ -256,10 +265,11 @@ const createSitterPost = async(req,res) => {
             updateClause["$set"]["photo3"] = photo3Result.url;
           }
           Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
-          return res.status(200).json({
-            message: "updated Succesfully",
-            data
-          })
+          // return res.status(200).json({
+          //   message: "updated Succesfully",
+          //   data
+          // })
+          return res.redirect("/users/dashboard")
           
         }).catch((error) => {
             console.log(error);
@@ -286,11 +296,11 @@ const createSitterPost = async(req,res) => {
         })
         try{
             const output = await newProfile.save();
-            return res.status(201).json({
-                message: "Post Succesfully Created",
-            data: output
-
-            });
+            // return res.status(201).json({
+            //     message: "Post Succesfully Created",
+            // data: output
+            // });
+            return res.redirect("/users/dashboard");
         }catch (error) {
             console.info(error);
             return res.status(500).json({
