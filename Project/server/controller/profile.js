@@ -11,7 +11,6 @@ const getProfile = async (req,res) => {
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   let foundUser = await User.findOne({ email: decodedValues.email });
-
   //console.log(decodedValues, "decoded values");
       if(foundUser.userType === "owner"){
         res.redirect("/profile/createPetOwner");
@@ -20,6 +19,7 @@ const getProfile = async (req,res) => {
         res.redirect("/profile/createPetSitter");
       }  
 };
+
 //GET to satrt create Pet Owner Profile 
 const createPetOwner = async (req,res) => {
     const token = req.cookies["access-token"];
@@ -94,6 +94,9 @@ const uploadImage = async(req, name) =>{
     }
     // save the image as a file
     const saveFile = req.files[name];
+    if(saveFile === undefined){
+      return {};
+    }
     const fileName = saveFile["name"];
     try {
         fs.writeFileSync(fileName, saveFile["data"]);

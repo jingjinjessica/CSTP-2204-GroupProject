@@ -4,17 +4,13 @@ const setTitle = (event) => {
   newPetsitterPost.title = event.target.value;
 };
 
-const setProvince = (event) => {
-  newPetsitterPost.province = event.target.value;
-};
-
-const setCity = (event) => {
-  newPetsitterPost.city = event.target.value;
-};
-
 const setRate = (event) => {
   newPetsitterPost.rate = event.target.value;
   console.log(setRate);
+};
+const setServices = (event) => {
+  newPetsitterPost.services = event.target.value;
+  console.log(setServices);
 };
 
 const setExp = (event) => {
@@ -26,9 +22,8 @@ const sitterPost = async (event) => {
   //guard against empty input fields
   if (
     !newPetsitterPost.title ||
-    !newPetsitterPost.province ||
-    !newPetsitterPost.city ||
     !newPetsitterPost.rate ||
+    !newPetsitterPost.services ||
     !newPetsitterPost.experience
   ) {
     alert("Please fill all the fields");
@@ -46,7 +41,7 @@ const sitterPost = async (event) => {
       },
     });
     if (response) {
-      window.location.href = "/petsitterlists";
+      window.location.href = "/list/listsitterpost";
     }
   } catch (error) {
     console.log(error);
