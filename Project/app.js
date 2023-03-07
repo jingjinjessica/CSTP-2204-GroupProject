@@ -14,6 +14,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const petPost = require("./server/model/PetPost");
+const sitterPost = require("./server/model/PetSitterPost");
 const profile = require("./server/model/Profile");
 
 require("dotenv").config();
@@ -84,6 +85,18 @@ app.get("/ownerlist/:postid", async function (req, res, next) {
     const petowner = post.userID;
     const owner = await profile.findOne({ userID: petowner });
     res.render("[postid]", { post, owner });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+app.get("/sitterlist/:postid", async function (req, res, next) {
+  const { postid } = req.params;
+  //console.log("this is post id from server", postid);
+  try {
+    const post = await sitterPost.findById(postid);
+    const petsitter = post.userID;
+    const sitter = await profile.findOne({ userID: petsitter });
+    res.render("pages/sitterPostInfo", { post, sitter });
   } catch (error) {
     res.status(500).json(error);
   }
