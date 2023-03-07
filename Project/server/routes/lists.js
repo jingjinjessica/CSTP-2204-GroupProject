@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const { getPost} = require("../controller/list");
+const { getPetPost} = require("../controller/petPostList");
+const { getSitterPost} = require("../controller/sitterPostList");
 
-router.get("/listpost",getPost);
-router.post("/listpost",getPost);
+router.get("/listpetpost",getPetPost);
+router.post("/listpetpost",getPetPost);
+
+router.get("/listsitterpost",getSitterPost);
+router.post("/listsitterpost",getSitterPost);
 
 module.exports = router;

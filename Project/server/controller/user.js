@@ -60,7 +60,7 @@ const loginUser = async (request, response) => {
       const profileInform = await getProfileByUserEmail(data.email);
       // has profile
       if (profileInform){
-        response.redirect("/list/listpost");
+        response.redirect("/list/listpetpost");
       }
       // has not profile by type
       else if(foundUser.userType === "owner"){

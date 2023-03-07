@@ -12,25 +12,27 @@ function formatDate(date) {
         date.getDate();
 }
 
-const getPost = async (req, res) => {
+const getPetPost = async (req, res) => {
     // return selected option
     const queryBody = req.body;
     const query ={};
     // looking for have pet type or not , != mean we click the type for search
-    if (queryBody.hasOwnProperty("petType") && queryBody.petType !== "any"){
+    if (queryBody.hasOwnProperty("province") && queryBody.province !== "- Select Province -"){
+        query["profile.province"] = queryBody.province;
+    }
+    // AND
+    if (queryBody.hasOwnProperty("city") && queryBody.city !== "- Select City -"){
+        query["profile.city"] = queryBody.city;
+    }
+    if (queryBody.hasOwnProperty("petType") && queryBody.petType !== "- Select Type -"){
         query["profile.petType"] = queryBody.petType;
     }
-    // if (queryBody.hasOwnProperty("province") && queryBody.province !== "any"){
-    //     query["profile.province"] = queryBody.;
-    // }
-    // AND 
-    if (queryBody.hasOwnProperty("weight") && queryBody.weight !== "any"){
-        query["profile.petWeight"] = queryBody.weight;
+    if (queryBody.hasOwnProperty("petAge") && queryBody.petAge !== "- Select Age -"){
+        query["profile.petAge"] = queryBody.petAge;
     }
-    if (queryBody.hasOwnProperty("age") && queryBody.age !== "any"){
-        query["profile.petAge"] = queryBody.age;
+    if (queryBody.hasOwnProperty("petWeight") && queryBody.petWeight !== "- Select Weight -"){
+        query["profile.petWeight"] = queryBody.petWeight;
     }
-
     //connect 2 tables profiles and petpost
     const result = await PetPost.aggregate([
         {
@@ -44,12 +46,10 @@ const getPost = async (req, res) => {
         {$unwind:"$profile"},
         {$match:query}
     ]);
-    
     // console.info(result[1].profile[0]);
-    res.render("pages/list", { result: result, fd: formatDate })
+    res.render("pages/listPetPost", { result: result, fd: formatDate })
 }
 
-
 module.exports = {
-    getPost
+    getPetPost
 };

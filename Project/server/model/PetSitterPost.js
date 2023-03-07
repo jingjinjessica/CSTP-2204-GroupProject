@@ -6,15 +6,11 @@ const PetSitterPostSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    province: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
     rate: {
+      type: Number,
+      required: true,
+    },
+    services: {
       type: String,
       required: true,
     },
@@ -23,7 +19,7 @@ const PetSitterPostSchema = mongoose.Schema(
       required: true,
     },
     userID: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },

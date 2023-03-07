@@ -5,7 +5,7 @@ const User = require("../model/User");
 //create post
 const createPetPost = async (request, response) => {
   const data = request.body;
-  console.log(data);
+  //console.log(data);
   const token = request.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   //request.decodedEmail = decodedValues.email;
@@ -15,27 +15,25 @@ const createPetPost = async (request, response) => {
     //const decodedValue = jwt.decode(token, { complete: true });
 
     const findUser = await User.findOne({ email: decodedValues.email });
-    console.log("finduser", findUser);
+    //console.log("finduser", findUser);
 
     if (findUser) {
       try {
         const newPost = new PetPost({
           title: data.title,
-          province: data.province,
-          city: data.city,
           desc: data.desc,
           startDate: data.startdate,
           endDate: data.enddate,
           userID: findUser._id,
         });
-        console.log(newPost);
+        //console.log(newPost);
         const output = await newPost.save();
         return response.status(201).json({
           message: "Post Succesfully Created",
           data: output,
         });
       } catch (error) {
-        console.info(error);
+        //console.info(error);
         return response.status(500).json({
           message: "There was an error",
           error,
@@ -59,8 +57,8 @@ const updatePetPost = async (request, response) => {
     const post = await PetPost.findById(request.params.id);
     // console.log(post);
     if (post.userID == request.body.userID) {
-      console.log("this is post userid", post.userID);
-      console.log("this is userid", request.body.userID);
+      //console.log("this is post userid", post.userID);
+      //console.log("this is userid", request.body.userID);
       try {
         const postUpdate = await PetPost.findByIdAndUpdate(
           request.params.id,

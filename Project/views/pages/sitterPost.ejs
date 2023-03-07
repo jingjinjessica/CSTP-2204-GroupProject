@@ -25,26 +25,30 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column align-items-center">
                     <div class="row mb-2 col-md-7 mt-3 rate-structure">
-                        <label for="amount" class="col-sm-2 col-form-label text_edit">Rate(CAD):</label>
+                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
                         <div class="col-md-10">
-                            <input type="text" id="rate" placeholder="$" onchange="setRate(event)" class="form-control input-border rate-inputChange">
+                            <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)" class="form-control input-border rate-inputChange">
                         </div>
                     </div>
                 </div>
-
-                <!-- <div id="slider-range"></div>
-                <div class="d-flex flex-row justify-content-between mt-2">
-                    <label for="" id="startrate" style="color: #6B9080; font-weight: bold;">$0</label>              
-                    <label for="" id="endrate" style="color: #6B9080; font-weight: bold;">$250</label>
-                </div> -->
+                <div class="col-sm-2 services">
+                    <select class="selectpicker services-selectpicker" id="services" name="services" onchange="setServices(event)">
+                        <option value="Select Services">- Select Services -</option>
+                        <option value="Walking">Walking</option>
+                        <optgroup label="Caring">
+                            <option value="Boarding">Boarding</option>
+                            <option value="House Sitting">House Sitting</option>
+                        </optgroup>
+                    </select>
+                </div>
 
                 <div class="d-flex flex-column align-items-center">
                     <div class="row mb-2 col-md-7 mt-3">
                         <div class="col-md-12 col-md-10 experience-txtarea">
                             <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                            <textarea class="form-control input-border" id="experience" rows="3" onchange="setExp(event)"
+                            <textarea class="form-control input-border" id="experience" name="experience" rows="3" onchange="setExp(event)"
                                     placeholder="Type..."></textarea>
                         </div>
                     </div>
@@ -61,21 +65,3 @@
 </body>
 
 </html>
-<!-- <script>
-    $( function() {
-          $( "#slider-range" ).slider({
-            range: true,
-            min: 0,
-            max: 250,
-            values: [ 0, 250 ],
-            slide: function( event, ui ) {
-            //   $( "#rate" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-              $( "#startrate" ).text( "$" + ui.values[ 0 ]);
-              $( "#endrate" ).text( "$" + ui.values[ 1 ]);
-            }
-          });
-          // Getting the values of the range
-          $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-        } );
-</script> -->

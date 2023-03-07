@@ -8,6 +8,7 @@ const profileRoutes = require("./server/routes/profiles");
 const sitterRoutes = require("./server/routes/sitterposts");
 const ownerRoutes = require("./server/routes/ownerposts");
 const listRoutes = require("./server/routes/lists");
+const postRoutes = require("./server/routes/posts");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -65,9 +66,15 @@ app.get("/ownerPostInfo", (req, res) => {
   res.render("pages/ownerPostInfo");
 });
 
-app.get("/test", (req, res) => {
-  res.render("pages/test");
+// app.get("/test", (req, res) => {
+//   res.render("pages/test");
+// });
+
+
+app.get("/listSitterPost", (req, res) => {
+  res.render("pages/listSitterPost");
 });
+
 
 app.get("/ownerlist/:postid", async function (req, res, next) {
   const { postid } = req.params;
@@ -80,7 +87,6 @@ app.get("/ownerlist/:postid", async function (req, res, next) {
   } catch (error) {
     res.status(500).json(error);
   }
-
 });
 
 function userLogger(req, res, next) {
@@ -97,6 +103,7 @@ app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
+app.use("/post",postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
 

@@ -23,45 +23,56 @@
                                     <div class="info-area">
                                         <div class="media username">
                                             <span id="username">
-                                                <%=owner.petName %>
+                                                <%= post.title %>
                                             </span>
                                         </div>
-                                        <div class="media">
-                                            <label>Age:</lable>
-                                                <span class="location">
-                                                    <%=owner.petAge %>
-                                                </span>
-                                        </div>
-                                        <div class="media">
-                                            <label>Weight:</label>
+                                        <div class="media ">
+                                            <label>Pet Name:</label>
                                             <span class="location">
-                                                <%=owner.petWeight %>
+                                                <%= owner.petName %>
                                             </span>
                                         </div>
                                         <div class="media">
                                             <label>Location:</label>
                                             <span class="location">
-                                                <%=post.city %>,
-                                                    <%=post.province %>
+                                                <%= owner.city %>,
+                                                    <%= owner.province %>
+                                            </span>
+                                        </div>
+                                        <div class="media">
+                                            <label>Type:</lable>
+                                                <span class="location">
+                                                    <%= owner.petType %>
+                                                </span>
+                                        </div>
+                                        <div class="media">
+                                            <label>Age:</lable>
+                                                <span class="location">
+                                                    <%= owner.petAge %>
+                                                </span>
+                                        </div>
+                                        <div class="media">
+                                            <label>Weight:</label>
+                                            <span class="location">
+                                                <%= owner.petWeight %>
                                             </span>
                                         </div>
                                         <div class="media requirement-area">
                                             <span class="requirement-title">Requirement:</span>
                                             <p class="requirement text-break" id="requirement">
-                                                <%=post.desc %>
+                                                <%= post.desc %>
                                             </p>
                                         </div>
                                         <div class="media">
                                             <label>Start Date:</label>
                                             <span class="location">
-                                                <%=post.startDate %>
+                                                <%= post.startDate %>
                                             </span>
                                         </div>
                                         <div class="media">
                                             <label>End Date:</label>
                                             <span class="location">
-                                                <%=post.endDate %>
-
+                                                <%= post.endDate %>
                                             </span>
                                         </div>
                                     </div>

@@ -8,6 +8,7 @@ const {
   getAllPosts,
   updateSitterPost,
   deleteSitterPost,
+  getPost
 } = require("../controller/sitterpost");
 
 // router.get("/", getAllPosts);
@@ -17,6 +18,8 @@ router.post("/create", createSitterPost);
 // router.get("/:id", getPostById);
 
 router.put("/:id", updateSitterPost);
+
+router.get("/:id", getPost);
 
 router.delete("/delete/:id", deleteSitterPost);
 

@@ -1,8 +1,6 @@
 const postData = {
       _id: "<%= post._id %>",
       title: "<%= post.title %>",
-      province: "<%= post.province %>",
-      city: "<%= post.city %>",
       desc: "<%= post.desc %>",
       startDate: "<%= post.startDate %>",
       endDate: "<%= post.endDate %>",

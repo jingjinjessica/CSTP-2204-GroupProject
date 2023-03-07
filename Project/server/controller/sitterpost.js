@@ -5,31 +5,26 @@ const User = require("../model/User");
 //create post
 const createSitterPost = async (request, response) => {
   const data = request.body;
-  console.log(data);
-
+  //console.log(data);
   const token = request.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
-
   // request.decodedEmail = decodedValues.email;
   // console.log("decodedemail", request.decodedEmail);
-
   if (decodedValues.email) {
     //const decodedValue = jwt.decode(token, { complete: true });
-
     const findUser = await User.findOne({ email: decodedValues.email });
-    console.log(findUser);
+    //console.log("finduser", findUser);
 
     if (findUser) {
       try {
         const newPost = new PetSitterPost({
           title: data.title,
-          province: data.province,
-          city: data.city,
           rate: data.rate,
+          services: data.services,
           experience: data.experience,
           userID: findUser._id,
         });
-        console.log(newPost);
+        //console.log(newPost);
         const output = await newPost.save();
         return response.status(201).json({
           message: "Post Succesfully Created",
@@ -57,13 +52,13 @@ const createSitterPost = async (request, response) => {
 //update post
 const updateSitterPost = async (request, response) => {
   try {
-    const post = await Post.findById(request.params.id);
-    console.log(post);
+    const post = await PetSitterPost.findById(request.params.id);
+    //console.log(post);
     if (post.userID == request.body.userID) {
-      console.log("this is post userid", post.userID);
-      console.log("this is userid", request.body.userID);
+      //console.log("this is post userid", post.userID);
+      //console.log("this is userid", request.body.userID);
       try {
-        const postUpdate = await Post.findByIdAndUpdate(
+        const postUpdate = await PetSitterPost.findByIdAndUpdate(
           request.params.id,
           {
             $set: request.body,
@@ -87,8 +82,8 @@ const updateSitterPost = async (request, response) => {
 //delete post
 const deleteSitterPost = async (request, response) => {
   try {
-    const post = await Post.findById(request.params.id);
-    console.log(post);
+    const post = await PetSitterPost.findById(request.params.id);
+    //console.log(post);
     if (post.userID == request.body.userID) {
       try {
         await post.delete();
@@ -107,7 +102,7 @@ const deleteSitterPost = async (request, response) => {
 //get all posts
 const getAllSitterPosts = async (request, response) => {
   try {
-    const data = await Post.find();
+    const data = await PetSitterPost.find();
     return response.status(200).json({
       message: "Posts found Succesfully",
       data,
@@ -120,20 +115,20 @@ const getAllSitterPosts = async (request, response) => {
   }
 };
 
-//get post by id
-// const getPostById = async (request, response) => {
-//   try {
-//     const post = await Post.findById(request.params.id);
-//     response.status(200).json(post);
-//   } catch (error) {
-//     response.status(500).json(error);
-//   }
-// };
+// 
+const getPost = async (request, response) => {
+  try {
+    const post = await PetSitterPost.findById(request.params.id);
+    response.render("pages/sitterPost");
+  } catch (error) {
+    response.status(500).json(error);
+  }
+};
 
 module.exports = {
   createSitterPost,
   updateSitterPost,
   deleteSitterPost,
   getAllSitterPosts,
-  // getPostById,
+  getPost
 };
