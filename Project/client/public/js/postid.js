@@ -1,4 +1,3 @@
-
 const postData = {
       _id: "<%= post._id %>",
       title: "<%= post.title %>",
