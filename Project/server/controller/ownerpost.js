@@ -15,7 +15,7 @@ const createPetPost = async (request, response) => {
     //const decodedValue = jwt.decode(token, { complete: true });
 
     const findUser = await User.findOne({ email: decodedValues.email });
-    console.log("finduser", findUser);
+    //console.log("finduser", findUser);
 
     if (findUser) {
       try {
