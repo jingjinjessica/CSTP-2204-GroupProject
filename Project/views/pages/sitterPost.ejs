@@ -20,15 +20,16 @@
                     <div class="row mb-2 col-md-7 mt-3">
                         <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+                            <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)">
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10">
-                            <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
-                            <input type="text" id="rate" placeholder="$" onchange="setRate(event)" class="form-control">
+
+                <div class="d-flex justify-content-center">
+                    <div class="row mb-2 col-md-7 mt-3 rate-structure">
+                        <label for="amount" class="col-sm-2 col-form-label text_edit">Rate(CAD):</label>
+                        <div class="col-md-10">
+                            <input type="text" id="rate" placeholder="$" onchange="setRate(event)" class="form-control input-border rate-inputChange">
                         </div>
                     </div>
                 </div>
@@ -41,9 +42,9 @@
 
                 <div class="d-flex flex-column align-items-center">
                     <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10">
+                        <div class="col-md-12 col-md-10 experience-txtarea">
                             <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                            <textarea class="form-control" id="experience" rows="3" onchange="setExp(event)"
+                            <textarea class="form-control input-border" id="experience" rows="3" onchange="setExp(event)"
                                     placeholder="Type..."></textarea>
                         </div>
                     </div>
