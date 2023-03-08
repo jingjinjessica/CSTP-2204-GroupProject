@@ -286,15 +286,15 @@ const createSitterPost = async(req,res) => {
     else {
         const userEntity = await getUserEntity(req);
         const newProfile = new Profile({
-            avatar:data.myImg,
+            avatar:avatarImageResult.url,
             name: data.name,
             province:data.province,
             city:data.city,
             phone:data.phone,
             aboutme:data.aboutme,
-            photo1:data.photo1,
-            photo2:data.photo2,
-            photo3:data.photo3,
+            photo1:photo1Result.url,
+            photo2:photo2Result.url,
+            photo3:photo3Result.url,
             userID: userEntity._id
         })
         try{
@@ -303,6 +303,7 @@ const createSitterPost = async(req,res) => {
             //     message: "Post Succesfully Created",
             // data: output
             // });
+            //console.info(data);           
             return res.redirect("/users/dashboard");
         }catch (error) {
             console.info(error);
@@ -312,7 +313,7 @@ const createSitterPost = async(req,res) => {
             });
         }
     }
-    // console.info(req.body);
+    //console.info(req.body);
 }
 
 

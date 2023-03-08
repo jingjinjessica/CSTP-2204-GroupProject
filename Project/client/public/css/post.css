@@ -44,6 +44,7 @@
 .input-border {
     border: 1px solid black;
     border-radius: 13px;
+    width: 300px;
 }
 
 /* SitterPost and PetOwnerPost view change */

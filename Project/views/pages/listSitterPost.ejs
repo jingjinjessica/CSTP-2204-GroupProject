@@ -67,10 +67,8 @@
                             </select>
                         </div>
                         <div class="col-sm-2 services">
-
-                            <select class="selectpicker services-selectpicker" id="services" name="services">
-                                <option value="- Select Services -">- Select Services -</option>
-
+                            <select class="selectpicker services-selectpicker">
+                                <option value="Select Services">- Select Services -</option>
                                 <option value="Walking">Walking</option>
                                 <optgroup label="Caring">
                                     <option value="Boarding">Boarding</option>
@@ -101,7 +99,6 @@
             </div>
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
-
                 <% for(var i=0; i < result.length; i++) {%>
                     <div class="card mb-3 post-card">
                         <div class="row no-gutters">
@@ -130,13 +127,11 @@
                                         </small>
                                     </p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <% } %>
+                </div>
             </div>
-          
         </div>
         <%- include('../partials/footer') %>
 </body>
