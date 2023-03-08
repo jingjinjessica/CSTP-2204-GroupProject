@@ -15,49 +15,103 @@
         <div class="container justify-content-center">
             <form onsubmit="sitterPost(event)"
                 class="row g-3 d-flex flex-column align-items-center align-content-center">
-
-                <div class=" d-flex justify-content-center titlePost">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="title" onchange="setTitle(event)">
+                <div class="col-xxl-8 mb-5 mb-xxl-0">
+                    <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class=" d-flex titlePost">
+                            <div class="col-lg-6">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
+                                        class="form-control input-border rate-inputChange">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label profile-form-label label-text" for="">Services</label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-group-text"><img class="profile-city-icon"
+                                            src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
+                                    <select class="form-select" id="services" name="services"
+                                        onchange="setServices(event)">
+                                        <option value="Select Services">Select Services</option>
+                                        <option value="Walking">Walking</option>
+                                        <optgroup label="Caring">
+                                            <option value="Boarding">Boarding</option>
+                                            <option value="House Sitting">House Sitting</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                                <textarea class="form-control input-border" id="experience" name="experience" rows="3"
+                                    onchange="setExp(event)" placeholder="Type..."></textarea>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <div class="col-lg-12 text-end">
+                        <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
+                    </div>
                 </div>
-                <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10">
-                            <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
-                            <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)" class="form-control">
+                <!-- <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3 rate-structure">
+                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
+                        <div class="col-md-10">
+                            <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
+                                class="form-control input-border rate-inputChange">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-2 services">
-                    <select class="selectpicker services-selectpicker" id="services" name="services" onchange="setServices(event)">
-                        <option value="Select Services">- Select Services -</option>
-                        <option value="Walking">Walking</option>
-                        <optgroup label="Caring">
-                            <option value="Boarding">Boarding</option>
-                            <option value="House Sitting">House Sitting</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10">
-                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                            <textarea class="form-control" id="experience" name="experience" rows="3" onchange="setExp(event)"
-                                    placeholder="Type..."></textarea>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label profile-form-label label-text" for="">Services</label>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <label class="input-group-text"><img class="profile-city-icon"
+                                src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
+                        <select class="form-select" id="services" name="services" onchange="setServices(event)">
+                            <option value="Select Services">Select Services</option>
+                            <option value="Walking">Walking</option>
+                            <optgroup label="Caring">
+                                <option value="Boarding">Boarding</option>
+                                <option value="House Sitting">House Sitting</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="d-flex flex-column align-items-center">
+                    <div class="row mb-2 col-md-7 mt-3">
+                        <div class="col-md-12 col-md-10 experience-txtarea">
+                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                            <textarea class="form-control input-border" id="experience" name="experience" rows="3"
+                                onchange="setExp(event)" placeholder="Type..."></textarea>
+                        </div>
+                    </div>
+                </div> -->
 
-                </div>
-
-                <!-- SUBMIT BUTTON -->
-                <div class="col-12 text-end">
-                    <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
-                </div>
             </form>
         </div>
 

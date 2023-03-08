@@ -35,6 +35,9 @@
 																<p class="card-text" id="date">
 																	<%= fd(posts[i].createdAt) %>
 																</p>
+																<button onclick="editPost('<%= posts[i]._id %>')">
+																	edit
+																</button>
 																<button onclick="deletePost('<%= posts[i]._id %>')">
 																	delete
 																</button>
@@ -46,13 +49,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- btn for prev and next -->
-								<!-- <a href="#inam" class="carousel-control-prev" data-bs-slide="prev">
-									<span class="carousel-control-prev-icon"></span>
-								</a>
-								<a href="#inam" class="carousel-control-next" data-bs-slide="next">
-									<span class="carousel-control-next-icon"></span>
-								</a> -->
 							</div>
 						</div>
 					</div>

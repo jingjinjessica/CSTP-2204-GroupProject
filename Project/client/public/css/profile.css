@@ -103,7 +103,7 @@ label span input {
     height: 300px;
     border: 2px dashed #ccc;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     object-fit: cover;
 }
@@ -200,4 +200,164 @@ label span input {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 30px;
+}
+
+.my-5 h3 {
+    color: #6B9080;
+}
+
+.label-text {
+    color: #6B9080;
+    font-weight: 600;
+}
+
+/* Pet profile picture to fit content */
+.pet-preview-img {
+    width: 100%;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* .frameCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+@media (max-width: 1400px) {
+    .file-upload {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .screen-change {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 0px !important;
+    }
+
+    /* Shrinking the form inputs */
+    .row>* {
+        flex-shrink: 2;
+    }
+
+    /* Pet Sitter profile form structure */
+    .screen-structure {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+}
+
+/* This is to change the header font sizes */
+@media (max-width: 1201px){
+    .nav-link{
+        font-size: 16px;
+    }
+
+    .photography-structure {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 1100px) {
+    .photography-structure {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 966px){
+    .navbar-brand {
+        font-size: 25px;
+    }  
+}
+
+@media (max-width: 911px){
+    .nav-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 850px){
+    .nav-link {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 800px){
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .nav-link {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 781px){
+    /* .navbar-brand {
+        font-size: 20px;
+    } */
+    .nav-link {
+        font-size: 12px;
+    }
+}
+
+/* This is to change the form inputs */
+@media (max-width: 768px) {
+    .screen-change {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    .frameCenter {
+        margin-left: 20%;
+    }
+
+    .my-5 h3 {
+        text-align: center;
+    }
+
+    .navbar-brand {
+        font-size: 2em;
+    }
+
+    .nav-link {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 500px){
+    .frameCenter {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+@media (max-width: 450px){
+    .frameCenter {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media (max-width: 400px){
+    .frameCenter {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 361px){
+    .frameCenter {
+        margin-left: 0%;
+        margin-right: 5%;
+    }
 }

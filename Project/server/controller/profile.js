@@ -272,6 +272,7 @@ const createSitterPost = async(req,res) => {
           //   message: "updated Succesfully",
           //   data
           // })
+          console.info(data);
           return res.redirect("/users/dashboard")
           
         }).catch((error) => {
@@ -303,6 +304,7 @@ const createSitterPost = async(req,res) => {
             //     message: "Post Succesfully Created",
             // data: output
             // });
+            //console.info(data);           
             return res.redirect("/users/dashboard");
         }catch (error) {
             console.info(error);
@@ -312,7 +314,7 @@ const createSitterPost = async(req,res) => {
             });
         }
     }
-    // console.info(req.body);
+    //console.info(req.body);
 }
 
 

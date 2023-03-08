@@ -1,0 +1,151 @@
+.titlePost {
+    margin-top: 10%;
+}
+
+#slider-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+  
+#slider-div>div {
+    margin: 8px;
+}
+  
+.slider-label {
+    position: absolute;
+    background-color: #eee;
+    padding: 4px;
+    font-size: 0.75rem;
+}
+
+.dateInput {
+    border-radius: 15px;
+    border: 2px solid #6B9080;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #6B9080;
+}
+
+.startDate {
+    margin-right: 7%;
+}
+
+.endDate {
+    margin-left: 7%;
+}
+
+.text_edit {
+    color: #6B9080;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.input-border {
+    border: 1px solid black;
+    border-radius: 13px;
+    width: 300px;
+}
+
+/* SitterPost and PetOwnerPost view change */
+@media (max-width: 992px) {
+    .rate-structure {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rate-inputChange{
+        width: 122%;
+    }
+
+    .startDate {
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 768px){
+
+    /* Pet Sitter Post */
+    .rate-structure {
+        margin-right: 7%;
+        width: 48%;
+    }
+
+    .experience-txtarea {
+        width: 300px;
+    }
+
+    /* Pet Owner Post */
+    .owner-descArea {
+        width: 75%;
+    }
+
+    .owner-titleArea {
+        width: 75%;
+    }
+}
+
+/* Mobile View for sitterPost */
+@media (max-width: 750px) {
+    .mediaTest {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 511px){
+    .rate-structure {
+        width: 55%;
+    }
+}
+
+@media (max-width: 415px) {
+    .rate-structure {
+        margin-right: 16%;
+        
+    }
+
+    .rate-inputChange {
+        width: 140%;
+    }
+
+    .dates-structure {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .dateInput {
+        width: 45%;
+    }
+
+    .startDate {
+        align-items: center;
+    }
+
+    .endDate {
+        align-items: center;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 401px){
+    .rate-structure{
+        margin-right: 10%;
+        width: 70%;
+    }
+
+    .rate-inputChange {
+        width: 122%;
+    }
+}
+
+@media (max-width: 282px){
+    .rate-structure {
+        width: 120%;
+    }
+
+    .rate-inputChange {
+        width: 117%;
+    }
+}

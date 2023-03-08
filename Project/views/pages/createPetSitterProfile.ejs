@@ -15,7 +15,7 @@
                         <hr>
                     </div>
                     <form class="file-upload" id="sitterprofile" action="/profile/createsitter" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-                        <div class="row mb-5 gx-3">
+                        <div class="row mb-5 gx-3 screen-structure">
                             <div class="col">
                                 <!-- User detail -->
                                 <div class="bg-secondary-soft px-4 py-5 rounded">
@@ -31,6 +31,7 @@
                                                     </i> -->
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
                                                         class="preview-img" />
+
                                                 </div>
                                             </label>
                                         </div>
@@ -43,27 +44,27 @@
                                     <div class="row g-3">
                                         <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
                                         <div class="col-lg-6">
-                                            <label class="form-label profile-form-label">Name</label>
+                                            <label class="form-label profile-form-label label-text">Name</label>
                                             <input type="text" class="form-control profile-form-control" id="name" name="name"
                                                 value="<%= name%>" placeholder="Name" aria-label="First name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label class="form-label profile-form-label">Phone number</label>
+                                            <label class="form-label profile-form-label label-text">Phone number</label>
                                             <input type="text" class="form-control profile-form-control"
                                                 placeholder="Phone Number" aria-label="Phone number" id="phone"  name="phone"
                                                 value="<%= phone%>">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="email" class="form-label profile-form-label">Email</label>
+                                            <label for="email" class="form-label profile-form-label label-text">Email</label>
                                             <input type="email" class="form-control profile-form-control" id="email" name="email"
                                                 value="<%= email%>" disabled readonly>
                                         </div>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label class="form-label profile-form-label" for="">Province</label>
+                                                <label class="form-label profile-form-label label-text" for="">Province</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label profile-form-label" for="">City</label>
+                                                <label class="form-label profile-form-label label-text" for="">City</label>
                                             </div>
                                         </div>
 
@@ -189,19 +190,19 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="pwd" class="form-label profile-form-label">New Password</label>
-                                            <input type="password" placeholder="New Passowrd" name="password"
+                                            <label for="pwd" class="form-label profile-form-label label-text">New Password</label>
+                                            <input type="password" placeholder="New Password" name="password"
                                                 class="form-control profile-form-control" id="pwd">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="cnfpwd" class="form-label profile-form-label">Confirm
+                                            <label for="cnfpwd" class="form-label profile-form-label label-text">Confirm
                                                 Password</label>
                                             <input type="password" placeholder="Confirm Password" name="cnfpwd"
                                                 class="form-control profile-form-control" id="cnfpwd">
                                         </div>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label class="about-me" class="form-label profile-form-label" for="">About
+                                                <label for="" class="about-me form-label profile-form-label label-text">About
                                                     Me</label>
                                             </div>
                                             
@@ -212,11 +213,13 @@
                                         </div>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label class="form-label profile-form-label" for="">Photography</label>
+                                                <label class="form-label profile-form-label label-text" for="">Photography</label>
                                             </div>
                                         </div>
+
                                         <div class="col-lg-12">
-                                            <div class="row g-3">
+                                            <div class="row g-3 photography-structure">
+
                                                 <div class="col-md-4 ">
                                                     <div class="text-center file-input-container">
                                                         <input type="file" id="photo1-file-input" name="photo1"
@@ -234,6 +237,7 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- Label params order matters: 'for' has to be first before 'class' -->
                                                 <div class="col-md-4">
                                                     <div class="text-center file-input-container">
                                                         <input type="file" id="photo-file-input2" name="photo2"

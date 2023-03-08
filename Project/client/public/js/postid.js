@@ -1,4 +1,3 @@
-
 const postData = {
       _id: "<%= post._id %>",
       title: "<%= post.title %>",
@@ -25,7 +24,6 @@ const ownerProfile = {
       createdAt: "<%= owner.createdAt %>",
       updatedAt: "<%= owner.updatedAt %>"
     }
-
 const sitterPostData = {
       _id: "<%= post._id %>",
       title: "<%= post.title %>",
@@ -50,4 +48,5 @@ const sitterProfile = {
       createdAt: "<%= sitter.createdAt %>",
       updatedAt: "<%= sitter.updatedAt %>"
     }
+
 
