@@ -67,10 +67,8 @@
                             </select>
                         </div>
                         <div class="col-sm-2 services">
-
-                            <select class="selectpicker services-selectpicker" id="services" name="services">
-                                <option value="- Select Services -">- Select Services -</option>
-
+                            <select class="selectpicker services-selectpicker">
+                                <option value="Select Services">- Select Services -</option>
                                 <option value="Walking">Walking</option>
                                 <optgroup label="Caring">
                                     <option value="Boarding">Boarding</option>
@@ -101,42 +99,35 @@
             </div>
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
-
-                <% for(var i=0; i < result.length; i++) {%>
-                    <div class="card mb-3 post-card">
-                        <div class="row no-gutters">
-                            <div class="col-md-4 img-area">
-                                <img id="myImg" src="<%= result[i].profile.avatar%>" class="card-img" alt="pet-img">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body card-content-list">
-                                    <h4 class="card-title">
-                                        <%= result[i].profile.name %>
-                                    </h4>
-                                    <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
-                                    </h5>
-                                    <h5 class="location">
-                                        <%= result[i].rate %>
-                                    </h5>
-                                    <p class="card-text info text-break">
-                                        <%= result[i].experience %>
-                                            <a href="/api/v1/sitterposts/<%=result[i]._id%>" id="learnmore"
-                                                class="btn stretched-link learn-more">Learn
-                                                more...</a>
-                                    </p>
-                                    <p class="card-text card-date"><small class="text-muted list-text-muted">
-                                            <%= fd(result[i].createdAt) %>
-                                        </small>
-                                    </p>
-                                </div>
-
+                <div class="card mb-3 post-card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 img-area">
+                            <img id="petimg" src="" class="card-img" alt="pet-img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body card-content-list">
+                                <h4 class="card-title">
+                                    sitter name
+                                </h4>
+                                <h5 class="location">
+                                    Province, City
+                                </h5>
+                                <p class="card-text info text-break">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes
+                                    nascetur ridiculus mus. Quisque non tellus orci ac auctor augue mauris augue neque.
+                                    <a href="#" id="learnmore" class="btn stretched-link learn-more">Learn
+                                        more...</a>
+                                </p>
+                                <p class="card-text card-date"><small class="text-muted list-text-muted">
+                                        Date: DD-MM-YYYY
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <% } %>
+                </div>
             </div>
-          
         </div>
         <%- include('../partials/footer') %>
 </body>
