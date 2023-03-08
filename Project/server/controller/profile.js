@@ -209,7 +209,7 @@ const createPetSitter = async(req,res) =>{
             phone:"",
             province:"Choose",
             city:"Choose",
-            aboutme:"",
+            aboutMe:"",
             avatarImage: "/image/add-img.png",
             photo1: "/image/add-img.png",
             photo2: "/image/add-img.png",
@@ -223,7 +223,7 @@ const createPetSitter = async(req,res) =>{
             phone:profileInform.phone,
             province:profileInform.province,
             city:profileInform.city,
-            aboutme:profileInform.aboutme,
+            aboutMe:profileInform.aboutMe,
             avatarImage: profileInform.avatar??"/image/add-img.png",
             photo1: profileInform.photo1??"/image/add-img.png",
             photo2: profileInform.photo2??"/image/add-img.png",
@@ -253,7 +253,7 @@ const createSitterPost = async(req,res) => {
                                     phone:data.phone,
                                     province:data.province,
                                     city:data.city,
-                                    aboutme:data.aboutme
+                                    aboutMe:data.aboutMe
                                 }};
           if (JSON.stringify(avatarImageResult) !== "{}"){
             updateClause["$set"]["avatar"] = avatarImageResult.url;
@@ -286,15 +286,15 @@ const createSitterPost = async(req,res) => {
     else {
         const userEntity = await getUserEntity(req);
         const newProfile = new Profile({
-            avatar:data.myImg,
+            avatar:avatarImageResult.url,
             name: data.name,
             province:data.province,
             city:data.city,
             phone:data.phone,
-            aboutme:data.aboutme,
-            photo1:data.photo1,
-            photo2:data.photo2,
-            photo3:data.photo3,
+            aboutMe:data.aboutMe,
+            photo1:photo1Result.url,
+            photo2:photo2Result.url,
+            photo3:photo3Result.url,
             userID: userEntity._id
         })
         try{

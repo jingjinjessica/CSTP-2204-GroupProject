@@ -31,7 +31,7 @@ const sitterPostData = {
       title: "<%= post.title %>",
       rate: "<%= post.rate %>",
       serivces: "<%= post.services %>",
-      experience: "<%= post. experience %>",
+      experience: "<%= post.experience %>",
       userID: "<%= post.userID %>",
     }
 
@@ -42,7 +42,7 @@ const sitterProfile = {
       city: "<%= sitter.city %>",
       phone: "<%= sitter.phone %>",
       userID: "<%= sitter.userID %>",
-      aboutme:"<%= sitter.aboutme %>",
+      aboutMe:"<%= sitter.aboutMe %>",
       avatar:"<%= sitter.avatar %>",
       photo1:"<%= sitter.photo1 %>",
       photo2:"<%= sitter.photo2 %>",
