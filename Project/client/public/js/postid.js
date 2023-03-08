@@ -25,28 +25,28 @@ const ownerProfile = {
       updatedAt: "<%= owner.updatedAt %>"
     }
 
-const sitterPostData = {
-      _id: "<%= post._id %>",
-      title: "<%= post.title %>",
-      rate: "<%= post.rate %>",
-      serivces: "<%= post.services %>",
-      experience: "<%= post. experience %>",
-      userID: "<%= post.userID %>",
-    }
+// const sitterPostData = {
+//       _id: "<%= post._id %>",
+//       title: "<%= post.title %>",
+//       rate: "<%= post.rate %>",
+//       serivces: "<%= post.services %>",
+//       experience: "<%= post.experience %>",
+//       userID: "<%= post.userID %>",
+//     }
 
-const sitterProfile = {
-      _id: "<%= sitter._id %>",
-      name: "<%= sitter.name %>",
-      province: "<%= sitter.province %>",
-      city: "<%= sitter.city %>",
-      phone: "<%= sitter.phone %>",
-      userID: "<%= sitter.userID %>",
-      aboutme:"<%= sitter.aboutme %>",
-      avatar:"<%= sitter.avatar %>",
-      photo1:"<%= sitter.photo1 %>",
-      photo2:"<%= sitter.photo2 %>",
-      photo3:"<%= sitter.photo3 %>",
-      createdAt: "<%= sitter.createdAt %>",
-      updatedAt: "<%= sitter.updatedAt %>"
-    }
+// const sitterProfile = {
+//       _id: "<%= sitter._id %>",
+//       name: "<%= sitter.name %>",
+//       province: "<%= sitter.province %>",
+//       city: "<%= sitter.city %>",
+//       phone: "<%= sitter.phone %>",
+//       userID: "<%= sitter.userID %>",
+//       aboutme:"<%= sitter.aboutMe %>",
+//       avatar:"<%= sitter.avatar %>",
+//       photo1:"<%= sitter.photo1 %>",
+//       photo2:"<%= sitter.photo2 %>",
+//       photo3:"<%= sitter.photo3 %>",
+//       createdAt: "<%= sitter.createdAt %>",
+//       updatedAt: "<%= sitter.updatedAt %>"
+//     }
 
