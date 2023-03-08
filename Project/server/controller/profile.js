@@ -209,7 +209,7 @@ const createPetSitter = async(req,res) =>{
             phone:"",
             province:"Choose",
             city:"Choose",
-            aboutme:"",
+            aboutMe:"",
             avatarImage: "/image/add-img.png",
             photo1: "/image/add-img.png",
             photo2: "/image/add-img.png",
@@ -223,7 +223,7 @@ const createPetSitter = async(req,res) =>{
             phone:profileInform.phone,
             province:profileInform.province,
             city:profileInform.city,
-            aboutme:profileInform.aboutme,
+            aboutMe:profileInform.aboutMe,
             avatarImage: profileInform.avatar??"/image/add-img.png",
             photo1: profileInform.photo1??"/image/add-img.png",
             photo2: profileInform.photo2??"/image/add-img.png",
@@ -253,7 +253,7 @@ const createSitterPost = async(req,res) => {
                                     phone:data.phone,
                                     province:data.province,
                                     city:data.city,
-                                    aboutme:data.aboutme
+                                    aboutMe:data.aboutMe
                                 }};
           if (JSON.stringify(avatarImageResult) !== "{}"){
             updateClause["$set"]["avatar"] = avatarImageResult.url;
@@ -272,6 +272,7 @@ const createSitterPost = async(req,res) => {
           //   message: "updated Succesfully",
           //   data
           // })
+          console.info(data);
           return res.redirect("/users/dashboard")
           
         }).catch((error) => {
@@ -291,7 +292,7 @@ const createSitterPost = async(req,res) => {
             province:data.province,
             city:data.city,
             phone:data.phone,
-            aboutme:data.aboutme,
+            aboutMe:data.aboutMe,
             photo1:photo1Result.url,
             photo2:photo2Result.url,
             photo3:photo3Result.url,

@@ -14,15 +14,7 @@ const ProfileSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    hireReasons: {
-      type: String,
-      required: false,
-    },
     aboutMe: {
-      type: String,
-      required: false,
-    },
-    experiences: {
       type: String,
       required: false,
     },
