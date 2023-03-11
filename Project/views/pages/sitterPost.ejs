@@ -8,6 +8,11 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -84,6 +89,15 @@
                                         class="btn btn-primary post-save-btn">Save</button>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                                <textarea class="form-control input-border" id="experience" name="experience" rows="3"
+                                    onchange="setExp(event)" placeholder="Type..."></textarea>
+                            </div>
+                            <!-- <div class="input-group date form-group" id="datepicker">
+                                <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -93,3 +107,19 @@
 </body>
 
 </html>
+<script>
+//     $(document).ready(function() {
+//   $('#datepicker').datepicker({
+//     startDate: new Date(),
+//     multidate: true,
+//     format: "dd/mm/yyyy",
+//     daysOfWeekHighlighted: "5,6",
+//     datesDisabled: ['31/08/2017'],
+//     language: 'en'
+//   }).on('changeDate', function(e) {
+//     // `e` here contains the extra attributes
+//     //$(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+//   });
+// });
+
+</script>

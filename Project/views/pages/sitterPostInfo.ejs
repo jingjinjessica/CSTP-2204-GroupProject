@@ -9,7 +9,7 @@
                     <div class="row align-items-center ">
                         <div class="col-lg-5">
                             <div class="info-avatar">
-                                <img id="userImg" src="/image/person-window.jpg" class="info-img" alt="user-image">
+                                <img id="userImg" src="<%= sitter.avatar %>" class="info-img" alt="user-image" name="avatar" >
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -18,14 +18,17 @@
                                     <div class="col-md-12">
                                         <div class="info-area">
                                             <div class="media username">
-                                                <span id="username" value="<%=%>"></span>
+                                                <span id="username" name="name" ><%= sitter.name%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" value="<%=post.province%"></span>
+                                                <span class="location" name="province" ><%= sitter.province%></span>
+                                            </div>
+                                            <div class="media">
+                                                <span class="location" name="city" > <%= sitter.city%></span>
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Rate:</span>
-                                                <p class="rate-from text-break" id="rate">From $</p>
+                                                <p class="rate-from text-break" id="rate" name="rate" >From $ <%= post.rate%></p>
                                             </div>
                                         </div>
                                     </div>
@@ -44,30 +47,24 @@
                                 <div class="col-md-12">
                                     <div class="intro-area">
                                         <div class="media">
-                                            <span class="petname" id="aboutMe">About me</span>
-                                            <p class="aboutMe-description">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua
+
+                                            <span class="petname" id="aboutMe"  >About me</span>
+                                            <p class="aboutMe-description" name="aboutMe" >
+
+                                                <%= sitter.aboutMe%>
                                             </p>
                                         </div>
                                         <div class="media intro-area">
+
                                             <span class="intro-title">Experiences:</span>
-                                            <p class="experiences" id="experiences">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua.
+                                            <p class="experiences" id="experiences" name="experience" >
+
+                                                <%= post.experience%>
                                             </p>
                                             <div class="photo-inColumns">
-                                                <img src="/image/black-cat.jpg" alt="photo1" class="photo-experiences">
-                                                <img src="/image/cat-dog-cuddle.jpg" alt="photo2" class="photo-experiences">
-                                                <img src="/image/three-pets-laying.jpg" alt="photo3" class="photo-experiences">
+                                                <img src="<%= sitter.photo1%>" alt="photo1" name="photo1" class="photo-experiences">
+                                                <img src="<%= sitter.photo2%>" alt="photo2" name="photo2"  class="photo-experiences">
+                                                <img src="<%= sitter.photo3%>" alt="photo3" name="photo3"  class="photo-experiences">
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +86,7 @@
                    
                 </header>
           
-                <div class="chat">
+                <div class="chat" style="display: none;">
                     <div id="chatContainer">
                         <div id="friendslist">
                             <div id="friends">
@@ -162,7 +159,7 @@
                     <h4 class="live-chat-title">Live Chat</h4>
                     <img src="https://img.icons8.com/ios/50/00000/chat-message--v1.png" class="live-chat" alt="live-chat" onclick="openLiveChat()" />
                     <a><i class="material-symbols-outlined live-chat"><!--sms--></i></a></div>
-            </div> -->
+            </div> 
             <%- include('../partials/footer') %>
     </body>
 </html>

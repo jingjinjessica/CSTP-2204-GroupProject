@@ -235,6 +235,16 @@ label span input {
     height: 100%;
 }
 
+img[src*="add-img.png"]{
+    width: 30%;
+    height: 30%;
+    margin-top: 35%;
+}
+
+.sitter-add-imgs img[src*="add-img.png"]{
+    margin-top: 0px;
+}
+
 /* .frameCenter {
     display: flex;
     justify-content: center;

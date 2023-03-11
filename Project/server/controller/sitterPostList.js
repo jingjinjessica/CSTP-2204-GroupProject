@@ -41,7 +41,7 @@ const getSitterPost = async (req, res) => {
         }
         query["rate"]["$lte"] = parseFloat(queryBody.pricemax);
     }
-    console.info(query);
+    //console.info(query);
     
     //connect 2 tables profiles and petpost
     const result = await SitterPost.aggregate([
