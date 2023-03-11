@@ -77,14 +77,27 @@ app.get("/listSitterPost", (req, res) => {
 });
 
 
+// app.get("/ownerlist/:postid", async function (req, res, next) {
+//   const { postid } = req.params;
+//   console.log("this is post id from server", postid);
+//   try {
+//     const post = await petPost.findById(postid);
+//     const petowner = post.userID;
+//     const owner = await profile.findOne({ userID: petowner });
+//     res.render("[postid]", { post, owner });
+//   } catch (error) {
+//     res.status(500).json(error);
+//   }
+// });
+
 app.get("/ownerlist/:postid", async function (req, res, next) {
   const { postid } = req.params;
-  console.log("this is post id from server", postid);
+  //console.log("this is post id from server", postid);
   try {
     const post = await petPost.findById(postid);
     const petowner = post.userID;
     const owner = await profile.findOne({ userID: petowner });
-    res.render("[postid]", { post, owner });
+    res.render("pages/OwnerPostInfo", { post, owner });
   } catch (error) {
     res.status(500).json(error);
   }

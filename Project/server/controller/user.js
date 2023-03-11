@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs"); // This library/package will be used to encr
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
 const PetPost = require("../model/PetPost");
+const SitterPost = require("../model/PetSitterPost");
 
 //Registe 7
 const registerUser = async (request, response) => {
@@ -107,17 +108,50 @@ function formatDate(date){
   "-" +
   date.getDate();
 }
+// const getHistoryPost = async (req,res) => {
+//   const token = req.cookies["access-token"];
+//   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+//   const post = await getPostByEmail(decodedValues.email);
+//   const profile = await getProfileByUserEmail(decodedValues.email);
+//   res.render("pages/dashboard", {posts: post, petImage:profile.petImage, avatar:profile.avatar, fd:formatDate})
+// }
+// const getPostByEmail = async (email) => {
+//   const user = await User.findOne({ email: email });
+//   const post = await PetPost.find({userID: user._id.toString() })
+//   return post;
+// }
+
+
 const getHistoryPost = async (req,res) => {
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   const post = await getPostByEmail(decodedValues.email);
   const profile = await getProfileByUserEmail(decodedValues.email);
-  res.render("pages/dashboard", {posts: post, petImage:profile.petImage, fd:formatDate})
+  const user = await getUser(decodedValues.email);
+  if (user.userType === "owner"){
+    res.render("pages/dashboard", {posts: post, petImage:profile.petImage, fd:formatDate})
+  }
+  else if (user.userType === "sitter"){
+    res.render("pages/dashboard", {posts: post, avatar:profile.avatar, fd:formatDate})
+  }
 }
+
+const getUser =async (email) => {
+  const user = await User.findOne({ email: email });
+  return user;
+}
+  
 const getPostByEmail = async (email) => {
   const user = await User.findOne({ email: email });
-  const post = await PetPost.find({userID: user._id.toString() })
-  return post;
+  if (user.userType === "owner"){
+    const post = await PetPost.find({userID: user._id.toString() })
+    return post;
+  }
+  else if (user.userType === "sitter"){
+    const post = await SitterPost.find({userID: user._id.toString() })
+    return post;
+  }
+
 }
 
 

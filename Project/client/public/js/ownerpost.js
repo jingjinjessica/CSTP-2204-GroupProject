@@ -4,14 +4,6 @@ const setTitle = (event) => {
   newOwnerPost.title = event.target.value;
 };
 
-// const setProvince = (event) => {
-//   newOwnerPost.province = event.target.value;
-// };
-
-// const setCity = (event) => {
-//   newOwnerPost.city = event.target.value;
-// };
-
 const setDesc = (event) => {
   newOwnerPost.desc = event.target.value;
 };
@@ -29,8 +21,6 @@ const ownerPost = async (event) => {
   //guard against empty input fields
   if (
     !newOwnerPost.title ||
-    // !newOwnerPost.province ||
-    // !newOwnerPost.city ||
     !newOwnerPost.desc ||
     !newOwnerPost.startdate ||
     !newOwnerPost.enddate
