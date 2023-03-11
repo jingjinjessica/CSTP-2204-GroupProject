@@ -18,52 +18,75 @@
 <body>
     <%- include('../partials/header') %>
         <div class="container justify-content-center">
-            <form onsubmit="sitterPost(event)"
-                class="row g-3 d-flex flex-column align-items-center align-content-center">
-                <div class="col-xxl-8 mb-5 mb-xxl-0">
-                    <div class="bg-secondary-soft px-4 py-5 rounded">
-                        <div class=" d-flex titlePost">
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5 post-title-area text-center">
+                        <h3>Post A Request</h3>
+                        <hr class="post-hr">
+                    </div>
+                    <form onsubmit="sitterPost(event)"
+                        class="row g-3 d-flex flex-column align-items-center align-content-center">
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-4 rounded sitter-input-area">
+                                <div class=" d-flex titlePost">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="ownerPostTitle"
+                                                    class="col-sm-2 col-form-label text_edit">Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control input-border sitter-input-title"
+                                                id="title" onchange="setTitle(event)" placeholder="Title">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
                                 <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="amount"
+                                                    class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="rate" name="rate" placeholder="$"
+                                                onchange="setRate(event)"
+                                                class="form-control input-border rate-inputChange">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-3 col-form-label text_edit" for="">Services</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label class="input-group-text"><img class="post-service-icon"
+                                                    src="/image/sitter-service.png" /></label>
+                                            <select class="form-select" id="services" name="services"
+                                                onchange="setServices(event)">
+                                                <option value="Select Services">Select Services</option>
+                                                <option value="Walking">Walking</option>
+                                                <optgroup label="Caring">
+                                                    <option value="Boarding">Boarding</option>
+                                                    <option value="House Sitting">House Sitting</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="" class="col-sm-3 col-form-label text_edit">Experiences</label>
+                                        <textarea class="form-control input-border experience-input" id="experience"
+                                            name="experience" rows="3" onchange="setExp(event)"
+                                            placeholder="Type your experiences in pet sitting..."></textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                        class="form-control input-border rate-inputChange">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label profile-form-label label-text" for="">Services</label>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-group-text"><img class="profile-city-icon"
-                                            src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
-                                    <select class="form-select" id="services" name="services"
-                                        onchange="setServices(event)">
-                                        <option value="Select Services">Select Services</option>
-                                        <option value="Walking">Walking</option>
-                                        <optgroup label="Caring">
-                                            <option value="Boarding">Boarding</option>
-                                            <option value="House Sitting">House Sitting</option>
-                                        </optgroup>
-                                    </select>
+                                <!-- SUBMIT BUTTON -->
+                                <div class="col-lg-12 text-end">
+                                    <button type="submit" id="getValue"
+                                        class="btn btn-primary post-save-btn">Save</button>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -71,61 +94,14 @@
                                 <textarea class="form-control input-border" id="experience" name="experience" rows="3"
                                     onchange="setExp(event)" placeholder="Type..."></textarea>
                             </div>
-
-
                             <!-- <div class="input-group date form-group" id="datepicker">
                                 <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
                             </div> -->
-
-
                         </div>
-                    </div>
-
-                    <!-- SUBMIT BUTTON -->
-                    <div class="col-lg-12 text-end">
-                        <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
-                    </div>
+                    </form>
                 </div>
-                <!-- <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3 rate-structure">
-                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
-                        <div class="col-md-10">
-                            <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                class="form-control input-border rate-inputChange">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 services">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label profile-form-label label-text" for="">Services</label>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-group-text"><img class="profile-city-icon"
-                                src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
-                        <select class="form-select" id="services" name="services" onchange="setServices(event)">
-                            <option value="Select Services">Select Services</option>
-                            <option value="Walking">Walking</option>
-                            <optgroup label="Caring">
-                                <option value="Boarding">Boarding</option>
-                                <option value="House Sitting">House Sitting</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div> -->
-                <!-- <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10 experience-txtarea">
-                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                            <textarea class="form-control input-border" id="experience" name="experience" rows="3"
-                                onchange="setExp(event)" placeholder="Type..."></textarea>
-                        </div>
-                    </div>
-                </div> -->
-
-            </form>
+            </div>
         </div>
 
 </body>
