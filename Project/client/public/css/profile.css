@@ -269,11 +269,11 @@ img[src*="add-img.png"]{
     }
 
     /* Pet Sitter profile form structure */
-    .screen-structure {
+    /* .screen-structure {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-    }
+    } */
     
 }
 
