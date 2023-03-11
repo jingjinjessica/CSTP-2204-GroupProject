@@ -24,12 +24,12 @@
                                             <input type="file" id="avatar-file-input" name="myImg" onchange="attachMyProfile(this)" />
                                             <label for="avatar-file-input">
                                                 <div class="square position-relative display-2 mb-3 frameCenter">
-                                                    <i id="avatar-icon"
+                                                    <!-- <i id="avatar-icon"
                                                         class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
                                                         alt="Choose File">
                                                     </i> -->
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
-                                                        class="preview-img" style="display: none;" />
+                                                        class="preview-img"/>
                                                 </div>
                                             </label>
                                         </div>
@@ -228,7 +228,7 @@
                                                                 alt="Choose File">
                                                             </i> -->
                                                             <img id="petProfile" src="<%= petImage%>" alt="Pet Preview"
-                                                                class="pet-preview-img" style="display: none;"/>
+                                                                class="pet-preview-img"/>
                                                         </div>
                                                     </label>
                                                 </div>
@@ -362,10 +362,10 @@
                         <div class="gap-3 d-md-flex justify-content-md-end text-center">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary skip-btn">Skip</button>
+                                    <button type="submit" class="btn btn-primary profile-skip-btn">Skip</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
+                                    <button type="submit" class="btn btn-primary profile-save-btn">Save</button>
                                 </div>
                             </div>
                         </div>
