@@ -44,26 +44,13 @@
     border-radius: 13px;
 }
 
-.start-date, .end-date {
+.start-date,
+.end-date {
     width: 400px;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
     text-transform: uppercase;
-}
-.post-save-btn {
-    background: #FB5607;
-    border: 1px solid #FB5607;
-    font-weight: 600;
-    padding: 8px;
-    padding-left: 45px;
-    padding-right: 45px;
-    margin-top: 20px;
-}
-
-.post-save-btn:hover {
-    background-color: #FACC22;
-    border: 1px solid #FACC22;
-    color: #26A69A;
+    /* background-image: url(/image/icon-calendar.png); */
 }
 
 /* owner post */
@@ -76,13 +63,21 @@
     color: #6B9080;
 }
 
-/* .startDate {
-    margin-right: 7%;s
+.owner-save-btn {
+    background: #FB5607;
+    border: 1px solid #FB5607;
+    font-weight: 600;
+    padding: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 20px;
 }
 
-.endDate {
-    margin-left: 7%;
-} */
+.owner-save-btn:hover {
+    background-color: #FACC22;
+    border: 1px solid #FACC22;
+    color: #26A69A;
+}
 
 /* sitter post */
 
@@ -108,6 +103,22 @@
 
 .rate-inputChange {
     width: 380px;
+}
+
+.post-save-btn {
+    background: #FB5607;
+    border: 1px solid #FB5607;
+    font-weight: 600;
+    padding: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 20px;
+}
+
+.post-save-btn:hover {
+    background-color: #FACC22;
+    border: 1px solid #FACC22;
+    color: #26A69A;
 }
 
 /* SitterPost and PetOwnerPost view change */
@@ -212,3 +223,131 @@
         width: 117%;
     }
 }
+
+@media (max-width: 480px) {
+
+    .sitter-input-title,
+    .owner-input-title,
+    .rate-inputChange {
+        width: 320px;
+    }
+
+    .experience-input,
+    .desc-input {
+        width: 320px;
+        height: 100px;
+    }
+
+    .start-date,
+    .end-date {
+        width: 320px;
+    }
+
+    .post-date-area {
+        margin-top: 10px;
+    }
+
+    .owner-save-btn,
+    .post-save-btn {
+        margin-top: 50px;
+        margin-right: 90px;
+    }
+
+}
+
+/* Media Query for low resolution  Tablets, Ipads / */
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .sitter-input-title,
+    .owner-input-title {
+        width: 150px;
+    }
+
+    .experience-input,
+    .desc-input {
+        width: 150px;
+        height: 100px;
+    }
+}
+
+/* / Media Query for Tablets Ipads portrait mode / */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .sitter-input-title,
+    .owner-input-title {
+        width: 150px;
+    }
+
+    .experience-input,
+    .desc-input {
+        width: 150px;
+        height: 100px;
+    }
+
+}
+
+/* / Media Query for Laptops and Desktops / */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .login-img {
+        margin-top: 50px;
+        border-radius: 30px;
+    }
+
+    .login-h-custom {
+        height: 100%;
+    }
+
+    .login-title {
+        margin-left: 40px;
+        margin-right: 20px;
+    }
+
+    .login-hr {
+        width: 330px;
+    }
+
+    .login-form-outline {
+        margin-left: 10px;
+    }
+
+    .login-form-control {
+        width: 350px;
+    }
+
+    .none-account {
+        margin-top: 3px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .sign-in-btn {
+        margin-left: 0px;
+    }
+
+    .or-area {
+        margin-left: 0px;
+    }
+
+    .third-party-title {
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .third-party {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .login-form-control {
+        width: 360px;
+        margin-top: -5px;
+        margin-bottom: -20px;
+    }
+}
+
+/* / Media Query for Large screens / */
+/* @media (min-width: 1281px) {
+
+} */
