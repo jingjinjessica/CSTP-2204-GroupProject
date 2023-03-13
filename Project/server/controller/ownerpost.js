@@ -11,24 +11,40 @@ const createPetPost = async (request, response) => {
   if (decodedValues.email) {
     const findUser = await User.findOne({ email: decodedValues.email });
     //console.log("finduser", findUser);
-
+    let output;
     if (findUser) {
       try {
-        const newPost = new PetPost({
+        const post = {
           title: data.title,
           desc: data.desc,
           startDate: data.startdate,
           endDate: data.enddate,
           userID: findUser._id,
-        });
-        //console.log(newPost);
-        const output = await newPost.save();
+        };
+        if (data.postId !== ""){
+            // update
+            output = await PetPost.findByIdAndUpdate(
+               data.postId,
+              {
+                $set: post,
+              },
+              {
+                new: true,
+              }
+            );
+        }
+        else{
+          const newPost = new PetPost(post);
+          //console.log(newPost);
+          output = await newPost.save();
+      }
+        console.info(output);
         return response.status(201).json({
           message: "Post Succesfully Created",
           data: output,
         });
       } catch (error) {
-        //console.info(error);
+        console.info(error);
         return response.status(500).json({
           message: "There was an error",
           error,
@@ -47,39 +63,38 @@ const createPetPost = async (request, response) => {
 };
 
 //update post
-const updatePetPost = async (request, response) => {
-  try {
-    const post = await PetPost.findById(request.params.id);
-    // console.log(post);
-    if (post.userID == request.body.userID) {
-      //console.log("this is post userid", post.userID);
-      //console.log("this is userid", request.body.userID);
-      try {
-        const postUpdate = await PetPost.findByIdAndUpdate(
-          request.params.id,
-          {
-            $set: request.body,
-          },
-          {
-            new: true,
-          }
-        );
-        response.status(200).json(postUpdate);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      response.status(401).json("You can't update this post.");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const updatePetPost = async (request, response) => {
+//   try {
+//     const post = await PetPost.findById(request.params.id);
+//     // console.log(post);
+//     if (post.userID == request.body.userID) {
+//       //console.log("this is post userid", post.userID);
+//       //console.log("this is userid", request.body.userID);
+//       try {
+//         const postUpdate = await PetPost.findByIdAndUpdate(
+//           request.params.id,
+//           {
+//             $set: request.body,
+//           },
+//           {
+//             new: true,
+//           }
+//         );
+//         response.status(200).json(postUpdate);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     } else {
+//       response.status(401).json("You can't update this post.");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 //delete post
 const deletePetPost = async (request, response) => {
   try {
-
     const post = await PetPost.findById(request.params.id);
       try {
         await post.delete();
@@ -120,7 +135,7 @@ const getPost = async (request, response) => {
 
 module.exports = {
   createPetPost,
-  updatePetPost,
+  //updatePetPost,
   deletePetPost,
   getAllPetPosts,
   getPost

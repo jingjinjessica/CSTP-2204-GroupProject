@@ -6,7 +6,7 @@ const router = express.Router();
 const {
   createPetPost,
   getAllPetPosts,
-  updatePetPost,
+  // updatePetPost,
   deletePetPost,
 } = require("../controller/ownerpost");
 
@@ -16,7 +16,7 @@ router.post("/create", createPetPost);
 
 // router.get("/:id", getPostById);
 
-router.put("/:id", updatePetPost);
+//router.put("/:id", updatePetPost);
 
 router.delete("/delete/:id", deletePetPost);
 

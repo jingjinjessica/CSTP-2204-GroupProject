@@ -3,11 +3,7 @@
 
 <head>
     <%- include('../partials/head') %>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <script src="./js/petsitterpost.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+    
 </head>
 
 <body>
@@ -25,7 +21,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control input-border" id="title" name="title" value="<%= title%>" onchange="setTitle(event)">
+                                    <input type="text" class="form-control input-border" id="title" name="title" onchange="setSitterTitle(event)" value="<%= post.title
+                                    %>">
                                 </div>
                             </div>
                         </div>
@@ -38,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                        class="form-control input-border rate-inputChange">
+                                        class="form-control input-border rate-inputChange" value="<%= post.rate%>">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -51,12 +48,12 @@
                                     <label class="input-group-text"><img class="profile-city-icon"
                                             src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
                                     <select class="form-select" id="services" name="services"
-                                        onchange="setServices(event)">
-                                        <option value="Select Services">Select Services</option>
-                                        <option value="Walking">Walking</option>
+                                        onchange="setServices(event)" value="<%= post.services%>">
+                                        <option value="Select Services" <%= post.services==="Select Services"?"selected":"" %>>Select Services</option>
+                                        <option value="Walking" <%= post.services==="Walking"?"selected":"" %> >Walking</option>
                                         <optgroup label="Caring">
-                                            <option value="Boarding">Boarding</option>
-                                            <option value="House Sitting">House Sitting</option>
+                                            <option value="Boarding" <%= post.services==="Boarding"?"selected":"" %> >Boarding</option>
+                                            <option value="House Sitting" <%= post.services==="House Sitting"?"selected":"" %>>House Sitting</option>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -64,57 +61,23 @@
                             <div class="col-lg-6">
                                 <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
                                 <textarea class="form-control input-border" id="experience" name="experience" rows="3"
-                                    onchange="setExp(event)" placeholder="Type..."></textarea>
+                                    onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
 
                     <!-- SUBMIT BUTTON -->
                     <div class="col-lg-12 text-end">
-                        <button type="submit" id="getValue" class="btn btn-primary saveBtn">Save</button>
+                        <button type="submit" class="btn btn-primary saveBtn"><%= btnName%></button>
                     </div>
                 </div>
-                <!-- <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3 rate-structure">
-                        <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD):</label>
-                        <div class="col-md-10">
-                            <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                class="form-control input-border rate-inputChange">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 services">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label profile-form-label label-text" for="">Services</label>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-group-text"><img class="profile-city-icon"
-                                src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
-                        <select class="form-select" id="services" name="services" onchange="setServices(event)">
-                            <option value="Select Services">Select Services</option>
-                            <option value="Walking">Walking</option>
-                            <optgroup label="Caring">
-                                <option value="Boarding">Boarding</option>
-                                <option value="House Sitting">House Sitting</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div> -->
-                <!-- <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3">
-                        <div class="col-md-12 col-md-10 experience-txtarea">
-                            <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                            <textarea class="form-control input-border" id="experience" name="experience" rows="3"
-                                onchange="setExp(event)" placeholder="Type..."></textarea>
-                        </div>
-                    </div>
-                </div> -->
-
             </form>
         </div>
 
+<script>
+    sitterPostLoad();
+</script>
 </body>
 
 </html>

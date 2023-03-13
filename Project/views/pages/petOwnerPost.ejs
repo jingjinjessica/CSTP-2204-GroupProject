@@ -3,7 +3,6 @@
 
 <head>
     <%- include('../partials/head') %>
-    <script src="./js/ownerpost.js"></script>     
 </head>
 
 <body>
@@ -17,7 +16,8 @@
                     <div class="row mb-2 col-md-7 mt-3 owner-titleArea">
                         <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)">
+                            <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)" value="<%= post.title
+                            %>">
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,8 @@
                     <div class="row mb-2 col-md-7 mt-3 owner-descArea">
                         <div class="form-group">
                             <label for="" class="col-sm-2 col-form-label text_edit">Description:</label>
-                            <textarea class="form-control input-border" id="desc" rows="3" onchange="setDesc(event)"
-                                        placeholder="Type..."></textarea>
+                            <textarea class="form-control input-border" id="desc" name="desc" rows="3" onchange="setDesc(event)"
+                                        placeholder="Type..." value="<%= post.desc%>"> <%= post.desc%></textarea>
                         </div>
                         
                     </div>
@@ -35,23 +35,26 @@
                 <div class="mw-100 d-flex flex-row justify-content-center dates-structure">
                     <div class="d-flex flex-column startDate">
                         <label for="" class="text_edit">Start Date:</label>
-                        <input type="date" name="" id="startdate" onchange="setStart(event)" class="dateInput">
+                        <input type="date" name="startDate" id="startdate" onchange="setStart(event)" class="dateInput" value="<%= post.startDate%>" >
                     </div>
                     <div class="d-flex flex-column endDate">
                         <label for="" class="text_edit">End Date:</label>
-                        <input type="date" name="" id="enddate" onchange="setEnd(event)" class="dateInput">
+                        <input type="date" name="endDate" id="enddate" onchange="setEnd(event)" class="dateInput" value="<%= post.endDate%>" >
                     </div>
                 </div>
+                
+                <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
 
                 <!-- SUBMIT BUTTON -->
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
+                    <button type="submit" class="btn btn-primary saveBtn"><%= btnName%></button>
                 </div>
-
             </form>
         </div>
 
-
+<script>
+    postLoad();
+</script>
 
 </body>
 

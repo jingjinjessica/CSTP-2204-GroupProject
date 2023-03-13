@@ -61,7 +61,12 @@ const loginUser = async (request, response) => {
       const profileInform = await getProfileByUserEmail(data.email);
       // has profile
       if (profileInform){
-        response.redirect("/list/listpetpost");
+        if(foundUser.userType === "owner"){
+          response.redirect("/list/listsitterpost");
+        }
+        else if(foundUser.userType === "sitter"){
+          response.redirect("/list/listpetpost");
+        }
       }
       // has not profile by type
       else if(foundUser.userType === "owner"){
@@ -108,19 +113,6 @@ function formatDate(date){
   "-" +
   date.getDate();
 }
-// const getHistoryPost = async (req,res) => {
-//   const token = req.cookies["access-token"];
-//   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
-//   const post = await getPostByEmail(decodedValues.email);
-//   const profile = await getProfileByUserEmail(decodedValues.email);
-//   res.render("pages/dashboard", {posts: post, petImage:profile.petImage, avatar:profile.avatar, fd:formatDate})
-// }
-// const getPostByEmail = async (email) => {
-//   const user = await User.findOne({ email: email });
-//   const post = await PetPost.find({userID: user._id.toString() })
-//   return post;
-// }
-
 
 const getHistoryPost = async (req,res) => {
   const token = req.cookies["access-token"];
@@ -129,10 +121,10 @@ const getHistoryPost = async (req,res) => {
   const profile = await getProfileByUserEmail(decodedValues.email);
   const user = await getUser(decodedValues.email);
   if (user.userType === "owner"){
-    res.render("pages/dashboard", {posts: post, petImage:profile.petImage, fd:formatDate})
+    res.render("pages/dashboard", {posts: post, postImage:profile.petImage, fd:formatDate, userType:"owner"})
   }
   else if (user.userType === "sitter"){
-    res.render("pages/dashboard", {posts: post, avatar:profile.avatar, fd:formatDate})
+    res.render("pages/dashboard", {posts: post, postImage:profile.avatar, fd:formatDate, userType:"sitter"})
   }
 }
 
@@ -151,8 +143,9 @@ const getPostByEmail = async (email) => {
     const post = await SitterPost.find({userID: user._id.toString() })
     return post;
   }
-
 }
+
+
 
 
 module.exports = {

@@ -18,17 +18,21 @@
                                     <div class="col-md-12">
                                         <div class="info-area">
                                             <div class="media username">
-                                                <input type="text" id="username" value="<%= post.title %>">
-                                                    <!-- <%= post.title %> -->
+                                                <span type="text" id="username" value="<%= post.title %>">
+                                                    <%= post.title %>
+                                                </span>
                                                 
                                             </div>
                                             <div class="media username">
+                                                <label>Pet Name:</label>
                                                 <span id="username" name="name" ><%= owner.petName%></span>
                                             </div>
                                             <div class="media">
+                                                <label>Province:</label>
                                                 <span class="location" name="province" ><%= owner.province%></span>
                                             </div>
                                             <div class="media">
+                                                <label>City:</label>
                                                 <span class="location" name="city" ><%= owner.city%></span>
                                             </div>
                                             <div class="media">
@@ -51,21 +55,21 @@
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="requirement-title">Requirement:</span>
-                                                <textarea class="requirement text-break" id="requirement" value="<%= post.desc %>">
+                                                <p class="requirement text-break" id="requirement" value="<%= post.desc %>">
                                                     <%= post.desc %>
-                                                </textarea>
+                                                </p>
                                             </div>
-                                            <div class="d-flex flex-column startDate">
+                                            <!-- <div class="d-flex flex-column startDate">
                                                 <label for="" class="text_edit">Start Date:</label>
                                                 <input type="date" name="" id="startdate" onchange="setStart(event)" class="dateInput" value="<%= post.startDate %>">
                                             </div>
                                             <div class="d-flex flex-column endDate">
                                                 <label for="" class="text_edit">End Date:</label>
                                                 <input type="date" name="" id="enddate" onchange="setEnd(event)" class="dateInput" value="<%= post.endDate %>">
-                                            </div>
+                                            </div> -->
 
 
-                                            <!-- <div class="media">
+                                            <div class="media">
                                                 <label>Start Date:</label>
                                                 <span class="location">
                                                     <%= post.startDate %>
@@ -76,15 +80,7 @@
                                                 <span class="location">
                                                     <%= post.endDate %>
                                                 </span>
-                                            </div> -->
-                                            <!-- <div class="media requirement-area">
-                                                <span class="requirement-title">Requirement:</span>
-                                                <p class="requirement text-break" id="requirement">Lorem ipsum dolor sit
-                                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                                    ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                                                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                                    labore et dolore magna aliqua.</p>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
