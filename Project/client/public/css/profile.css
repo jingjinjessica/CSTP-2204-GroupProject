@@ -183,23 +183,37 @@ label span input {
     height: 200px;
 }
 
-.saveBtn {
-    background-color: #6B9080;
-    border: 1px solid #6B9080;
+.profile-save-btn {
+    background-color: #FB5607;
+    border: 1px solid #FB5607;
+    font-weight: 600;
     padding: 8px;
     padding-left: 45px;
     padding-right: 45px;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: -50px;
+    margin-bottom: 50px;
 }
 
-.skip-btn {
+.profile-save-btn:hover {
+    background-color: #FACC22;
+    border: 1px solid #FACC22;
+    color: #26A69A;
+}
+
+.profile-skip-btn {
     background: none;
     border: none;
-    color: #6B9080;
+    color: #339141;
     font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    font-weight: 600;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+.profile-skip-btn:hover {
+    background: none;
+    border: none;
+    color: #26A69A;
 }
 
 .my-5 h3 {
@@ -219,6 +233,16 @@ label span input {
 .preview-img {
     width: 100%;
     height: 100%;
+}
+
+img[src*="add-img.png"]{
+    width: 30%;
+    height: 30%;
+    margin-top: 35%;
+}
+
+.sitter-add-imgs img[src*="add-img.png"]{
+    margin-top: 0px;
 }
 
 /* .frameCenter {
@@ -245,11 +269,11 @@ label span input {
     }
 
     /* Pet Sitter profile form structure */
-    .screen-structure {
+    /* .screen-structure {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-    }
+    } */
     
 }
 

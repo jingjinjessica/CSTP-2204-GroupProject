@@ -62,6 +62,8 @@ function attachPhoto3(photoInput3) {
     }
 }
 
+
+
 function validateForm() {
 
     return true;

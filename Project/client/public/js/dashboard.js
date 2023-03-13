@@ -19,6 +19,7 @@ const deletePost = async (id, userType) =>{
   } catch (error) {
     console.log(error);
   }
+
 }
 
 const editPost = async (id,userType ) =>{
@@ -31,3 +32,4 @@ const editPost = async (id,userType ) =>{
   
   // window.location.href = `/post/getpost/${id}`;
 }
+
