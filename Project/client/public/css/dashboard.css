@@ -17,11 +17,11 @@
     color: #6B9080 !important;
 }
 
-.carousel-control-prev {
+.dashboard-prev {
     margin-left: -70px;
 }
 
-.carousel-control-next {
+.dashboard-next {
     margin-right: -55px;
 }
 
