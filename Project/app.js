@@ -52,55 +52,45 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost");
+  res.render("pages/petOwnerPost",{post:{title:"",desc:"",startDate:"",endDate:"", _id:""}, btnName:"Save"});
 });
 
 app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost");
+  res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save"});
 });
 
-app.get("/sitterPostInfo", (req, res) => {
-  res.render("pages/sitterPostInfo");
-});
+// app.get("/sitterPostInfo", (req, res) => {
+//   res.render("pages/sitterPostInfo");
+// });
 
-app.get("/ownerPostInfo", (req, res) => {
-  res.render("pages/ownerPostInfo");
-});
+// app.get("/ownerPostInfo", (req, res) => {
+//   res.render("pages/ownerPostInfo");
+// });
 
 // app.get("/test", (req, res) => {
 //   res.render("pages/test");
 // });
 
 
-app.get("/listSitterPost", (req, res) => {
-  res.render("pages/listSitterPost");
-});
+// app.get("/listSitterPost", (req, res) => {
+//   res.render("pages/listSitterPost");
+// });
 
 
-app.get("/ownerlist/:postid", async function (req, res, next) {
-  const { postid } = req.params;
-  console.log("this is post id from server", postid);
-  try {
-    const post = await petPost.findById(postid);
-    const petowner = post.userID;
-    const owner = await profile.findOne({ userID: petowner });
-    res.render("[postid]", { post, owner });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-app.get("/sitterlist/:postid", async function (req, res, next) {
-  const { postid } = req.params;
-  //console.log("this is post id from server", postid);
-  try {
-    const post = await sitterPost.findById(postid);
-    const petsitter = post.userID;
-    const sitter = await profile.findOne({ userID: petsitter });
-    res.render("pages/sitterPostInfo", { post, sitter });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+// app.get("/ownerlist/:postid", async function (req, res, next) {
+//   const { postid } = req.params;
+//   console.log("this is post id from server", postid);
+//   try {
+//     const post = await petPost.findById(postid);
+//     const petowner = post.userID;
+//     const owner = await profile.findOne({ userID: petowner });
+//     res.render("[postid]", { post, owner });
+//   } catch (error) {
+//     res.status(500).json(error);
+//   }
+// });
+
+
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
@@ -117,6 +107,7 @@ app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
 app.use("/post",postRoutes);
+app.use("/postinfo",postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
 

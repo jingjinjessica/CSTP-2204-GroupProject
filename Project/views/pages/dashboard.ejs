@@ -23,21 +23,35 @@
 									<% if (counter % 6 == 1) { %>
 									  <div class="carousel-item <% if (counter == 1) { %>active<% } %>">
 										<div class="container w-100 d-block">
-										  <div class="row">
-									<% } %>
-									<div class="col-sm-12 col-lg-4">
-									  <div class="card h-100 dashboard-card" style="width: 300px; margin: auto;">
-										<img src="<%= petImage%>" alt="Card image cap" class="card-img-top">
-										<div class="card-body">
-										  <h4 class="card-title dashboard-card-title" id="title"><%= posts[i].title %></h4>
-										  <p class="card-text dashboard-card-desc" id="description"><%= posts[i].desc %></p>
-										  <p class="card-text dashboard-card-date" id="date"><%= fd(posts[i].createdAt) %></p>
-										  <div class="btn-area">
-											<a class="btn btn-primary edit-btn" href="#" role="button" onclick="editPost('<%= posts[i]._id %>')">Edit</a>
-										  <a class="btn btn-primary delete-btn" href="#" role="button" onclick="deletePost('<%= posts[i]._id %>')">Delete</a>
-										  <!-- <button onclick="editPost('<%= posts[i]._id %>')" class="edit-btn">edit</button> -->
-										  <!-- <button onclick="deletePost('<%= posts[i]._id %>')" class="delete-btn">delete</button> -->
-										  </div>
+
+											<div class="row">
+												<% for(var i=0; i < posts.length; i++) {%>
+													<div class="col-sm-12 col-lg-4">
+														<div class="card h-100" style="width: 300px; margin: auto;">
+															<img src="<%= postImage%>" >
+
+															<div class="card-body">
+																<h4 class="card-title" id="title">
+																	<%= posts[i].title %>
+																</h4>
+																<p class="card-text" id="description">
+																	<%= posts[i].desc %>
+																</p>
+																<p class="card-text" id="date">
+																	<%= fd(posts[i].createdAt) %>
+																</p>
+																<button onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">
+																	edit
+																</button>
+																<button onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">
+																	delete
+																</button>
+															</div>
+														</div>
+													</div>
+												<%}%>
+											</div>
+
 										</div>
 									  </div>
 									</div>

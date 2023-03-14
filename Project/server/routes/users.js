@@ -7,7 +7,7 @@ const { registerUser, loginUser,getHistoryPost, getAllUsers } = require("../cont
 
 router.get("/", validateToken, getAllUsers);
 
-// dashboard
+// Dashboard
 router.get("/dashboard",getHistoryPost)
 
 // Registering

@@ -6,7 +6,7 @@ const validateToken = require("../../middleware/validate");
 const {
   createSitterPost,
   getAllPosts,
-  updateSitterPost,
+  //updateSitterPost,
   deleteSitterPost,
   getPost
 } = require("../controller/sitterpost");
@@ -17,7 +17,7 @@ router.post("/create", createSitterPost);
 
 // router.get("/:id", getPostById);
 
-router.put("/:id", updateSitterPost);
+//router.put("/:id", updateSitterPost);
 
 router.get("/:id", getPost);
 
