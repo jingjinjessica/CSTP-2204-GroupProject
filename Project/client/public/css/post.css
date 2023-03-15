@@ -121,6 +121,55 @@
     color: #26A69A;
 }
 
+/* Pet Sitter Date availability Input*/
+#datepicker td, th {
+    text-align: center;
+    padding: 6px 12px 6px 12px;
+    font-size: 10px;
+}
+
+#datepicker .datepicker-days {
+    border: 1px solid black;
+    background-color: #6B9080;;
+}
+
+.datepicker table {
+    background-color:#CCE3DE;
+    border: 3px solid #26A69A;
+    border-radius: 5px;
+}
+
+.datepicker th {
+    font-size: 13px;
+}
+
+.datepicker table tr td.highlighted {
+    background: #EAF4F4 !important;
+}
+
+.dropdown-menu {
+    background: transparent;
+    font-size: 14px; 
+}
+
+/* When selecting the dates, the color will be this */
+.datepicker table tr td.active, 
+.datepicker table tr td.active.disabled, 
+.datepicker table tr td.active.disabled:hover, 
+.datepicker table tr td.active:hover {
+    background-color: #FB5607 !important;
+    border-radius: 5px;
+    background-image: none !important;
+}
+
+/* Change the font size of the schedule month header */
+.datepicker .datepicker-switch, 
+.datepicker .next, 
+.datepicker .prev, 
+.datepicker tfoot tr th {
+    font-size: 15px;
+}
+
 /* SitterPost and PetOwnerPost view change */
 @media (max-width: 992px) {
     .rate-structure {
