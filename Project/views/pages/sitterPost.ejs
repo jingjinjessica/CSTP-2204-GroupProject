@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
 </head>
 
 <body>
@@ -75,22 +76,46 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-lg-6">
                                 <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
                                 <textarea class="form-control input-border" id="experience" name="experience" rows="3"
                                     onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
                             </div>
+
+                            <!-- AVAILABILITY DATES -->
+                            <div class="col-lg-6">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="" class="form-label profile-form-label label-text"> Availability</label>
+                                    </div>
+                                </div>
+                                <div class="input-group date form-group" id="datepicker">
+                                    <span class="input-group-addon input-group-text">
+                                        <img class="profile-city-icon" 
+                                            src="/image/icon-calendar.png" alt="">
+                                            <span class="count" style="color: #6B9080; margin-left: 3px; font-weight: 600;"></span>
+                                    </span>
+                                    
+                                    <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
+                                    <span class="input-group-addon">
+                                        <!-- <span class="count"></span> -->
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
-                    <!-- <div class="input-group date form-group" id="datepicker">
-                                <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
-                            </div> -->
+
+                    <!-- This is to put the date availability result (reference) -->
+                    <!-- I will temporarily comment it out -->
+                    <!-- <div id="datepickertest">
+                                
+                    </div> -->
 
                     <!-- SUBMIT BUTTON -->
                     <div class="col-lg-12 text-end">
-                        <button type="submit" class="btn btn-primary saveBtn"><%= btnName%></button>
+                        <button type="submit" class="btn btn-primary saveBtn post-save-btn"><%= btnName%></button>
                     </div>
                 </div>
             </form>
@@ -104,18 +129,116 @@
 
 </html>
 <script>
-//     $(document).ready(function() {
-//   $('#datepicker').datepicker({
-//     startDate: new Date(),
-//     multidate: true,
-//     format: "dd/mm/yyyy",
-//     daysOfWeekHighlighted: "5,6",
-//     datesDisabled: ['31/08/2017'],
-//     language: 'en'
-//   }).on('changeDate', function(e) {
-//     // `e` here contains the extra attributes
-//     //$(this).find('.input-group-addon .count').text(' ' + e.dates.length);
-//   });
-// });
+    $(document).ready(function() {
+  $('#datepicker').datepicker({
+    startDate: new Date(),
+    multidate: true,
+    format: "dd/mm/yyyy",
+    orientation: "bottom",
+    daysOfWeekHighlighted: "5,6",
+    datesDisabled: ['31/08/2017'],
+    language: 'en'
+  }).on('changeDate', function(e) {
+    // `e` here contains the extra attributes
+    $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+  });
+});
+
+
+//  This is to show the date availability result (reference)
+function testDate(){
+    // BlackBox testing
+    // Get the value of the inputs
+    var stringDate = document.getElementById('Dates').value;
+
+    // Split the data according to ','
+    var arrayDate = stringDate.split(',');
+    // Make a new array for the dates
+    // The date format has to be DD/M/YYYY, ex: 12/3/2023, 01/3/2023
+    // The values we are getting from the input is with this format: DD/MM/YYYY so 12/03/2023 will not work
+    var newArrDates = [];
+    for(var i = 0; i  < arrayDate.length; i++){
+        var newTest = arrayDate[i].slice(0, 3) + arrayDate[i].slice(4);
+        newArrDates.push(newTest);
+        //console.log(newTest);
+        
+    }
+
+    // Output the input results
+    // console.log(`Title: ${titleTest} \n
+    //              Rate: ${rateTest} \n
+    //              Services: ${servicesTest} \n
+    //              Experiences: ${experienceTest} \n
+    //              `);
+
+    for(var i = 0; i < newArrDates.length; i++){
+        console.log(newArrDates[i]);
+    }
+   
+
+
+
+    // TESTER (DONT ERASE IT)
+
+    // var eventDates = {};
+    // eventDates[ new Date( '03/07/2023' )] = new Date( '08/07/2016' );
+    // eventDates[ new Date( '03/12/2023' )] = new Date( '08/12/2016' );
+    // eventDates[ new Date( '03/18/2023' )] = new Date( '08/18/2016' );
+    // eventDates[ new Date( '03/23/2023' )] = new Date( '08/23/2016' );
+
+    // for(var i = 0; i < arrayDate.length; i++){
+    //     eventDates[i] = new Date(arrayDate[i]);
+    //     i++;
+    //     console.log(eventDates[i])
+    // }
+
+
+    // $('#datepickertest').datepicker({
+        
+    //     beforeShowDay: function( date ) {
+    //         var highlight = eventDates[date];
+    //         if( highlight ) {
+    //              return [true, "event", 'Tooltip text'];
+    //         } else {
+    //              return [true, '', ''];
+    //         }
+    //     }
+    // });
+
+    // SAMPLE TEST
+    //var active_dates = ["23/3/2023","21/3/2023"];
+
+    $('#datepickertest').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        beforeShowDay: function(date){
+            // Getting the current date
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
+
+            // Check to see specific dates that needs to be highlighted
+            if ($.inArray(formattedDate, newArrDates) != -1){
+                return {
+                    classes: 'date-edit'
+                };
+            }
+        return;
+        }
+    });
+
+//     var array = $(".datepicker").find(".day").toArray();
+//     for(var i=0;i < array.length;i++){
+//         var date = array[i].getAttribute("data-day"); 
+//         if (arrayDate.indexOf(date) > -1) {
+//             array[i].style.backgroundColor ="#090";
+//             array[i].style.fontWeight = "bold";
+//         } 
+//   }
+
+}
 
 </script>
