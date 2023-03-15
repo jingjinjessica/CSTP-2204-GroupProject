@@ -192,6 +192,7 @@
   font-size: 20px;
   color: #6B9080;
   font-weight: 700;
+  word-break: break-word;
 }
 
 @media (max-width: 480px) {
