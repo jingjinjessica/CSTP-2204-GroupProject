@@ -18,57 +18,54 @@
 }
 
 .dashboard-prev {
-    margin-left: -70px;
+    margin-left: -80px;
 }
 
 .dashboard-next {
-    margin-right: -55px;
+    margin-right: -80px;
 }
 
-.card-area {
+.dashboard-card-area {
     width: 300px;
-    height: 300px;
+    height: 350px;
+    margin-bottom: 20px;
+    margin-right: -20px;
+    margin-left: 10px;
     /* margin: auto; */
     margin-left: 100px;
 
 }
-.dashboard-card {
+
+/* .dashboard-card {
     transition: all 0.5s ease-out;
-}
-.card-title-dashboard {
+    padding-bottom: 30px;
+} */
+
+.dashboard-card-title {
     margin-bottom: 1px;
     font-family: 'Noto Sans';
 }
 
-.card-col {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 400px;
-    margin-right: -50px;
-    margin-left: 10px;
-
-}
-
-.card-content-dashboard {
+.dashboard-card-content {
     color: #6B9080;
 
 }
 
-.card-date-dashboard {
+.dashboard-card-date {
     font-family: 'Noto Sans';
     padding-right: 10px;
     padding-left: 10px;
     font-size: 13px;
 }
 
-.btn-dashboard {
-    font-family: 'Noto Sans';
-    position: absolute;
-    left: 180px;
+.btn-area {
+    position: relative;
+    left: 120px;
     margin-top: -10px;
 }
 
-.edit-btn ,.delete-btn {
+.edit-btn,
+.delete-btn {
     font-family: 'Noto Sans';
     padding-left: 8px;
     font-weight: 500;
@@ -78,7 +75,60 @@
     border: none;
 }
 
-.edit-btn:hover, .delete-btn:hover {
+.edit-btn:hover,
+.delete-btn:hover {
     color: #FACC22;
 }
 
+@media (max-width: 480px) {
+    .dashboard-card {
+        margin-top: 20px;
+        position: relative;
+        left: -60px;
+        width: 250px;
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+    
+    .dashboard-card-content {
+
+    }
+    
+    .card-date-dashboard {
+        font-family: 'Noto Sans';
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    
+    .btn-area {
+        position: relative;
+        left: 120px;
+        margin-top: -20px;
+    } 
+
+    .dashboard-prev {
+        margin-left: 0px;
+    }
+    
+    .dashboard-next {
+        margin-right: 0px;
+    }   
+}
+
+/* Media Query for low resolution  Tablets, Ipads / */
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/* / Media Query for Tablets Ipads portrait mode / */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/* / Media Query for Laptops and Desktops / */
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/* / Media Query for Large screens / */
+/* @media (min-width: 1281px) {
+  
+  } */

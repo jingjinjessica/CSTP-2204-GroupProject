@@ -86,13 +86,11 @@
   font-size: 20px;
 }
 
-.card-row-content {
-  justify-content: center;
-}
-
 .step-card {
   width: 20rem;
   height: 14rem;
+  position: relative;
+  left: 25px;
 }
 
 .step-text {
@@ -107,6 +105,7 @@
 
 .get-start-btn {
   margin-top: 40px;
+  margin-left: 40px;
   margin-bottom: 40px;
   border-radius: 30px;
   border: #339141;
@@ -139,6 +138,19 @@
   height: 350px;
 }
 
+.each-card-col {
+  margin-right: -100px;
+}
+
+.card-area {
+  width: 300px;
+  position: relative;
+  left: 145px;
+  text-align: center;
+  margin-top: 36px;
+
+}
+
 .card-content-home {
   text-align: left;
   padding: 20px 30px;
@@ -166,7 +178,7 @@
 .recommendations-card-btn {
   position: absolute;
   left: 165px;
-  margin-top: -20px;
+  margin-top: -30px;
   background: #FB5607;
   color: white;
   font-weight: 700;
@@ -177,6 +189,17 @@
   background: #FACC22;
   color: #339141;
 }
+
+.home-prev {
+  margin-top: 30px;
+  margin-left: -30px;
+}
+
+.home-next {
+  margin-top: 33px;
+  margin-right: -40px;
+}
+
 
 .about-us-title {
   text-align: center;
@@ -227,13 +250,21 @@
     font-size: 20px;
     padding-bottom: 50px;
   }
+  
+  .step-card {
+    margin-bottom: 15px;
+  }
+  .get-start-btn {
+    position: relative;
+    left: 15px;
+  }
 
   .recommendations-area {
     background: rgba(164, 195, 178, 0.2);
     text-align: center;
     justify-content: center;
     margin-left: 0px;
-    height: 880px;
+    height: 910px;
     margin-bottom: 5px;
   }
 
@@ -247,7 +278,7 @@
 
   .card-area {
     position: relative;
-    left: -85px;
+    left: 20px;
     width: 255px !important;
     height: 255px !important;
   }
