@@ -173,6 +173,9 @@
   text-align: justify;
   word-spacing: -1px;
   line-height: 1.3;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .recommendations-card-btn {
@@ -250,10 +253,11 @@
     font-size: 20px;
     padding-bottom: 50px;
   }
-  
+
   .step-card {
     margin-bottom: 15px;
   }
+
   .get-start-btn {
     position: relative;
     left: 15px;
