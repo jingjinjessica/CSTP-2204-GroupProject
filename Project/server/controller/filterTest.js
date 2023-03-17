@@ -1,9 +1,8 @@
 const User = require("../model/User");
 const jwt = require("jsonwebtoken"); // This Library will help us give and verify access tokens
 const Profile = require("../model/Profile");
-const SitterPost = require("../model/PetSitterPost");
+const PetPost = require("../model/PetPost");
 
-// show on the date
 function formatDate(date) {
     return "Date: " +
         date.getFullYear() +
@@ -13,11 +12,13 @@ function formatDate(date) {
         date.getDate();
 }
 
-const getSitterPost = async (req, res) => {
+const getPetPost = async (req, res) => {
     // return selected option
     const queryBody = req.body;
     const query ={};
-    // looking for have  or not , != mean we click the type for search
+    // looking for have pet type or not , != mean we click the type for search
+    // ** check if valuse of database is exist then check if select button is choose or not **
+    // 
     if (queryBody.hasOwnProperty("province") && queryBody.province !== "- Select Province -"){
         query["profile.province"] = queryBody.province;
     }
@@ -25,27 +26,20 @@ const getSitterPost = async (req, res) => {
     if (queryBody.hasOwnProperty("city") && queryBody.city !== "- Select City -"){
         query["profile.city"] = queryBody.city;
     }
-    //console.info(query);
-    if (queryBody.hasOwnProperty("services") && queryBody.services !== "- Select Services -"){
-        query["services"] = queryBody.services;
+    if (queryBody.hasOwnProperty("petType") && queryBody.petType !== "- Select Type -"){
+        query["profile.petType"] = queryBody.petType;
     }
-    //
-    if (queryBody.hasOwnProperty("pricemin") && queryBody.pricemin!== ""){
-        if(!query.hasOwnProperty("rate")){
-            query["rate"] ={};
-        }
-        query["rate"]["$gte"] =parseFloat(queryBody.pricemin);
+    if (queryBody.hasOwnProperty("petAge") && queryBody.petAge !== "- Select Age -"){
+        query["profile.petAge"] = queryBody.petAge;
     }
-    if (queryBody.hasOwnProperty("pricemax") && queryBody.pricemax!== ""){
-        if(!query.hasOwnProperty("rate")){
-            query["rate"] ={};
-        }
-        query["rate"]["$lte"] = parseFloat(queryBody.pricemax);
+    if (queryBody.hasOwnProperty("petWeight") && queryBody.petWeight !== "- Select Weight -"){
+        query["profile.petWeight"] = queryBody.petWeight;
+
     }
-    //console.info(query);
+    console.log(query);
     
     //connect 2 tables profiles and petpost
-    const result = await SitterPost.aggregate([
+    const result = await PetPost.aggregate([
         {
             $lookup: {
                 from: "profiles",
@@ -58,10 +52,11 @@ const getSitterPost = async (req, res) => {
         {$match:query}
     ]);
     // console.info(result[1].profile[0]);
-    //console.info(result);
-    res.render("pages/listSitterPost", { result: result, fd: formatDate })
+    res.render("pages/listPetPost", { result: result, fd: formatDate })
+    // Display filtered results
+    console.log(result);
 }
 
 module.exports = {
-    getSitterPost
+    getPetPost
 };

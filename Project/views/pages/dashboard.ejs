@@ -9,7 +9,7 @@
 	<%- include('../partials/header') %>
 		<div class="container">
 			<section>
-				<h3 class="display-3">
+				<h3 class="display-3 dashboard-title-area">
 					<small class="text-primary dashboard-title">Dashboard </small>
 				</h3>
 				<div class="container-fluid">
@@ -23,54 +23,47 @@
 									<% if (counter % 6 == 1) { %>
 									  <div class="carousel-item <% if (counter == 1) { %>active<% } %>">
 										<div class="container w-100 d-block">
-
-											<div class="row">
-												<% for(var i=0; i < posts.length; i++) {%>
-													<div class="col-sm-12 col-lg-4">
-														<div class="card h-100" style="width: 300px; margin: auto;">
-															<img src="<%= postImage%>" >
-
-															<div class="card-body">
-																<h4 class="card-title" id="title">
-																	<%= posts[i].title %>
-																</h4>
-																<p class="card-text" id="description">
-																	<%= posts[i].desc %>
-																</p>
-																<p class="card-text" id="date">
-																	<%= fd(posts[i].createdAt) %>
-																</p>
-																<button onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">
-																	edit
-																</button>
-																<button onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">
-																	delete
-																</button>
-															</div>
-														</div>
-													</div>
-												<%}%>
+											<div class="row dashboard-card-row">
+									<% } %>
+									<div class="col-sm-12 col-lg-4 dashboard-card-area">
+										<div class="card h-100 dashboard-card ">
+											<img src="<%= postImage%>" >
+											<div class="card-body dashboard-card-content">
+												<h4 class="card-title dashboard-card-title" id="title">
+													<%= posts[i].title %>
+												</h4>
+												<p class="card-text dashboard-card-desc" id="description">
+													<%= posts[i].desc %>
+												</p>
+												<p class="card-text dashboard-card-date" id="date">
+													<%= fd(posts[i].createdAt) %>
+												</p>
+												<div class="btn-area">
+													<a href="" class="btn btn-primary edit-btn" role="button" onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">Edit</a>
+												<a href="" class="btn btn-primary delete-btn" role="button" onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">Delete</a>
+												<!-- <button onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">
+													edit
+												</button>
+												<button onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">
+													delete
+												</button> -->
+												</div>
 											</div>
-
 										</div>
-									  </div>
 									</div>
 									<% if (counter % 6 == 0 || i == posts.length - 1) { %>
-										  </div>
-										</div>
-									  </div>
-									<% } %>
-								  <% } %>
-								  <% } %> 
-								  <!-- Forgot to add another curly bracket (Right after merged and pulled the) -->
-								  
+									</div>
+								  </div>
+								</div>
+							  <% } %>
+							<%}%>
 						  </div>
 						  <!-- btn for prev and next -->
 						  <a href="#inam" class="carousel-control-prev dashboard-prev" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon"></span>
+							<span class="carousel-control-prev-icon dashboard-prev-icon"></span>
 						  </a>
 						  <a href="#inam" class="carousel-control-next dashboard-next" data-bs-slide="next">
-							<span class="carousel-control-next-icon"></span>
+							<span class="carousel-control-next-icon dashboard-next-icon"></span>
 						  </a>
 						</div>
 					  </div>
