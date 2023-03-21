@@ -4,38 +4,54 @@
 <head>
     <%- include('../partials/head') %>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="./js/petsitterpost.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+            integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
+            integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"
+            integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
     <%- include('../partials/header') %>
         <div class="container justify-content-center">
-            <form onsubmit="sitterPost(event)"
-                class="row g-3 d-flex flex-column align-items-center align-content-center">
-                <div class="col-xxl-8 mb-5 mb-xxl-0">
-                    <div class="bg-secondary-soft px-4 py-5 rounded">
-                        <div class=" d-flex titlePost">
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit"  >Title:</label>
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5 post-title-area text-center">
+                        <h3>Post A Request</h3>
+                        <hr class="post-hr">
+                    </div>
+                    <form onsubmit="sitterPost(event)"
+                        class="row g-3 d-flex flex-column align-items-center align-content-center">
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-4 rounded sitter-input-area">
+                                <div class=" d-flex titlePost">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="ownerPostTitle"
+                                                    class="col-sm-2 col-form-label text_edit">Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control input-border sitter-input-title"
+                                                id="title" onchange="setTitle(event)" placeholder="Title">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control input-border" id="title" name="title" onchange="setSitterTitle(event)" value="<%= post.title
-                                    %>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-
+                                
                                 <div class="row g-3">
                                     <div class="col-lg-6">
                                         <div class="row g-3">
@@ -45,200 +61,146 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" id="rate" name="rate" placeholder="$ Per day"
+                                            <input type="text" id="rate" name="rate" placeholder="$"
                                                 onchange="setRate(event)"
                                                 class="form-control input-border rate-inputChange">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                        class="form-control input-border rate-inputChange" value="<%= post.rate%>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label profile-form-label label-text" for="">Services</label>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="amount"
+                                                    class="col-sm-3 col-form-label text_edit">City</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label class="input-group-text"><img class="post-city-icon"
+                                                    src="/image/city-hall.png" /></label>
+                                            <select id="city" name="city" class="form-select" value="">
+                                                <option value="Choose">Choose...</option>
+                                                <option value="Burnaby">Burnaby</option>
+                                                <option value="Coquitlam">Coquitlam</option>
+                                                <option value="Calgary">Calgary</option>
+                                                <option value="Charlottetown">Charlottetown
+                                                </option>
+                                                <option value="Edmonton">Edmonton</option>
+                                                <option value="Moncton">Moncton</option>
+                                                <option value="Montreal">Montreal</option>
+                                                <option value="Northvancouver">>North Vancouver</option>
+                                                <option value="Fredericton">Fredericton
+                                                </option>
+                                                <option value="Halifax">Halifax</option>
+                                                <option value="Iqaluit">Iqaluit</option>
+                                                <option value="Quebeccity">Quebec City
+                                                </option>
+                                                <option value="Richmond">Richmond</option>
+                                                <option value="Regina">Regina
+                                                </option>
+                                                <option value="Surrey">Surrey
+                                                </option>
+                                                <option value="Stjohns">St.John's</option>
+                                                <option value="Saskatoon">Saskatoon</option>
+                                                <option value="Toronto">Toronto</option>
+                                                <option value="Victoria">Victoria</option>
+                                                <option value="Vancouver">Vancouver</option>
+                                                <option value="White Rock">White Rock
+                                                </option>
+                                                <option value="Williamslake">Williams Lake
+                                                </option>
+                                                <option value="Winnipeg">Winnipeg</option>
+                                                <option value="Whitehorse">Whitehorse
+                                                </option>
+                                                <option value="Yellowknife">Yellowknife
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-3 col-form-label text_edit">Services</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label class="input-group-text"><img class="post-service-icon"
+                                                    src="/image/sitter-service.png" /></label>
+                                            <select class="form-select" id="services" name="services"
+                                                onchange="setServices(event)">
+                                                <option value="Select Services">Select Services</option>
+                                                <option value="Walking">Walking</option>
+                                                <optgroup label="Caring">
+                                                    <option value="Boarding">Boarding</option>
+                                                    <option value="House Sitting">House Sitting</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-3 col-form-label text_edit availability-date">Availability Date</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text"><img class="post-date-icon"
+                                                src="/image/icon-calendar.png" /></label>
+                                                <input type="text" class="form-control" id="Dates" name="Dates"
+                                                placeholder="Select days" required >
+                                          </div>
+                                          
+                                        <!-- <div class="input-group date form-group" id="datepicker">
+                                            <input type="text" class="form-control" id="Dates" name="Dates"
+                                                placeholder="Select days" required />
+                                            <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-calendar"></i><span
+                                                    class="count"></span></span>
+                                        </div> -->
                                     </div>
                                 </div>
-                                <div class="input-group">
-                                    <label class="input-group-text"><img class="profile-city-icon"
-                                            src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
-                                    <select class="form-select" id="services" name="services"
-                                        onchange="setServices(event)" value="<%= post.services%>">
-                                        <option value="Select Services" <%= post.services==="Select Services"?"selected":"" %>>Select Services</option>
-                                        <option value="Walking" <%= post.services==="Walking"?"selected":"" %> >Walking</option>
-                                        <optgroup label="Caring">
-                                            <option value="Boarding" <%= post.services==="Boarding"?"selected":"" %> >Boarding</option>
-                                            <option value="House Sitting" <%= post.services==="House Sitting"?"selected":"" %>>House Sitting</option>
-                                        </optgroup>
-                                    </select>
+                                <div class="col-lg-6">
+                                    <label for="" class="col-sm-3 col-form-label text_edit">Experiences</label>
+                                    <textarea class="form-control input-border experience-input" id="experience"
+                                        name="experience" rows="3" onchange="setExp(event)"
+                                        placeholder="Type your experiences in pet sitting..."></textarea>
+                                </div>
+                                <!-- SUBMIT BUTTON -->
+                                <div class="col-lg-12 text-end">
+                                    <button type="submit" id="getValue"
+                                        class="btn btn-primary post-save-btn">Save</button>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
-                                <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                                <textarea class="form-control input-border" id="experience" name="experience" rows="3"
-                                    onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
-                            </div>
 
-                            <!-- AVAILABILITY DATES -->
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="" class="form-label profile-form-label label-text"> Availability</label>
-                                    </div>
-                                </div>
-                                <div class="input-group date form-group" id="datepicker">
-                                    <span class="input-group-addon input-group-text">
-                                        <img class="profile-city-icon" 
-                                            src="/image/icon-calendar.png" alt="">
-                                            <span class="count" style="color: #6B9080; margin-left: 3px; font-weight: 600;"></span>
-                                    </span>
-                                    
-                                    <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
-                                    <span class="input-group-addon">
-                                        <!-- <span class="count"></span> -->
-                                    </span>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
-
-                    <!-- This is to put the date availability result (reference) -->
-                    <!-- I will temporarily comment it out -->
-                    <!-- <div id="datepickertest">
-                                
-                    </div> -->
-
-                    <!-- SUBMIT BUTTON -->
-                    <div class="col-lg-12 text-end">
-                        <button type="submit" class="btn btn-primary saveBtn post-save-btn"><%= btnName%></button>
-                    </div>
+                    </form>
                 </div>
-            </form>
-
+            </div>
         </div>
 
-<script>
-    sitterPostLoad();
-</script>
 </body>
 
 </html>
 <script>
-    $(document).ready(function() {
-  $('#datepicker').datepicker({
-    startDate: new Date(),
-    multidate: true,
-    format: "dd/mm/yyyy",
-    orientation: "bottom",
-    daysOfWeekHighlighted: "5,6",
-    datesDisabled: ['31/08/2017'],
-    language: 'en'
-  }).on('changeDate', function(e) {
-    // `e` here contains the extra attributes
-    $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
-  });
-});
-
-
-//  This is to show the date availability result (reference)
-function testDate(){
-    // BlackBox testing
-    // Get the value of the inputs
-    var stringDate = document.getElementById('Dates').value;
-
-    // Split the data according to ','
-    var arrayDate = stringDate.split(',');
-    // Make a new array for the dates
-    // The date format has to be DD/M/YYYY, ex: 12/3/2023, 01/3/2023
-    // The values we are getting from the input is with this format: DD/MM/YYYY so 12/03/2023 will not work
-    var newArrDates = [];
-    for(var i = 0; i  < arrayDate.length; i++){
-        var newTest = arrayDate[i].slice(0, 3) + arrayDate[i].slice(4);
-        newArrDates.push(newTest);
-        //console.log(newTest);
-        
-    }
-
-    // Output the input results
-    // console.log(`Title: ${titleTest} \n
-    //              Rate: ${rateTest} \n
-    //              Services: ${servicesTest} \n
-    //              Experiences: ${experienceTest} \n
-    //              `);
-
-    for(var i = 0; i < newArrDates.length; i++){
-        console.log(newArrDates[i]);
-    }
-   
-
-
-
-    // TESTER (DONT ERASE IT)
-
-    // var eventDates = {};
-    // eventDates[ new Date( '03/07/2023' )] = new Date( '08/07/2016' );
-    // eventDates[ new Date( '03/12/2023' )] = new Date( '08/12/2016' );
-    // eventDates[ new Date( '03/18/2023' )] = new Date( '08/18/2016' );
-    // eventDates[ new Date( '03/23/2023' )] = new Date( '08/23/2016' );
-
-    // for(var i = 0; i < arrayDate.length; i++){
-    //     eventDates[i] = new Date(arrayDate[i]);
-    //     i++;
-    //     console.log(eventDates[i])
-    // }
-
-
-    // $('#datepickertest').datepicker({
-        
-    //     beforeShowDay: function( date ) {
-    //         var highlight = eventDates[date];
-    //         if( highlight ) {
-    //              return [true, "event", 'Tooltip text'];
-    //         } else {
-    //              return [true, '', ''];
-    //         }
-    //     }
+    //     $(document).ready(function() {
+    //   $('#datepicker').datepicker({
+    //     startDate: new Date(),
+    //     multidate: true,
+    //     format: "dd/mm/yyyy",
+    //     daysOfWeekHighlighted: "5,6",
+    //     datesDisabled: ['31/08/2017'],
+    //     language: 'en'
+    //   }).on('changeDate', function(e) {
+    //     // `e` here contains the extra attributes
+    //     //$(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+    //   });
     // });
 
-    // SAMPLE TEST
-    //var active_dates = ["23/3/2023","21/3/2023"];
 
-    $('#datepickertest').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true,
-        beforeShowDay: function(date){
-            // Getting the current date
-            var d = date;
-            var curr_date = d.getDate();
-            var curr_month = d.getMonth() + 1; //Months are zero based
-            var curr_year = d.getFullYear();
-            var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
-
-            // Check to see specific dates that needs to be highlighted
-            if ($.inArray(formattedDate, newArrDates) != -1){
-                return {
-                    classes: 'date-edit'
-                };
-            }
-        return;
-        }
+    // Initialize datepicker
+    $('#datepicker').datepicker({
+        multidate: true, // Allow multiple dates to be selected
+        format: 'yyyy-mm-dd', // Set the date format
+        todayHighlight: true // Highlight today's date
     });
-
-//     var array = $(".datepicker").find(".day").toArray();
-//     for(var i=0;i < array.length;i++){
-//         var date = array[i].getAttribute("data-day"); 
-//         if (arrayDate.indexOf(date) > -1) {
-//             array[i].style.backgroundColor ="#090";
-//             array[i].style.fontWeight = "bold";
-//         } 
-//   }
-
-}
 
 </script>

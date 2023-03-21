@@ -79,8 +79,9 @@
 .weight-selectpicker,
 .province-selectpicker,
 .city-selectpicker,
-.age-selectpicker {
-    font-size: 15px;
+.age-selectpicker,
+.services-selectpicker {
+    /* font-size: 15px; */
     padding: 2px 3px;
     border-radius: 10px;
     border: 2px #A4C3B2 solid;
@@ -96,6 +97,29 @@
 
 .city-selectpicker {
     width: 135px;
+}
+
+.services-selectpicker {
+    margin-left: -15px;
+}
+
+.price-min-control,
+.price-max-control {
+    font-size: 15px;
+    padding: 2px 3px;
+    border-radius: 10px;
+    border: 2px #A4C3B2 solid;
+    color: #6B9080;
+    font-size: 13px !important;
+    text-align: center;
+    /* margin-left: -20px; */
+}
+.min-group {
+    margin-left: -20px;
+}
+
+.to {
+    margin-left: -30px;
 }
 
 .search-btn {
@@ -243,6 +267,7 @@
         margin-left: 20px;
         width: 200px;
     }
+
     .card-img {
         margin: 20px 0px;
         border-radius: 15px 50px;
@@ -259,19 +284,19 @@
         background-color: yellow;
     } */
 }
-  
+
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 768px) and (max-width: 1024px) {
     /* body {
         background-color: blue;
     } */
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){ 
+@media (min-width: 1025px) and (max-width: 1280px) {
     .login-img {
         margin-top: 50px;
-        border-radius: 30px; 
+        border-radius: 30px;
     }
 
     .login-h-custom {
@@ -282,7 +307,7 @@
         margin-left: 40px;
         margin-right: 20px;
     }
-    
+
     .login-hr {
         width: 330px;
     }
@@ -304,15 +329,16 @@
     .sign-in-btn {
         margin-left: 0px;
     }
+
     /* .or-area {
         margin-left: 0px;
     } */
-    
+
     .third-party-title {
         margin-top: -20px;
         margin-bottom: 10px;
     }
-    
+
     .third-party {
         padding-left: 1rem;
         padding-right: 1rem;

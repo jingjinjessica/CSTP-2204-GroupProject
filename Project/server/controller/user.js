@@ -42,45 +42,53 @@ const getProfileByUserEmail = async (email) => {
   return profile;
 }
 
+
+const isValidLogin = async (email, password) =>{
+  let foundUser = await User.findOne({ email: email });
+  if (foundUser){
+    // Then we will check for password
+    // This will be either true or false
+    const matchPassword = await bcrypt.compare(password,foundUser.password);
+    
+    return matchPassword?foundUser:null;
+  }
+  return null;
+}
+
 // Login
 const loginUser = async (request, response) => {
   const data = request.body;
-  let foundUser = await User.findOne({ email: data.email });
-  if (foundUser) {
-    // Then we will check for password
-    // This will be either true or false
-    const matchPassword = await bcrypt.compare(data.password,foundUser.password);
-    if (matchPassword) {
-      // // We are trying to create an access token based on which the user will be able to interact with the website
-      const accessToken = jwt.sign({
-          email: foundUser.email
-        },
-        process.env.SECRET_KEY
-      );
-      response.cookie("access-token", accessToken);
-      const profileInform = await getProfileByUserEmail(data.email);
-      // has profile
-      if (profileInform){
-        if(foundUser.userType === "owner"){
-          response.redirect("/list/listsitterpost");
-        }
-        else if(foundUser.userType === "sitter"){
-          response.redirect("/list/listpetpost");
-        }
-      }
-      // has not profile by type
-      else if(foundUser.userType === "owner"){
-        response.redirect("/profile/createPetOwner");
-      }
-      else if(foundUser.userType === "sitter"){
-        response.redirect("/profile/createPetSitter");
-      }
-      return;
+  const foundUser = await isValidLogin(data.email, data.password);
+  if (foundUser){
+    // // We are trying to create an access token based on which the user will be able to interact with the website
+    const accessToken = jwt.sign({
+      email: foundUser.email
+    },
+    process.env.SECRET_KEY
+    );
+    response.cookie("access-token", accessToken);
+    const profileInform = await getProfileByUserEmail(data.email);
+    // has profile
+    if (profileInform){
+    if(foundUser.userType === "owner"){
+      response.redirect("/list/listsitterpost");
     }
+    else if(foundUser.userType === "sitter"){
+      response.redirect("/list/listpetpost");
+    }
+    }
+    // has not profile by type
+    else if(foundUser.userType === "owner"){
+    response.redirect("/profile/createPetOwner");
+    }
+    else if(foundUser.userType === "sitter"){
+    response.redirect("/profile/createPetSitter");
+    }
+    return;
   }
     // If user doesn't exist
   response.render("pages/login", {title: "Login"});
-  };
+};
 
 const getAllUsers = async (request, response) => {
   try {
@@ -152,5 +160,6 @@ module.exports = {
   registerUser,
   loginUser,
   getHistoryPost,
-  getAllUsers
+  getAllUsers,
+  isValidLogin
 };

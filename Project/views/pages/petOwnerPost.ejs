@@ -3,58 +3,86 @@
 
 <head>
     <%- include('../partials/head') %>
+        <script src="./js/ownerpost.js"></script>
 </head>
 
 <body>
     <%- include('../partials/header') %>
         <div class="container justify-content-center">
-            <form onsubmit="ownerPost(event)"
-                class="row g-3 d-flex flex-column align-items-center align-content-center">
-
-                <div class=" d-flex justify-content-center titlePost">
-                    <div class="row mb-2 col-md-7 mt-3 owner-titleArea">
-                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control input-border" id="title" onchange="setTitle(event)" value="<%= post.title
-                            %>">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5 post-title-area text-center">
+                        <h3>Post &nbsp;A &nbsp;Pet &nbsp;Request</h3>
+                        <hr class="post-hr">
+                    </div>
+                    <form onsubmit="ownerPost(event)"
+                        class="row g-3 d-flex flex-column align-items-center align-content-center">
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-4 rounded sitter-input-area">
+                                <div class=" d-flex titlePost">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="ownerPostTitle"
+                                                    class="col-sm-2 col-form-label text_edit">Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control input-border owner-input-title" id="title"
+                                                onchange="setTitle(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for=""
+                                                    class="col-sm-2 col-form-label text_edit">Description:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <textarea class="form-control input-border desc-input" id="desc" rows="3"
+                                                onchange="setDesc(event)"
+                                                placeholder="Tell us more about your companion..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 post-date-area">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="" class="text_edit">Start Date:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" name="" id="startdate" onchange="setStart(event)"
+                                                class="dateInput start-date">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="" class="text_edit">End Date:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" name="" id="enddate" onchange="setEnd(event)"
+                                                class="dateInput end-date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- SUBMIT BUTTON -->
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary owner-save-btn">Save</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
+            </div>
 
-                <div class="d-flex flex-column align-items-center">
-                    <div class="row mb-2 col-md-7 mt-3 owner-descArea">
-                        <div class="form-group">
-                            <label for="" class="col-sm-2 col-form-label text_edit">Description:</label>
-                            <textarea class="form-control input-border" id="desc" name="desc" rows="3" onchange="setDesc(event)"
-                                        placeholder="Type..." value="<%= post.desc%>"> <%= post.desc%></textarea>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="mw-100 d-flex flex-row justify-content-center dates-structure">
-                    <div class="d-flex flex-column startDate">
-                        <label for="" class="text_edit">Start Date:</label>
-                        <input type="date" name="startDate" id="startdate" onchange="setStart(event)" class="dateInput" value="<%= post.startDate%>" >
-                    </div>
-                    <div class="d-flex flex-column endDate">
-                        <label for="" class="text_edit">End Date:</label>
-                        <input type="date" name="endDate" id="enddate" onchange="setEnd(event)" class="dateInput" value="<%= post.endDate%>" >
-                    </div>
-                </div>
-                
-                <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
-
-                <!-- SUBMIT BUTTON -->
-                <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary saveBtn"><%= btnName%></button>
-                </div>
-            </form>
         </div>
-
-<script>
-    postLoad();
-</script>
-
 </body>
 
 </html>

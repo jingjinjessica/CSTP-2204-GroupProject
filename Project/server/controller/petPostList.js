@@ -12,9 +12,8 @@ function formatDate(date) {
         date.getDate();
 }
 
-const getPetPost = async (req, res) => {
-    // return selected option
-    const queryBody = req.body;
+
+const searchPetPost = async (queryBody) =>{
     const query ={};
     // looking for have pet type or not , != mean we click the type for search
     // ** check if valuse of database is exist then check if select button is choose or not **
@@ -36,7 +35,6 @@ const getPetPost = async (req, res) => {
         query["profile.petWeight"] = queryBody.petWeight;
 
     }
-    console.log(query);
     
     //connect 2 tables profiles and petpost
     const result = await PetPost.aggregate([
@@ -51,12 +49,18 @@ const getPetPost = async (req, res) => {
         {$unwind:"$profile"},
         {$match:query}
     ]);
+    return result;
+}
+const getPetPost = async (req, res) => {
+    // return selected option
+    const result = await searchPetPost(req.body);
     // console.info(result[1].profile[0]);
     res.render("pages/listPetPost", { result: result, fd: formatDate })
     // Display filtered results
-    console.log(result);
+    // console.log(result);
 }
 
 module.exports = {
-    getPetPost
+    getPetPost,
+    searchPetPost
 };
