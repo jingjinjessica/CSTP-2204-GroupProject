@@ -16,9 +16,20 @@ const fileUpload = require("express-fileupload");
 const petPost = require("./server/model/PetPost");
 const sitterPost = require("./server/model/PetSitterPost");
 const profile = require("./server/model/Profile");
+const http = require("http");
+const socketio = require("socket.io");
 
 require("dotenv").config();
 
+const server = http.createServer(app);
+const io = socketio(server);
+
+//connect socket io
+io.on("connection", (socket) => {
+  console.log("It's connected");
+
+  socket.emit("message", "Hello");
+});
 //cookie
 app.use(cookieParser());
 app.use(express.json());
@@ -29,7 +40,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
-app.set('views', path.join(__dirname, 'views'));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
@@ -51,12 +62,22 @@ app.get("/register", (req, res) => {
   res.render("pages/register");
 });
 
+app.get("/chat", (req, res) => {
+  res.render("pages/chat");
+});
+
 app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost",{post:{title:"",desc:"",startDate:"",endDate:"", _id:""}, btnName:"Save"});
+  res.render("pages/petOwnerPost", {
+    post: { title: "", desc: "", startDate: "", endDate: "", _id: "" },
+    btnName: "Save",
+  });
 });
 
 app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save"});
+  res.render("pages/sitterPost", {
+    post: { title: "", rate: "", services: "", experience: "", _id: "" },
+    btnName: "Save",
+  });
 });
 
 // app.get("/sitterPostInfo", (req, res) => {
@@ -71,11 +92,9 @@ app.get("/petSitterPost", (req, res) => {
 //   res.render("pages/test");
 // });
 
-
 // app.get("/listSitterPost", (req, res) => {
 //   res.render("pages/listSitterPost");
 // });
-
 
 // app.get("/ownerlist/:postid", async function (req, res, next) {
 //   const { postid } = req.params;
@@ -89,8 +108,6 @@ app.get("/petSitterPost", (req, res) => {
 //     res.status(500).json(error);
 //   }
 // });
-
-
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
@@ -106,8 +123,8 @@ app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
 app.use("/api/v1/ownerposts", ownerRoutes);
-app.use("/post",postRoutes);
-app.use("/postinfo",postRoutes);
+app.use("/post", postRoutes);
+app.use("/postinfo", postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
 
