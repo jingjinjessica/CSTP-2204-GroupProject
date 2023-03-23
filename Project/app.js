@@ -127,6 +127,7 @@ app.use("/post", postRoutes);
 app.use("/postinfo", postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
+app.use("/api/v1/profile/getprofile", profileRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
