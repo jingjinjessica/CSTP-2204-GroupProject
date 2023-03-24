@@ -34,38 +34,60 @@ async function isExistChatRoom(roomId) {
 }
 
 async function createChatRoom(roomId, user1, user2) {
-  if (await isExistChatRoom(roomId)) {
-    return;
-  }
-  const newChatRoom = db.collection("chats").doc(roomId);
+  const reverseId = roomId.split("_").reverse().join("_");
+  console.log(reverseId);
+  if (await isExistChatRoom(roomId)) return roomId;
+  else if (await isExistChatRoom(reverseId)) return reverseId;
+
+  const newChatRoom = await db.collection("chats").doc(roomId);
   newChatRoom
     .set({
-      messages: [],
       user1: user1,
       user2: user2,
     })
     .then(() => {
+      newChatRoom.collection("messages");
       console.log(newChatRoom);
     })
     .catch((error) => {
       console.log(error);
     });
+
+  return roomId;
 }
 
 async function sendMsg(roomId, sender, receiver, msg) {
-  await createChatRoom(roomId, sender, receiver);
+  let id = await createChatRoom(roomId, sender, receiver);
   const newMsg = {
-    roomId: roomId,
+    roomId: id,
     sender: sender,
     receiver: receiver,
     msg: msg,
     timestamp: Date.now(),
   };
-  const chatRoomRef = db.collection("chats").doc(roomId);
-  chatRoomRef.update({
-    messages: firebase.firestore.FieldValue.arrayUnion(newMsg),
-  });
-}
+  const chatRoomRef = await db.collection("chats").doc(id);
+
+  const msgRef = chatRoomRef.collection("messages");
+
+  await msgRef.add(newMsg);
+ 
+
+  }
+
+
+
+// Get a reference to the chat document that contains the messages subcollection
+// const chatRef = firebase.firestore().collection("chats").doc("chat");
+
+// Get a reference to the messages subcollection
+// const messagesRef = chatRef.collection("messages");
+
+// Listen for changes to the messages subcollection
+
+
+
+// fetchChat.on("child_added", function(snapshot){
+
 // const fetchChat = db.ref("messages/");
 // fetchChat.on("child_added", function (snapshot) {
 //   const messages = snapshot.val();

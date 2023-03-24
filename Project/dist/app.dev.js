@@ -1,87 +1,116 @@
-const express = require("express");
-const app = express();
-const PORT = 3000;
-const mongoose = require("mongoose");
-const path = require("path");
-const userRoutes = require("./server/routes/users");
-const profileRoutes = require("./server/routes/profiles");
-const sitterRoutes = require("./server/routes/sitterposts");
-const ownerRoutes = require("./server/routes/ownerposts");
-const listRoutes = require("./server/routes/lists");
-const postRoutes = require("./server/routes/posts");
-const cookieParser = require("cookie-parser");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
-const petPost = require("./server/model/PetPost");
-const sitterPost = require("./server/model/PetSitterPost");
-const profile = require("./server/model/Profile");
-const http = require("http");
-const socketio = require("socket.io");
-const middleware = require("./middleware/middleware");
+"use strict";
+
+var express = require("express");
+
+var app = express();
+var PORT = 3000;
+
+var mongoose = require("mongoose");
+
+var path = require("path");
+
+var userRoutes = require("./server/routes/users");
+
+var profileRoutes = require("./server/routes/profiles");
+
+var sitterRoutes = require("./server/routes/sitterposts");
+
+var ownerRoutes = require("./server/routes/ownerposts");
+
+var listRoutes = require("./server/routes/lists");
+
+var postRoutes = require("./server/routes/posts");
+
+var cookieParser = require("cookie-parser");
+
+var morgan = require("morgan");
+
+var bodyParser = require("body-parser");
+
+var fileUpload = require("express-fileupload");
+
+var petPost = require("./server/model/PetPost");
+
+var sitterPost = require("./server/model/PetSitterPost");
+
+var profile = require("./server/model/Profile");
+
+var http = require("http");
+
+var socketio = require("socket.io");
+
+var middleware = require("./middleware/middleware");
 
 require("dotenv").config();
 
-const server = http.createServer(app);
-const io = socketio(server);
+var server = http.createServer(app);
+var io = socketio(server); //connect socket io
 
-//connect socket io
-io.on("connection", (socket) => {
+io.on("connection", function (socket) {
   console.log("It's connected");
-
   socket.emit("message", "Hello");
-});
-//cookie
+}); //cookie
+
 app.use(cookieParser());
 app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname + "/client/public")));
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(express["static"](path.join(__dirname + "/client/public")));
+app.use(bodyParser.json({
+  limit: "50mb"
+}));
+app.use(bodyParser.urlencoded({
+  limit: "50mb",
+  extended: true
+}));
 app.use(fileUpload());
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 app.use(morgan("dev"));
-mongoose.connect(process.env.MONGO_URL, (error) => {
+mongoose.connect(process.env.MONGO_URL, function (error) {
   if (error) {
     console.log("There was an error", error);
   } else {
     console.log("Database Succesfully Connected");
   }
 });
-
-app.get("/index", (req, res) => {
+app.get("/index", function (req, res) {
   res.render("pages/index");
 });
-app.get("/login", (req, res) => {
+app.get("/login", function (req, res) {
   res.render("pages/login");
 });
-app.get("/register", (req, res) => {
+app.get("/register", function (req, res) {
   res.render("pages/register");
 });
-
-app.get("/chat", (req, res) => {
+app.get("/chat", function (req, res) {
   res.render("pages/chat");
 });
-
-app.get("/petOwnerPost", (req, res) => {
+app.get("/petOwnerPost", function (req, res) {
   res.render("pages/petOwnerPost", {
-    post: { title: "", desc: "", startDate: "", endDate: "", _id: "" },
-    btnName: "Save",
+    post: {
+      title: "",
+      desc: "",
+      startDate: "",
+      endDate: "",
+      _id: ""
+    },
+    btnName: "Save"
   });
 });
-
-app.get("/petSitterPost", (req, res) => {
+app.get("/petSitterPost", function (req, res) {
   res.render("pages/sitterPost", {
-    post: { title: "", rate: "", services: "", experience: "", _id: "" },
-    btnName: "Save",
+    post: {
+      title: "",
+      rate: "",
+      services: "",
+      experience: "",
+      _id: ""
+    },
+    btnName: "Save"
   });
-});
-
-// app.get("/post", (req, res) => {
+}); // app.get("/post", (req, res) => {
 //   // Check if the user is authenticated
 //   const token = req.cookies["access-token"];
 //   let userData = null;
@@ -93,27 +122,21 @@ app.get("/petSitterPost", (req, res) => {
 //       // If the JWT token is invalid, do nothing
 //     }
 //   }
-
 //   // Render the post page and pass the user data as a variable
 //   res.render("post", { userData });
 // });
-
 // app.get("/sitterPostInfo", (req, res) => {
 //   res.render("pages/sitterPostInfo");
 // });
-
 // app.get("/ownerPostInfo", (req, res) => {
 //   res.render("pages/ownerPostInfo");
 // });
-
 // app.get("/test", (req, res) => {
 //   res.render("pages/test");
 // });
-
 // app.get("/listSitterPost", (req, res) => {
 //   res.render("pages/listSitterPost");
 // });
-
 // app.get("/ownerlist/:postid", async function (req, res, next) {
 //   const { postid } = req.params;
 //   console.log("this is post id from server", postid);
@@ -132,9 +155,10 @@ function userLogger(req, res, next) {
   next(); // Pass the control to the next middleware
 }
 
-app.use(middleware.authMiddleware);
+app.use(function (middleware, next) {
+  next();
+}); // We will use middleware
 
-// We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
 app.use("/users", userRoutes);
 app.use("/api/v1/sitterposts", sitterRoutes);
@@ -144,8 +168,6 @@ app.use("/postinfo", postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
 app.use("/api/v1/profile/getprofile", profileRoutes);
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-// run npm start
+app.listen(PORT, function () {
+  console.log("Server running on port ".concat(PORT));
+}); // run npm start

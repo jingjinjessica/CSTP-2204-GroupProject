@@ -213,6 +213,31 @@
 
 </html>
 <script>
+    // const currUser = await response.json();
+    // const currUserName = currUser.name;
+    // const currUserId = currUser.userID;
+    // const roomId = ownerId + "_" + currUserId;
+
+    console.log(`<%- user %>`);
+
+async function fetchChat(){
+        const messagesRef = db.ref(`chats/${id}/messages`);
+        console.log(messagesRef);
+
+        messagesRef.onSnapshot((querySnapshot) => {
+        const messages = [];
+        querySnapshot.forEach((doc) => {
+            messages.push({
+            id: doc.id,
+            ...doc.data()
+            });
+        });
+        console.log("Current messages: ", messages);
+        }, (error) => {
+        console.error("Error getting messages:", error);
+        });
+}
+
 
 document.getElementById("search").addEventListener("submit", postChat);
 async function postChat(e) {
@@ -232,12 +257,10 @@ async function postChat(e) {
         )}`,
       },
     });
-    const currUser = await response.json();
-    const currUserName = currUser.name;
-    const currUserId = currUser.userID;
-    const roomId = ownerId + currUserId;
+    
     const msg = document.getElementById("searchfield").value;
 
+    
     await sendMsg(roomId, currUserName, ownerName, msg);
 
 
@@ -248,7 +271,10 @@ async function postChat(e) {
 
     msg = ""
 
-  } catch (error) {
+  } 
+  
+  
+  catch (error) {
     console.log(error);
   }
 };
@@ -268,6 +294,7 @@ async function postChat(e) {
     $('#chatBox header').on('click', function() {
  
        $('.chat').slideToggle(300, 'swing');
+
  
     });
  
@@ -275,20 +302,20 @@ async function postChat(e) {
  
     $(document).ready(function(){
  
-        var preloadbg = document.createElement("img");
-        preloadbg.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/timeline1.png";
+        // var preloadbg = document.createElement("img");
+        // preloadbg.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/timeline1.png";
     
-        $("#searchfield").focus(function(){
-        if($(this).val() == "Search contacts..."){
-            $(this).val("");
-        }
-        });
-        $("#searchfield").focusout(function(){
-        if($(this).val() == ""){
-            $(this).val("Search contacts...");
+        // $("#searchfield").focus(function(){
+        // if($(this).val() == "Search contacts..."){
+        //     $(this).val("");
+        // }
+        // });
+        // $("#searchfield").focusout(function(){
+        // if($(this).val() == ""){
+        //     $(this).val("Search contacts...");
             
-        }
-        });
+        // }
+        // });
     
         $("#sendmessage input").focus(function(){
         if($(this).val() == "Send message..."){

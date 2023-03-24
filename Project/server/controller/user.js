@@ -16,12 +16,12 @@ const registerUser = async (request, response) => {
   const newUser = new User({
     email: data.email,
     password: encryptPassword,
-    userType: data.userType
+    userType: data.userType,
   });
   try {
-     const p1 = await newUser.save();
-     return response.status(201).json({
-      message: "Succesfully Registered User"
+    const p1 = await newUser.save();
+    return response.status(201).json({
+      message: "Succesfully Registered User",
     });
   } catch (error) {
     console.log(error);
@@ -32,15 +32,14 @@ const registerUser = async (request, response) => {
   }
 };
 
-
 const getProfileByUserEmail = async (email) => {
   //console.info(email);
-  const user = await User.findOne({email: email});
+  const user = await User.findOne({ email: email });
   //console.info(user);
-  const profile = await Profile.findOne({userID: user._id.toString()});
+  const profile = await Profile.findOne({ userID: user._id.toString() });
   //console.info(profile);
   return profile;
-}
+};
 
 // Login
 const loginUser = async (request, response) => {
@@ -49,38 +48,41 @@ const loginUser = async (request, response) => {
   if (foundUser) {
     // Then we will check for password
     // This will be either true or false
-    const matchPassword = await bcrypt.compare(data.password,foundUser.password);
+    const matchPassword = await bcrypt.compare(
+      data.password,
+      foundUser.password
+    );
     if (matchPassword) {
       // // We are trying to create an access token based on which the user will be able to interact with the website
-      const accessToken = jwt.sign({
-          email: foundUser.email
+      const accessToken = jwt.sign(
+        {
+          email: foundUser.email,
+          sub: foundUser._id,
         },
         process.env.SECRET_KEY
       );
       response.cookie("access-token", accessToken);
       const profileInform = await getProfileByUserEmail(data.email);
       // has profile
-      if (profileInform){
-        if(foundUser.userType === "owner"){
+      if (profileInform) {
+        if (foundUser.userType === "owner") {
           response.redirect("/list/listsitterpost");
-        }
-        else if(foundUser.userType === "sitter"){
+        } else if (foundUser.userType === "sitter") {
           response.redirect("/list/listpetpost");
         }
       }
       // has not profile by type
-      else if(foundUser.userType === "owner"){
+      else if (foundUser.userType === "owner") {
         response.redirect("/profile/createPetOwner");
-      }
-      else if(foundUser.userType === "sitter"){
+      } else if (foundUser.userType === "sitter") {
         response.redirect("/profile/createPetSitter");
       }
       return;
     }
   }
-    // If user doesn't exist
-  response.render("pages/login", {title: "Login"});
-  };
+  // If user doesn't exist
+  response.render("pages/login", { title: "Login" });
+};
 
 const getAllUsers = async (request, response) => {
   try {
@@ -105,52 +107,59 @@ const getAllUsers = async (request, response) => {
 };
 
 //Dashboard
-function formatDate(date){
-  return "Create date: " +
-  date.getFullYear() +
-  "-" +
-  (date.getMonth() + 1) +
-  "-" +
-  date.getDate();
+function formatDate(date) {
+  return (
+    "Create date: " +
+    date.getFullYear() +
+    "-" +
+    (date.getMonth() + 1) +
+    "-" +
+    date.getDate()
+  );
 }
 
-const getHistoryPost = async (req,res) => {
+const getHistoryPost = async (req, res) => {
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   const post = await getPostByEmail(decodedValues.email);
   const profile = await getProfileByUserEmail(decodedValues.email);
   const user = await getUser(decodedValues.email);
-  if (user.userType === "owner"){
-    res.render("pages/dashboard", {posts: post, postImage:profile.petImage, fd:formatDate, userType:"owner"})
+  if (user.userType === "owner") {
+    res.render("pages/dashboard", {
+      posts: post,
+      postImage: profile.petImage,
+      fd: formatDate,
+      userType: "owner",
+    });
+  } else if (user.userType === "sitter") {
+    res.render("pages/dashboard", {
+      posts: post,
+      postImage: profile.avatar,
+      fd: formatDate,
+      userType: "sitter",
+    });
   }
-  else if (user.userType === "sitter"){
-    res.render("pages/dashboard", {posts: post, postImage:profile.avatar, fd:formatDate, userType:"sitter"})
-  }
-}
+};
 
-const getUser =async (email) => {
+const getUser = async (email) => {
   const user = await User.findOne({ email: email });
   return user;
-}
-  
+};
+
 const getPostByEmail = async (email) => {
   const user = await User.findOne({ email: email });
-  if (user.userType === "owner"){
-    const post = await PetPost.find({userID: user._id.toString() })
+  if (user.userType === "owner") {
+    const post = await PetPost.find({ userID: user._id.toString() });
+    return post;
+  } else if (user.userType === "sitter") {
+    const post = await SitterPost.find({ userID: user._id.toString() });
     return post;
   }
-  else if (user.userType === "sitter"){
-    const post = await SitterPost.find({userID: user._id.toString() })
-    return post;
-  }
-}
-
-
-
+};
 
 module.exports = {
   registerUser,
   loginUser,
   getHistoryPost,
-  getAllUsers
+  getAllUsers,
 };
