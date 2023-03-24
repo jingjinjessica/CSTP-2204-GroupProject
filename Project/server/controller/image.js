@@ -1,6 +1,6 @@
 const cloudinary = require("../library/cloudinary");
 
-const uploadImage = async (request, response) => {
+async function uploadImage(request, response) {
   try {
     const result = await cloudinary.uploader.upload(request.file.path);
     response.json({
@@ -15,8 +15,8 @@ const uploadImage = async (request, response) => {
         "There was an error when uploading image. Your image may be too large.",
     });
   }
-};
+}
 
 module.exports = {
-  uploadImage
+  uploadImage,
 };
