@@ -141,7 +141,7 @@
                     <div id="chatContainer">
                         <div id="friendslist">
                             <form id="search">
-                                <input type="text" id="searchfield" value="Enter your message..." />
+                                <input type="text" id="searchfield" placeholder="Enter your message..." />
                                 <button type="submit">Submit</button>
                             </form> 
                             <!-- <div id="friends">
@@ -214,18 +214,6 @@
 </html>
 <script>
 
-//   const { postid } = req.params;
-//   console.log("this is post id from server", postid);
-//   try {
-//     const post = await petPost.findById(postid);
-//     const petownerId = post.userID;
-//     console.log(petownerId);
-    
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-
-
 document.getElementById("search").addEventListener("submit", postChat);
 async function postChat(e) {
   e.preventDefault();
@@ -251,6 +239,14 @@ async function postChat(e) {
     const msg = document.getElementById("searchfield").value;
 
     await sendMsg(roomId, currUserName, ownerName, msg);
+
+
+    const msgDisplay = document.createElement("div");
+    msgDisplay.innerHTML = "<p><strong>"+currUserName+":</strong> " + msg + "</p>";
+    const msgList = document.getElementById("chatContainer");
+    msgList.appendChild(msgDisplay);
+
+    msg = ""
 
   } catch (error) {
     console.log(error);

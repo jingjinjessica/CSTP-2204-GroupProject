@@ -24,7 +24,6 @@ const getProfile = async (req, res) => {
 const getCurrUser = async (req, res) => {
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
-
   let foundUser = await User.findOne({ email: decodedValues.email });
 
   if (!foundUser) {

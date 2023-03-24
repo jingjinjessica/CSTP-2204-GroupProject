@@ -17,8 +17,6 @@ const db = firebase.firestore();
 document.getElementById("search").addEventListener("submit", postChat);
 async function postChat(e) {
   e.preventDefault();
-  await sendMsg("fgasgsdfgsd", "Melody", "JJ", "How is it going");
-
   // const timestamp = Date.now();
   // const chatTxt = document.getElementById("chat-txt");
   // const message = chatTxt.value;
@@ -27,7 +25,6 @@ async function postChat(e) {
   //   // user: username,
   //   msg: message,
   // });
-  const msg = document.getElementById("searchfield").value;
 }
 
 async function isExistChatRoom(roomId) {
