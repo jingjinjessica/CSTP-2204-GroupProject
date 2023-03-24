@@ -45,22 +45,5 @@ describe("uploadImage function", () => {
     await uploadImage(req, res);
     expect.stringContaining("Test error message");
 
-    //test failed case
-    // jest.mock("../library/cloudinary", () => ({
-    //   uploader: {
-    //     upload: jest.fn(() => {
-    //       throw new Error(errorMessage);
-    //     }),
-    //   },
-    // }));
-
-    // await uploadImage(req, res);
-    // expect(console.log).toHaveBeenCalledTimes(1);
-    // expect(console.log).toHaveBeenCalledWith(
-    //   expect.stringContaining("[ERROR]")
-    // );
-    // expect(res.status).toHaveBeenCalledWith(500);
-
-    // );
   });
 });
