@@ -24,7 +24,7 @@
                                                 <span class="location" name="province" ><%= sitter.province%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" name="city" > <%= sitter.city%></span>
+                                                <span class="location" name="city" > <%= post.city%></span>
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Rate:</span>
@@ -33,6 +33,12 @@
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Services:</span>
                                                 <p class="rate-from text-break" id="services" name="services" > <%= post.services%></p>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    Date
+                                                </span>
+                                                <p class="rate-from text-break" id="dates" name="dates"  > <%= post.dates%></p>
                                             </div>
                                         </div>
                                     </div>
@@ -259,4 +265,102 @@
         });
     });			
 });
+</script>
+
+<script>
+    //  This is to show the date availability result (reference)
+const dates = function testDate(){
+    // BlackBox testing
+    // Get the value of the inputs
+    var stringDate = document.getElementById('dates').value;
+
+    // Split the data according to ','
+    var arrayDate = stringDate.split(',');
+    // Make a new array for the dates
+    // The date format has to be DD/M/YYYY, ex: 12/3/2023, 01/3/2023
+    // The values we are getting from the input is with this format: DD/MM/YYYY so 12/03/2023 will not work
+    var newArrDates = [];
+    for(var i = 0; i  < arrayDate.length; i++){
+        var newTest = arrayDate[i].slice(0, 3) + arrayDate[i].slice(4);
+        newArrDates.push(newTest);
+        //console.log(newTest);
+        
+    }
+
+    // Output the input results
+    // console.log(`Title: ${titleTest} \n
+    //              Rate: ${rateTest} \n
+    //              Services: ${servicesTest} \n
+    //              Experiences: ${experienceTest} \n
+    //              `);
+
+    for(var i = 0; i < newArrDates.length; i++){
+        console.log(newArrDates[i]);
+    }
+   
+
+
+
+    // TESTER (DONT ERASE IT)
+
+    // var eventDates = {};
+    // eventDates[ new Date( '03/07/2023' )] = new Date( '08/07/2016' );
+    // eventDates[ new Date( '03/12/2023' )] = new Date( '08/12/2016' );
+    // eventDates[ new Date( '03/18/2023' )] = new Date( '08/18/2016' );
+    // eventDates[ new Date( '03/23/2023' )] = new Date( '08/23/2016' );
+
+    // for(var i = 0; i < arrayDate.length; i++){
+    //     eventDates[i] = new Date(arrayDate[i]);
+    //     i++;
+    //     console.log(eventDates[i])
+    // }
+
+
+    // $('#datepickertest').datepicker({
+        
+    //     beforeShowDay: function( date ) {
+    //         var highlight = eventDates[date];
+    //         if( highlight ) {
+    //              return [true, "event", 'Tooltip text'];
+    //         } else {
+    //              return [true, '', ''];
+    //         }
+    //     }
+    // });
+
+    // SAMPLE TEST
+    //var active_dates = ["23/3/2023","21/3/2023"];
+
+    $('#datepickertest').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        beforeShowDay: function(date){
+            // Getting the current date
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
+
+            // Check to see specific dates that needs to be highlighted
+            if ($.inArray(formattedDate, newArrDates) != -1){
+                return {
+                    classes: 'date-edit'
+                };
+            }
+        return;
+        }
+    });
+
+//     var array = $(".datepicker").find(".day").toArray();
+//     for(var i=0;i < array.length;i++){
+//         var date = array[i].getAttribute("data-day"); 
+//         if (arrayDate.indexOf(date) > -1) {
+//             array[i].style.backgroundColor ="#090";
+//             array[i].style.fontWeight = "bold";
+//         } 
+//   }
+
+}
 </script>
