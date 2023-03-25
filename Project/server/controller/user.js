@@ -152,5 +152,6 @@ module.exports = {
   registerUser,
   loginUser,
   getHistoryPost,
-  getAllUsers
+  getAllUsers,
+  getUser
 };

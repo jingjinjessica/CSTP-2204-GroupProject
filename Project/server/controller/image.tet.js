@@ -1,4 +1,4 @@
-const { uploadImage } = require("../controller/image");
+const { uploadImage } = require("./image");
 
 // test passed case
 //jest.fn() to create a mock function for testing
@@ -18,7 +18,7 @@ describe("uploadImage function", () => {
   it("should upload an image and return the public ID and URL", async () => {
     const req = {
       file: {
-        path: "/path/to/test-image.png",
+        path: "/path/https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*",
       },
     };
     const res = {
@@ -31,10 +31,10 @@ describe("uploadImage function", () => {
     });
   });
 
-  it("should handle errors when uploading an image", async () => {
+  it("should return errors when uploading an image", async () => {
     const req = {
       file: {
-        path: "/path/to/test-image.png",
+        path: "/path/https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*",
       },
     };
     const res = {
@@ -44,23 +44,5 @@ describe("uploadImage function", () => {
     };
     await uploadImage(req, res);
     expect.stringContaining("Test error message");
-
-    //test failed case
-    // jest.mock("../library/cloudinary", () => ({
-    //   uploader: {
-    //     upload: jest.fn(() => {
-    //       throw new Error(errorMessage);
-    //     }),
-    //   },
-    // }));
-
-    // await uploadImage(req, res);
-    // expect(console.log).toHaveBeenCalledTimes(1);
-    // expect(console.log).toHaveBeenCalledWith(
-    //   expect.stringContaining("[ERROR]")
-    // );
-    // expect(res.status).toHaveBeenCalledWith(500);
-
-    // );
   });
 });
