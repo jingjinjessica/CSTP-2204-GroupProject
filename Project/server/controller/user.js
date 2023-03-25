@@ -152,5 +152,7 @@ module.exports = {
   registerUser,
   loginUser,
   getHistoryPost,
-  getAllUsers
+  getAllUsers,
+  getProfileByUserEmail,
+  getPostByEmail
 };

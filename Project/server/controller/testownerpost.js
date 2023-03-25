@@ -2,6 +2,43 @@ const PetPost = require("../model/PetPost");
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 
+
+const createPetPostInner = async (data, email) => {
+
+    const findUser = await User.findOne({ email: email });
+    //console.log("finduser", findUser);
+    let output;
+    if (findUser) {
+      const post = {
+        title: data.title,
+        desc: data.desc,
+        startDate: data.startdate,
+        endDate: data.enddate,
+        userID: findUser._id,
+      };
+      if (data.postId !== ""){
+          // update
+          output = await PetPost.findByIdAndUpdate(
+              data.postId,
+            {
+              $set: post,
+            },
+            {
+              new: true,
+            }
+          );
+      }
+      else{
+        const newPost = new PetPost(post);
+        //console.log(newPost);
+        output = await newPost.save();
+      }
+      return output;
+    }
+    else{
+      throw "User was not Found! Please register first.";
+    }
+}
 //create post
 const createPetPost = async (request, response) => {
   const data = request.body;
@@ -9,52 +46,20 @@ const createPetPost = async (request, response) => {
   const token = request.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   if (decodedValues.email) {
-    const findUser = await User.findOne({ email: decodedValues.email });
-    //console.log("finduser", findUser);
-    let output;
-    if (findUser) {
-      try {
-        const post = {
-          title: data.title,
-          desc: data.desc,
-          startDate: data.startdate,
-          endDate: data.enddate,
-          userID: findUser._id,
-        };
-        if (data.postId !== ""){
-            // update
-            output = await PetPost.findByIdAndUpdate(
-               data.postId,
-              {
-                $set: post,
-              },
-              {
-                new: true,
-              }
-            );
-        }
-        else{
-          const newPost = new PetPost(post);
-          //console.log(newPost);
-          output = await newPost.save();
-      }
-        console.info(output);
-        return response.status(201).json({
-          message: "Post Succesfully Created",
-          data: output,
-        });
-      } catch (error) {
-        console.info(error);
-        return response.status(500).json({
-          message: "There was an error",
-          error,
-        });
-      }
-    } else {
-      return response.status(404).json({
-        message: "User was not Found! Please register first.",
+    try{
+      const output = await createPetPostInner(data, decodedValues.email);
+      return response.status(201).json({
+        message: "Post Succesfully Created",
+        data: output,
       });
     }
+    catch(error){
+      return response.status(500).json({
+        message: error,
+        error,
+      });
+    }
+    
   } else {
     return response.status(401).json({
       message: "Token required!",
@@ -92,18 +97,21 @@ const createPetPost = async (request, response) => {
 //   }
 // };
 
+
+const deletePetPostInner = async(postId) =>{
+  const post = await PetPost.findById(postId);
+  await post.delete();
+      
+}
 //delete post
 const deletePetPost = async (request, response) => {
   try {
-    const post = await PetPost.findById(request.params.id);
-      try {
-        await post.delete();
-        response.status(200).json("Post already deleted.");
-      } catch (error) {
-        response.status(500).json(error);
-      }
+    await deletePetPostInner(request.params.id);
+    response.status(200).json("Post already deleted.");
+      
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    response.status(500).json(error);
   }
 };
 
@@ -138,5 +146,7 @@ module.exports = {
   //updatePetPost,
   deletePetPost,
   getAllPetPosts,
-  getPost
+  getPost,
+  createPetPostInner,
+  deletePetPostInner
 };
