@@ -8,6 +8,10 @@ const setRate = (event) => {
   newPetsitterPost.rate = event.target.value;
   //console.log(setRate);
 };
+const setCity = (event) => {
+  newPetsitterPost.city = event.target.value;
+  //console.log(setRate);
+};
 const setServices = (event) => {
   newPetsitterPost.services = event.target.value;
   //console.log(setServices);
@@ -24,6 +28,7 @@ const setSitterPostId = (event) => {
 const sitterPostLoad = () =>{
   const title = document.getElementById("title").value;
   const rate = document.getElementById("rate").value;
+  const city = document.getElementById("city").value;
   const services = document.getElementById("services").value;
   const experience = document.getElementById("experience").value;
   if (title !== ""){
@@ -31,6 +36,9 @@ const sitterPostLoad = () =>{
   }
   if (rate !== ""){
     newPetsitterPost.rate = rate;
+  }
+  if (city !== ""){
+    newPetsitterPost.city = city;
   }
   if (services !== ""){
     newPetsitterPost.services = services;
@@ -46,6 +54,7 @@ const sitterPost = async (event) => {
   if (
     !newPetsitterPost.title ||
     !newPetsitterPost.rate ||
+    !newPetsitterPost.city ||
     !newPetsitterPost.services ||
     !newPetsitterPost.experience
   ) {

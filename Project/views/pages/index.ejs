@@ -76,6 +76,23 @@
                                         <div class="container d-block">
                                             <div class="row card-row">
                                                 <div class="col-sm-4 card-col each-card-col">
+                                                    <% data.forEach(item =>{%>
+                                                        <div class="card card-area">
+                                                            <div class="card-body card-content-home">
+                                                                <div class="col-md-4 img-area">
+                                                                    <img id="myImg" src="<%= item.avatar%>" class="card-img" alt="pet-img">
+                                                                </div>
+                                                                <h3 class="card-title card-title-home" id=""><%= item.name %></h3>
+                                                                <h5 class="card-text card-location"><%= item.province %>, <%= item.city %>
+                                                                </h5>
+                                                                <h6 class="card-text card-desc-title">About me</h6>
+                                                                <p class="card-text card-desc"><%= item.aboutMe %></p>
+                        
+                                                            </div>
+                                                        </div>
+                                                    <% } )%>
+                                                </div>
+                                                <!-- <div class="col-sm-4 card-col each-card-col">
                                                     <div class="card card-area">
                                                         <div class="card-body card-content-home">
                                                             <h3 class="card-title card-title-home" id="">Name</h3>
@@ -90,8 +107,8 @@
                                                                 more</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-4 card-col each-card-col">
+                                                </div> -->
+                                                <!-- <div class="col-sm-4 card-col">
                                                     <div class="card card-area">
                                                         <div class="card-body card-content-home">
                                                             <h3 class="card-title card-title-home" id="">Name</h3>
@@ -106,27 +123,11 @@
                                                                 more</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-4 card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
 
-                                    </div>
+                                    <!-- </div>
                                     <div class="carousel-item">
                                         <div class="container d-block">
                                             <div class="row card-row">
@@ -180,7 +181,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- btn for prev and next -->
                                 <a href="#inam" class="carousel-control-prev home-prev" data-bs-slide="prev">

@@ -61,7 +61,23 @@ const getSitterPost = async (req, res) => {
     //console.info(result);
     res.render("pages/listSitterPost", { result: result, fd: formatDate })
 }
-
+const randomPost = async(req,res) => {
+    const result = await SitterPost.aggregate([
+        {
+            $lookup: {
+                from: "profiles",
+                localField: "userID",
+                foreignField: "userID",
+                as: "profile"
+            },   
+        },
+        {$unwind:"$profile"},
+        {$match:query}
+    ]);
+    const data = await result.aggregate([{$sample:{size:6}}]);
+    res.render("pages/index", { data:data, fd: formatDate })
+}
 module.exports = {
-    getSitterPost
+    getSitterPost,
+    randomPost
 };

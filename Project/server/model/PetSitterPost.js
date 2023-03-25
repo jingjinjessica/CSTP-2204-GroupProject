@@ -6,6 +6,10 @@ const PetSitterPostSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    city:{
+      type: String,
+      required: true,
+    },
     rate: {
       type: Number,
       required: true,
