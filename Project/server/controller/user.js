@@ -158,11 +158,7 @@ module.exports = {
   loginUser,
   getHistoryPost,
   getAllUsers,
-<<<<<<< HEAD
   getProfileByUserEmail,
   getPostByEmail
 };
-=======
-  isValidLogin
-};
->>>>>>> bd8ecd1047c8b58a73d90196c9f14e522edfbe3c
+

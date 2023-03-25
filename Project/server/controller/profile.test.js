@@ -16,7 +16,30 @@ mongoose.connect("mongodb+srv://petsitter:2204@cluster0.awxokwt.mongodb.net/test
 // We SHOULD get these user's name: "test"
 
 const {getProfileByUserEmail} = require("./user");
+const User = require("../model/User");
+const Profile = require("../model/Profile");
 test('email', async () =>{
-    const p1 = await getProfileByUserEmail("test@gmail.com");
-    return expect(p1.name).toBe("test");
-},20000);
+    // prepare test user and profile
+    const user1 = new User({
+      email:"user-test-1@gmail.com",
+      password:"123",
+      userType:"owner"
+    })
+    const dbUser1 = await user1.save();
+
+    const profile1 = new Profile({
+      userID:dbUser1._id,
+      name:"user1-name",
+      city:"richmond"
+    })
+    const dbProfile = await profile1.save()
+
+    const p1 = await getProfileByUserEmail("user-test-1@gmail.com");
+    expect(p1.name).toBe("user1-name");
+    expect(p1.city).toBe("richmond");
+
+    // delete 
+    await dbProfile.delete();
+    await dbUser1.delete();
+
+},40000);
