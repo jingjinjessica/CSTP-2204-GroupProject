@@ -20,46 +20,57 @@
                 class="row g-3 d-flex flex-column align-items-center align-content-center">
                 <div class="col-xxl-8 mb-5 mb-xxl-0">
                     <div class="bg-secondary-soft px-4 py-5 rounded">
+
+                        <!-- TITLE INPUT -->
                         <div class=" d-flex titlePost">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 title-structure">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit"  >Title:</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 title-input-length">
                                     <input type="text" class="form-control input-border" id="title" name="title" onchange="setSitterTitle(event)" value="<%= post.title
                                     %>">
                                 </div>
                             </div>
                         </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
 
-                                <div class="row g-3">
-                                    <div class="col-lg-6">
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label for="amount"
-                                                    class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
+                        <div class="row g-3 detail-structure">
+
+                            <!-- RATE INPUT TEMPORARY EDIT -->
+                            <div class="col-lg-6 spacer-edit">
+                                <!-- <div class="row g-3"> -->
+                                    <!-- <div class="col-lg-6"> -->
+                                        <!-- <div class="row g-3">
+                                            <div class="col-md-6"> -->
+                                                <label for="amount" class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
+                                                
+                                                <input type="text" id="rate" name="rate" placeholder="$ Per day"
+                                                    onchange="setRate(event)"
+                                                    class="form-control input-border rate-inputChange">
+                                                
+                                            <!-- </div>
+                                            
+                                        </div> -->
+                                        <!-- <div class="col-md-6">
                                             <input type="text" id="rate" name="rate" placeholder="$ Per day"
                                                 onchange="setRate(event)"
                                                 class="form-control input-border rate-inputChange">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
+                                        </div> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                                <!-- <div class="col-md-6">
                                     <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
                                         class="form-control input-border rate-inputChange" value="<%= post.rate%>">
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="col-lg-6">
+
+                            <!-- SERVICE INPUT -->
+                            <div class="col-lg-6 spacer-edit">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label profile-form-label label-text" for="">Services</label>
+                                        <label class="form-label profile-form-label text_edit" for="">Services</label>
                                     </div>
                                 </div>
                                 <div class="input-group">
@@ -77,17 +88,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <!-- EXPERIENCE INPUT -->
+                            <div class="col-lg-6 spacer-edit">
                                 <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
                                 <textarea class="form-control input-border" id="experience" name="experience" rows="3"
                                     onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
                             </div>
 
                             <!-- AVAILABILITY DATES -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 spacer-edit">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label for="" class="form-label profile-form-label label-text"> Availability</label>
+                                        <label for="" class="form-label profile-form-label text_edit"> Availability</label>
                                     </div>
                                 </div>
                                 <div class="input-group date form-group" id="datepicker">

@@ -101,9 +101,9 @@
     height: 20px;
 }
 
-.rate-inputChange {
+/* .rate-inputChange {
     width: 380px;
-}
+} */
 
 .post-save-btn {
     background: #FB5607;
@@ -170,108 +170,6 @@
     font-size: 15px;
 }
 
-/* SitterPost and PetOwnerPost view change */
-@media (max-width: 992px) {
-    .rate-structure {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .rate-inputChange {
-        width: 122%;
-    }
-
-    .startDate {
-        margin-right: 0px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Pet Sitter Post */
-    .rate-structure {
-        margin-right: 7%;
-        width: 48%;
-    }
-
-    .experience-txtarea {
-        width: 300px;
-    }
-
-    /* Pet Owner Post */
-    .owner-descArea {
-        width: 75%;
-    }
-
-    .owner-titleArea {
-        width: 75%;
-    }
-}
-
-/* Mobile View for sitterPost */
-@media (max-width: 750px) {
-    .mediaTest {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 511px) {
-    .rate-structure {
-        width: 55%;
-    }
-}
-
-@media (max-width: 415px) {
-    .rate-structure {
-        margin-right: 16%;
-
-    }
-
-    .rate-inputChange {
-        width: 140%;
-    }
-
-    .dates-structure {
-        display: flex;
-        flex-direction: column !important;
-    }
-
-    .dateInput {
-        width: 45%;
-    }
-
-    .startDate {
-        align-items: center;
-    }
-
-    .endDate {
-        align-items: center;
-        margin-left: 0px;
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 401px) {
-    .rate-structure {
-        margin-right: 10%;
-        width: 70%;
-    }
-
-    .rate-inputChange {
-        width: 122%;
-    }
-}
-
-@media (max-width: 282px) {
-    .rate-structure {
-        width: 120%;
-    }
-
-    .rate-inputChange {
-        width: 117%;
-    }
-}
 
 @media (max-width: 480px) {
 
@@ -336,7 +234,7 @@
 }
 
 /* / Media Query for Laptops and Desktops / */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1281px) {
     .login-img {
         margin-top: 50px;
         border-radius: 30px;
@@ -394,9 +292,43 @@
         margin-top: -5px;
         margin-bottom: -20px;
     }
+
+    .detail-structure {
+        align-items: center;
+        align-content: center;
+        margin-top: 10px;
+    }
+
+    .title-structure {
+        width: 100%;
+    }
+
+    .title-input-length {
+        width: 100%;
+    }
+
+    .spacer-edit {
+        margin-top: 30px;
+    }
 }
 
 /* / Media Query for Large screens / */
-/* @media (min-width: 1281px) {
+@media (min-width: 1281px) {
+    .detail-structure {
+        align-items: center;
+        align-content: center;
+        margin-top: 10px;
+    }
 
-} */
+    .title-structure {
+        width: 100%;
+    }
+
+    .title-input-length {
+        width: 100%;
+    }
+
+    .spacer-edit {
+        margin-top: 30px;
+    }
+}
