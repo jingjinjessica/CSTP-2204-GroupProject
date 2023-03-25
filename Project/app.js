@@ -16,6 +16,9 @@ const fileUpload = require("express-fileupload");
 const petPost = require("./server/model/PetPost");
 const sitterPost = require("./server/model/PetSitterPost");
 const profile = require("./server/model/Profile");
+const session = require('express-session');
+
+
 
 require("dotenv").config();
 
@@ -42,7 +45,7 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
 });
 
 app.get("/index", (req, res) => {
-  res.render("pages/index");
+  res.render("pages/index",{locals:{session:{loggedin:true}}});
 });
 app.get("/login", (req, res) => {
   res.render("pages/login");
@@ -52,11 +55,11 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/petOwnerPost", (req, res) => {
-  res.render("pages/petOwnerPost",{post:{title:"",desc:"",startDate:"",endDate:"", _id:""}, btnName:"Save"});
+  res.render("pages/petOwnerPost",{post:{title:"",desc:"",startDate:"",endDate:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
 });
 
 app.get("/petSitterPost", (req, res) => {
-  res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save"});
+  res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
 });
 
 // app.get("/sitterPostInfo", (req, res) => {
@@ -97,9 +100,65 @@ function userLogger(req, res, next) {
   next(); // Pass the control to the next middleware
 }
 
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: 'SECRET' 
+}));
 app.use((req, res, next) => {
+  res.locals.session = req.cookies;
   next();
 });
+
+app.get('/', function(req, res) {
+  res.render('pages/auth');
+});
+
+
+/*  PASSPORT SETUP  */
+
+const passport = require('passport');
+var userProfile;
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/success', (req, res) => res.send(userProfile));
+app.get('/error', (req, res) => res.send("error logging in"));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+/*  Google AUTH  */
+ 
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GOOGLE_CLIENT_ID = '400184236994-pk2n0ht5cgck60qf7g6imt85crv7tbp8.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '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';
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback/"
+  },
+  function(accessToken, refreshToken, profile, done) {
+      userProfile=profile;
+      return done(null, userProfile);
+  }
+));
+ 
+app.get('/auth/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+app.get('/auth/google/callback/', 
+  passport.authenticate('google', { failureRedirect: '/error' }),
+  function(req, res) {
+    // Successful authentication, redirect success.
+    res.redirect(`/users/googlelogin?email=${req.user.emails[0].value}` );
+  });
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);

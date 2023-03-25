@@ -9,6 +9,7 @@ const profile = require("../model/Profile");
 const getPost = async (req,res) => {
     const token = req.cookies["access-token"];
     const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
+    const loggedin = res.cookie.loggedin = true;
     let foundUser = await User.findOne({ email: decodedValues.email });
         if(foundUser.userType === "owner"){
           res.redirect("/petownerpost");

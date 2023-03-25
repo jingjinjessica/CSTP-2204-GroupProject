@@ -47,14 +47,14 @@
                                         <div class="col-md-6">
                                             <input type="text" id="rate" name="rate" placeholder="$ Per day"
                                                 onchange="setRate(event)"
-                                                class="form-control input-border rate-inputChange">
+                                                class="form-control input-border rate-inputChange value="<%= post.rate%>">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
                                         class="form-control input-border rate-inputChange" value="<%= post.rate%>">
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-lg-6">
                                 <div class="row g-3">
@@ -102,6 +102,7 @@
                                         <!-- <span class="count"></span> -->
                                     </span>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

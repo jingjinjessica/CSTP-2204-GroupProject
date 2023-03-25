@@ -42,9 +42,32 @@ const getProfileByUserEmail = async (email) => {
   return profile;
 }
 
+
+const afterLoginSuccess = async (email,res) =>{
+  const foundUser = await User.findOne({email:email});
+  const profileInform = await getProfileByUserEmail(email);
+      // has profile
+  if (profileInform){
+    if(foundUser.userType === "owner"){
+      res.redirect("/list/listsitterpost");
+    }
+    else if(foundUser.userType === "sitter"){
+      res.redirect("/list/listpetpost");
+    }
+  }
+  // has not profile by type
+  else if(foundUser.userType === "owner"){
+    res.redirect("/profile/createPetOwner");
+  }
+  else if(foundUser.userType === "sitter"){
+    res.redirect("/profile/createPetSitter");
+  }
+  return;
+    
+}
 // Login
-const loginUser = async (request, response) => {
-  const data = request.body;
+const loginUser = async (req, res) => {
+  const data = req.body;
   let foundUser = await User.findOne({ email: data.email });
   if (foundUser) {
     // Then we will check for password
@@ -57,30 +80,57 @@ const loginUser = async (request, response) => {
         },
         process.env.SECRET_KEY
       );
-      response.cookie("access-token", accessToken);
-      const profileInform = await getProfileByUserEmail(data.email);
-      // has profile
-      if (profileInform){
-        if(foundUser.userType === "owner"){
-          response.redirect("/list/listsitterpost");
-        }
-        else if(foundUser.userType === "sitter"){
-          response.redirect("/list/listpetpost");
-        }
-      }
-      // has not profile by type
-      else if(foundUser.userType === "owner"){
-        response.redirect("/profile/createPetOwner");
-      }
-      else if(foundUser.userType === "sitter"){
-        response.redirect("/profile/createPetSitter");
-      }
-      return;
+      res.cookie("access-token", accessToken);
+      const loggedin = res.cookie.loggedin = true;
+      await afterLoginSuccess(data.email,res);
+      
     }
   }
     // If user doesn't exist
-  response.render("pages/login", {title: "Login"});
-  };
+  res.render("pages/login", {title: "Login"});
+};
+
+const googleLogin = async(req, res) =>{
+  const email = req.query.email;
+  const user = await User.findOne({email: email});
+  if (user){
+    const accessToken = jwt.sign({
+      email: email
+    },
+    process.env.SECRET_KEY
+  );
+  res.cookie("access-token", accessToken);
+    await afterLoginSuccess(email,res);
+  }
+  else{
+    res.render("pages/googleUserType",{email:email});
+  }
+};
+
+
+//google usertype register
+const googleUserTypeRegister = async(req,res) => {
+  const data = req.body;
+  const newUser = new User({
+    email: data.email,
+    password: "google",
+    userType: data.userType
+  });
+  try {
+     const p1 = await newUser.save();
+     const accessToken = jwt.sign({
+      email: data.email
+    },
+    process.env.SECRET_KEY
+  );
+  res.cookie("access-token", accessToken);
+     await afterLoginSuccess(data.email, res);
+    }
+   catch (error) {
+    console.log(error);
+    res.redirect("/login");
+    };
+};
 
 const getAllUsers = async (request, response) => {
   try {
@@ -152,5 +202,7 @@ module.exports = {
   registerUser,
   loginUser,
   getHistoryPost,
-  getAllUsers
+  getAllUsers,
+  googleLogin,
+  googleUserTypeRegister
 };
