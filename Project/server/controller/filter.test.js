@@ -50,12 +50,20 @@ test("search pet post", async () =>{
         endDate: "2023/03/05",
         userID: user2._id
     });
-    // test filter function
+    // 2 data return one data, not use res and req
+    // test searchPetPost API
     const result = await searchPetPost({province: "BC-TEST"});
-    expect(result.length).toBe(2);
+    // console.info(result);
 
+    expect(result.length).toBe(2);
+    // test province
+    expect(result[0].profile.province).toBe("BC-TEST");
+    expect(result[1].profile.province).toBe("BC-TEST");
+    // test city
     const result1 = await searchPetPost({province: "BC-TEST", city: "vancouver"});
     expect(result1.length).toBe(1);
+    expect(result1[0].profile.city).toBe("vancouver");
+    
     // delete data
     await deleteEntity(post1);
     await deleteEntity(post2);
