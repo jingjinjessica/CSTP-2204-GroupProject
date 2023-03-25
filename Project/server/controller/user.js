@@ -43,7 +43,7 @@ const getProfileByUserEmail = async (email) => {
 }
 
 
-const isValidLogin = async (email, password) =>{
+const isValidLogin = async (email, password) => {
   let foundUser = await User.findOne({ email: email });
   if (foundUser){
     // Then we will check for password
