@@ -14,10 +14,10 @@ const Profile = require("../model/Profile");
 const PetPost = require("../model/PetPost");
 const bcrypt = require("bcryptjs");
 const { isValidLogin } = require('./user');
-const {searchPetPost} = require('./petPostList');
 
 // test login
-test("test user login", async () => {
+// return data, not use res and req
+test("test isValidLogin api", async () => {
     // test user account, if not exist return null
     const user = await isValidLogin("hello", "login");
     expect(user).toBeNull();
@@ -25,9 +25,16 @@ test("test user login", async () => {
     const email = "unit-test1@gmail.com";
     const password = "test-password";
     const u1 = await crearteUser(email, password );
-    // test login function
+    
+    // test isValidLogin api
     const u2 = await isValidLogin(email, password);
+    // test email and user id
     expect(u2._id.toString()).toEqual(u1._id.toString());
+    expect(u2.email).toEqual(email);
+    // test password
+    const matchPassword = await bcrypt.compare(password,u2.password);
+    expect(matchPassword).toBe(true);
+
     // delete test user
     await deleteUser(u1);
 
