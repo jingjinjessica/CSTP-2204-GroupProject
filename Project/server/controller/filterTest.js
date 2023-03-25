@@ -36,7 +36,7 @@ const getPetPost = async (req, res) => {
         query["profile.petWeight"] = queryBody.petWeight;
 
     }
-    console.log(query);
+    //console.log(query);
     
     //connect 2 tables profiles and petpost
     const result = await PetPost.aggregate([
@@ -54,7 +54,7 @@ const getPetPost = async (req, res) => {
     // console.info(result[1].profile[0]);
     res.render("pages/listPetPost", { result: result, fd: formatDate })
     // Display filtered results
-    console.log(result);
+    //console.log(result);
 }
 
 module.exports = {
