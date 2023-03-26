@@ -251,7 +251,7 @@
     }
 
     .login-hr {
-        width: 330px;
+        width: 600px;
     }
     .login-label {
         margin-left: 50px;
@@ -271,11 +271,6 @@
         margin-top: 25px;
         margin-left: 60px;
     }
-
-    .sign-in-btn {
-        margin-left: 0px;
-    }
-
     .third-party-area {
         margin-top: 30px;
         margin-left: 120px;
@@ -284,24 +279,7 @@
     .third-party-title {
         font-size: 25px;
         font-weight: 700 !important;
-        margin-top: -20px;
+        margin-top: 3px;
         margin-bottom: 10px;
-    }
-
-    .third-party {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        margin-top: -10px;
-        margin-bottom: 10px;
-    }
-
-    .login-form-control {
-        width: 360px;
-        margin-top: -5px;
-        margin-bottom: -20px;
-    }
-
-    .login-hr {
-        width: 600px;
     }
 }
