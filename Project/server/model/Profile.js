@@ -4,7 +4,7 @@ const ProfileSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: false,
+      required: true,
     },
     province: {
       type: String,
@@ -61,7 +61,7 @@ const ProfileSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   {

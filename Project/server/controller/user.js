@@ -48,6 +48,7 @@ const afterLoginSuccess = async (email,res) =>{
   const profileInform = await getProfileByUserEmail(email);
       // has profile
   if (profileInform){
+    res.cookie("user-name", profileInform.name );
     if(foundUser.userType === "owner"){
       res.redirect("/list/listsitterpost");
     }
@@ -81,9 +82,11 @@ const loginUser = async (req, res) => {
         process.env.SECRET_KEY
       );
       res.cookie("access-token", accessToken);
-      const loggedin = res.cookie.loggedin = true;
+
+      // const loggedin = res.cookie.loggedin = true;
+      res.locals.isLogin = true;
       await afterLoginSuccess(data.email,res);
-      
+      return;
     }
   }
     // If user doesn't exist
@@ -195,7 +198,14 @@ const getPostByEmail = async (email) => {
   }
 }
 
-
+// logout
+const logout = async(req,res) =>{
+    res.clearCookie('connect.sid');
+    res.clearCookie('access-token');
+    res.clearCookie('user-name');
+    req.session&&req.session.destroy();
+    res.redirect('/login');
+};
 
 
 module.exports = {
@@ -204,5 +214,6 @@ module.exports = {
   getHistoryPost,
   getAllUsers,
   googleLogin,
-  googleUserTypeRegister
+  googleUserTypeRegister,
+  logout
 };
