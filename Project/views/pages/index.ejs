@@ -16,9 +16,9 @@
                     <div class="col-md-8 col-lg-6 col-xl-4 order-md-1 div-1 home-title-content">
                         <h2 class="home-title">Find your <span class="home-title-specific">best helpmate</span></h2>
                         <h6 class="home-subtitle">Use companion finder for their pet sitting needs</h6>
-                        <p class="find-sitter-area"><a class="btn btn-primary btn-lg find-companion-btn" href="#"
+                        <p class="find-sitter-area"><a class="btn btn-primary btn-lg find-companion-btn" href="/list/listsitterpost"
                                 role="button">Find a companion</a></p>
-                        <a href="#" class="home-find-job-link">Are you a pet sitter looking for work?</a>
+                        <a href="/list/listpetpost" class="home-find-job-link">Are you a pet sitter looking for work?</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="row justify-content-md-center">
                             <div class="col-md-auto">
-                                <a class="btn btn-primary btn-lg get-start-btn" href="#" role="button">Get Started</a>
+                                <a class="btn btn-primary btn-lg get-start-btn" href="/list/listsitterpost" role="button">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -72,115 +72,35 @@
                         <div class="recommendations-card-area">
                             <div id="inam" class="carousel slide carousel-dark" data-interval="false">
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
+                                    <% var counter=0 %>
+                                  <% data.forEach(item=>{%>
+                                    <% counter++ %>
+                                    <% if (counter % 3==1) { %>
+                                    <div class="carousel-item <% if (counter == 1) { %>active<% } %>">
                                         <div class="container d-block">
                                             <div class="row card-row">
+                                            <% } %>
                                                 <div class="col-sm-4 card-col each-card-col">
                                                     <div class="card card-area">
                                                         <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
+                                                            <img src="<%= item.profile.avatar%>" alt="" class="card-img">
+                                                            <h3 class="card-title card-title-home" id=""><%= item.profile.name %></h3>
+                                                            <h5 class="card-text card-location"><%= item.profile.city %>&#44; <%= item.profile.province %></h5>
                                                             <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
+                                                            <p class="card-text card-desc"><%= item.profile.aboutMe %></p>
+                                                            <%  if (isLogin){%>
+                                                            <a href="/postinfo/sitterlist/<%= item._id%>" class="btn recommendations-card-btn">Read
                                                                 more</a>
+                                                                <% } %>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4 card-col each-card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="container d-block">
-                                            <div class="row card-row">
-                                                <div class="col-sm-4 each-card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 each-card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4 each-card-col">
-                                                    <div class="card card-area">
-                                                        <div class="card-body card-content-home">
-                                                            <h3 class="card-title card-title-home" id="">Name</h3>
-                                                            <h5 class="card-text card-location">City&#44; Province
-                                                            </h5>
-                                                            <h6 class="card-text card-desc-title">About me</h6>
-                                                            <p class="card-text card-desc">Lorem ipsum dolor sit
-                                                                amet,
-                                                                consectetur adipiscing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua.</p>
-                                                            <a href="#" class="btn recommendations-card-btn">Read
-                                                                more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <% if (counter % 3 == 0 || item == data.length - 1) { %>
                                             </div>
                                         </div>
                                     </div>
+                                    <% } %>
+                                    <%})%>
                                 </div>
                                 <!-- btn for prev and next -->
                                 <a href="#inam" class="carousel-control-prev home-prev" data-bs-slide="prev">

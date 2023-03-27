@@ -16,7 +16,7 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
-          <%if (locals.session.loggedin) { %>
+          <%if (!isLogin) { %>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
@@ -31,15 +31,17 @@
             <li class="nav-item dropdown dropdown-area">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Welcome, User name
+                Welcome, <%= userName%>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li class="dropdown-li"><a class="dropdown-item" href="/profile/getProfile">Profile</a></li>
                 <li class="dropdown-li"><a class="dropdown-item" href="/users/dashboard">Dashboard</a></li>
+                <!-- chat -->
+                <li class="dropdown-li"><a class="dropdown-item" href="#">Message</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li class="dropdown-li"><a class="dropdown-item" href="#">Logout</a></li>
+                <li class="dropdown-li"><a class="dropdown-item" href="/users/logout">Logout</a></li>
           <%}%>
             </ul>
           </li>

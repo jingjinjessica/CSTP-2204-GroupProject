@@ -3,7 +3,7 @@ const router = express.Router();
 const validateToken = require("../../middleware/validate");
 
 // Here we are using destructuring
-const { registerUser, loginUser,getHistoryPost, getAllUsers,googleLogin,googleUserTypeRegister } = require("../controller/user");
+const { registerUser, loginUser,getHistoryPost, getAllUsers,googleLogin,googleUserTypeRegister,logout } = require("../controller/user");
 
 router.get("/", validateToken, getAllUsers);
 
@@ -20,6 +20,9 @@ router.post("/login", loginUser);
 router.get("/googlelogin",googleLogin);
 router.post("/google/usertype",googleUserTypeRegister);
 
+
+//logout
+router.get("/logout",logout);
 
 // router.get("/:id", userController.getUserById)
 

@@ -111,17 +111,18 @@
                                         <%= result[i].profile.name %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
+                                        <%= result[i].profile.province %>, <%= result[i].city %>
                                     </h5>
                                     <h5 class="location">
                                         <%= result[i].rate %>
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].experience %>
-
-                                            <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
-                                                class="btn stretched-link learn-more">Read
-                                                more...</a>
+                                            <%  if (isLogin){%>
+                                                <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
+                                                    class="btn stretched-link learn-more">Read
+                                                    more...</a>
+                                            <% } %>
                                     </p>
                                     <p class="card-text card-date"><small class="text-muted list-text-muted">
                                             <%= fd(result[i].createdAt) %>

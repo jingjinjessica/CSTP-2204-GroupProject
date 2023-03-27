@@ -23,13 +23,9 @@
                                     <div class="row g-3">
                                         <div class="text-center file-input-container">
                                             <input type="file" id="avatar-file-input" name="myImg"
-                                                onchange="attachMyProfile(this)" />
+                                                onchange="attachMyProfile(this)" required />
                                             <label for="avatar-file-input">
                                                 <div class="square position-relative display-2 mb-3 frameCenter">
-                                                    <!-- <i id="avatar-icon"
-                                                        class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
-                                                        alt="Choose File">
-                                                    </i> -->
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
                                                         class="preview-img" />
                                                 </div>
@@ -45,10 +41,10 @@
                                         <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
                                         <!-- First Name -->
                                         <div class="col-lg-6">
-                                            <label class="form-label label-text">Name</label>
+                                            <label class="form-label label-text">Name(Required)</label>
                                             <input type="text" class="form-control profile-form-control" id="name"
                                                 name="name" value="<%= name%>" placeholder="Name"
-                                                aria-label="First name">
+                                                aria-label="First name" required oninvalid="ths.setCustomValidity('Enter User Name Here')" onvalid="this.setCustomValidity('Enter User Name Here')">
                                         </div>
                                         <!-- Phone number -->
                                         <div class="col-lg-6">
@@ -387,9 +383,9 @@
                         <!-- button -->
                         <div class="gap-3 d-md-flex justify-content-md-end text-center">
                             <div class="row">
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary profile-skip-btn">Skip</button>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary profile-save-btn">Save</button>
                                 </div>

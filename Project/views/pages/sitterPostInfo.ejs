@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head'); -%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <%- include('../partials/head'); -%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <body>
         <%- include('../partials/header'); -%>
             <section class="section owner-info">
@@ -24,7 +32,7 @@
                                                 <span class="location" name="province" ><%= sitter.province%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" name="city" > <%= sitter.city%></span>
+                                                <span class="location" name="city" > <%= post.city%></span>
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Rate:</span>
@@ -33,6 +41,13 @@
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Services:</span>
                                                 <p class="rate-from text-break" id="services" name="services" > <%= post.services%></p>
+                                            </div>
+                                            <div>
+                                                <span class="rate-title">
+                                                    Availability Date:
+                                                </span>
+                                                <p class="rate-from text-break" id="dates" name="dates"> <%= post.dates%></p>
+                                                <div id="datepickertest"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -259,4 +274,54 @@
         });
     });			
 });
+</script>
+
+<script>
+    //  This is to show the date availability result (reference)
+    // Get the value of the inputs
+    var stringDate = document.getElementById('dates').innerText;
+
+    // Split the data according to ','
+    var arrayDate = stringDate.split(',');
+    // Make a new array for the dates
+    // The date format has to be DD/M/YYYY, ex: 12/3/2023, 01/3/2023
+    // The values we are getting from the input is with this format: DD/MM/YYYY so 12/03/2023 will not work
+    var newArrDates = [];
+    for(var i = 0; i  < arrayDate.length; i++){
+        var newTest = arrayDate[i].slice(0, 3) + arrayDate[i].slice(4);
+        newArrDates.push(newTest);
+        //console.log(newTest);
+        
+    }
+
+    // To check the values inside the newArrDates array 
+    // for(var i = 0; i < newArrDates.length; i++){
+    //     console.log(newArrDates[i]);
+    // }
+
+    // SAMPLE TEST
+    //var active_dates = ["23/3/2023","21/3/2023"];
+
+    $('#datepickertest').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        beforeShowDay: function(date){
+            // Getting the current date
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
+
+            // Check to see specific dates that needs to be highlighted
+            if ($.inArray(formattedDate, newArrDates) != -1){
+                return {
+                    classes: 'date-edit'
+                };
+            }
+        return;
+        }
+    });
+
 </script>

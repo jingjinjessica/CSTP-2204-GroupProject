@@ -23,7 +23,7 @@ const getSitterPost = async (req, res) => {
     }
     // AND
     if (queryBody.hasOwnProperty("city") && queryBody.city !== "- Select City -"){
-        query["profile.city"] = queryBody.city;
+        query["city"] = queryBody.city;
     }
     //console.info(query);
     if (queryBody.hasOwnProperty("services") && queryBody.services !== "- Select Services -"){

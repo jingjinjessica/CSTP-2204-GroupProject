@@ -154,7 +154,7 @@ const createOwnerPost = async(req,res) => {
           // })
 
           // console.info(data);
-          return res.redirect("/users/dashboard")
+          return res.redirect("/list/listsitterpost")
           
         }).catch((error) => {
             console.log(error);
@@ -186,7 +186,7 @@ const createOwnerPost = async(req,res) => {
             //     message: "Post Succesfully Created",
             // data: output
             // });
-            return res.redirect("/users/dashboard");
+            return res.redirect("/list/listsitterpost");
         }catch (error) {
             console.info(error);
             return res.status(500).json({
@@ -273,7 +273,7 @@ const createSitterPost = async(req,res) => {
           //   data
           // })
           console.info(data);
-          return res.redirect("/users/dashboard")
+          return res.redirect("/list/listpetpost")
           
         }).catch((error) => {
             console.log(error);
@@ -305,7 +305,7 @@ const createSitterPost = async(req,res) => {
             // data: output
             // });
             //console.info(data);           
-            return res.redirect("/users/dashboard");
+            return res.redirect("/list/listpetpost");
         }catch (error) {
             console.info(error);
             return res.status(500).json({

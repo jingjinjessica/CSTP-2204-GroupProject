@@ -13,9 +13,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const petPost = require("./server/model/PetPost");
-const sitterPost = require("./server/model/PetSitterPost");
-const profile = require("./server/model/Profile");
+const SitterPost = require("./server/model/PetSitterPost");
 const session = require('express-session');
 
 
@@ -44,8 +42,45 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
   }
 });
 
-app.get("/index", (req, res) => {
-  res.render("pages/index",{locals:{session:{loggedin:true}}});
+app.use((req, res, next) => {
+  
+    if(!isEmptyObject(req.cookies) && req.cookies.hasOwnProperty("access-token")){
+      res.locals.isLogin = true;
+    }
+    else{
+      res.locals.isLogin = false;
+    }
+
+    if(!isEmptyObject(req.cookies) && req.cookies.hasOwnProperty("user-name")){
+      res.locals.userName = req.cookies["user-name"];
+    }
+    else{
+      res.locals.userName = "User Name";
+    }
+
+  next();
+});
+
+const isEmptyObject = (obj) => {
+  return obj === undefined || obj === null || JSON.stringify(obj) === JSON.stringify({});
+}
+app.get("/", async (req, res) => {
+  const data = await SitterPost.aggregate([
+    {
+        $lookup: {
+            from: "profiles",
+            localField: "userID",
+            foreignField: "userID",
+            as: "profile"
+        },   
+    },
+    {$unwind:"$profile"},
+    {$sample:{size:6}}
+    
+  ]);
+  console.info(data);
+  // const data = await Profile.aggregate([{$sample:{size:6}}]);
+  res.render("pages/index",{data});
 });
 app.get("/login", (req, res) => {
   res.render("pages/login");
@@ -105,26 +140,15 @@ app.use(session({
   saveUninitialized: true,
   secret: 'SECRET' 
 }));
-app.use((req, res, next) => {
-  res.locals.session = req.cookies;
-  next();
-});
 
-app.get('/', function(req, res) {
-  res.render('pages/auth');
-});
 
 
 /*  PASSPORT SETUP  */
 
 const passport = require('passport');
 var userProfile;
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.get('/success', (req, res) => res.send(userProfile));
-app.get('/error', (req, res) => res.send("error logging in"));
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);
