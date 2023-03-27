@@ -92,9 +92,9 @@ app.get("/petSitterPost", (req, res) => {
 // });
 
 
-// app.get("/listSitterPost", (req, res) => {
-//   res.render("pages/listSitterPost");
-// });
+app.get("/dashboard", (req, res) => {
+  res.render("pages/dashboard");
+});
 
 
 // app.get("/ownerlist/:postid", async function (req, res, next) {
