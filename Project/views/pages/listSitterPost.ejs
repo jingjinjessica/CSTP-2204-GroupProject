@@ -79,18 +79,18 @@
                         <div class="col-sm-2">
                             <div id="mingroup" class="input-group">
                                 <!-- <span class="input-group-addon">$</span> -->
-                                <input type="text" id="pricemin" name="pricemin" class="form-control price-min-control" placeholder="Min Price" value="">
+                                <input type="text" id="pricemin" name="pricemin" class="form-control price-min-control"
+                                    placeholder="Min Price" value="">
                             </div>
                         </div>
-                      <div class="col-sm-2">
-                        <p> - </p>
-                      </div>
-                      <div class="col-sm-2">
-                        <div id="maxgroup" class="input-group ">
-                            <!-- <span class="input-group-addon">$</span> -->
-                            <input type="text" id="pricemax" name="pricemax" class="form-control price-max-control" placeholder="Max Price" value="">
+                        <div class="to">to</div>
+                        <div class="col-sm-2">
+                            <div id="maxgroup" class="input-group ">
+                                <!-- <span class="input-group-addon">$</span> -->
+                                <input type="text" id="pricemax" name="pricemax" class="form-control price-max-control"
+                                    placeholder="Max Price" value="">
+                            </div>
                         </div>
-                      </div>
                         <div class="col-sm-2">
                             <button type="submit" id="searchbtn" class="search-btn">Search</button>
                         </div>
@@ -118,11 +118,11 @@
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].experience %>
-                                            <%  if (isLogin){%>
+                                            <% if (isLogin){%>
                                                 <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
                                                     class="btn stretched-link learn-more">Read
                                                     more...</a>
-                                            <% } %>
+                                                <% } %>
                                     </p>
                                     <p class="card-text card-date"><small class="text-muted list-text-muted">
                                             <%= fd(result[i].createdAt) %>
@@ -133,8 +133,8 @@
                         </div>
                     </div>
                     <% } %>
-                </div>
             </div>
+        </div>
         </div>
         <%- include('../partials/footer') %>
 </body>
