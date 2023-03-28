@@ -67,11 +67,6 @@ app.get("/petSitterPost", (req, res) => {
 //   res.render("pages/ownerPostInfo");
 // });
 
-// app.get("/test", (req, res) => {
-//   res.render("pages/test");
-// });
-
-
 // app.get("/listSitterPost", (req, res) => {
 //   res.render("pages/listSitterPost");
 // });

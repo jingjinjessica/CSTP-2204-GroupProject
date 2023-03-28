@@ -55,7 +55,7 @@
                                 <option value="Surrey">Surrey</option>
                                 <option value="Stjohns">St. John's</option>
                                 <option value="Saskatoon">Saskatoon</option>
-                                <option value="Toronto">Toronto"</option>
+                                <option value="Toronto">Toronto</option>
                                 <option value="Victoria">Victoria</option>
                                 <option value="Vancouver">Vancouver</option>
                                 <option value="Whiterock">White Rock</option>
@@ -95,7 +95,7 @@
                                 <option value="Greater than 50 lbs">Greater than 50 lbs</option>
                             </select>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 pet-search-btn">
                             <button type="submit" id="searchbtn" class="search-btn">Search</button>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     <div class="card mb-3 post-card">
                         <div class="row no-gutters">
                             <div class="col-md-4 img-area">
-                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img" alt="pet-img">
+                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img pet-list-img" alt="pet-img">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
@@ -119,12 +119,10 @@
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].desc %>
-
-                                            <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                                class="btn stretched-link learn-more">Read 
-                                                more...</a>
                                     </p>
-                                    <p class="card-text card-date"><small class="text-muted list-text-muted">
+                                    <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
+                                        class="btn stretched-link read-more">Read more</a>
+                                    <p class="card-text card-date pet-card-date"><small class="text-muted list-text-muted pet-date-list">
                                             <%= fd(result[i].createdAt) %>
                                         </small>
                                     </p>
