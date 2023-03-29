@@ -95,7 +95,7 @@
                                 <option value="Greater than 50 lbs">Greater than 50 lbs</option>
                             </select>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 pet-search-btn">
                             <button type="submit" id="searchbtn" class="search-btn">Search</button>
                         </div>
                     </div>
@@ -112,18 +112,18 @@
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile.petName %>
+                                        <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
+                                        <%= result[i].profile.city %>, <%= result[i].profile.province %>
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].desc %>
-                                                <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                                    class="btn stretched-link learn-more" onclick="return checkUserLoggedIn(event)">Read 
-                                                    more...</a>
                                     </p>
-                                    <p class="card-text card-date"><small class="text-muted list-text-muted">
+                                    <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
+                                        class="btn stretched-link read-more" onclick="return checkUserLoggedIn(event)">Read 
+                                        more...</a>
+                                    <p class="card-text card-date pet-card-date"><small class="text-muted list-text-muted pet-date-list">
                                             <%= fd(result[i].createdAt) %>
                                         </small>
                                     </p>
