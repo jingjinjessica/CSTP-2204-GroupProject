@@ -82,14 +82,12 @@ const loginUser = async (req, res) => {
         process.env.SECRET_KEY
       );
       res.cookie("access-token", accessToken);
-
-      // const loggedin = res.cookie.loggedin = true;
       res.locals.isLogin = true;
       await afterLoginSuccess(data.email,res);
       return;
     }
   }
-    // If user doesn't exist
+  // If user doesn't exist
   res.render("pages/login", {title: "Login"});
 };
 
@@ -124,15 +122,15 @@ const googleUserTypeRegister = async(req,res) => {
      const accessToken = jwt.sign({
       email: data.email
     },
-    process.env.SECRET_KEY
-  );
-  res.cookie("access-token", accessToken);
-     await afterLoginSuccess(data.email, res);
-    }
-   catch (error) {
+      process.env.SECRET_KEY
+    );
+    res.cookie("access-token", accessToken);
+    await afterLoginSuccess(data.email, res);
+  }
+  catch (error) {
     console.log(error);
     res.redirect("/login");
-    };
+  };
 };
 
 const getAllUsers = async (request, response) => {

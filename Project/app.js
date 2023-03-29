@@ -15,6 +15,8 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const SitterPost = require("./server/model/PetSitterPost");
 const session = require('express-session');
+const petPost = require('./server/model/PetPost');
+const profile = require('./server/model/Profile');
 
 
 
@@ -79,7 +81,6 @@ app.get("/", async (req, res) => {
     
   ]);
   console.info(data);
-  // const data = await Profile.aggregate([{$sample:{size:6}}]);
   res.render("pages/index",{data});
 });
 app.get("/login", (req, res) => {
@@ -97,38 +98,6 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
 });
 
-// app.get("/sitterPostInfo", (req, res) => {
-//   res.render("pages/sitterPostInfo");
-// });
-
-// app.get("/ownerPostInfo", (req, res) => {
-//   res.render("pages/ownerPostInfo");
-// });
-
-// app.get("/test", (req, res) => {
-//   res.render("pages/test");
-// });
-
-
-// app.get("/listSitterPost", (req, res) => {
-//   res.render("pages/listSitterPost");
-// });
-
-
-// app.get("/ownerlist/:postid", async function (req, res, next) {
-//   const { postid } = req.params;
-//   console.log("this is post id from server", postid);
-//   try {
-//     const post = await petPost.findById(postid);
-//     const petowner = post.userID;
-//     const owner = await profile.findOne({ userID: petowner });
-//     res.render("[postid]", { post, owner });
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
-
-
 
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
@@ -140,7 +109,6 @@ app.use(session({
   saveUninitialized: true,
   secret: 'SECRET' 
 }));
-
 
 
 /*  PASSPORT SETUP  */
