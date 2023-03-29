@@ -76,7 +76,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 price-min">
                             <div id="mingroup" class="input-group">
                                 <!-- <span class="input-group-addon">$</span> -->
                                 <input type="text" id="pricemin" name="pricemin" class="form-control price-min-control" placeholder="Min Price" value="">
@@ -85,7 +85,7 @@
                       <div class="col-sm-2">
                         <p> - </p>
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-sm-2 price-max">
                         <div id="maxgroup" class="input-group ">
                             <!-- <span class="input-group-addon">$</span> -->
                             <input type="text" id="pricemax" name="pricemax" class="form-control price-max-control" placeholder="Max Price" value="">
@@ -108,19 +108,19 @@
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile.name %>
+                                        <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].city %>
+                                         Location: <%= result[i].city %> ,<%= result[i].profile.province %>
                                     </h5>
                                     <h5 class="location">
-                                        <%= result[i].rate %>
+                                        Rate: $<%= result[i].rate %> Per Day
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].experience %>
                                             <%  if (isLogin){%>
                                                 <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
-                                                    class="btn stretched-link learn-more">Read
+                                                    class="btn stretched-link read-more">Read
                                                     more...</a>
                                             <% } %>
                                     </p>
