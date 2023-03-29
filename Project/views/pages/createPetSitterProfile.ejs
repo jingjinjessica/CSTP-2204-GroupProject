@@ -28,6 +28,7 @@
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
                                                         class="preview-img" />
                                                 </div>
+                                                <span class="img-required">(Required)</span>
                                             </label>
                                         </div>
                                         <!-- <p class="text-muted"><span class="me-1">Note:</span>Minimum size 300px x 300px</p> -->
@@ -39,7 +40,7 @@
                                     <div class="row g-3">
                                         <!-- <h4 class="mb-4 mt-0">Contact detail</h4> -->
                                         <div class="col-lg-6">
-                                            <label class="form-label profile-form-label label-text">Name(Required)</label>
+                                            <label class="form-label profile-form-label label-text">Name <span class="name-required" >(Required)</span></label>
                                             <input type="text" class="form-control profile-form-control" id="name" name="name"
                                                 value="<%= name%>" placeholder="Name" aria-label="First name" required>
                                         </div>
@@ -278,9 +279,6 @@
                         <!-- button -->
                         <div class="gap-3 d-md-flex justify-content-md-end text-center">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary skip-btn">Skip</button>
-                                </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary saveBtn">Save</button>
                                 </div>
