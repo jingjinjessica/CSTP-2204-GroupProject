@@ -112,16 +112,17 @@
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile.petName %>
+                                        <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
+                                        <%= result[i].profile.city %>, <%= result[i].profile.province %>
                                     </h5>
                                     <p class="card-text info text-break">
-                                        <%= result[i].desc %></p>
+                                        <%= result[i].desc %>
+                                    </p>
                                     <%  if (isLogin){%>
                                         <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                            class="btn stretched-link read-more">Read more...</a>
+                                            class="btn stretched-link read-more">Read more</a>
                                     <% } %>
                                     <p class="card-text card-date pet-card-date"><small class="text-muted list-text-muted pet-date-list">
                                             <%= fd(result[i].createdAt) %>

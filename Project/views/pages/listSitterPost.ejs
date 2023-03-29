@@ -91,7 +91,7 @@
                                     placeholder="Max Price" value="">
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 search-btn-col">
                             <button type="submit" id="searchbtn" class="search-btn">Search</button>
                         </div>
                     </div>
@@ -108,23 +108,22 @@
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile.name %>
+                                        <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].city %>
+                                        <%= result[i].city %>, <%= result[i].profile.province %>
                                     </h5>
                                     <h5 class="location">
-                                        <%= result[i].rate %>
+                                        Rate: $<%= result[i].rate %> Per Day
                                     </h5>
                                     <p class="card-text info text-break">
                                         <%= result[i].experience %>
-                                            <% if (isLogin){%>
-                                                <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
-                                                    class="btn stretched-link learn-more">Read
-                                                    more...</a>
-                                                <% } %>
                                     </p>
-                                    <p class="card-text card-date"><small class="text-muted list-text-muted">
+                                    <% if (isLogin){%>
+                                        <a href="/postinfo/sitterlist/<%=result[i]._id%>" id="learnmore"
+                                            class="btn stretched-link read-more">Read more</a>
+                                    <% } %>
+                                    <p class="card-text card-date sitter-date-list"><small class="text-muted list-text-muted sitter-card-date">
                                             <%= fd(result[i].createdAt) %>
                                         </small>
                                     </p>

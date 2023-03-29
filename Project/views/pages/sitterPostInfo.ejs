@@ -26,17 +26,14 @@
                                     <div class="col-md-12">
                                         <div class="info-area">
                                             <div class="media username">
-                                                <span id="username" name="name" ><%= sitter.name%></span>
+                                                <span id="username" name="name" ><%= post.title%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" name="province" ><%= sitter.province%></span>
-                                            </div>
-                                            <div class="media">
-                                                <span class="location" name="city" > <%= post.city%></span>
+                                                <span class="location" name="province" ><%= post.city%>, <%= sitter.province%></span>
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Rate:</span>
-                                                <p class="rate-from text-break" id="rate" name="rate" >From $ <%= post.rate%></p>
+                                                <p class="rate-from text-break" id="rate" name="rate" >From $ <%= post.rate%> Per Day</p>
                                             </div>
                                             <div class="media requirement-area">
                                                 <span class="rate-title">Services:</span>
@@ -65,8 +62,10 @@
                             <div class="row info-list">
                                 <div class="col-md-12">
                                     <div class="intro-area">
+                                        <div class="media username">
+                                            <span id="username" name="name" ><%= sitter.name%></span>
+                                        </div>
                                         <div class="media">
-
                                             <span class="petname" id="aboutMe"  >About me</span>
                                             <p class="aboutMe-description" name="aboutMe" >
 

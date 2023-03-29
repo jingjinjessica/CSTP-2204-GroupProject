@@ -21,7 +21,7 @@
 }
 
 .login-form {
-    font-family: "Noto Sans";
+    font-family: "Noto Sans" !important;
 }
 
 /* form label */
@@ -69,7 +69,9 @@
     font-family: "Noto Sans";
 }
 
-.facebook-btn, .google-btn, .twitter-btn {
+.facebook-btn,
+.google-btn,
+.twitter-btn {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
     background-color: #FB5607;
@@ -77,7 +79,9 @@
     align-items: center;
 }
 
-.facebook-btn:hover, .google-btn:hover, .twitter-btn:hover {
+.facebook-btn:hover,
+.google-btn:hover,
+.twitter-btn:hover {
     background-color: #FACC22;
     border-color: #FACC22;
     color: #339141;
@@ -96,6 +100,7 @@
     font-family: "Noto Sans";
     font-weight: bold;
 }
+
 /* Third party end */
 
 .login-h-custom {
@@ -107,9 +112,11 @@
     .login-img {
         margin-top: 20px;
     }
+
     .login-form-area {
         margin-top: -30px;
     }
+
     .login-title {
         margin-left: 0px;
         margin-right: 0px;
@@ -123,10 +130,11 @@
         margin-top: -10px;
         margin-right: 5px;
     }
+
     .login-form-control {
         width: 360px;
     }
-    
+
     .are-you {
         margin-top: -5px;
         margin-bottom: 10px;
@@ -138,18 +146,22 @@
     }
 
     .sign-in-btn {
-        padding-left: 2.5rem; 
+        padding-left: 2.5rem;
         padding-right: 2.5rem;
         margin-top: 0px;
     }
 
-    .google-btn, .facebook-btn, .twitter-btn {
+    .google-btn,
+    .facebook-btn,
+    .twitter-btn {
         border-radius: 40px 40px 40px 40px !important;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 
-    .bi-google, .bi-twitter, .bi-facebook {
+    .bi-google,
+    .bi-twitter,
+    .bi-facebook {
         margin-top: -3px;
     }
 }
@@ -160,30 +172,22 @@
         background-color: yellow;
     } */
 }
-  
+
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 768px) and (max-width: 1024px) {
     /* body {
         background-color: blue;
     } */
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){ 
-    .login-img {
-        margin-top: 50px;
-        border-radius: 30px; 
-    }
-
-    .login-h-custom {
-        height: 100%;
-    }
+@media (min-width: 1025px) and (max-width: 1280px) {
 
     .login-title {
-        margin-left: 40px;
+        margin-left: 0px;
         margin-right: 20px;
     }
-    
+
     .login-hr {
         width: 330px;
     }
@@ -205,15 +209,16 @@
     .sign-in-btn {
         margin-left: 0px;
     }
+
     /* .or-area {
         margin-left: 0px;
     } */
-    
+
     .third-party-title {
         margin-top: -20px;
         margin-bottom: 10px;
     }
-    
+
     .third-party {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -230,7 +235,75 @@
 
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
-    /* body {
-        background-color: white;
-    } */
+
+    .login-title {
+        font-size: 75px;
+        margin-bottom: 20px;
+        margin-left: -15px;
+        margin-right: 0px;
+    }
+
+    .login-hr {
+        width: 800px;
+    }
+
+    .login-label {
+        font-size: 30px;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+
+    .login-form-outline {
+        margin-left: 10px;
+    }
+
+    .login-form-control {
+        margin-left: 50px;
+        padding-top: 20px;
+        width: 700px !important;
+    }
+
+    .none-account {
+        font-size: 25px;
+        font-weight: 600;
+        margin-top: 25px;
+        margin-left: 60px;
+    }
+
+    .sign-in-btn {
+        font-size: 30px;
+        font-weight: 500;
+        margin-left: 0px;
+    }
+
+    .third-party-area {
+        margin-top: 30px;
+        margin-left: 120px;
+    }
+
+    .facebook-btn,
+    .google-btn,
+    .twitter-btn {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .bi-google,
+    .bi-twitter,
+    .bi-facebook {
+        width: 20px;
+        height: 20px;
+    }
+
+    .third-party-area {
+        position: relative;
+        left: 5px;
+    }
+
+    .third-party-title {
+        font-size: 25px;
+        font-weight: 700 !important;
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
 }

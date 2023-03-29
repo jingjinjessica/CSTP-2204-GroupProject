@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,5 +32,8 @@
     "nouislider": "^15.7.0",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
