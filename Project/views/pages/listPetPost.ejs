@@ -120,10 +120,9 @@
                                     <p class="card-text info text-break">
                                         <%= result[i].desc %>
                                     </p>
-                                    <%  if (isLogin){%>
-                                        <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                            class="btn stretched-link read-more">Read more</a>
-                                    <% } %>
+                                    <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
+                                        class="btn stretched-link read-more" onclick="return checkUserLoggedIn(event)">Read 
+                                        more...</a>
                                     <p class="card-text card-date pet-card-date"><small class="text-muted list-text-muted pet-date-list">
                                             <%= fd(result[i].createdAt) %>
                                         </small>
