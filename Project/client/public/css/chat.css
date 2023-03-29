@@ -279,14 +279,6 @@ form .textarea textarea:focus::placeholder{
 	color:#aab8c2;
 }
 
-	background:#26c281;
-	border-radius:50%;	
-	width:9px;
-	height:9px;
-	position:absolute;
-	top:31px;
-	right:17px;
-} */
 .friend .status.away{background:#ffce54;}
 .friend .status.inactive{background:#eaeef0;}
 
@@ -392,71 +384,6 @@ form .textarea textarea:focus::placeholder{
 	opacity:1;
 	margin-top:0;
 }
-/* #chat-content label{
-	color:#aab8c2;
-	font-weight:600;
-	font-size:12px;
-	text-align:center;
-	margin:15px 0;
-	width:290px;
-	display:block;	
-}
-#chat-content div.message{
-	padding:0 0 30px 58px;
-	clear:both;
-	margin-bottom:45px;
-}
-#chat-content div.message.right{
-	  padding: 0 58px 30px 0;
-	  margin-right: -19px;
-	  margin-left: 19px;
-}
-#chat-content .message img{
-	  float: left;
-	  margin-left: -38px;
-	  border-radius: 50%;
-	  width: 30px;
-	  margin-top: 12px;
-}
-#chat-content div.message.right img{
-	float: right;	
-    margin-left: 0;
-	margin-right: -38px;	
-}
-.message .bubble{	
-	background:#f0f4f7;
-	font-size:13px;
-	font-weight:600;
-	padding:12px 13px;
-	border-radius:5px 5px 5px 0px;
-	color:#8495a3;
-	position:relative;
-	float:left;
-}
-#chat-content div.message.right .bubble{
-	float:right;
-	border-radius:5px 5px 0px 5px ;
-}
-.bubble .corner{
-	background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-corner.png") 0 0 no-repeat;
-	position:absolute;
-	width:7px;
-	height:7px;
-	left:-5px;
-	bottom:0;
-}
-div.message .right .corner{
-	background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-cornerR.png") 0 0 no-repeat;
-	left:auto;
-	right:-5px;
-}
-.bubble span{
-	  color: #aab8c2;
-	  font-size: 11px;
-	  position: absolute;
-	  right: 0;
-	  bottom: -22px;
-}  */
 
 .photoSizeEdit {
 	width: 50px;
@@ -625,4 +552,12 @@ div.message .right .corner{
 }
 #chatview, #sendmessage { 
 overflow:hidden; 
+}
+
+
+/* / Media Query for Large screens / */
+@media (min-width: 1281px) {
+    #chatBox {
+		width: 400px;
+	}
 }

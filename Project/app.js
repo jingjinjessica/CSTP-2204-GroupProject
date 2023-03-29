@@ -97,6 +97,30 @@ app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",experience:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
 });
 
+// FAKE DATA FOR CHAT TESTING
+const peopleList = [{
+  "id": 1,
+  "avatar_img": "/image/cat-dog-cuddle.jpg",
+  "full_name": "Torey Groven",
+  "chat_msg": ["Hello..my name is Torey. Nice to meet you", "test"],
+}, {
+  "id": 2,
+  "avatar_img": "/image/black-cat.jpg",
+  "full_name": "Sheridan Freebury",
+  "chat_msg": ["I love youuuu and I also hate you"]
+}, {
+  "id": 3,
+  "avatar_img": "/image/three-pets-laying.jpg",
+  "full_name": "Ann Noweak",
+  "chat_msg": ["I wanna eat ramen for some reason"]
+}]
+
+const renderedData = encodeURIComponent(JSON.stringify(peopleList));
+app.get("/chat", (req, res) => {
+  res.render("pages/chat", {peopleList: peopleList, renderedData})
+  
+});
+
 // app.get("/sitterPostInfo", (req, res) => {
 //   res.render("pages/sitterPostInfo");
 // });
