@@ -2,10 +2,10 @@ function renderCardCarousel(cardData) {
     const cardCarouselContainer = document.getElementById("card-carousel-container");
 
     // Loop through the card data and render each card using the EJS template
-    cardData.forEach(data => {
-        const cardHtml = ejs.render(data);
-        cardCarouselContainer.insertAdjacentHTML("beforeend", cardHtml);
-    });
+    // cardData.forEach(data => {
+    //     const cardHtml = ejs.render(data);
+    //     cardCarouselContainer.insertAdjacentHTML("beforeend", cardHtml);
+    // });
 }
 
 const cardData = [

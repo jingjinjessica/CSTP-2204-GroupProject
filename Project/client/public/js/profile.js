@@ -64,7 +64,22 @@ function attachPhoto3(photoInput3) {
 
 
 
-function validateForm() {
+async function validateForm(form) {
 
-    return true;
+    const userName = document.getElementById("name").value;
+    const res = await fetch(`/api/v1/users/checkusername?name=${userName}`,{
+        method: "get",
+        headers: {
+            "Content-type": "application/json",
+      },
+    });
+
+    const message = await res.json();
+    if (message.userExist){
+        alert("The username is existed, please use another one.");
+    }
+    else{
+        form.submit();
+    }
+
 }
