@@ -17,20 +17,11 @@ const petPost = require("./server/model/PetPost");
 const sitterPost = require("./server/model/PetSitterPost");
 const profile = require("./server/model/Profile");
 const http = require("http");
-const socketio = require("socket.io");
-const middleware = require("./middleware/middleware");
+// const middleware = require("./middleware/middleware");
+const chatroomRoutes = require("./server/routes/message");
 
 require("dotenv").config();
 
-const server = http.createServer(app);
-const io = socketio(server);
-
-//connect socket io
-io.on("connection", (socket) => {
-  console.log("It's connected");
-
-  socket.emit("message", "Hello");
-});
 //cookie
 app.use(cookieParser());
 app.use(express.json());
@@ -63,8 +54,48 @@ app.get("/register", (req, res) => {
   res.render("pages/register");
 });
 
-app.get("/chat", (req, res) => {
-  res.render("pages/chat");
+// FAKE DATA FOR CHAT TESTING
+const peopleList = [
+  {
+    id: 1,
+    avatar_img: "/image/cat-dog-cuddle.jpg",
+    full_name: "Torey Groven",
+    chat_msg: ["Hello..my name is Torey. Nice to meet you", "test"],
+  },
+  {
+    id: 2,
+    avatar_img: "/image/black-cat.jpg",
+    full_name: "Sheridan Freebury",
+    chat_msg: ["I love youuuu and I also hate you"],
+  },
+  {
+    id: 3,
+    avatar_img: "/image/three-pets-laying.jpg",
+    full_name: "Ann Noweak",
+    chat_msg: ["I wanna eat ramen for some reason"],
+  },
+];
+
+// async function getCurrProfile() {
+//   const response = await fetch("/profile/getCurrUserProfile", {
+//     method: "get",
+//     headers: {
+//       "Content-type": "application/json",
+//       Authorization: `Bearer ${JSON.parse(
+//         localStorage.getItem("access-token")
+//       )}`,
+//     },
+//   });
+//   return await response.json();
+// }
+
+// console.log( getCurrProfile());
+//const currUserProfile = await response.json();
+
+const renderedData = encodeURIComponent(JSON.stringify(peopleList));
+
+app.get("/message", (req, res) => {
+  res.render("pages/message", { peopleList: peopleList, renderedData });
 });
 
 app.get("/petOwnerPost", (req, res) => {
@@ -132,7 +163,7 @@ function userLogger(req, res, next) {
   next(); // Pass the control to the next middleware
 }
 
-app.use(middleware.authMiddleware);
+// app.use(middleware.authMiddleware);
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);
@@ -144,6 +175,7 @@ app.use("/postinfo", postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/list", listRoutes);
 app.use("/api/v1/profile/getprofile", profileRoutes);
+app.use("/message", chatroomRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

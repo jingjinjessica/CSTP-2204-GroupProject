@@ -30,7 +30,11 @@ const getCurrUser = async (req, res) => {
     return;
   }
   const profile = await getProfileByUserEmail(decodedValues.email);
-  res.json(profile);
+
+  return res.status(200).json({
+    message: "User profile found",
+    profile: profile,
+  });
 };
 
 //GET to satrt create Pet Owner Profile
@@ -358,4 +362,5 @@ module.exports = {
   createOwnerPost,
   createSitterPost,
   getCurrUser,
+  getProfileByUserEmail,
 };

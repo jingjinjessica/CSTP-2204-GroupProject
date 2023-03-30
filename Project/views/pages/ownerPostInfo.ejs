@@ -213,39 +213,41 @@
 
 </html>
 <script>
-    // const currUser = await response.json();
-    // const currUserName = currUser.name;
-    // const currUserId = currUser.userID;
-    // const roomId = ownerId + "_" + currUserId;
+   
+    // const currUserId = `<%- user.sub %>`;
+    // const ownerId = `<%- owner.userID %>`
+    // console.log(roomId);
 
-    console.log(`<%- user %>`);
 
-async function fetchChat(){
-        const messagesRef = db.ref(`chats/${id}/messages`);
-        console.log(messagesRef);
 
-        messagesRef.onSnapshot((querySnapshot) => {
-        const messages = [];
-        querySnapshot.forEach((doc) => {
-            messages.push({
-            id: doc.id,
-            ...doc.data()
-            });
-        });
-        console.log("Current messages: ", messages);
-        }, (error) => {
-        console.error("Error getting messages:", error);
-        });
-}
+// async function fetchChat(){
+//         const messagesRef = db.ref(`chats/${id}/messages`);
+//         console.log(messagesRef);
+
+//         messagesRef.onSnapshot((querySnapshot) => {
+//         const messages = [];
+//         querySnapshot.forEach((doc) => {
+//             messages.push({
+//             id: doc.id,
+//             ...doc.data()
+//             });
+//         });
+//         console.log("Current messages: ", messages);
+//         }, (error) => {
+//         console.error("Error getting messages:", error);
+//         });
+// }
 
 
 document.getElementById("search").addEventListener("submit", postChat);
 async function postChat(e) {
   e.preventDefault();
 
-  const ownerName = `<%- owner.name %>`;
-  const ownerId = `<%- owner.userID %>`
-//   console.log(ownerName,ownerId);
+    const ownerId = `<%- owner.userID %>`;
+    const ownerName = `<%- owner.name %>`;
+    const ownerAvatar = `<%- owner.avatar %>`;
+
+    console.log(ownerId, ownerName, ownerAvatar);
 
   try {
     const response = await fetch("/profile/getCurrUserProfile", {
@@ -256,12 +258,28 @@ async function postChat(e) {
           localStorage.getItem("access-token")
         )}`,
       },
-    });
+      
+    })
+
+    const currUserProfile = await response.json();
+    // console.log("from api",currUserProfile);
     
+    const currUserId = currUserProfile.profile.userID;
+    const currUserName = currUserProfile.profile.name;
+    const currUserAvatar = currUserProfile.profile.avatar;
+    
+    // const roomId = [ownerId,currUserId];
+    const roomId = ownerId + "_" + currUserId;
+
+
+    if(currUserProfile){
+        localStorage.setItem("profile",JSON.stringify(currUserProfile.profile));
+    }
+
     const msg = document.getElementById("searchfield").value;
 
     
-    await sendMsg(roomId, currUserName, ownerName, msg);
+    await sendMsg(roomId, currUserName, ownerName,currUserAvatar,ownerAvatar, msg);
 
 
     const msgDisplay = document.createElement("div");
@@ -269,11 +287,7 @@ async function postChat(e) {
     const msgList = document.getElementById("chatContainer");
     msgList.appendChild(msgDisplay);
 
-    msg = ""
-
   } 
-  
-  
   catch (error) {
     console.log(error);
   }
@@ -297,7 +311,6 @@ async function postChat(e) {
 
  
     });
- 
     }) ();
  
     $(document).ready(function(){

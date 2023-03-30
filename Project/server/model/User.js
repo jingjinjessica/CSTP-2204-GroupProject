@@ -15,11 +15,6 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    chats: {
-      roomId: [String],
-      default: [],
-      required: false,
-    },
     // profile: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: "Profile",
