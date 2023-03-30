@@ -68,49 +68,48 @@
                     </div>
                 </div>
             </div>
-            <section>
-                <div class="container">
-                    <div class="row ">
-                        <div class="recommendations-area">
-                            <div class="row ">
-                                <h2 class="recommendations-title">Pet Sitter Recommendations</h2>
-                                <div class="row justify-content-md-center recommendations-card-area">
-                                    <div id="inam" class="carousel slide carousel-dark" data-interval="false">
-                                        <div class="carousel-inner">
-                                            <% var counter=0 %>
-                                            <% data.forEach(item=> {%>
-                                            <% counter++ %>
-                                            <% if (counter % 3==1) { %>
-                                            <div class="carousel-item <% if (counter == 1) { %>active<% } %>">
-                                                <div class="container d-block">
-                                                    <div class="row card-row">
-                                                        <% } %>
-                                                            <div class="col-sm-4 card-col each-card-col">
-                                                                <div class="card recommendations-content-area">
-                                                                    <div class="card-body card-content-home">
-                                                                        <img src="<%= item.profile.avatar%>" alt="" class="card-img recommendations-img">
-                                                                        <h3 class="card-title card-title-home"
-                                                                            id="">
-                                                                            <%= item.profile.name %>
-                                                                        </h3>
-                                                                        <h5 class="card-text recommendations-card-location">
-                                                                            <%= item.profile.city %>&#44; <%=
-                                                                                    item.profile.province %>
-                                                                        </h5>
-                                                                        <h6 class="card-text card-desc-title">About
-                                                                            me</h6>
-                                                                        <p class="card-text recommendations-card-desc">Lorem ipsum
-                                                                            dolor sit
-                                                                            amet, consectetur adipiscing elit, sed
-                                                                            do eiusmod
-                                                                            tempor incididunt ut labore et dolore
-                                                                            magna aliqua.</p>
-                                                                        <% if (isLogin){%>
-                                                                            <a href="/postinfo/sitterlist/<%= item._id%>"
-                                                                                class="btn recommendations-card-btn">Read
-                                                                                more</a>
-                                                                            <% } %>
-                                                                    </div>
+        <section>
+            <div class="container">
+                <div class="row ">
+                    <div class="recommendations-area">
+                        <div class="row ">
+                            <h2 class="recommendations-title">Pet Sitter Recommendations</h2>
+                            <div class="row justify-content-md-center recommendations-card-area">
+                                <div id="inam" class="carousel slide carousel-dark" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <% var counter=0 %>
+                                        <% data.forEach(item=> {%>
+                                        <% counter++ %>
+                                        <% if (counter % 3==1) { %>
+                                        <div class="carousel-item <% if (counter == 1) { %>active<% } %>">
+                                            <div class="container d-block">
+                                                <div class="row card-row">
+                                                    <% } %>
+                                                        <div class="col-sm-4 card-col each-card-col">
+                                                            <div class="card recommendations-content-area">
+                                                                <div class="card-body card-content-home">
+                                                                    <img src="<%= item.profile.avatar%>" alt="" class="card-img recommendations-img">
+                                                                    <h3 class="card-title card-title-home"
+                                                                        id="">
+                                                                        <%= item.profile.name %>
+                                                                    </h3>
+                                                                    <h5 class="card-text recommendations-card-location">
+                                                                        <%= item.profile.city %>&#44; <%=
+                                                                                item.profile.province %>
+                                                                    </h5>
+                                                                    <h6 class="card-text card-desc-title">About
+                                                                        me</h6>
+                                                                    <p class="card-text recommendations-card-desc">Lorem ipsum
+                                                                        dolor sit
+                                                                        amet, consectetur adipiscing elit, sed
+                                                                        do eiusmod
+                                                                        tempor incididunt ut labore et dolore
+                                                                        magna aliqua.</p>
+                                                                    <% if (isLogin){%>
+                                                                        <a href="/postinfo/sitterlist/<%= item._id%>"
+                                                                            class="btn recommendations-card-btn">Read
+                                                                            more</a>
+                                                                        <% } %>
                                                                 </div>
                                                             </div>
                                                             <% if (counter % 3==0 || item==data.length - 1) { %>

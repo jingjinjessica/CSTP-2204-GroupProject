@@ -33,7 +33,7 @@
 													<%= posts[i].title %>
 												</h4>
 												<p class="card-text dashboard-card-desc" id="description">
-													<%= posts[i].postDesc %>
+													<%= userType === "owner"?posts[i].desc:posts[i].experience %>
 												</p>
 												<p class="card-text dashboard-card-date" id="date">
 													<%= fd(posts[i].createdAt) %>
