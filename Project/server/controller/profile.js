@@ -37,7 +37,8 @@ const createPetOwner = async (req,res) => {
             petWeight:"Choose",
             petType:"Choose",
             avatarImage: "/image/add-img.png",
-            petImage: "/image/add-img.png"
+            petImage: "/image/add-img.png",
+            isCreate: true
         });
     }
     else {
@@ -52,7 +53,8 @@ const createPetOwner = async (req,res) => {
             petWeight:profileInform.petWeight,
             petType:profileInform.petType,
             avatarImage: profileInform.avatar??"/image/add-img.png",
-            petImage: profileInform.petImage??"/image/add-img.png"
+            petImage: profileInform.petImage??"/image/add-img.png",
+            isCreate: false
         } );
     }
 };
@@ -148,12 +150,7 @@ const createOwnerPost = async(req,res) => {
             updateClause["$set"]["petImage"] = petImageResult.url;
           }
           Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
-          // return res.status(200).json({
-          //   message: "updated Succesfully",
-          //   data
-          // })
-
-          // console.info(data);
+    
           return res.redirect("/list/listsitterpost")
           
         }).catch((error) => {
