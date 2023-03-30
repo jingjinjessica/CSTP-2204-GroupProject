@@ -169,10 +169,10 @@ const getHistoryPost = async (req,res) => {
   const profile = await getProfileByUserEmail(decodedValues.email);
   const user = await getUser(decodedValues.email);
   if (user.userType === "owner"){
-    res.render("pages/dashboard", {posts: post, postImage:profile.petImage, fd:formatDate, userType:"owner"})
+    res.render("pages/dashboard", {posts: post, postImage:profile.petImage, postDesc: post.desc, fd:formatDate, userType:"owner"})
   }
   else if (user.userType === "sitter"){
-    res.render("pages/dashboard", {posts: post, postImage:profile.avatar, fd:formatDate, userType:"sitter"})
+    res.render("pages/dashboard", {posts: post, postImage:profile.avatar, postDesc: post.experience,fd:formatDate, userType:"sitter"})
   }
 };
 

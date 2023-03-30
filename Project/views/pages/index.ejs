@@ -68,7 +68,6 @@
                     </div>
                 </div>
             </div>
-
         <section>
             <div class="container">
                 <div class="row ">
@@ -87,20 +86,20 @@
                                                 <div class="row card-row">
                                                     <% } %>
                                                         <div class="col-sm-4 card-col each-card-col">
-                                                            <div class="card card-area">
+                                                            <div class="card recommendations-content-area">
                                                                 <div class="card-body card-content-home">
-                                                                    <img src="<%= item.profile.avatar%>" alt="" class="card-img">
+                                                                    <img src="<%= item.profile.avatar%>" alt="" class="card-img recommendations-img">
                                                                     <h3 class="card-title card-title-home"
                                                                         id="">
                                                                         <%= item.profile.name %>
                                                                     </h3>
-                                                                    <h5 class="card-text card-location">
+                                                                    <h5 class="card-text recommendations-card-location">
                                                                         <%= item.profile.city %>&#44; <%=
                                                                                 item.profile.province %>
                                                                     </h5>
                                                                     <h6 class="card-text card-desc-title">About
                                                                         me</h6>
-                                                                    <p class="card-text card-desc">Lorem ipsum
+                                                                    <p class="card-text recommendations-card-desc">Lorem ipsum
                                                                         dolor sit
                                                                         amet, consectetur adipiscing elit, sed
                                                                         do eiusmod
@@ -113,76 +112,75 @@
                                                                         <% } %>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <% if (counter % 3==0 || item==data.length - 1) { %>
+                                                            <% if (counter % 3==0 || item==data.length - 1) { %>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <% } %>
+                                            <%})%>
                                         </div>
-                                        <% } %>
-                                        <%})%>
+                                        <!-- btn for prev and next -->
+                                        <a href="#inam" class="carousel-control-prev home-prev" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </a>
+                                        <a href="#inam" class="carousel-control-next home-next" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </a>
                                     </div>
-                                    <!-- btn for prev and next -->
-                                    <a href="#inam" class="carousel-control-prev home-prev" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon"></span>
-                                    </a>
-                                    <a href="#inam" class="carousel-control-next home-next" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon"></span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <div class="container">
-            <div class="row">
-                <div class="row g-4">
-                    <h2 class="about-us-title" id="about">ABOUT US</h2>
-                    <div class="row g-2">
-                        <div class="col h-100 about-content-area">
-                            <p class="about-us-content">
-                                Welcome to our pet-sitting website! We are a team of four web development students
-                                from
-                                VCC who are passionate about creating websites that make a difference in
-                                people's lives. Our team consists of Gina and Nicole, who are experienced in HTML,
-                                CSS
-                                and user experience design and Jessica and Melody, who specialize in JavaScript and
-                                database management.<br>
-                                <br>
-                                Our motivation for creating this website came from our shared love of pets and our
-                                desire to make pet-sitting services more accessible and convenient for pet owners.
-                                We
-                                understand that finding a reliable and trustworthy pet sitter can be difficult, so
-                                we
-                                wanted to create a website that simplifies the process and makes it easier for pet
-                                owners to connect with pet sitters in their area.<br>
-                                <br>
-                                Through our collaboration, we've created a user-friendly website that allows pet
-                                owners
-                                to search for local pet sitters based on their location, availability, and specific
-                                pet
-                                care needs. Our HTML, CSS and user experience design expertise ensures that the
-                                website
-                                is visually appealing and easy to navigate, also the website is easy to use and
-                                provides
-                                a positive user experience for both pet owners and pet sitters. Our JavaScript and
-                                database management expertise ensures that the website is responsive and interactive
-                                and
-                                all data is secure and organized.<br>
-                                <br>
-                                We are dedicated to providing the best possible service for both pet owners and pet
-                                sitters, and we believe that our website can make a real difference in the lives of
-                                pets
-                                and their owners. For any inquiries or to learn more about our website, please click
-                                "contact us" that send your message to us. Thank you for browsing our pet-sitting
-                                website!
-                            </p>
+            </section>
+            <div class="container">
+                <div class="row">
+                    <div class="row g-4">
+                        <h2 class="about-us-title" id="about">ABOUT US</h2>
+                        <div class="row g-2">
+                            <div class="col h-100 about-content-area">
+                                <p class="about-us-content">
+                                    Welcome to our pet-sitting website! We are a team of four web development students
+                                    from
+                                    VCC who are passionate about creating websites that make a difference in
+                                    people's lives. Our team consists of Gina and Nicole, who are experienced in HTML,
+                                    CSS
+                                    and user experience design and Jessica and Melody, who specialize in JavaScript and
+                                    database management.<br>
+                                    <br>
+                                    Our motivation for creating this website came from our shared love of pets and our
+                                    desire to make pet-sitting services more accessible and convenient for pet owners.
+                                    We
+                                    understand that finding a reliable and trustworthy pet sitter can be difficult, so
+                                    we
+                                    wanted to create a website that simplifies the process and makes it easier for pet
+                                    owners to connect with pet sitters in their area.<br>
+                                    <br>
+                                    Through our collaboration, we've created a user-friendly website that allows pet
+                                    owners
+                                    to search for local pet sitters based on their location, availability, and specific
+                                    pet
+                                    care needs. Our HTML, CSS and user experience design expertise ensures that the
+                                    website
+                                    is visually appealing and easy to navigate, also the website is easy to use and
+                                    provides
+                                    a positive user experience for both pet owners and pet sitters. Our JavaScript and
+                                    database management expertise ensures that the website is responsive and interactive
+                                    and
+                                    all data is secure and organized.<br>
+                                    <br>
+                                    We are dedicated to providing the best possible service for both pet owners and pet
+                                    sitters, and we believe that our website can make a real difference in the lives of
+                                    pets
+                                    and their owners. For any inquiries or to learn more about our website, please click
+                                    "contact us" that send your message to us. Thank you for browsing our pet-sitting
+                                    website!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     <%- include('../partials/footer') %>
 </body>
 
