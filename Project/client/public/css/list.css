@@ -60,7 +60,7 @@
 }
 
 .city {
-    margin-left: 28px;
+    margin-left: 32px;
 }
 
 .type {
@@ -79,8 +79,9 @@
 .weight-selectpicker,
 .province-selectpicker,
 .city-selectpicker,
-.age-selectpicker {
-    font-size: 15px;
+.age-selectpicker,
+.services-selectpicker {
+    /* font-size: 15px; */
     padding: 2px 3px;
     border-radius: 10px;
     border: 2px #A4C3B2 solid;
@@ -98,11 +99,52 @@
     width: 135px;
 }
 
+.services-selectpicker {
+    margin-left: -15px;
+}
+
+.price-min-control,
+.price-max-control {
+    font-size: 15px;
+    padding: 2px 3px;
+    border-radius: 10px;
+    border: 2px #A4C3B2 solid;
+
+    font-size: 13px !important;
+    text-align: center;
+    width: 100px;
+}
+
+.price-min-control::placeholder, .price-max-control::placeholder {
+    color: #6B9080 !important;
+}
+
+.price-min {
+    position: relative;
+    left: -30px;
+    width: 100px;
+}
+
+.price-max {
+    width: 100px;
+    position: relative;
+    right: 20px;
+}
+
+.to {
+    width: 10px;
+    position: relative;
+    right: 22px;
+    font-family: 'Noto Sans';
+    color: #6B9080;
+    font-weight: 700;
+}
+
 .search-btn {
     width: 85px;
     height: 25px;
     margin-left: 10px;
-    margin-top: -8px;
+    margin-top: 1px;
     background: #FB5607;
     border-radius: 10px;
     border: none;
@@ -111,6 +153,8 @@
     font-size: 15px;
     color: #F6FFF8;
     text-align: center;
+    position: relative;
+    right: 20px;
 }
 
 .search-btn:hover {
@@ -140,6 +184,11 @@
     font-weight: 600;
 }
 
+.pet-list-img {
+    object-fit: cover;
+    height: 194.53px;
+}
+
 .card-content-list {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -158,43 +207,59 @@
     font-family: 'Noto Sans';
     color: #6B9080;
     text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
 }
 
-.learn-more {
-    font-size: 14px;
-    font-weight: 600;
+.read-more {
+    font-size: 15px;
+    font-weight: 700;
     /* width: 150px; */
     border: none;
-    color: #6B9080;
+    color: #339141;
+    position: relative;
+    left: 350px;
 }
 
-.learn-more:hover {
+.read-more:hover {
     color: #FB5607;
     /* transform: scale(1.1); */
-
 }
 
 .list-text-muted {
-    margin-left: 450px;
     /* margin-right: 20px; */
-    font-size: 12px;
-    font-weight: 500;
     font-family: 'Noto Sans';
+}
+
+.pet-card-date,
+.sitter-card-date {
+    margin-top: 15px;
+}
+
+.pet-date-list,
+.sitter-date-list {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    position: relative;
+    left: 400px;
 }
 
 @media (max-width: 480px) {
     .job-title {
         padding-top: 20px;
         padding-bottom: 40px;
-        font-size: 25px;
-        /* width: 210px; */
+        margin-top: 15px;
+        font-size: 22px;
+        width: 190px;
     }
 
     .sitter-title {
         padding-top: 20px;
         padding-bottom: 40px;
         font-size: 25px;
-        /* width:210px; */
     }
 
     .list-area {
@@ -205,7 +270,7 @@
     .filter-area {
         margin-top: 20px;
         margin-bottom: 30px;
-        margin-left: 60px;
+        margin-left: 30px;
     }
 
     .type-selectpicker,
@@ -240,17 +305,32 @@
 
     .search-btn {
         margin-top: 5px;
-        margin-left: 20px;
+        position: relative;
+        left: 12px;
         width: 200px;
     }
+
     .card-img {
         margin: 20px 0px;
         border-radius: 15px 50px;
     }
 
-    .text-muted {
-        margin-left: 200px;
+    .read-more {
+        position: relative;
+        left: 180px;
     }
+
+    .pet-card-date,
+    .sitter-card-date {
+        margin-top: 15px;
+    }
+
+    .pet-date-list,
+    .sitter-date-list {
+        position: relative;
+        left: 0px;
+    }
+
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
@@ -259,19 +339,168 @@
         background-color: yellow;
     } */
 }
-  
+
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
-    /* body {
-        background-color: blue;
-    } */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .job-title {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        font-size: 25px;
+        /* width: 210px; */
+    }
+
+    .sitter-title {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        font-size: 25px;
+        /* width:210px; */
+    }
+
+    .list-area {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .filter-area {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+    }
+
+    .province-selectpicker {
+        width: 135px;
+        text-align: center;
+        margin-bottom: 3px;
+    }
+
+    .province {
+        width: 100px;
+    }
+
+    .city {
+        width: 50px;
+        position: relative;
+        left: 5px;
+    }
+
+    .type {
+        width: 100px;
+        position: relative;
+        left: 85px;
+    }
+
+    .age {
+        width: 80px;
+        position: relative;
+        left: 129px;
+    }
+
+    .weight {
+        width: 100px;
+        position: relative;
+        left: 200px;
+    }
+
+    .services {
+        width: 70px;
+        position: relative;
+        left: 82px;
+    }
+
+    .services-selectpicker {
+        width: 125px;
+    }
+
+    .price-min-control,
+    .price-max-control {
+        width: 80px;
+    }
+
+    .price-min {
+        position: relative;
+        left: 124px;
+        width: 80px;
+    }
+
+    .price-max {
+        width: 80px;
+        position: relative;
+        left: 124px;
+    }
+
+    .to {
+        width: 10px;
+        position: relative;
+        left: 128px;
+    }
+
+    .city-selectpicker,
+    .type-selectpicker {
+        width: 110px;
+    }
+
+    .age-selectpicker {
+        width: 110px;
+    }
+
+    .weight-selectpicker {
+        width: 125px;
+    }
+
+    .search-btn {
+        margin-top: 0px;
+        width: 60px;
+        font-size: 12px;
+        position: relative;
+        left: 120px;
+    }
+
+    .pet-search-btn {
+        width: 95px;
+        margin-top: -1px;
+        position: relative;
+        left: 100px;
+    }
+
+    .card-img {
+        margin: 20px 0px;
+        border-radius: 15px 50px;
+    }
+
+    .read-more {
+        font-size: 15px;
+        font-weight: 700;
+        /* width: 150px; */
+        border: none;
+        position: relative;
+        left: 250px;
+    }
+
+    .list-text-muted {
+        /* margin-right: 20px; */
+        font-family: 'Noto Sans';
+    }
+
+    .pet-card-date,
+    .sitter-card-date {
+        margin-top: 0px;
+    }
+
+    .pet-date-list,
+    .sitter-date-list {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        position: relative;
+        margin-top: 5px;
+        left: 300px;
+    }
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){ 
+@media (min-width: 1025px) and (max-width: 1280px) {
     .login-img {
         margin-top: 50px;
-        border-radius: 30px; 
+        border-radius: 30px;
     }
 
     .login-h-custom {
@@ -282,7 +511,7 @@
         margin-left: 40px;
         margin-right: 20px;
     }
-    
+
     .login-hr {
         width: 330px;
     }
@@ -304,15 +533,12 @@
     .sign-in-btn {
         margin-left: 0px;
     }
-    /* .or-area {
-        margin-left: 0px;
-    } */
-    
+
     .third-party-title {
         margin-top: -20px;
         margin-bottom: 10px;
     }
-    
+
     .third-party {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -329,7 +555,174 @@
 
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
-    /* body {
-        background-color: white;
-    } */
+    .job-title {
+
+    }
+
+    .sitter-title {
+        padding-top: 50px;
+        padding-bottom: 70px;
+        font-size: 40px;
+    }
+
+    .list-area {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .filter-area {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+    }
+
+    .province-selectpicker {
+        width: 230px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        text-align: center;
+        padding: 5px 5px; 
+        margin-bottom: 3px;
+    }
+
+    .services-selectpicker {
+        width: 230px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        text-align: center;
+        padding: 5px 5px;
+    }
+
+    .city-selectpicker,
+    .type-selectpicker {
+        width: 200px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        text-align: center;
+        padding: 5px 5px;
+    }
+
+    .age-selectpicker {
+        width: 110px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        padding: 5px 5px;
+    }
+
+    .weight-selectpicker {
+        width: 125px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        padding: 5px 5px;
+    }
+
+    .price-min-control,
+    .price-max-control {
+        width: 80px;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        padding: 5px 5px;
+    }
+    
+    .province {
+        width: 100px;
+    }
+
+    .city {
+        width: 50px;
+        position: relative;
+        left: 100px;
+    }
+
+    .type {
+        width: 100px;
+        position: relative;
+        left: 85px;
+    }
+
+    .age {
+        width: 120px;
+        position: relative;
+        left: 129px;
+    }
+
+    .weight {
+        width: 100px;
+        position: relative;
+        left: 200px;
+    }
+
+    .services {
+        width: 70px;
+        position: relative;
+        left: 82px;
+    }
+
+    .price-min {
+        position: relative;
+        left: 200px;
+        width: 150px;
+    }
+
+    .price-max {
+        width: 150px;
+        position: relative;
+        left: 124px;
+    }
+
+    .to {
+        width: 10px;
+        position: relative;
+        left: 128px;
+    }
+
+    
+
+    .search-btn {
+        margin-top: 0px;
+        width: 60px;
+        font-size: 12px;
+        position: relative;
+        left: 120px;
+    }
+
+    .pet-search-btn {
+        width: 95px;
+        margin-top: -1px;
+        position: relative;
+        left: 100px;
+    }
+
+    .card-img {
+        margin: 20px 0px;
+        border-radius: 15px 50px;
+    }
+
+    .read-more {
+        font-size: 15px;
+        font-weight: 700;
+        /* width: 150px; */
+        border: none;
+        position: relative;
+        left: 250px;
+    }
+
+    .list-text-muted {
+        /* margin-right: 20px; */
+        font-family: 'Noto Sans';
+    }
+
+    .pet-card-date,
+    .sitter-card-date {
+        margin-top: 0px;
+    }
+
+    .pet-date-list,
+    .sitter-date-list {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        position: relative;
+        margin-top: 5px;
+        left: 300px;
+    }
 }
