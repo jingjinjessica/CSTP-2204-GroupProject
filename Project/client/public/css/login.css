@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 .login-title {
     text-align: center;
@@ -241,8 +241,188 @@
     }
 }
 
+@media (min-width: 1281px) and (max-width: 1399px) {
+    .login-img {
+        margin-top: 20px;
+    }
+
+    .login-form-area {
+        margin-top: -30px;
+    }
+
+    .login-title {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .login-hr {
+        width: 370px;
+    }
+
+    .login-form-outline {
+        margin-top: -10px;
+        margin-right: 5px;
+    }
+
+    .login-form-control {
+        width: 360px;
+    }
+
+    .are-you {
+        margin-top: -5px;
+        margin-bottom: 10px;
+    }
+
+    .user-type {
+        margin-left: 65px;
+        margin-right: 10px;
+    }
+
+    .sign-in-btn {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        margin-top: 0px;
+    }
+
+    .google-btn,
+    .facebook-btn,
+    .twitter-btn {
+        border-radius: 40px 40px 40px 40px !important;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .bi-google,
+    .bi-twitter,
+    .bi-facebook {
+        margin-top: -3px;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1500px) {
+
+    .login-title {
+        text-align: center;
+        color: #6B9080;
+        margin-left: -20px;
+        margin-right: 40px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        font-family: "Noto Sans";
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    .login-hr {
+        border-color: #B4B1B1;
+        border: 1px solid;
+        width: 410px;
+        margin-top: -10px;
+        margin-bottom: 30px;
+    }
+
+    .login-label {
+        position: relative;
+        left: 10px;
+    }
+    
+    .login-form {
+        font-family: "Noto Sans" !important;
+    }
+    
+    /* form label */
+    .login-form-outline {
+        font-weight: 600;
+        font-size: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: #6B9080;
+    
+    }
+    
+    /* form input */
+    .login-form-control {
+        border-radius: 50px !important;
+        width: 380px;
+        position: relative;
+        left: 20px;
+    }
+    
+    .none-account {
+        font-size: 20px;
+        margin-top: -10px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    /* submit btn */
+    .sign-in-btn {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        background-color: #FB5607;
+        border-color: #FB5607;
+        align-items: center;
+    }
+    
+    .sign-in-btn:hover {
+        background-color: #FACC22;
+        border-color: #FACC22;
+        color: #339141;
+    }
+
+    .third-party-area {
+        position: relative;
+        left: 8px;
+    }
+    
+    /* Third party */
+    .third-party-title {
+        color: #6B9080;
+        font-family: "Noto Sans";
+    }
+    
+    .facebook-btn,
+    .google-btn,
+    .twitter-btn {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        background-color: #FB5607;
+        border-color: #FB5607;
+        align-items: center;
+    }
+    
+    .facebook-btn:hover,
+    .google-btn:hover,
+    .twitter-btn:hover {
+        background-color: #FACC22;
+        border-color: #FACC22;
+        color: #339141;
+    }
+    
+    .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    }
+    
+    .divider-or {
+        color: #6B9080;
+        font-family: "Noto Sans";
+        font-weight: bold;
+    }
+    
+    /* Third party end */
+    
+    .login-h-custom {
+        height: calc(100% - 73px);
+    }
+}
+
 /* Media Query for Large screens */
-@media (min-width: 1281px) {
+@media (min-width: 1880px) and (max-width: 1920px) {
 
     .login-title {
         font-size: 55px;
@@ -275,7 +455,7 @@
 
     .third-party-area {
         margin-top: 30px;
-        margin-left: 120px;
+        margin-left: 65px;
     }
 
     .third-party-title {

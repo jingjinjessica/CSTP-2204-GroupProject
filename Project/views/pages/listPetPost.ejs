@@ -7,16 +7,12 @@
 
 <body>
     <%- include('../partials/header') %>
-
         <div class="container justify-content-center list-area">
             <h3 class="job-title">Looking for a job?</h3>
             <!-- filter -->
             <div class="filter-area">
                 <form action="/list/listpetpost" method="post">
                     <div class="row filter">
-                        <!-- <div class="col-sm-2 filter-title-area">
-                            <h5 class="filter-title">Filter : </h5>
-                        </div> -->
                         <div class="col-sm-2 province">
                             <select id="province" name="province" onchange="filterCities()" class="selectpicker multiple province-selectpicker" value="">
                                 <option value="- Select Province -">- Select Province -</option>
@@ -107,7 +103,7 @@
                     <div class="card mb-3 post-card">
                         <div class="row no-gutters">
                             <div class="col-md-4 img-area">
-                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img" alt="pet-img">
+                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img list-img" alt="pet-img">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">

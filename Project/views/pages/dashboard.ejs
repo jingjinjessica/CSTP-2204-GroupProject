@@ -33,20 +33,14 @@
 													<%= posts[i].title %>
 												</h4>
 												<p class="card-text dashboard-card-desc" id="description">
-													<%= posts[i].desc %>
+													<%= posts[i].postDesc %>
 												</p>
 												<p class="card-text dashboard-card-date" id="date">
 													<%= fd(posts[i].createdAt) %>
 												</p>
 												<div class="btn-area">
-													<!-- <a href="" class="btn btn-primary edit-btn" role="button" onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">Edit</a> -->
-												<a href="" class="btn btn-primary delete-btn" role="button" onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">Delete</a>
-												<button onclick="editPost('<%= posts[i]._id %>','<%= userType%>')">
-													edit
-												</button>
-												<!-- <button onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">
-													delete
-												</button> -->
+													<button onclick="editPost('<%= posts[i]._id %>','<%= userType%>')" class="btn btn-primary edit-btn">Edit</button>
+													<a href="" class="btn btn-primary delete-btn" role="button" onclick="deletePost('<%= posts[i]._id %>','<%= userType%>')">Delete</a>
 												</div>
 											</div>
 										</div>
