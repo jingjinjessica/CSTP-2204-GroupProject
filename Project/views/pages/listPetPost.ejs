@@ -7,16 +7,12 @@
 
 <body>
     <%- include('../partials/header') %>
-
         <div class="container justify-content-center list-area">
             <h3 class="job-title">Looking for a job?</h3>
             <!-- filter -->
             <div class="filter-area">
                 <form action="/list/listpetpost" method="post">
                     <div class="row filter">
-                        <!-- <div class="col-sm-2 filter-title-area">
-                            <h5 class="filter-title">Filter : </h5>
-                        </div> -->
                         <div class="col-sm-2 province">
                             <select id="province" name="province" onchange="filterCities()" class="selectpicker multiple province-selectpicker" value="">
                                 <option value="- Select Province -">- Select Province -</option>
@@ -103,26 +99,26 @@
             </div>
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
-                <% for(var i=0; i < result.length; i++) {%>
+                <% for(var i=result.length - 1; i >= 0 ; i--) {%>
                     <div class="card mb-3 post-card">
                         <div class="row no-gutters">
                             <div class="col-md-4 img-area">
-                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img" alt="pet-img">
+                                <img id="petimg" src="<%= result[i].profile.petImage%>" class="card-img list-img" alt="pet-img">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
                                     <h4 class="card-title">
-                                        <%= result[i].profile.petName %>
+                                        <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        <%= result[i].profile.province %>, <%= result[i].profile.city %>
+                                        <%= result[i].profile.city %>, <%= result[i].profile.province %>
                                     </h5>
                                     <p class="card-text info text-break">
-                                        <%= result[i].desc %></p>
-                                    <%  if (isLogin){%>
-                                        <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
-                                            class="btn stretched-link read-more">Read more...</a>
-                                    <% } %>
+
+                                        <%= result[i].desc %>
+                                    </p>
+                                    <a href="/postinfo/ownerlist/<%=result[i]._id%>" id="learnmore"
+                                        class="btn stretched-link read-more" onclick="return checkUserLoggedIn(event)">Read more</a>
                                     <p class="card-text card-date pet-card-date"><small class="text-muted list-text-muted pet-date-list">
                                             <%= fd(result[i].createdAt) %>
                                         </small>

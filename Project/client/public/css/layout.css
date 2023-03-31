@@ -1,6 +1,6 @@
 /* font-family */
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 body {
     background-color: #F6FFF8;
@@ -119,4 +119,19 @@ footer {
     .me-auto {
         padding-left: 0px;
     }
+}
+
+/* / Media Query for Tablets Ipads portrait mode / */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+/* / Media Query for Laptops and Desktops / */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+
 }

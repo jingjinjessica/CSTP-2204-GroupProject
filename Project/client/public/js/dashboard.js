@@ -29,7 +29,6 @@ const editPost = async (id,userType ) =>{
   else if(userType === "sitter"){
     window.location.href = `/post/editsitterpost/${id}`;
   }
-  
-  // window.location.href = `/post/getpost/${id}`;
+
 }
 

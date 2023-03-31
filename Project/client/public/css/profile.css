@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 /* .profile-title {
     color: #6B9080;
@@ -93,6 +93,23 @@ label span input {
 }
 
 /* image upload */
+
+.img-required {
+    color:red;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    top: -10px;
+    right: 38px;
+
+}
+
+.name-required {
+    color:red;
+    font-size: 15px;
+    font-weight: 600;
+}
+
 .square {
     /* margin: auto;
     vertical-align: middle; */

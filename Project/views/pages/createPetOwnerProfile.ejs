@@ -15,7 +15,7 @@
                         <hr>
                     </div>
                     <form class="file-upload " id="ownerprofile" action="/profile/create" method="post"
-                        onsubmit="return validateForm()" enctype="multipart/form-data">
+                        onsubmit="validateForm(this); return false;" enctype="multipart/form-data">
                         <div class="row mb-5 gx-3 screen-change">
                             <div class="col">
                                 <!-- User detail -->
@@ -23,7 +23,7 @@
                                     <div class="row g-3">
                                         <div class="text-center file-input-container">
                                             <input type="file" id="avatar-file-input" name="myImg"
-                                                onchange="attachMyProfile(this)" required />
+                                                onchange="attachMyProfile(this)" <%= isCreate?"required":""%> />
                                             <label for="avatar-file-input">
                                                 <div class="square position-relative display-2 mb-3 frameCenter">
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
@@ -44,7 +44,7 @@
                                             <label class="form-label label-text">Name(Required)</label>
                                             <input type="text" class="form-control profile-form-control" id="name"
                                                 name="name" value="<%= name%>" placeholder="Name"
-                                                aria-label="First name" required oninvalid="ths.setCustomValidity('Enter User Name Here')" onvalid="this.setCustomValidity('Enter User Name Here')">
+                                                aria-label="First name"  <%= isCreate?"":"required disabled readonly"%> >
                                         </div>
                                         <!-- Phone number -->
                                         <div class="col-lg-6">
@@ -233,10 +233,6 @@
                                                     onchange="attachMyPetPic(this)">
                                                 <label for="pet-img">
                                                     <div class="square position-relative display-2 mb-3 frameCenter">
-                                                        <!-- <i id="pet-icon"
-                                                                class="fas fa-image position-absolute top-50 start-50 translate-middle text-secondary"
-                                                                alt="Choose File">
-                                                            </i> -->
                                                         <img id="petProfile" src="<%= petImage%>" alt="Pet Preview"
                                                             class="pet-preview-img" />
                                                     </div>
@@ -258,16 +254,6 @@
 
                                             <!-- TYPE AND AGE -->
                                             <div class="row g-3">
-
-                                                <!-- <div class="row g-3">
-                                                        <div class="col-md-6">
-                                                            <label for="">Type</label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="">Age</label>
-                                                        </div>
-                                                    </div> -->
-
                                                 <div class="col-lg-6">
                                                     <div class="col-md-6">
                                                         <label for="" class="label-text">Type</label>
@@ -383,9 +369,6 @@
                         <!-- button -->
                         <div class="gap-3 d-md-flex justify-content-md-end text-center">
                             <div class="row">
-                                <!-- <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary profile-skip-btn">Skip</button>
-                                </div> -->
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary profile-save-btn">Save</button>
                                 </div>

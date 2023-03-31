@@ -17,6 +17,9 @@
           <hr class="hr hr-blurry register-hr"> 
           <form class="register-form" onsubmit="submitRegisterForm(event)">
             <!-- Email input -->
+            <div>
+              <span id="message"></span>
+            </div>
             <div class="form-outline mb-4 register-form-outline">
               <label class="form-label" for="reg-email">Email address</label>
               <input type="email" id="regEmail" class="form-control form-control-lg register-form-control" onkeyup="setEmail(event)" />
