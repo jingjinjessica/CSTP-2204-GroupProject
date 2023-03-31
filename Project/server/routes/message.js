@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { getCurrUserChatRoom } = require("../controller/message");
 
-router.get("/getChatroom", getCurrUserChatRoom);
+router.get("/", getCurrUserChatRoom);
 
 module.exports = router;

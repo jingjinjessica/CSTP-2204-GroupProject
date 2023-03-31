@@ -4,6 +4,7 @@ const profile = require("../model/Profile");
 const firebaseConfig = require("../library/firebase");
 const db = require("../library/firebase").db;
 const { getProfileByUserEmail } = require("./profile");
+const { collection, query, where, getDocs } = require("firebase/firestore");
 
 // GET CURRECT USER PROFILE
 const getCurrUser = async (req, res) => {
@@ -22,20 +23,20 @@ const getCurrUserChatRoom = async (req, res) => {
   const { name } = profile;
 
   // Query to get all chatrooms containing both user1 and user2
-  const chatroomRef = db.collection("chats");
-  const query = chatroomRef.where("users", "array-contains", name);
+  const chatroomRef = collection(db, "chats");
+  const q = query(chatroomRef, where("users", "array-contains", name));
 
   // Execute query and process results
-  query
-    .get()
+  getDocs(q)
     .then((snapshot) => {
       const chatrooms = [];
       snapshot.forEach((doc) => {
         const chatroom = doc.data();
+        chatroom.id = doc.id;
         chatrooms.push(chatroom);
       });
-      console.log(chatrooms);
-      res.render("/pages/message", { chatroom });
+      console.log("chatroom", chatrooms);
+      res.render("pages/message", { chatrooms, currUser: name });
     })
     .catch((error) => {
       console.error(error);

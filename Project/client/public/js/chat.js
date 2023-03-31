@@ -90,6 +90,8 @@ async function sendMsg(roomId, sender, receiver, currAvatar, user2Avatar, msg) {
   await msgRef.add(newMsg);
 }
 
+
+
 // Get a reference to the chat document that contains the messages subcollection
 // const chatRef = firebase.firestore().collection("chats").doc("chat");
 

@@ -23,194 +23,116 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %> 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <%- include('../partials/header') %> 
-
-
-    <div class="container-separator">
-        <div class="sidebar-container">
-            <ul class="people">
-                <% for(var i = 0; i < peopleList.length; i++) {%>
-                    <li class="select-person-chat" id="select-chat">
-                        <div class="avatar-chat-img">
-                            <span class="people-img-sidebar" id="people-img-sidebar">
-                                <img src= <%= peopleList[i].avatar_img %> 
-                                alt="avatar image">
-                            </span>  
-                        </div>
-                        <div class="person-chat-info">
-                            <div class="person-fullname" id="person-fullname">
+    <main class="container-separator">
+        <aside class="sidebar-container">
+            <ul class="people" id="people-list">
+                <% for(var i = 0; i < chatrooms.length; i++) {%>
+                    <li class="select-person-chat"
+                    onclick="handleFetchMsg('<%= chatrooms[i].id %>')"   >
+                        <% if(chatrooms[i].users[0] == currUser){%>
+                            <div class="avatar-chat-img">
+                                <span class="people-img-sidebar" id="people-img-sidebar">
+                                    <img src= <%= chatrooms[i].user2Avatar %> 
+                                    alt="avatar image">
+                                </span>  
+                            </div>
+                            <div class="person-chat-info">
+                                <div class="person-fullname" id="person-fullname">
                                 <span class="person-name">
-                                    <%= peopleList[i].full_name %>
+                                    <%= chatrooms[i].users[1] %>
                                 </span>
                             </div>
                             <div class="person-lastmsg">
-                                <%= //peopleList[i].chat_msg %>
-                                <%= peopleList[i].chat_msg[peopleList[i].chat_msg.length -1] %>
+                                <%= chatrooms[i].lastMsg.msg %>
                             </div>
+
+                        </div>
+                            <%}else{%>
+                                <div class="avatar-chat-img">
+                                    <span class="people-img-sidebar" id="people-img-sidebar">
+                                        <img src= <%= chatrooms[i].user1Avatar %> 
+                                        alt="avatar image">
+                                    </span>  
+                                </div>
+                                <div class="person-chat-info">
+                                    <div class="person-fullname" id="person-fullname">
+                                    <span class="person-name">
+                                        <%= chatrooms[i].users[0] %>
+                                    </span>
+                                </div>
+                                <div class="person-lastmsg">
+                                    <%= chatrooms[i].lastMsg.msg %>
+                                </div>
+                            <%}%>   
                         </div>
                     </li>
                 <% } %>
             </ul>
-        </div>
-    
-        <div class="chat-viewer">
-            <div class="colorEdit">
-                <div class="container">
-                
-                    <div class="row d-flex justify-content-center get-username">
-                        <div class="col-md-10 get-username2">
-                            <!-- BACK BTN -->
-                            <!-- <a href="/petSitterPost"><img src="/image/backIcon.png" alt="" class="icon-size"></a> -->
-                            <div class="d-flex flex-column justify-content-center align-items-center mt-3 get-username3">
-                                <div class="profilePic">
-                                    <span class="avatar-img-query">
-                                        <img src="/image/cat-dog-cuddle.jpg" alt="" id="">
-                                    </span>
-                                </div>
-        
-                                <!-- USERNAME -->
-                                <span class="name">Torey Groven</span>
-                                <!-- <h5 class="mt-2" id="username-chat"> Username </h5> -->
-                            </div>
+        </aside>
+
+        <section>
+            <ul id="messages">
+               <h1 class="text-center">
+                    choose a chat to start conversation
+               </h1>
+            </ul>
+            <section>
+                <div class="sendMsgBox d-flex align-items-center">
+                    <div class="container">
+                        <div class="d-flex justify-content-center">
+                            <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
+                            <button class="sendBtn">Send</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        
-            <!-- CHAT BODY -->
-            <div class="messageBox">
-                <div class="container">
-        
-                    <div class="d-flex flex-column messageBox-container">
-                        <div id="messages" class="msg-container">
-                            
-                            <div class="client-side-msg">
-                                <div id="their-msg" class="their-msg">
-                                    <span class="their-img">
-                                        <img src= <%= peopleList[0].avatar_img %> alt="">
-                                    </span>
-                                </div>
-                                <span class="sitter-side-msg" id="sitter-side-msg">
-                                    <% for(var i = 0; i < peopleList.length; i++) {%>
-                                        <%= peopleList[0].chat_msg[i] %>
-                                    <% } %>
-                                </span>
-                            </div>
-                           
-                           <div class="accountOwner">
-                                <div class="owner-msg-container">
-                                    <span class="owner-right-msg">
-                                        <p>NANIII</p>
-                                    </span>
-                                </div>  
-                                <div class="owner-img-container">
-                                    <span class="owner-avatar-img">
-                                        <img src="/image/dog-cat-under-sheet.jpg" alt="">
-                                    </span>
-                                </div>
-                                
-                           </div>
-                            <!-- <div id="clientAccount"></div> -->
-                        </div>
-                    </div>
-            
-                </div>
-            </div>
-        
-            <!-- MESSAGE INPUT -->
-            <div class="sendMsgBox d-flex align-items-center">
-                <div class="container">
-                    <div class="d-flex justify-content-center">
-                        <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
-                        <button class="sendBtn">Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            </section>
+        </section>
+
+
+    </main>
 
     <script>
-        // THE FIRST USER CHAT DEFAULT
-        const defaultSelect = document.querySelector('ul.people');
-        const defaultIndex = 0;
-        defaultSelect.querySelectorAll('li')[defaultIndex].classList.add("active");
-        // THIS IS TO INSERT THE JSON OBJECT VALUES BY QUERYING THE DESTINATION PATH
-        let people = {
-            list: document.querySelector("ul.people"),
-            all: document.querySelectorAll(".sidebar-container .select-person-chat"),
-            avatarImg: document.querySelector(".sidebar-container .select-person-chat .avatar-chat-img .people-img-sidebar"),
-            name: ""
-        };
-        let chat = {
-            avatarImg: document.querySelector(".container-separator .chat-viewer .colorEdit .container .get-username .get-username2 .get-username3 .profilePic .avatar-img-query"),
-            name: document.querySelector(".container-separator .chat-viewer .colorEdit .container .get-username .get-username2 .get-username3 .name"),
-            msgAvatar: document.querySelector(".container-separator .chat-viewer .messageBox .container .messageBox-container .client-side-msg .their-msg .their-img"),
-            msgcontent: document.querySelector(".container-separator .chat-viewer .messageBox .container .messageBox-container .client-side-msg .sitter-side-msg")
-        }
-        // GETTING THE RENDERED FAKE DATA FROM APP.JS USING THE DECODEURICOMPONENT METHOD
-        const data = JSON.parse(decodeURIComponent('<%= renderedData %>'));
-        people.all.forEach((p) => {
-            p.addEventListener("click", () => {
-                p.classList.contains("active") || displayChat(p)
-            });
-        });
-        function displayChat(p){
-            people.list.querySelector(".active").classList.remove("active");
-            p.classList.add("active");
-            // people.avatarImg = p.querySelector(".people-img.sidebar").innerHTML;
-            
-            people.avatarImg = p.querySelector(".people-img-sidebar").innerHTML;
-            chat.msgAvatar.innerHTML = people.avatarImg;
-            chat.avatarImg.innerHTML = people.avatarImg;
-            people.name = p.querySelector(".person-name").innerText;
-            chat.name.innerHTML = people.name;
-            // This part would need a check statement to see IF
-            // the other person chat HAS a message or not
-            // IF there's no message for them in the database
-            // NO display of their msgAvatar BUT IF there's one..then
-            // Display the msgAvatar along with the msg
-            var msgNum = 0;
-            let tempMsg = '';
-            for(var i = 0; i < data.length; i++){
-                // console.log(data[i].chat_msg[data[i].chat_msg.length -1])
-                
-                if(data[i].full_name == people.name){
-                    // console.log(data[i].full_name)
-                    
-                    // TEMPORARY SOLUTION WHICH IS CONVERTING THE MESSAGE ARRAY
-                    // TO A STRING AND REPLACE ALL ',' INTO <br> TO MAKE IT LOOK
-                    // LIKE A NEW MESSAGE BUBBLE
-                    var test = (data[i].chat_msg).toString()
-                    var newtest = test.replace(',', '<br>')
-                    console.log(newtest)
-                    chat.msgcontent.innerHTML = "<p>" + newtest + "</p>";
-                    
-                    // msgNum = data[i].chat_msg.length;    
-                    
-                    // NOT WORKING AS INTENDED, I MIGHT HAVE CREATED THE JSON OBJECT WRONG
-                    // for(var k = 0; k < data[i].chat_msg.length; k++){
-                    //     console.log(data[i].chat_msg[k]);
-                    //     var tempMsgtest =  data[i].chat_msg[k]
-                    //     chat.msgcontent.innerHTML = tempMsgtest;
-                       
-                    //     // people.avatarImg = p.querySelector(".people-img-sidebar").innerHTML;
-                    //     // // console.log("hello: " + people.avatarImg);
-                    //     // chat.avatarImg.innerHTML = people.avatarImg;
-                    // }
-                    
-                } 
-            }
-            // console.log("Num of msg arr: " + msgNum)
-            
-            // console.log("Torey Groven: " + data.full_name[0].chat_msg[0])
-            // chat.msgAvatar.innerHTML = people.avatarImg;
-            // console.log(data[0].chat_msg[data[0].chat_msg.length -1])
-        }
+        // const peopleList = document.getElementById("people-list");
+        // peopleList.addEventListener("click", (event) => {
+        //     const peopleSelect = event.target.dataset.name;
+        //      console.log(peopleSelect);
+        // })
+
+          async function handleFetchMsg(id) {
+            const msgs = document.getElementById("messages");
+            const chatRoomRef = await db.collection("chats").doc(id);
+
+            const messagesRef = chatRoomRef.collection("messages");
+
+            // const messagesRef = db.collection('messages');
+            msgs.innerHTML = '';
+
+            messagesRef.orderBy('timestamp').onSnapshot((querySnapshot) => {
+  // Clear the message list
+                // Loop over each document change in the query snapshot
+                querySnapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+                    // If a document was added, render a new message element and add it to the message list
+                    const messageData = change.doc.data();
+                    const messageElement = document.createElement('li');
+                    messageElement.innerText = messageData.msg;
+                    msgs.appendChild(messageElement);
+                    }
+                });
+                });
+                // Do something with the messages
+}
+
     </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="/js/chat.js"></script> 
+
 </body>
 </html>

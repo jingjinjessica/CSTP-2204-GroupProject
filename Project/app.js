@@ -94,9 +94,9 @@ const peopleList = [
 
 const renderedData = encodeURIComponent(JSON.stringify(peopleList));
 
-app.get("/message", (req, res) => {
-  res.render("pages/message", { peopleList: peopleList, renderedData });
-});
+// app.get("/message", (req, res) => {
+//   res.render("pages/message", { peopleList: peopleList, renderedData });
+// });
 
 app.get("/petOwnerPost", (req, res) => {
   res.render("pages/petOwnerPost", {
