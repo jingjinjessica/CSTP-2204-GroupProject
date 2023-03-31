@@ -76,23 +76,19 @@
 
         <section>
             <ul id="messages">
-               <h1 class="text-center">
-                    choose a chat to start conversation
-               </h1>
+               
             </ul>
-            <section>
                 <div class="sendMsgBox d-flex align-items-center">
                     <div class="container">
                         <div class="d-flex justify-content-center">
-                            <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
-                            <button class="sendBtn">Send</button>
+                            <form id="inputMsg">
+                                <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
+                                <button class="sendBtn" type="submit" >Send</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
         </section>
-
-
     </main>
 
     <script>
@@ -101,6 +97,41 @@
         //     const peopleSelect = event.target.dataset.name;
         //      console.log(peopleSelect);
         // })
+
+        document.getElementById("inputMsg").addEventListener("submit",submitMsg);
+        async function submitMsg(e) {
+            e.preventDefault();
+
+                
+
+            try {
+                const response = await fetch("/profile/getCurrUserProfile", {
+                method: "get",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${JSON.parse(
+                    localStorage.getItem("access-token")
+                    )}`,
+                },
+                })
+
+                const currUserProfile = await response.json();
+                // console.log("from api",currUserProfile);
+                
+                const currUserName =  `<%- currUser %>`;
+                // const currUserAvatar = currUserProfile.profile.avatar;
+                console.log(currUserName);
+  
+
+                const msg = document.getElementById("textMsg").value;
+                console.log("message",msg);
+
+                // await sendMsg(roomId, currUserName, ownerName,currUserAvatar,ownerAvatar, msg);
+            } 
+            catch (error) {
+                console.log(error);
+            }
+            };
 
           async function handleFetchMsg(id) {
             const msgs = document.getElementById("messages");
@@ -118,8 +149,11 @@
                     if (change.type === 'added') {
                     // If a document was added, render a new message element and add it to the message list
                     const messageData = change.doc.data();
+                    // console.log("messageData",messageData);
                     const messageElement = document.createElement('li');
-                    messageElement.innerText = messageData.msg;
+                    messageElement.innerHTML = "<p><strong>"+messageData.sender + ":</strong>" + messageData.msg + "</p>";
+                    // messageElement.innerHTML = messageData.msg + messageData.receiver;
+                    // messageElement.innerHTML = messageData.msg;
                     msgs.appendChild(messageElement);
                     }
                 });

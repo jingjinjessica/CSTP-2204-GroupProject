@@ -61,15 +61,6 @@
                                                     <%= post.desc %>
                                                 </p>
                                             </div>
-                                            <!-- <div class="d-flex flex-column startDate">
-                                                <label for="" class="text_edit">Start Date:</label>
-                                                <input type="date" name="" id="startdate" onchange="setStart(event)" class="dateInput" value="<%= post.startDate %>">
-                                            </div>
-                                            <div class="d-flex flex-column endDate">
-                                                <label for="" class="text_edit">End Date:</label>
-                                                <input type="date" name="" id="enddate" onchange="setEnd(event)" class="dateInput" value="<%= post.endDate %>">
-                                            </div> -->
-
 
                                             <div class="media">
                                                 <label>Start Date:</label>
@@ -91,11 +82,7 @@
                     </div>
                 </div>
             </section>
-            <!-- <div>
-                <a href="/chat">
-                <button >Message</button>
-            </a>
-            </div> -->
+
              <section class="section pet-info">
                 <div class="container">
                     <div class="row align-items-center">
@@ -133,7 +120,7 @@
              <div id="chatBox">
                 <header class="clearfix">
                    
-                   <h4><span aria-hidden="true" class="icon-bubble"></span> Chat with <%=owner.name%></h4>
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Message to <%=owner.name%></h4>
                    
                 </header>
 
@@ -142,7 +129,7 @@
                         <div id="friendslist">
                             <form id="search">
                                 <input type="text" id="searchfield" placeholder="Enter your message..." />
-                                <button type="submit">Submit</button>
+                                <button type="submit">Send</button>
                             </form> 
                             <!-- <div id="friends">
                                 <div class="friend">
@@ -213,27 +200,6 @@
 
 </html>
 <script>
-   
-
-
-// async function fetchChat(){
-//         const messagesRef = db.ref(`chats/${id}/messages`);
-//         console.log(messagesRef);
-
-//         messagesRef.onSnapshot((querySnapshot) => {
-//         const messages = [];
-//         querySnapshot.forEach((doc) => {
-//             messages.push({
-//             id: doc.id,
-//             ...doc.data()
-//             });
-//         });
-//         console.log("Current messages: ", messages);
-//         }, (error) => {
-//         console.error("Error getting messages:", error);
-//         });
-// }
-
 
 document.getElementById("search").addEventListener("submit", postChat);
 async function postChat(e) {
@@ -243,7 +209,7 @@ async function postChat(e) {
     const ownerName = `<%- owner.name %>`;
     const ownerAvatar = `<%- owner.avatar %>`;
 
-    console.log(ownerId, ownerName, ownerAvatar);
+    // console.log(ownerId, ownerName, ownerAvatar);
 
   try {
     const response = await fetch("/profile/getCurrUserProfile", {
@@ -254,7 +220,6 @@ async function postChat(e) {
           localStorage.getItem("access-token")
         )}`,
       },
-      
     })
 
     const currUserProfile = await response.json();
@@ -264,7 +229,6 @@ async function postChat(e) {
     const currUserName = currUserProfile.profile.name;
     const currUserAvatar = currUserProfile.profile.avatar;
     
-    // const roomId = [ownerId,currUserId];
     const roomId = ownerId + "_" + currUserId;
 
 
@@ -277,7 +241,6 @@ async function postChat(e) {
     
     await sendMsg(roomId, currUserName, ownerName,currUserAvatar,ownerAvatar, msg);
 
-
     const msgDisplay = document.createElement("div");
     msgDisplay.innerHTML = "<p><strong>"+currUserName+":</strong> " + msg + "</p>";
     const msgList = document.getElementById("chatContainer");
@@ -288,16 +251,6 @@ async function postChat(e) {
     console.log(error);
   }
 };
-
-  // const timestamp = Date.now();
-  // const chatTxt = document.getElementById("chat-txt");
-  // const message = chatTxt.value;
-  // chatTxt.value = "";
-  // db.ref("messages/" + timestamp).set({
-  //   // user: username,
-  //   msg: message,
-  // });
-
 
     (function() {
  

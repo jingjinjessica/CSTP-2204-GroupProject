@@ -12,19 +12,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// document.getElementById("search").addEventListener("submit", postChat);
-// async function postChat(e) {
-//   e.preventDefault();
-//   // const timestamp = Date.now();
-//   // const chatTxt = document.getElementById("chat-txt");
-//   // const message = chatTxt.value;
-//   // chatTxt.value = "";
-//   // db.ref("messages/" + timestamp).set({
-//   //   // user: username,
-//   //   msg: message,
-//   // });
-// }
-
 async function isExistChatRoom(roomId) {
   const chatRoomRef = db.collection("chats").doc(roomId);
   const doc = await chatRoomRef.get();
@@ -75,8 +62,6 @@ async function sendMsg(roomId, sender, receiver, currAvatar, user2Avatar, msg) {
     roomId: id,
     sender: sender,
     receiver: receiver,
-    // currAvatar: currAvatar,
-    // user2Avatar: user2Avatar,
     msg: msg,
     timestamp: Date.now(),
   };
@@ -89,22 +74,3 @@ async function sendMsg(roomId, sender, receiver, currAvatar, user2Avatar, msg) {
   });
   await msgRef.add(newMsg);
 }
-
-
-
-// Get a reference to the chat document that contains the messages subcollection
-// const chatRef = firebase.firestore().collection("chats").doc("chat");
-
-// Get a reference to the messages subcollection
-// const messagesRef = chatRef.collection("messages");
-
-// Listen for changes to the messages subcollection
-
-// fetchChat.on("child_added", function(snapshot){
-
-// const fetchChat = db.ref("messages/");
-// fetchChat.on("child_added", function (snapshot) {
-//   const messages = snapshot.val();
-//   const msg = "<li>" + messages.user + " : " + messages.msg + "</li>";
-//   document.getElementById("messages").innerHTML += msg;
-// });

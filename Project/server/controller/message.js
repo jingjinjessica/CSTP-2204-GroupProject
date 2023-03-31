@@ -35,7 +35,7 @@ const getCurrUserChatRoom = async (req, res) => {
         chatroom.id = doc.id;
         chatrooms.push(chatroom);
       });
-      console.log("chatroom", chatrooms);
+      // console.log("chatroom", chatrooms);
       res.render("pages/message", { chatrooms, currUser: name });
     })
     .catch((error) => {
