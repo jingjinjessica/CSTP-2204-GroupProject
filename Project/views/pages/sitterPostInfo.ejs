@@ -23,37 +23,64 @@
                         <div class="col-lg-6">
                             <div class="about-text go-to">
                                 <div class="row info-list">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="info-area">
                                             <div class="media username">
                                                 <span id="username" name="name" ><%= sitter.name%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" name="province" ><%= sitter.province%></span>
+                                                <span class="location" name="province" ><%= post.city%>, <%= sitter.province%></span>
                                             </div>
-                                            <div class="media">
-                                                <span class="location" name="city" > <%= post.city%></span>
+                                            <!-- <div class="media">
+                                                <span class="location" name="city" > </span>
+                                            </div> -->
+                                            <div class="media requirement-area">
+                                                <span class="rate-title">Rate</span>
+                                                <p class="rate-from text-break" id="rate" name="rate">From $<%=post.rate%> Per day</p>
                                             </div>
                                             <div class="media requirement-area">
-                                                <span class="rate-title">Rate:</span>
-                                                <p class="rate-from text-break" id="rate" name="rate" >From $ <%= post.rate%></p>
-                                            </div>
-                                            <div class="media requirement-area">
-                                                <span class="rate-title">Services:</span>
+                                                <span class="rate-title">Services</span>
                                                 <p class="rate-from text-break" id="services" name="services" > <%= post.services%></p>
                                             </div>
-                                            <div>
-                                                <span class="rate-title">
-                                                    Availability Date:
-                                                </span>
-                                                <p class="rate-from text-break" id="dates" name="dates"> <%= post.dates%></p>
-                                                <div id="datepickertest"></div>
+                                            
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="datepickertest-edit">
+                                            <span class="rate-title media">
+                                                Availability Date
+                                            </span>
+                                            <!-- The post.dates value is inside the script tag to be used to output AND hide the value -->
+                                            <p class="rate-from text-break" id="dates" name="dates"> 
+                                                <!--     <%= post.dates%> -->
+                                            </p>
+                                            <div id="datepickertest" ></div>
+                                            <div class="datepicker-legend-info">
+                                                <div class="mobile-legend-info">
+                                                    <div class="color-square-size">
+                                                        <div class="square-color-availability"></div>
+                                                    </div>
+                                                    <p> Available Dates</p>
+                                                </div>
+                                                
+                                                <div class="mobile-legend-info">
+                                                    <div class="color-square-size">
+                                                        <div class="square-color-today"></div>
+                                                    </div>
+                                                    <p> Today's Date </p>
+                                                </div>
+                                                
+                                                
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </section>
@@ -101,7 +128,7 @@
             <div id="chatBox">
                 <header class="clearfix">
                    
-                   <h4><span aria-hidden="true" class="icon-bubble"></span> Recent Chat</h4>
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Chat now!</h4>
                    
                 </header>
           
@@ -279,7 +306,11 @@
 <script>
     //  This is to show the date availability result (reference)
     // Get the value of the inputs
-    var stringDate = document.getElementById('dates').innerText;
+    // var theData = "<%- post.dates %>";
+    // console.log(theData);
+    // var stringDate = document.getElementById('dates').innerText;
+    var stringDate = "<%- post.dates %>"
+    console.log(stringDate)
 
     // Split the data according to ','
     var arrayDate = stringDate.split(',');

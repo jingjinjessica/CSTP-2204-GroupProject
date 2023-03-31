@@ -23,32 +23,36 @@
                                                 </span>
                                                 
                                             </div>
-                                            <div class="media username">
-                                                <label>Pet Name:</label>
-                                                <span id="username" name="name" ><%= owner.petName%></span>
+                                            <div class="media">
+                                                <label class="petname">Pet Name:</label>
+                                                <span id="username" name="name" class="introduction"><%= owner.petName%></span>
                                             </div>
                                             <div class="media">
-                                                <label>Province:</label>
-                                                <span class="location" name="province" ><%= owner.province%></span>
+                                                <label class="petname">Pet Owner:</label>
+                                                <span id="username" name="name" class="introduction"><%= owner.name%></span>
                                             </div>
                                             <div class="media">
-                                                <label>City:</label>
-                                                <span class="location" name="city" ><%= owner.city%></span>
+                                                <label class="petname">Location:</label>
+                                                <span class="location" name="province" class="introduction" ><%= owner.city%>, <%= owner.province%></span>
                                             </div>
+                                            <!-- <div class="media">
+                                                <label class="petname">City:</label>
+                                                <span class="location" name="city" class="introduction"></span>
+                                            </div> -->
                                             <div class="media">
-                                                <label>Type:</lable>
+                                                <label class="petname">Type:</lable>
                                                     <span class="location">
                                                         <%= owner.petType %>
                                                     </span>
                                             </div>
                                             <div class="media">
-                                                <label>Age:</lable>
+                                                <label class="petname">Age:</lable>
                                                     <span class="location">
                                                         <%= owner.petAge %>
                                                     </span>
                                             </div>
                                             <div class="media">
-                                                <label>Weight:</label>
+                                                <label class="petname">Weight:</label>
                                                 <span class="location">
                                                     <%= owner.petWeight %>
                                                 </span>
@@ -70,13 +74,13 @@
 
 
                                             <div class="media">
-                                                <label>Start Date:</label>
+                                                <label class="petname">Start Date:</label>
                                                 <span class="location">
                                                     <%= post.startDate %>
                                                 </span>
                                             </div>
                                             <div class="media">
-                                                <label>End Date:</label>
+                                                <label class="petname">End Date:</label>
                                                 <span class="location">
                                                     <%= post.endDate %>
                                                 </span>
@@ -126,7 +130,7 @@
             <div id="chatBox">
                 <header class="clearfix">
                    
-                   <h4><span aria-hidden="true" class="icon-bubble"></span> Recent Chat</h4>
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Chat now!</h4>
                    
                 </header>
           
