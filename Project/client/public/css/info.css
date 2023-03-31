@@ -241,6 +241,66 @@ body {
     height: 250px;
 }
 
+/* Datepicker legend section */
+.datepicker-legend-info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    /* justify-content: space-between; */
+}
+
+.color-square-size {
+    width: 50px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.color-square-size p {
+    text-align: center;
+}
+
+.square-color-availability {
+    height: 100%;
+    width: 100%;
+    background-color: yellowgreen;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+/* .square-color-select {
+    height: 100%;
+    width: 100%;
+    background-color: #FB5607;
+    border-radius: 10px;
+    border: 1px solid black;
+} */
+
+.square-color-today {
+    height: 100%;
+    width: 100%;
+    background-color: #fde19a;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.mobile-legend-info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+@media (max-width: 1200px){
+    .datepicker-legend-info {
+        flex-direction: column;
+    }
+
+    .mobile-legend-info {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+}
+
 /* pet owner mobile view */
 @media (max-width: 991px) {
     .info-img {
@@ -384,5 +444,10 @@ body {
         width: 0px;
         height: 0px;
     }
+
+    /* Datepicker legend info mobile view */
+    /* .color-square-size {
+        margin-right: 0px;
+    } */
 
 }

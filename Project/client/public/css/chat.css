@@ -368,7 +368,7 @@ form .textarea textarea:focus::placeholder{
 	background-color: #F6FFF8;
 	opacity:0;
 	margin-top:30px;
-	height:65%;
+	height:67%;
 	overflow-y:scroll;	
 	overflow-x:hidden;
 	padding-right: 5px;
@@ -439,14 +439,25 @@ form .textarea textarea:focus::placeholder{
 
 /* SEND MESSAGE INPUT */
 
-#sendmessage{
+#sendmessage {
+	/* position: absolute; */
 	width: 100%;
-	
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	background-color: #EAF4F4; 
 }
 
 
 #sendmessage input{
-	
+	width: 80%;
+	font-size: 14px;
+	padding: 12px;
+	border: 1px solid #EAF4F4;
+	/* height: 100%; */
+	background-color: #EAF4F4;
 }
 
 #sendmessage input:focus{
@@ -454,7 +465,13 @@ form .textarea textarea:focus::placeholder{
 }
 
 #sendmessage button{
-	
+	width: 20%;
+	background-color: #88A2A2;
+	border: none;
+	font-size: 14px;
+	color: white;
+	font-weight: 600;
+
 }
 
 #sendmessage button:hover{

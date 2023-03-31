@@ -12,7 +12,7 @@
         <div class="col-md-9 col-lg-6 col-xl-5">
           <img src="/image/register-img.png" class="img-fluid" alt="register image">
         </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 register-input-struct">
           <h1 class="register-title ">Register</h1>
           <hr class="hr hr-blurry register-hr"> 
           <form class="register-form" onsubmit="submitRegisterForm(event)">
@@ -36,16 +36,19 @@
               <a href="/login">Have an account?</a>
             </div>
             <h6 class="are-you">Are You?</h6>
-            <div class="form-check form-check-inline user-type">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="owner" value="owner" checked
-                onchange="handleClick(event)" />
-              <label class="form-check-label" for="pet-owner">Pet Owner</label>
+            <div class="bigger-screen-radio-select">
+              <div class="form-check form-check-inline user-type">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="owner" value="owner" checked
+                  onchange="handleClick(event)" />
+                <label class="form-check-label" for="pet-owner">Pet Owner</label>
+              </div>
+              <div class="form-check form-check-inline user-type">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sitter" value="sitter"
+                  onchange="handleClick(event)" />
+                <label class="form-check-label" for="pet-sitter">Pet Sitter</label>
+              </div>
             </div>
-            <div class="form-check form-check-inline user-type">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sitter" value="sitter"
-                onchange="handleClick(event)" />
-              <label class="form-check-label" for="pet-sitter">Pet Sitter</label>
-            </div>
+            
             <div class="d-flex align-items-center justify-content-center mt-4 pt-2 sign-up-btn-area">
               <button type="submit" class="btn btn-primary btn-lg sign-up-btn">Sign up</button>
             </div>

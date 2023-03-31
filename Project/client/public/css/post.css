@@ -183,15 +183,28 @@
     .startDate {
         margin-right: 0px;
     }
+
+    .row-owner-dates .row {
+        text-align: -webkit-center;
+    }
+    
+    .post-date-area div.row.g-3 {
+        display: block;
+    }
+
+    .start-date, .end-date {
+        width: 320px;
+    }
+
 }
 
 /* Mobile View for sitterPost */
-@media (max-width: 750px) {
+/* @media (max-width: 750px) {
     .mediaTest {
         display: flex;
         flex-direction: column;
     }
-}
+} */
 
 @media (max-width: 415px) {
 
@@ -216,10 +229,18 @@
         margin-top: 10px;
     }
 
-    .owner-save-btn,
     .post-save-btn {
-        margin-top: 50px;
+        /* margin-top: 50px; */
         margin-right: 90px;
+    }
+
+    /* This is only for pet owner post page save btn */
+    .mobile-view-owner-btn .text-end {
+        text-align: center !important; 
+    }
+
+    .mobile-view-owner-btn .text-end .owner-save-btn {
+        margin-right: 0px;
     }
 
 }
@@ -316,7 +337,14 @@
     }
 }
 
+@media (min-width: 1200px) and (max-width: 1400px){
+    .start-date, .end-date {
+        width: 530px;
+    }
+}
+
 /* / Media Query for Large screens / */
 @media (min-width: 1281px) {
     
+
 }

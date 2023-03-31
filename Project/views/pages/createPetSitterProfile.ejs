@@ -24,7 +24,7 @@
                                             <input type="file" id="avatar-file-input" name="myImg"
                                                 onchange="attachMyProfile(this)" required/>
                                             <label for="avatar-file-input">
-                                                <div class="square position-relative display-2 mb-3">
+                                                <div class="square position-relative display-2 mb-3 frameCenter">
                                                     <img id="avatar-preview" src="<%= avatarImage%>" alt="Image Preview"
                                                         class="preview-img" />
                                                 </div>
@@ -54,16 +54,17 @@
                                             <input type="email" class="form-control profile-form-control" id="email" name="email"
                                                 value="<%= email%>" disabled readonly>
                                         </div>
+
                                         <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label class="form-label profile-form-label label-text" for="">Province</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label profile-form-label label-text" for="">City</label>
-                                            </div>
+                                            
+                                            
                                         </div>
 
                                         <div class="col-lg-6">
+                                            <div class="col-md-6">
+                                                <label class="form-label profile-form-label label-text" for="">Province</label>
+                                            </div>
+
                                             <div class="input-group">
                                                 <label class="input-group-text"><img class="profile-province-icon"
                                                         src="/image/canada.png" /></label>
@@ -116,6 +117,10 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
+                                            <div class="col-md-6">
+                                                <label class="form-label profile-form-label label-text" for="">City</label>
+                                            </div>
+
                                             <div class="input-group">
                                                 <label class="input-group-text"><img class="profile-city-icon"
                                                         src="/image/city-hall.png" /></label>
@@ -207,15 +212,15 @@
                                                 name="aboutMe" rows="5" placeholder="Introduce Yourself..." value="<%= aboutMe%>"><%= aboutMe%></textarea>
                                         </div>
                                         <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label class="form-label profile-form-label label-text" for="">Photography</label>
+                                            <div class="col-md-6 mobile-photography-label">
+                                                <label class="form-label profile-form-label label-text" for="">Photographies</label>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="row g-3 photography-structure">
 
-                                                <div class="col-md-4 ">
+                                                <div class="col-md-4 mobile-photos-view">
                                                     <div class="text-center file-input-container">
                                                         <input type="file" id="photo1-file-input" name="photo1"
                                                             onchange="attachPhoto1(this)" />
@@ -233,7 +238,7 @@
                                                 </div>
 
                                                 <!-- Label params order matters: 'for' has to be first before 'class' -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 mobile-photos-view">
                                                     <div class="text-center file-input-container">
                                                         <input type="file" id="photo-file-input2" name="photo2"
                                                             onchange="attachPhoto2(this)" />
@@ -250,7 +255,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 mobile-photos-view">
                                                     <div class="text-center file-input-container">
                                                         <input type="file" id="photo-file-input3" name="photo3"
                                                             onchange="attachPhoto3(this)" />
@@ -281,8 +286,8 @@
                                 <!-- <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary skip-btn">Skip</button>
                                 </div> -->
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary saveBtn">Save</button>
+                                <div class="col-md-6 ">
+                                    <button type="submit" class="btn btn-primary sitter-save-mid-btn">Save</button>
                                 </div>
                             </div>
                         </div>
