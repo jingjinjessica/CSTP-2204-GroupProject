@@ -72,7 +72,7 @@ app.get("/register", (req, res) => {
 // console.log( getCurrProfile());
 //const currUserProfile = await response.json();
 
-const renderedData = encodeURIComponent(JSON.stringify(peopleList));
+// const renderedData = encodeURIComponent(JSON.stringify(peopleList));
 
 // app.get("/message", (req, res) => {
 //   res.render("pages/message", { peopleList: peopleList, renderedData });

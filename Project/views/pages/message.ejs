@@ -93,54 +93,71 @@
 
     <script>
           let currActiveChatroom = null;
+          let currActiveChatPerson = null;
           
           async function handleSendMsg(e) {
             e.preventDefault();
+
+            console.log("curractive",currActiveChatroom);
 
             //check if an chatroom has been selected
             if (!currActiveChatroom) return;
 
             //get new message value
-            const newMsg = document.getElementById("textMsg").value;
-            if (!newMsg) return;
+            const inputMsg = document.getElementById("textMsg").value;
+            if (!inputMsg) return;
 
-            const chatRoomRef = await db.collection("chats").doc(id);
-            const messagesRef = chatRoomRef.collection("messages");
+            //firestore chat room reference
+            const chatRoomRef = await db.collection("chats").doc(currActiveChatroom);
+
+            //firestore messages of chatroom reference
+            const messagesRef = await chatRoomRef.collection("messages");
+            
+            //new message object to add to database
+            const newMsg = {
+                roomId: currActiveChatroom,
+                sender: '<%= currUser %>',
+                receiver: currActiveChatPerson,
+                msg: inputMsg,
+                timestamp: Date.now(),
+            };
+
+            //update the chatroom latest message
+            await chatRoomRef.update({
+                lastMsg: newMsg,
+            });
+
+            //add the new message to chatroom's messages
+            await messagesRef.add(newMsg);
             
           }
 
-
           async function handleFetchMsg(id) { 
             currActiveChatroom = id;
+            let currUserName = '<%= currUser %>'
             const msgs = document.getElementById("messages");
             const chatRoomRef = await db.collection("chats").doc(id);
+            await chatRoomRef.get().then((doc)=>{
+                let chatRoomData = doc.data();
+                currActiveChatPerson = chatRoomData.users.filter(user => user != currUserName)[0];
+            })
             console.log("this is the room id",chatRoomRef.id);
-
-
             const messagesRef = chatRoomRef.collection("messages");
-            // console.log("meref",messagesRef);
-
-            // const receiver = messagesRef.receiver;
-            // console.log(receiver);
-
-            // const messagesRef = db.collection('messages');
-            // Clear the message list
             msgs.innerHTML = '';
-
             messagesRef.orderBy('timestamp').onSnapshot((querySnapshot) => {
                 
                 // Loop over each document change in the query snapshot
                 querySnapshot.docChanges().forEach((change) => {
-                    if (change.type === 'added') {
-                    // If a document was added, render a new message element and add it to the message list
-                    const messageData = change.doc.data();
-                    const messageElement = document.createElement('li');
-                    messageElement.innerHTML = "<p><strong>"+messageData.sender + ":</strong>" + messageData.msg + "</p>";
-                    msgs.appendChild(messageElement);
-                    }
+                        if (change.type === 'added') {
+                            // If a document was added, render a new message element and add it to the message list
+                            const messageData = change.doc.data();
+                            const messageElement = document.createElement('li');
+                            messageElement.innerHTML = "<p><strong>"+messageData.sender + ":</strong>" + messageData.msg + "</p>";
+                            msgs.appendChild(messageElement);
+                        }
                 });
-                });
-}
+            });
+        }
 
     </script>
 
