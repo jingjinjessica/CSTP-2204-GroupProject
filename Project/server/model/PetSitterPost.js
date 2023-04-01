@@ -10,6 +10,14 @@ const PetSitterPostSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    city: {
+      type: String,
+      required: true,
+    },
+    dates: {
+      type: String,
+      required: true,
+    },
     services: {
       type: String,
       required: true,

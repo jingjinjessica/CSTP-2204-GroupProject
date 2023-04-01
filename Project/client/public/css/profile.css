@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 /* .profile-title {
     color: #6B9080;
@@ -93,6 +93,23 @@ label span input {
 }
 
 /* image upload */
+
+.img-required {
+    color:red;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    top: -10px;
+    right: 38px;
+
+}
+
+.name-required {
+    color:red;
+    font-size: 15px;
+    font-weight: 600;
+}
+
 .square {
     /* margin: auto;
     vertical-align: middle; */
@@ -245,6 +262,16 @@ img[src*="add-img.png"]{
     margin-top: 0px;
 }
 
+/* Save Btn */
+.sitter-save-mid-btn {
+    background: #FB5607;
+    border: 1px solid #FB5607;
+    font-weight: 600;
+    padding: 8px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
 /* .frameCenter {
     display: flex;
     justify-content: center;
@@ -269,67 +296,37 @@ img[src*="add-img.png"]{
     }
 
     /* Pet Sitter profile form structure */
-    /* .screen-structure {
+    .screen-structure {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-    } */
+    }
     
 }
 
 /* This is to change the header font sizes */
 @media (max-width: 1201px){
-    .nav-link{
-        font-size: 16px;
-    }
-
-    .photography-structure {
+    /* DONT delete this one */
+    /* .photography-structure {
         display: flex;
         flex-wrap: nowrap;
+    } */
+    .photo-square {
+        width: 170px;
+        height: 170px;
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 992px) {
     .photography-structure {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
     }
-}
 
-@media (max-width: 966px){
-    .navbar-brand {
-        font-size: 25px;
-    }  
-}
-
-@media (max-width: 911px){
-    .nav-link {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 850px){
-    .nav-link {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 800px){
-    .navbar-brand {
-        font-size: 20px;
-    }
-    .nav-link {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 781px){
-    /* .navbar-brand {
-        font-size: 20px;
-    } */
-    .nav-link {
-        font-size: 12px;
+    .photo-square {
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -349,13 +346,20 @@ img[src*="add-img.png"]{
         text-align: center;
     }
 
-    .navbar-brand {
-        font-size: 2em;
+    /* Pet Sitter profile input structure */
+    .screen-structure {
+        flex-wrap: wrap;
     }
 
-    .nav-link {
-        font-size: 18px;
+    .mobile-photos-view {
+        display: flex;
+        justify-content: center;
     }
+
+    .mobile-photography-label {
+        text-align: center;
+    }
+
 }
 
 @media (max-width: 500px){
@@ -363,6 +367,8 @@ img[src*="add-img.png"]{
         margin-left: 15%;
         margin-right: 15%;
     }
+
+    
 }
 
 @media (max-width: 450px){

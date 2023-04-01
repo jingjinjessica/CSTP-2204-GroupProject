@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 .titlePost {
     margin-top: 10%;
@@ -85,24 +84,31 @@
     margin-top: -80px;
 }
 
-.sitter-input-title,
+/* .sitter-input-title,
 .owner-input-title {
     width: 810px;
-}
+} */
+
+.sitter-input-title,
+    .owner-input-title {
+        width: 100%;
+    }
+
+/* .experience-input,
+.desc-input {
+    width: 810px;
+    height: 200px;
+} */
 
 .experience-input,
 .desc-input {
-    width: 810px;
+    width: 100%;
     height: 200px;
 }
 
 .post-service-icon {
     width: 20px;
     height: 20px;
-}
-
-.rate-inputChange {
-    width: 380px;
 }
 
 .post-save-btn {
@@ -112,7 +118,7 @@
     padding: 8px;
     padding-left: 45px;
     padding-right: 45px;
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 .post-save-btn:hover {
@@ -172,74 +178,34 @@
 
 /* SitterPost and PetOwnerPost view change */
 @media (max-width: 992px) {
-    .rate-structure {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .rate-inputChange {
-        width: 122%;
-    }
 
     .startDate {
         margin-right: 0px;
     }
-}
 
-@media (max-width: 768px) {
-
-    /* Pet Sitter Post */
-    .rate-structure {
-        margin-right: 7%;
-        width: 48%;
+    .row-owner-dates .row {
+        text-align: -webkit-center;
+    }
+    
+    .post-date-area div.row.g-3 {
+        display: block;
     }
 
-    .experience-txtarea {
-        width: 300px;
+    .start-date, .end-date {
+        width: 320px;
     }
 
-    /* Pet Owner Post */
-    .owner-descArea {
-        width: 75%;
-    }
-
-    .owner-titleArea {
-        width: 75%;
-    }
 }
 
 /* Mobile View for sitterPost */
-@media (max-width: 750px) {
+/* @media (max-width: 750px) {
     .mediaTest {
         display: flex;
         flex-direction: column;
     }
-}
-
-@media (max-width: 511px) {
-    .rate-structure {
-        width: 55%;
-    }
-}
+} */
 
 @media (max-width: 415px) {
-    .rate-structure {
-        margin-right: 16%;
-
-    }
-
-    .rate-inputChange {
-        width: 140%;
-    }
-
-    .dates-structure {
-        display: flex;
-        flex-direction: column !important;
-    }
-
-    .dateInput {
-        width: 45%;
-    }
 
     .startDate {
         align-items: center;
@@ -252,41 +218,7 @@
     }
 }
 
-@media (max-width: 401px) {
-    .rate-structure {
-        margin-right: 10%;
-        width: 70%;
-    }
-
-    .rate-inputChange {
-        width: 122%;
-    }
-}
-
-@media (max-width: 282px) {
-    .rate-structure {
-        width: 120%;
-    }
-
-    .rate-inputChange {
-        width: 117%;
-    }
-}
-
 @media (max-width: 480px) {
-
-    .sitter-input-title,
-    .owner-input-title,
-    .rate-inputChange {
-        width: 320px;
-    }
-
-    .experience-input,
-    .desc-input {
-        width: 320px;
-        height: 100px;
-    }
-
     .start-date,
     .end-date {
         width: 320px;
@@ -296,10 +228,18 @@
         margin-top: 10px;
     }
 
-    .owner-save-btn,
     .post-save-btn {
-        margin-top: 50px;
+        /* margin-top: 50px; */
         margin-right: 90px;
+    }
+
+    /* This is only for pet owner post page save btn */
+    .mobile-view-owner-btn .text-end {
+        text-align: center !important; 
+    }
+
+    .mobile-view-owner-btn .text-end .owner-save-btn {
+        margin-right: 0px;
     }
 
 }
@@ -307,7 +247,7 @@
 /* Media Query for low resolution  Tablets, Ipads / */
 @media (min-width: 481px) and (max-width: 767px) {
 
-    .sitter-input-title,
+    /* .sitter-input-title,
     .owner-input-title {
         width: 150px;
     }
@@ -316,13 +256,13 @@
     .desc-input {
         width: 150px;
         height: 100px;
-    }
+    } */
 }
 
 /* / Media Query for Tablets Ipads portrait mode / */
 @media (min-width: 768px) and (max-width: 1024px) {
 
-    .sitter-input-title,
+    /* .sitter-input-title,
     .owner-input-title {
         width: 150px;
     }
@@ -331,7 +271,7 @@
     .desc-input {
         width: 150px;
         height: 100px;
-    }
+    } */
 
 }
 
@@ -396,7 +336,14 @@
     }
 }
 
-/* / Media Query for Large screens / */
-/* @media (min-width: 1281px) {
+@media (min-width: 1200px) and (max-width: 1400px){
+    .start-date, .end-date {
+        width: 530px;
+    }
+}
 
-} */
+/* / Media Query for Large screens / */
+@media (min-width: 1281px) {
+    
+
+}

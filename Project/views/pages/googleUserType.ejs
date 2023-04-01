@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+  <section class="vh-100">
+    <div class="container-fluid h-custom register-h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="/image/register-img.png" class="img-fluid" alt="register image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <h1 class="register-title ">Register</h1>
+          <hr class="hr hr-blurry register-hr"> 
+          <form class="register-form"  action="/users/google/usertype" method="POST">
+        
+            <h6 class="are-you">Are You?</h6>
+            <div class="form-check form-check-inline user-type">
+              <input class="form-check-input" type="radio" name="userType" id="owner" value="owner" checked
+               />
+              <label class="form-check-label" for="pet-owner">Pet Owner</label>
+            </div>
+            <div class="form-check form-check-inline user-type">
+              <input class="form-check-input" type="radio" name="userType" id="sitter" value="sitter"
+                 />
+              <label class="form-check-label" for="pet-sitter">Pet Sitter</label>
+            </div>
+            <input type="hidden" name="email" value="<%= email%>"/>
+            <div class="d-flex align-items-center justify-content-center mt-4 pt-2 sign-up-btn-area">
+              <button type="submit" class="btn btn-primary btn-lg sign-up-btn">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

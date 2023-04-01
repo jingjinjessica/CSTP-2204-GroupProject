@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head'); -%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <%- include('../partials/head'); -%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" integrity="sha512-vyxlyD6m54QfZ9PpnWfOHY8Lk3EcN1HuSYalLg3qqnqXLKTbRC/45lvy34WkngM1BUrYuJw1W1ZHlgEpdAn5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" integrity="sha512-vhvVqvC9Q8uUrq9PqvULhS+jX7ljOAzGRM0AMDqEPZmk4yG8tloWebj2TfJ8fYw0EzBNXU5kZ695eJqT0qo03w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <body>
         <%- include('../partials/header'); -%>
             <section class="section owner-info">
@@ -15,30 +23,64 @@
                         <div class="col-lg-6">
                             <div class="about-text go-to">
                                 <div class="row info-list">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="info-area">
                                             <div class="media username">
                                                 <span id="username" name="name" ><%= sitter.name%></span>
                                             </div>
                                             <div class="media">
-                                                <span class="location" name="province" ><%= sitter.province%></span>
+                                                <span class="location" name="province" ><%= post.city%>, <%= sitter.province%></span>
                                             </div>
-                                            <div class="media">
-                                                <span class="location" name="city" > <%= sitter.city%></span>
+                                            <!-- <div class="media">
+                                                <span class="location" name="city" > </span>
+                                            </div> -->
+                                            <div class="media requirement-area">
+                                                <span class="rate-title">Rate</span>
+                                                <p class="rate-from text-break" id="rate" name="rate">From $<%=post.rate%> Per day</p>
                                             </div>
                                             <div class="media requirement-area">
-                                                <span class="rate-title">Rate:</span>
-                                                <p class="rate-from text-break" id="rate" name="rate" >From $ <%= post.rate%></p>
-                                            </div>
-                                            <div class="media requirement-area">
-                                                <span class="rate-title">Services:</span>
+                                                <span class="rate-title">Services</span>
                                                 <p class="rate-from text-break" id="services" name="services" > <%= post.services%></p>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="datepickertest-edit">
+                                            <span class="rate-title media">
+                                                Availability Date
+                                            </span>
+                                            <!-- The post.dates value is inside the script tag to be used to output AND hide the value -->
+                                            <p class="rate-from text-break" id="dates" name="dates"> 
+                                                <!--     <%= post.dates%> -->
+                                            </p>
+                                            <div id="datepickertest" ></div>
+                                            <div class="datepicker-legend-info">
+                                                <div class="mobile-legend-info">
+                                                    <div class="color-square-size">
+                                                        <div class="square-color-availability"></div>
+                                                    </div>
+                                                    <p> Available Dates</p>
+                                                </div>
+                                                
+                                                <div class="mobile-legend-info">
+                                                    <div class="color-square-size">
+                                                        <div class="square-color-today"></div>
+                                                    </div>
+                                                    <p> Today's Date </p>
+                                                </div>
+                                                
+                                                
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </section>
@@ -61,9 +103,9 @@
                                         <div class="media intro-area">
 
                                             <span class="intro-title">Experiences:</span>
-                                            <p class="experiences" id="experiences" name="experience" >
+                                            <p class="experiences" id="desc" name="desc" >
 
-                                                <%= post.experience%>
+                                                <%= post.desc%>
                                             </p>
                                             <div class="photo-inColumns">
                                                 <img src="<%= sitter.photo1%>" alt="photo1" name="photo1" class="photo-experiences">
@@ -86,7 +128,7 @@
             <div id="chatBox">
                 <header class="clearfix">
                    
-                   <h4><span aria-hidden="true" class="icon-bubble"></span> Recent Chat</h4>
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Chat now!</h4>
                    
                 </header>
           
@@ -259,4 +301,58 @@
         });
     });			
 });
+</script>
+
+<script>
+    //  This is to show the date availability result (reference)
+    // Get the value of the inputs
+    // var theData = "<%- post.dates %>";
+    // console.log(theData);
+    // var stringDate = document.getElementById('dates').innerText;
+    var stringDate = "<%- post.dates %>"
+    console.log(stringDate)
+
+    // Split the data according to ','
+    var arrayDate = stringDate.split(',');
+    // Make a new array for the dates
+    // The date format has to be DD/M/YYYY, ex: 12/3/2023, 01/3/2023
+    // The values we are getting from the input is with this format: DD/MM/YYYY so 12/03/2023 will not work
+    var newArrDates = [];
+    for(var i = 0; i  < arrayDate.length; i++){
+        var newTest = arrayDate[i].slice(0, 3) + arrayDate[i].slice(4);
+        newArrDates.push(newTest);
+        //console.log(newTest);
+        
+    }
+
+    // To check the values inside the newArrDates array 
+    // for(var i = 0; i < newArrDates.length; i++){
+    //     console.log(newArrDates[i]);
+    // }
+
+    // SAMPLE TEST
+    //var active_dates = ["23/3/2023","21/3/2023"];
+
+    $('#datepickertest').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        beforeShowDay: function(date){
+            // Getting the current date
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
+
+            // Check to see specific dates that needs to be highlighted
+            if ($.inArray(formattedDate, newArrDates) != -1){
+                return {
+                    classes: 'date-edit'
+                };
+            }
+        return;
+        }
+    });
+
 </script>

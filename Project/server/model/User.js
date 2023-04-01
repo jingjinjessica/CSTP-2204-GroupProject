@@ -14,12 +14,7 @@ const UserSchema = mongoose.Schema(
     userType: {
       type: String,
       required: true,
-    },
-    // profile: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Profile",
-    //     required: true
-    // }
+    }
   },
   {
     timestamps: true,

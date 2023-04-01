@@ -15,7 +15,7 @@
 
 <body>
     <%- include('../partials/header') %>
-        <div class="container justify-content-center">
+        <!-- <div class="container justify-content-center">
             <form onsubmit="sitterPost(event)"
                 class="row g-3 d-flex flex-column align-items-center align-content-center">
                 <div class="col-xxl-8 mb-5 mb-xxl-0">
@@ -24,102 +24,356 @@
                             <div class="col-lg-6">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit"  >Title:</label>
+                                        <label for="ownerPostTitle" class="col-sm-2 col-form-label text_edit">Title:</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control input-border" id="title" name="title" onchange="setSitterTitle(event)" value="<%= post.title
-                                    %>">
+                                <div class="col-md-6 edit-inputs">
+                                    <input type="text" class="form-control input-border" id="title" name="title" onchange="setSitterTitle(event)" value="<%= post.title%>">
                                 </div>
                             </div>
                         </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-
-                                <div class="row g-3">
-                                    <div class="col-lg-6">
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label for="amount"
-                                                    class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" id="rate" name="rate" placeholder="$ Per day"
-                                                onchange="setRate(event)"
-                                                class="form-control input-border rate-inputChange">
-                                        </div>
-                                    </div>
-                                </div>
+                      
+                        <div class="col-lg-6">
+                            <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
-                                        class="form-control input-border rate-inputChange" value="<%= post.rate%>">
+                                    <label for="amount"
+                                        class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
                                 </div>
                             </div>
+                            <div class="col-md-6 edit-inputs">
+                                <input type="text" id="rate" name="rate" placeholder="$ Per day"
+                                    onchange="setRate(event)"
+                                    class="form-control input-border rate-inputChange" value="<%= post.rate%>">
+                            </div>
+                            
                             <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label profile-form-label label-text" for="">Services</label>
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="" class="label-text">City</label>
                                 </div>
-                                <div class="input-group">
+                                <div class="input-group edit-inputs">
                                     <label class="input-group-text"><img class="profile-city-icon"
-                                            src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
-                                    <select class="form-select" id="services" name="services"
-                                        onchange="setServices(event)" value="<%= post.services%>">
-                                        <option value="Select Services" <%= post.services==="Select Services"?"selected":"" %>>Select Services</option>
-                                        <option value="Walking" <%= post.services==="Walking"?"selected":"" %> >Walking</option>
-                                        <optgroup label="Caring">
-                                            <option value="Boarding" <%= post.services==="Boarding"?"selected":"" %> >Boarding</option>
-                                            <option value="House Sitting" <%= post.services==="House Sitting"?"selected":"" %>>House Sitting</option>
-                                        </optgroup>
+                                            src="/image/city-hall.png" /></label>
+                                    <select id="city" name="city" class="form-select selectpicker"
+                                        value="<%= post.city%>"  onchange="setCity(event)">
+                                        <option value="Choose" <%= post.city==="Choose" ?"selected":"" %>
+                                            >Choose...</option>
+                                        <option value="Burnaby" <%= post.city==="Burnaby" ?"selected":"" %>
+                                            >Burnaby</option>
+                                        <option value="Coquitlam" <%= post.city==="Coquitlam" ?"selected":"" %>
+                                            >Coquitlam</option>
+                                        <option value="Calgary" <%= post.city==="Calgary" ?"selected":"" %>
+                                            >Calgary</option>
+                                        <option value="Charlottetown" <%= post.city==="Charlottetown"
+                                            ?"selected":"" %>
+                                            >Charlottetown
+                                        </option>
+                                        <option value="Edmonton" <%= post.city==="Edmonton" ?"selected":"" %>
+                                            >Edmonton</option>
+                                        <option value="Moncton" <%= post.city==="Moncton" ?"selected":"" %>
+                                            >Moncton</option>
+                                        <option value="Montreal" <%= post.city==="Montreal" ?"selected":"" %>
+                                            >Montreal</option>
+                                        <option value="Northvancouver" <%= post.city==="NorthVancouver"
+                                            ?"selected":"" %>>North
+                                            Vancouver</option>
+                                        <option value="Fredericton" <%= post.city==="Fredericton" ?"selected":""
+                                            %>>Fredericton
+                                        </option>
+                                        <option value="Halifax" <%= post.city==="Halifax" ?"selected":"" %>
+                                            >Halifax</option>
+                                        <option value="Iqaluit" <%= post.city==="Iqaluit" ?"selected":"" %>
+                                            >Iqaluit</option>
+                                        <option value="Quebeccity" <%= post.city==="QuebecCity" ?"selected":"" %>
+                                            >Quebec City
+                                        </option>
+                                        <option value="Richmond" <%= post.city==="Richmond" ?"selected":"" %>
+                                            >Richmond</option>
+                                        <option value="Regina" <%= post.city==="Regina" ?"selected":"" %>>Regina
+                                        </option>
+                                        <option value="Surrey" <%= post.city==="Surrey" ?"selected":"" %>>Surrey
+                                        </option>
+                                        <option value="Stjohns" <%= post.city==="St.John's" ?"selected":"" %>>St.
+                                            John's</option>
+                                        <option value="Saskatoon" <%= post.city==="Saskatoon" ?"selected":"" %>
+                                            >Saskatoon</option>
+                                        <option value="Toronto" <%= post.city==="Toronto" ?"selected":"" %>
+                                            >Toronto</option>
+                                        <option value="Victoria" <%= post.city==="Victoria" ?"selected":"" %>
+                                            >Victoria</option>
+                                        <option value="Vancouver" <%= post.city==="Vancouver" ?"selected":"" %>
+                                            >Vancouver</option>
+                                        <option value="White Rock" <%= post.city==="WhiteRock" ?"selected":"" %>
+                                            >White Rock
+                                        </option>
+                                        <option value="Williamslake" <%= post.city==="WilliamsLake" ?"selected":""
+                                            %>>Williams
+                                            Lake
+                                        </option>
+                                        <option value="Winnipeg" <%= post.city==="Winnipeg" ?"selected":"" %>
+                                            >Winnipeg</option>
+                                        <option value="Whitehorse" <%= post.city==="Whitehorse" ?"selected":"" %>
+                                            >Whitehorse
+                                        </option>
+                                        <option value="Yellowknife" <%= post.city==="Yellowknife" ?"selected":""
+                                            %>>Yellowknife
+                                        </option>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
-                                <textarea class="form-control input-border" id="experience" name="experience" rows="3"
-                                    onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
-                            </div>
-
-                            <!-- AVAILABILITY DATES -->
-                            <div class="col-lg-6">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="" class="form-label profile-form-label label-text"> Availability</label>
-                                    </div>
-                                </div>
-                                <div class="input-group date form-group" id="datepicker">
-                                    <span class="input-group-addon input-group-text">
-                                        <img class="profile-city-icon" 
-                                            src="/image/icon-calendar.png" alt="">
-                                            <span class="count" style="color: #6B9080; margin-left: 3px; font-weight: 600;"></span>
-                                    </span>
-                                    
-                                    <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
-                                    <span class="input-group-addon">
-                                        <!-- <span class="count"></span> -->
-                                    </span>
-                                </div>
-                            </div>
+                        </div>
+                     </div> -->
+                    <!-- <div class="col-md-6">
+                        <input type="text" id="rate" name="rate" placeholder="$" onchange="setRate(event)"
+                            class="form-control input-border rate-inputChange" value="<%= post.rate%>">
+                    </div> -->
+                <!-- </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label profile-form-label label-text" for="">Services</label>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <label class="input-group-text"><img class="profile-city-icon"
+                                src="https://img.icons8.com/external-others-pike-picture/50/6B9080/external-Pet-Funeral-Service-pet-funeral-others-pike-picture-2.png" /></label>
+                        <select class="form-select" id="services" name="services"
+                            onchange="setServices(event)" value="<%= post.services%>">
+                            <option value="Select Services" <%= post.services==="Select Services"?"selected":"" %>>Select Services</option>
+                            <option value="Walking" <%= post.services==="Walking"?"selected":"" %> >Walking</option>
+                            <optgroup label="Caring">
+                                <option value="Boarding" <%= post.services==="Boarding"?"selected":"" %> >Boarding</option>
+                                <option value="House Sitting" <%= post.services==="House Sitting"?"selected":"" %>>House Sitting</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="" class="col-sm-3 col-form-label text_edit">Experiences:</label>
+                    <textarea class="form-control input-border" id="experience" name="experience" rows="3"
+                        onchange="setExp(event)" placeholder="Type..." value="<%= post.experience%>"> <%= post.experience%> </textarea>
+                </div>
+
+                 AVAILABILITY DATES 
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="" class="form-label profile-form-label label-text"> Availability</label>
+                        </div>
+                    </div>
+                    <div class="input-group date form-group" id="datepicker">
+                        <span class="input-group-addon input-group-text">
+                            <img class="profile-city-icon" 
+                                src="/image/icon-calendar.png" alt="">
+                                <span class="count" style="color: #6B9080; margin-left: 3px; font-weight: 600;"></span>
+                        </span>
+                        
+                        <input type="text" class="form-control" id="dates" onchange="setDates(event)" name="dates" placeholder="Select days" required  value="<%= post.dates%>"/>
+                        <span class="input-group-addon">
+                             <span class="count"></span> 
+                        </span>
+                    </div>
+                </div>
+                           
+                </div>
                     <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
 
-                    <!-- This is to put the date availability result (reference) -->
+                     This is to put the date availability result (reference) -->
                     <!-- I will temporarily comment it out -->
                     <!-- <div id="datepickertest">
                                 
                     </div> -->
 
                     <!-- SUBMIT BUTTON -->
-                    <div class="col-lg-12 text-end">
+                    <!-- <div class="col-lg-12 text-end">
                         <button type="submit" class="btn btn-primary saveBtn post-save-btn"><%= btnName%></button>
                     </div>
                 </div>
             </form>
 
+        </div>  --> 
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-5 post-title-area text-center">
+                        <h3>Post A Request</h3>
+                        <hr class="post-hr">
+                    </div>
+                    <form onsubmit="sitterPost(event)"
+                        class="row g-3 d-flex flex-column align-items-center align-content-center">
+                        <div class="col-xxl-8">
+                            <div class="bg-secondary-soft px-4 py-4 rounded sitter-input-area">
+                                <div class=" d-flex titlePost">
+                                    <div class="col-lg-6 sitter-input-title">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="ownerPostTitle"
+                                                    class="col-sm-2 col-form-label text_edit">Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control input-border"
+                                                id="title" name="title" placeholder="Title" onchange="setSitterTitle(event)" value="<%= post.title%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6 ">
+                                                <label for="amount"
+                                                    class="col-sm-3 col-form-label text_edit">Rate(CAD)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 input-group">
+                                            <input type="text" id="rate" name="rate" placeholder="$"
+                                                onchange="setRate(event)"
+                                                class="form-control input-border" value="<%= post.rate%>">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="amount"
+                                                    class="col-sm-3 col-form-label text_edit">City</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label class="input-group-text"><img class="post-city-icon"
+                                                    src="/image/city-hall.png" /></label>
+                                            <select id="city" name="city" class="form-select selectpicker" value="<%= post.city%>" onchange="setCity(event)">
+                                                <option value="Choose" <%= post.city==="Choose" ?"selected":"" %>
+                                                    >Choose...</option>
+                                                <option value="Burnaby" <%= post.city==="Burnaby" ?"selected":"" %>
+                                                    >Burnaby</option>
+                                                <option value="Coquitlam" <%= post.city==="Coquitlam" ?"selected":"" %>
+                                                    >Coquitlam</option>
+                                                <option value="Calgary" <%= post.city==="Calgary" ?"selected":"" %>
+                                                    >Calgary</option>
+                                                <option value="Charlottetown" <%= post.city==="Charlottetown"
+                                                    ?"selected":"" %>
+                                                    >Charlottetown
+                                                </option>
+                                                <option value="Edmonton" <%= post.city==="Edmonton" ?"selected":"" %>
+                                                    >Edmonton</option>
+                                                <option value="Moncton" <%= post.city==="Moncton" ?"selected":"" %>
+                                                    >Moncton</option>
+                                                <option value="Montreal" <%= post.city==="Montreal" ?"selected":"" %>
+                                                    >Montreal</option>
+                                                <option value="Northvancouver" <%= post.city==="NorthVancouver"
+                                                    ?"selected":"" %>>North
+                                                    Vancouver</option>
+                                                <option value="Fredericton" <%= post.city==="Fredericton" ?"selected":""
+                                                    %>>Fredericton
+                                                </option>
+                                                <option value="Halifax" <%= post.city==="Halifax" ?"selected":"" %>
+                                                    >Halifax</option>
+                                                <option value="Iqaluit" <%= post.city==="Iqaluit" ?"selected":"" %>
+                                                    >Iqaluit</option>
+                                                <option value="Quebeccity" <%= post.city==="QuebecCity" ?"selected":"" %>
+                                                    >Quebec City
+                                                </option>
+                                                <option value="Richmond" <%= post.city==="Richmond" ?"selected":"" %>
+                                                    >Richmond</option>
+                                                <option value="Regina" <%= post.city==="Regina" ?"selected":"" %>>Regina
+                                                </option>
+                                                <option value="Surrey" <%= post.city==="Surrey" ?"selected":"" %>>Surrey
+                                                </option>
+                                                <option value="Stjohns" <%= post.city==="St.John's" ?"selected":"" %>>St.
+                                                    John's</option>
+                                                <option value="Saskatoon" <%= post.city==="Saskatoon" ?"selected":"" %>
+                                                    >Saskatoon</option>
+                                                <option value="Toronto" <%= post.city==="Toronto" ?"selected":"" %>
+                                                    >Toronto</option>
+                                                <option value="Victoria" <%= post.city==="Victoria" ?"selected":"" %>
+                                                    >Victoria</option>
+                                                <option value="Vancouver" <%= post.city==="Vancouver" ?"selected":"" %>
+                                                    >Vancouver</option>
+                                                <option value="White Rock" <%= post.city==="WhiteRock" ?"selected":"" %>
+                                                    >White Rock
+                                                </option>
+                                                <option value="Williamslake" <%= post.city==="WilliamsLake" ?"selected":""
+                                                    %>>Williams
+                                                    Lake
+                                                </option>
+                                                <option value="Winnipeg" <%= post.city==="Winnipeg" ?"selected":"" %>
+                                                    >Winnipeg</option>
+                                                <option value="Whitehorse" <%= post.city==="Whitehorse" ?"selected":"" %>
+                                                    >Whitehorse
+                                                </option>
+                                                <option value="Yellowknife" <%= post.city==="Yellowknife" ?"selected":""
+                                                    %>>Yellowknife
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-3 col-form-label text_edit">Services</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label class="input-group-text"><img class="post-service-icon"
+                                                    src="/image/sitter-service.png" /></label>
+                                            <select class="form-select" id="services" name="services"
+                                                onchange="setServices(event)" value="<%= post.services%>">
+                                                <option value="Select Services" <%= post.services==="Select Services"?"selected":"" %>>Select Services</option>
+                                                <option value="Walking" <%= post.services==="Walking"?"selected":"" %> >Walking</option>
+                                                <optgroup label="Caring">
+                                                    <option value="Boarding" <%= post.services==="Boarding"?"selected":"" %> >Boarding</option>
+                                                    <option value="House Sitting" <%= post.services==="House Sitting"?"selected":"" %>>House Sitting</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Availability Dates -->
+                                    <div class="col-lg-6">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="" class="col-sm-3 form-label profile-form-label text_edit availability-date">Availability</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group date form-group mb-3" id="datepicker">
+                                            <span class=" input-group-addon input-group-text">
+                                                <img class="profile-city-icon" src="/image/icon-calendar.png" alt=""/>
+                                                <span class="count" style="color: #6B9080; margin-left: 3px; font-weight: 600;"></span>
+                                            </span>
+                                            <input type="text" class="form-control" id="dates" onchange="setDates(event)" name="dates"
+                                            placeholder="Select days" required value="<%= post.dates%>">
+                                            <span class="input-group-addon">
+                                                <!-- <span class="count"></span>  -->
+                                           </span>
+                                        </div>
+                                          
+                    
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 experience-input">
+                                    <label for="" class="col-sm-3 col-form-label text_edit">Experiences</label>
+                                    <textarea class="form-control input-border experience-input" id="experience"
+                                        name="experience" rows="3" onchange="setExp(event)"
+                                        placeholder="Type your experiences in pet sitting..."
+                                        value="<%= post.experience%>">
+                                        <%= post.experience%>
+                                    </textarea>
+                                </div>
+
+                                <input type="hidden" name="postId" id="postId" value="<%= post._id%>"/>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="col-lg-12 text-end">
+                                    <button type="submit" id="getValue"
+                                        class="btn btn-primary post-save-btn"><%= btnName%></button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
 <script>

@@ -62,7 +62,7 @@ const ProfileSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   {

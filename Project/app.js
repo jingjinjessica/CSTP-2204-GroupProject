@@ -15,10 +15,14 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const petPost = require("./server/model/PetPost");
 const sitterPost = require("./server/model/PetSitterPost");
-const profile = require("./server/model/Profile");
 const http = require("http");
 // const middleware = require("./middleware/middleware");
 const chatroomRoutes = require("./server/routes/message");
+const SitterPost = require("./server/model/PetSitterPost");
+const session = require('express-session');
+const profile = require('./server/model/Profile');
+
+
 
 require("dotenv").config();
 
@@ -44,9 +48,48 @@ mongoose.connect(process.env.MONGO_URL, (error) => {
   }
 });
 
-app.get("/index", (req, res) => {
-  res.render("pages/index");
+app.use((req, res, next) => {
+    if(!isEmptyObject(req.cookies) && req.cookies.hasOwnProperty("access-token")){
+      res.locals.isLogin = true;
+    }
+    else{
+      res.locals.isLogin = false;
+    }
+
+    if(!isEmptyObject(req.cookies) && req.cookies.hasOwnProperty("user-name")){
+      res.locals.userName = req.cookies["user-name"];
+    }
+    else{
+      res.locals.userName = "User Name";
+    }
+
+  next();
 });
+
+const isEmptyObject = (obj) => {
+  return obj === undefined || obj === null || JSON.stringify(obj) === JSON.stringify({});
+}
+
+// home page sitter display
+app.get("/", async (req, res) => {
+  const data = await SitterPost.aggregate([
+    {
+        $lookup: {
+            from: "profiles",
+            localField: "userID",
+            foreignField: "userID",
+            as: "profile"
+        },   
+    },
+    {$unwind:"$profile"},
+    {$sample:{size:6}}
+    
+  ]);
+  console.info(data);
+  res.render("pages/index",{data});
+});
+
+
 app.get("/login", (req, res) => {
   res.render("pages/login");
 });
@@ -83,8 +126,9 @@ app.get("/petOwnerPost", (req, res) => {
     post: { title: "", desc: "", startDate: "", endDate: "", _id: "" },
     btnName: "Save",
   });
+app.get("/petOwnerPost", (req, res) => {
+  res.render("pages/petOwnerPost",{post:{title:"",desc:"",startDate:"",endDate:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
 });
-
 app.get("/petSitterPost", (req, res) => {
   res.render("pages/sitterPost", {
     post: { title: "", rate: "", services: "", experience: "", _id: "" },
@@ -138,12 +182,82 @@ app.get("/petSitterPost", (req, res) => {
 //   }
 // });
 
+  res.render("pages/sitterPost",{post:{title:"",rate:"",services:"",desc:"", _id:""}, btnName:"Save",locals:{session:{loggedin:true}}});
+});
+
+
+// FAKE DATA FOR CHAT TESTING
+const peopleList = [{
+  "id": 1,
+  "avatar_img": "/image/cat-dog-cuddle.jpg",
+  "full_name": "Torey Groven",
+  "chat_msg": ["Hello..my name is Torey. Nice to meet you", "test"],
+}, {
+  "id": 2,
+  "avatar_img": "/image/black-cat.jpg",
+  "full_name": "Sheridan Freebury",
+  "chat_msg": ["I love youuuu and I also hate you"]
+}, {
+  "id": 3,
+  "avatar_img": "/image/three-pets-laying.jpg",
+  "full_name": "Ann Noweak",
+  "chat_msg": ["I wanna eat ramen for some reason"]
+}]
+
+const renderedData = encodeURIComponent(JSON.stringify(peopleList));
+app.get("/chat", (req, res) => {
+  res.render("pages/chat", {peopleList: peopleList, renderedData})
+  
+});
+
 function userLogger(req, res, next) {
   console.log("Loading User requests....");
   next(); // Pass the control to the next middleware
-}
+};
 
-// app.use(middleware.authMiddleware);
+/*  PASSPORT SETUP  */
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: 'SECRET' 
+}));
+const passport = require('passport');
+var userProfile;
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+/*  Google AUTH  */
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GOOGLE_CLIENT_ID = '400184236994-pk2n0ht5cgck60qf7g6imt85crv7tbp8.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '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';
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback/"
+  },
+  function(accessToken, refreshToken, profile, done) {
+      userProfile=profile;
+      return done(null, userProfile);
+  }
+));
+ 
+app.get('/auth/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+app.get('/auth/google/callback/', 
+  passport.authenticate('google', { failureRedirect: '/error' }),
+  function(req, res) {
+    // Successful authentication, redirect success.
+    res.redirect(`/users/googlelogin?email=${req.user.emails[0].value}` );
+  });
 
 // We will use middleware
 app.use("/api/v1/users", userLogger, userRoutes);

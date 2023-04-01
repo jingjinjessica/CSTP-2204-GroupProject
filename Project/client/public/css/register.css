@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600;700;800;900&display=swap');
 
 .register-form-area {
     margin-left: 35px;
@@ -142,8 +142,16 @@
     } */
 }
 
+@media (max-width: 1200px){
+    .register-input-struct {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1281px) {
     .register-h-custom {
         height: 100%;
     }
@@ -195,7 +203,19 @@
 
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
-    /* body {
-        background-color: white;
-    } */
+    .bigger-screen-radio-select .user-type{
+        margin-left: 0px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .register-input-struct {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .offset-xl-1 {
+        /* margin-left: 0px; */
+    }
 }
