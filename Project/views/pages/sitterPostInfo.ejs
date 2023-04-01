@@ -136,8 +136,11 @@
                     <div id="chatContainer">
                         <div id="friendslist">                                
                             <form id="search">
-                                <input type="text" id="searchfield" placeholder="Enter your message..." />
-                                <button type="submit">Send</button>
+                                <div class="sendmessage" id="sendmessage-box">
+                                    <input type="text" id="searchfield" placeholder="Enter your message..." />
+                                    <button type="submit">Send</button>
+                                </div>
+                                
                             </form>
         
                             </div>                
@@ -206,7 +209,8 @@
             await sendMsg(roomId, currUserName, sitterName,currUserAvatar,sitterAvatar, msg);
 
             const msgDisplay = document.createElement("div");
-            msgDisplay.innerHTML = "<p><strong>"+currUserName+":</strong> " + msg + "</p>";
+            msgDisplay.className = "owner-right";
+            msgDisplay.innerHTML = "<p class='text-bubble'><strong>"+currUserName+":</strong></p><p class='owner-rightMsg'>" + msg + "</p>";
             const msgList = document.getElementById("chatContainer");
             msgList.appendChild(msgDisplay);
 
@@ -288,7 +292,7 @@
             
             $(".message").not(".right").find("img").attr("src", $(clone).attr("src"));
             $('#friendslist').fadeOut();
-            $('#chatview').fadeIn();
+            $('#chatview').fadeOut();
         
             // CLOSING THE CHAT CONTENT (WORKS)
             $('#close').unbind("click").click(function(){				
@@ -301,7 +305,7 @@
                 }, 200, function(){$('.floatingImg').remove()});				
                 
                 setTimeout(function(){
-                    $('#chatview').fadeOut();
+                    $('#chatview').fadeIn();
                     $('#friendslist').fadeIn();				
                 }, 50);
             });   

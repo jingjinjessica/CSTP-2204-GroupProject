@@ -87,7 +87,7 @@
                 </div>
             </section>
 
-             <section class="section pet-info">
+             <!-- <section class="section pet-info">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -116,7 +116,7 @@
                        </div>                        
                     </div>
                 </div>
-            </section> 
+            </section>  -->
 
 
             <!-- LIVE CHAT -->
@@ -132,8 +132,13 @@
                     <div id="chatContainer">
                         <div id="friendslist">
                             <form id="search">
-                                <input type="text" id="searchfield" placeholder="Enter your message..." />
-                                <button type="submit">Send</button>
+                                <div class="sendmessage" id="sendmessage-box">
+
+
+                                    <input type="text" id="searchfield" placeholder="Enter your message..." />
+                                    <button type="submit">Send</button>
+                                </div>
+                                
                             </form> 
                             <!-- <div id="friends">
                                 <div class="friend">
@@ -246,7 +251,8 @@ async function postChat(e) {
     await sendMsg(roomId, currUserName, ownerName,currUserAvatar,ownerAvatar, msg);
 
     const msgDisplay = document.createElement("div");
-    msgDisplay.innerHTML = "<p><strong>"+currUserName+":</strong> " + msg + "</p>";
+    msgDisplay.className = "owner-right";
+    msgDisplay.innerHTML = "<p class='text-bubble'><strong>"+currUserName+":</strong></p><p class='owner-rightMsg'>" + msg + "</p>";
     const msgList = document.getElementById("chatContainer");
     msgList.appendChild(msgDisplay);
 
@@ -327,7 +333,7 @@ async function postChat(e) {
             
             $(".message").not(".right").find("img").attr("src", $(clone).attr("src"));									
             $('#friendslist').fadeOut();
-            $('#chatview').fadeIn();
+            $('#chatview').fadeOut();
         
             
             $('#close').unbind("click").click(function(){				
@@ -341,7 +347,7 @@ async function postChat(e) {
                 
                 setTimeout(function(){
                     $('#chatview').fadeOut();
-                    $('#friendslist').fadeIn();				
+                    $('#friendslist').fadeOut();				
                 }, 50);
             });   
         });

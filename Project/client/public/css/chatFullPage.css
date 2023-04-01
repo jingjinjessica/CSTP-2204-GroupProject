@@ -113,14 +113,16 @@ ul {
 }
 
 .messageBox {
-    height: 65%;
+    height: 90%;
     /* overflow: scroll; */
 }
 
 .sendMsgBox {
     background-color: #EAF4F4;
     height: 10%;
+    /* position: fixed; */
     bottom: 0;
+    width: 100%;
 }
 
 .inputMsg {
@@ -151,6 +153,10 @@ ul {
 
 .active-select {
     background-color: #EAF4F4;
+}
+
+.default-active-select {
+    background-color: white;
 }
 
 .client-side-msg {
@@ -204,6 +210,18 @@ ul {
     width: 80px;
 }
 
+.owner-msg-container {
+    float: right;
+}
+
+.owner-msg-container .owner-right-msg .sender-edit p{
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+
+/* FAKE DATA CSS */
 .owner-msg-container .owner-right-msg p{
     border: 1px solid black;
     padding: 5px;
