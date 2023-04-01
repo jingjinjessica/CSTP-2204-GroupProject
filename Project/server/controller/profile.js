@@ -55,6 +55,7 @@ const createPetOwner = async (req, res) => {
       petType: "Choose",
       avatarImage: "/image/add-img.png",
       petImage: "/image/add-img.png",
+      isCreate: true,
     });
   } else {
     res.render("pages/createPetOwnerProfile", {
@@ -69,45 +70,9 @@ const createPetOwner = async (req, res) => {
       petType: profileInform.petType,
       avatarImage: profileInform.avatar ?? "/image/add-img.png",
       petImage: profileInform.petImage ?? "/image/add-img.png",
+      isCreate: false,
     });
   }
-//GET to satrt create Pet Owner Profile 
-const createPetOwner = async (req,res) => {
-    const token = req.cookies["access-token"];
-    const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
-    const profileInform = await getProfileByUserEmail(decodedValues.email);
-    if ( profileInform === null || JSON.stringify(profileInform) === "{}"){
-        res.render('pages/createPetOwnerProfile',{
-            email:decodedValues.email,
-            name:"",
-            phone:"",
-            province:"Choose",
-            city:"Choose",
-            petName:"",
-            petAge:"Choose",
-            petWeight:"Choose",
-            petType:"Choose",
-            avatarImage: "/image/add-img.png",
-            petImage: "/image/add-img.png",
-            isCreate: true
-        });
-    }
-    else {
-        res.render('pages/createPetOwnerProfile',{
-            email:decodedValues.email, 
-            name:profileInform.name,
-            phone:profileInform.phone,
-            province:profileInform.province,
-            city:profileInform.city,
-            petName:profileInform.petName,
-            petAge:profileInform.petAge,
-            petWeight:profileInform.petWeight,
-            petType:profileInform.petType,
-            avatarImage: profileInform.avatar??"/image/add-img.png",
-            petImage: profileInform.petImage??"/image/add-img.png",
-            isCreate: false
-        } );
-    }
 };
 
 //Get user
@@ -184,7 +149,6 @@ const createOwnerPost = async (req, res) => {
       { new: false }
     );
   }
-
   const hasP = await hasProfile(req);
   // Owner profile update
   if (hasP) {
@@ -200,82 +164,62 @@ const createOwnerPost = async (req, res) => {
         petWeight: data.petWeight,
         petType: data.petType,
       },
-    
     };
     if (JSON.stringify(avatarImageResult) !== "{}") {
       updateClause["$set"]["avatar"] = avatarImageResult.url;
     }
-    const hasP = await hasProfile(req);
-    // Owner profile update
-    if (hasP){
-        const userEntity =await getUserEntity(req);
-        const updateClause = {$set:{name:data.name,
-                                    phone:data.phone,
-                                    province:data.province,
-                                    city:data.city,
-                                    petName:data.petName,
-                                    petAge:data.petAge,
-                                    petWeight:data.petWeight,
-                                    petType:data.petType
-                                }};
-          if (JSON.stringify(avatarImageResult) !== "{}"){
-            updateClause["$set"]["avatar"] = avatarImageResult.url;
-          }
-          if (JSON.stringify(petImageResult) !== "{}"){
-            updateClause["$set"]["petImage"] = petImageResult.url;
-          }
-          Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
-    
-          return res.redirect("/list/listsitterpost")
-          
-        }).catch((error) => {
-            console.log(error);
-            return res.status(500). json({
-              message: "fail to update user",
-              error
-            })
-          });    
-        }
-  
-    // Owner profile create
-    else {
-        const userEntity = await getUserEntity(req);
-        const newProfile = new Profile({
-            avatar:avatarImageResult.url,
-            name: data.name,
-            province:data.province,
-            city:data.city,
-            phone:data.phone,
-            petImage:petImageResult.url,
-            petName:data.petName,
-            petAge:data.petAge,
-            petWeight:data.petWeight,
-            petType:data.petType,
-            userID: userEntity._id
-        })
-        try{
-            const output = await newProfile.save();
-            // return res.status(201).json({
-            //     message: "Post Succesfully Created",
-            // data: output
-            // });
-            return res.redirect("/list/listsitterpost");
-        }catch (error) {
-            console.info(error);
-            return res.status(500).json({
-            message: "There was an error",
-            error,
-            
-            });
-        }
-      
+    if (JSON.stringify(petImageResult) !== "{}") {
+      updateClause["$set"]["petImage"] = petImageResult.url;
     }
-  
+    Profile.findOneAndUpdate(
+      { userID: userEntity._id.toString() },
+      updateClause,
+      { new: true }
+    )
+      .then((data) => {
+        return res.redirect("/list/listsitterpost");
+      })
+      .catch((error) => {
+        console.log(error);
+        return res.status(500).json({
+          message: "fail to update user",
+          error,
+        });
+      });
   }
-}
-    // console.info(req.body);
+  // Owner profile create
+  else {
+    const userEntity = await getUserEntity(req);
+    const newProfile = new Profile({
+      avatar: avatarImageResult.url,
+      name: data.name,
+      province: data.province,
+      city: data.city,
+      phone: data.phone,
+      petImage: petImageResult.url,
+      petName: data.petName,
+      petAge: data.petAge,
+      petWeight: data.petWeight,
+      petType: data.petType,
+      userID: userEntity._id,
+    });
+    try {
+      const output = await newProfile.save();
+      // return res.status(201).json({
+      //     message: "Post Succesfully Created",
+      // data: output
+      // });
+      return res.redirect("/list/listsitterpost");
+    } catch (error) {
+      console.info(error);
+      return res.status(500).json({
+        message: "There was an error",
+        error,
+      });
+    }
+  }
+  // console.info(req.body);
 };
-
 ///////Pet Sitter
 const createPetSitter = async (req, res) => {
   const token = req.cookies["access-token"];
@@ -293,6 +237,7 @@ const createPetSitter = async (req, res) => {
       photo1: "/image/add-img.png",
       photo2: "/image/add-img.png",
       photo3: "/image/add-img.png",
+      isCreate: true,
     });
   } else {
     res.render("pages/createPetSitterProfile", {
@@ -306,9 +251,9 @@ const createPetSitter = async (req, res) => {
       photo1: profileInform.photo1 ?? "/image/add-img.png",
       photo2: profileInform.photo2 ?? "/image/add-img.png",
       photo3: profileInform.photo3 ?? "/image/add-img.png",
+      isCreate: false,
     });
   }
-
 };
 
 const createSitterPost = async (req, res) => {
@@ -327,7 +272,6 @@ const createSitterPost = async (req, res) => {
       { $set: { password: encryptPassword } },
       { new: false }
     );
-  
   }
   const hasP = await hasProfile(req);
   // Sitter profile update
@@ -345,79 +289,12 @@ const createSitterPost = async (req, res) => {
     if (JSON.stringify(avatarImageResult) !== "{}") {
       updateClause["$set"]["avatar"] = avatarImageResult.url;
     }
-  
-    const hasP = await hasProfile(req);
-    // Sitter profile update
-    if (hasP){
-        const userEntity =await getUserEntity(req);
-        const updateClause = {$set:{name:data.name,
-                                    phone:data.phone,
-                                    province:data.province,
-                                    city:data.city,
-                                    aboutMe:data.aboutMe
-                                }};
-          if (JSON.stringify(avatarImageResult) !== "{}"){
-            updateClause["$set"]["avatar"] = avatarImageResult.url;
-          }
-          if (JSON.stringify(photo1Result) !== "{}"){
-            updateClause["$set"]["photo1"] = photo1Result.url;
-          }
-          if (JSON.stringify(photo2Result) !== "{}"){
-            updateClause["$set"]["photo2"] = photo2Result.url;
-          }
-          if (JSON.stringify(photo3Result) !== "{}"){
-            updateClause["$set"]["photo3"] = photo3Result.url;
-          }
-          Profile.findOneAndUpdate({userID: userEntity._id.toString()}, updateClause, {new: true}).then((data) => {
-          // return res.status(200).json({
-          //   message: "updated Succesfully",
-          //   data
-          // })
-          console.info(data);
-          return res.redirect("/list/listpetpost")
-          
-        }).catch((error) => {
-            console.log(error);
-            return res.status(500). json({
-              message: "fail to update user",
-              error
-            })
-          });    
+    if (JSON.stringify(photo1Result) !== "{}") {
+      updateClause["$set"]["photo1"] = photo1Result.url;
     }
-  
-    // Sitter profile create
-    else {
-        const userEntity = await getUserEntity(req);
-        const newProfile = new Profile({
-            avatar:avatarImageResult.url,
-            name: data.name,
-            province:data.province,
-            city:data.city,
-            phone:data.phone,
-            aboutMe:data.aboutMe,
-            photo1:photo1Result.url,
-            photo2:photo2Result.url,
-            photo3:photo3Result.url,
-            userID: userEntity._id
-        })
-      
-        try{
-            const output = await newProfile.save();
-            // return res.status(201).json({
-            //     message: "Post Succesfully Created",
-            // data: output
-            // });
-            //console.info(data);           
-            return res.redirect("/list/listpetpost");
-        }catch (error) {
-            console.info(error);
-            return res.status(500).json({
-            message: "There was an error",
-            error,
-            });
-        }
+    if (JSON.stringify(photo2Result) !== "{}") {
+      updateClause["$set"]["photo2"] = photo2Result.url;
     }
-  
     if (JSON.stringify(photo3Result) !== "{}") {
       updateClause["$set"]["photo3"] = photo3Result.url;
     }
@@ -432,7 +309,7 @@ const createSitterPost = async (req, res) => {
         //   data
         // })
         console.info(data);
-        return res.redirect("/users/dashboard");
+        return res.redirect("/list/listpetpost");
       })
       .catch((error) => {
         console.log(error);
@@ -442,7 +319,6 @@ const createSitterPost = async (req, res) => {
         });
       });
   }
-
   // Sitter profile create
   else {
     const userEntity = await getUserEntity(req);
@@ -465,7 +341,7 @@ const createSitterPost = async (req, res) => {
       // data: output
       // });
       //console.info(data);
-      return res.redirect("/users/dashboard");
+      return res.redirect("/list/listpetpost");
     } catch (error) {
       console.info(error);
       return res.status(500).json({
@@ -477,13 +353,12 @@ const createSitterPost = async (req, res) => {
   //console.info(req.body);
 };
 
-
 module.exports = {
   createPetOwner,
   createPetSitter,
   getProfile,
   createOwnerPost,
   createSitterPost,
-  getCurrUser,
   getProfileByUserEmail,
+  getCurrUser,
 };
