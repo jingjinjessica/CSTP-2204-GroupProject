@@ -74,20 +74,35 @@
             </ul>
         </aside>
 
-        <section>
-            <ul id="messages">
-               
-            </ul>
-                <div class="sendMsgBox d-flex align-items-center">
-                    <div class="container">
-                        <div class="d-flex justify-content-center">
-                            <form id="inputMsg" onsubmit="handleSendMsg(event)">
-                                <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
-                                <button class="sendBtn" type="submit">Send</button>
-                            </form>
+        <section class="chat-viewer">
+            <!-- <div class="colorEdit">
+                <div class="container">
+                    <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+                        <div class="profilePic">
+                            <span class="avatar-img-query">
+                                <img src=<%= //chatrooms[i].user2Avatar %> alt="">
+                            </span>
                         </div>
                     </div>
                 </div>
+            </div> -->
+
+            <div class="messageBox">
+                <ul id="messages" class="owner-msg-container mt-3">
+               
+                </ul>
+            </div>
+            
+            <div class="sendMsgBox d-flex align-items-center">
+                <div class="container">
+                    <!-- <div class="d-flex justify-content-center"> -->
+                        <form id="inputMsg" onsubmit="handleSendMsg(event)" class="d-flex justify-content-center">
+                            <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
+                            <button class="sendBtn" type="submit">Send</button>
+                        </form>
+                    <!-- </div> -->
+                </div>
+            </div>
         </section>
     </main>
 
@@ -152,7 +167,8 @@
                             // If a document was added, render a new message element and add it to the message list
                             const messageData = change.doc.data();
                             const messageElement = document.createElement('li');
-                            messageElement.innerHTML = "<p><strong>"+messageData.sender + ":</strong>" + messageData.msg + "</p>";
+                            messageElement.className = "owner-right-msg";
+                            messageElement.innerHTML = "<div class='d-flex flex-row-reverse'><div class='sender-edit'><p><strong>"+messageData.sender + "</strong></p></div><p>" + messageData.msg + "</p></div>";
                             msgs.appendChild(messageElement);
                         }
                 });
@@ -168,3 +184,34 @@
 
 </body>
 </html>
+<script>
+    const defaultSelect = document.querySelector('ul.people');
+    const defaultIndex = 0;
+    defaultSelect.querySelectorAll('li')[defaultIndex].classList.add("active-select")
+
+    // THIS IS TO INSERT THE JSON OBJECT VALUES BY QUERYING THE DESTINATION PATH
+    let people = {
+        list: document.querySelector("ul.people"),
+        all: document.querySelectorAll(".sidebar-container .select-person-chat"),
+        avatarImg: document.querySelector(".sidebar-container .select-person-chat .avatar-chat-img .people-img-sidebar"),
+        name: ""
+    };
+
+    let chat = {
+        avatarImg: document.querySelector(".container-separator .chat-viewer .colorEdit .container .get-username .get-username2 .get-username3 .profilePic .avatar-img-query"),
+        name: document.querySelector(".container-separator .chat-viewer .colorEdit .container .get-username .get-username2 .get-username3 .name"),
+        msgAvatar: document.querySelector(".container-separator .chat-viewer .messageBox .container .messageBox-container .client-side-msg .their-msg .their-img"),
+        msgcontent: document.querySelector(".container-separator .chat-viewer .messageBox .container .messageBox-container .client-side-msg .sitter-side-msg")
+    }
+
+    people.all.forEach((p) => {
+        p.addEventListener("click", () => {
+            p.classList.contains("active-select") || displayChat(p)
+        });
+    });
+
+    function displayChat(p){
+        people.list.querySelector(".active-select").classList.remove("active-select");
+        p.classList.add("active-select");
+    }
+</script>
