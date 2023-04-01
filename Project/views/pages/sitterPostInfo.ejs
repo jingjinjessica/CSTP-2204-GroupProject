@@ -128,67 +128,20 @@
             <div id="chatBox">
                 <header class="clearfix">
                    
-                   <h4><span aria-hidden="true" class="icon-bubble"></span> Chat now!</h4>
+                   <h4><span aria-hidden="true" class="icon-bubble"></span> Message to <%= sitter.name%></h4>
                    
                 </header>
           
                 <div class="chat" style="display: none;">
                     <div id="chatContainer">
-                        <div id="friendslist">
-                            <div id="friends">
-                                <div class="friend">
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
-                                    <p>
-                                        <strong>Miro Badev</strong>
-                                        <span>mirobadev@gmail.com</span>
-                                    </p>
-                                    <div class="status available"></div>
-                                </div>
-        
-                                <div id="search">
-                                    <input type="text" id="searchfield" value="Search contacts..." />
-                                </div>
+                        <div id="friendslist">                                
+                            <form id="search">
+                                <input type="text" id="searchfield" placeholder="Enter your message..." />
+                                <button type="submit">Send</button>
+                            </form>
         
                             </div>                
-        
                         </div>	
-        
-                            <div id="chatview" class="p1">   
-                                <!--FRIEND EXAMPLE -->
-                                <div id="profileInfo">
-            
-                                    <div id="close">
-                                        <div class="cy"></div>
-                                        <div class="cx"></div>
-                                    </div>
-            
-                                    <p>Miro Badev</p>
-                                    <span>miro@badev@gmail.com</span>
-                                </div>
-
-                                <div id="chat-content">
-                                    
-                                    <!-- You can use this id or manually create it from server -->
-                                    <!-- For the pet Sitter page, pet owner will placed of the right side -->
-                                    <!-- while pet sitter will be the left side -->
-                                    <div class="owner-right" id="ownerMsg">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" class="photoSizeEdit"/>
-                                        <div class="text-bubble">
-                                            <p class="owner-rightMsg">Hello</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="sitter-left" id="sitterMsg">
-                                        <img src="/image/person-window.jpg" alt="pet sitter" class="photoSizeEdit">
-                                        <p>BELLLOO</p>
-                                    </div>
-                                </div>
-        
-                                <div id="sendmessage">
-                                    <input type="text" value="Send message..." />
-                                    <button id="send">Send</button>
-                                </div>
-        
                             </div>        
                     </div>	
                         <!-- end live-chat -->
@@ -207,9 +160,63 @@
                     <a><i class="material-symbols-outlined live-chat"><!--sms--></i></a></div>
             </div> 
             <%- include('../partials/footer') %>
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+            <script src="/js/chat.js"></script> 
     </body>
 </html>
 <script>
+    document.getElementById("search").addEventListener("submit", postChat);
+      async function postChat(e) {
+        e.preventDefault();
+
+            const sitterId = `<%- sitter.userID %>`;
+            const sitterName = `<%- sitter.name %>`;
+            const sitterAvatar = `<%- sitter.avatar %>`;
+
+
+        try {
+            const response = await fetch("/profile/getCurrUserProfile", {
+            method: "get",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("access-token")
+                )}`,
+            },
+            })
+
+            const currUserProfile = await response.json();
+            
+            const currUserId = currUserProfile.profile.userID;
+            const currUserName = currUserProfile.profile.name;
+            const currUserAvatar = currUserProfile.profile.avatar;
+            
+            const roomId = sitterId + "_" + currUserId;
+
+
+            if(currUserProfile){
+                localStorage.setItem("profile",JSON.stringify(currUserProfile.profile));
+            }
+
+            const msg = document.getElementById("searchfield").value;
+
+            
+            await sendMsg(roomId, currUserName, sitterName,currUserAvatar,sitterAvatar, msg);
+
+            const msgDisplay = document.createElement("div");
+            msgDisplay.innerHTML = "<p><strong>"+currUserName+":</strong> " + msg + "</p>";
+            const msgList = document.getElementById("chatContainer");
+            msgList.appendChild(msgDisplay);
+
+  } 
+  catch (error) {
+    console.log(error);
+  }
+};
+
+
     (function() {
  
     $('#chatBox header').on('click', function() {

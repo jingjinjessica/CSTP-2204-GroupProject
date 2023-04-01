@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Message</title>   
+  </head>
+  <body>    
+    <div id="chat">     
+        <ul id="messages"></ul>
+        <form id="send-message">
+          <input id="chat-txt" type="text" />
+          <button id="chat-btn" type="submit">Submit</button>
+        </form>      
+    </div>    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="/js/chat.js"></script>   
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js" integrity="sha512-ew6biq+ZLL9Oatatxp3TMwzqfYWjPNVj555KxiE2mV5Sc2/1Z5SOWSbViBH+KXU788ESsXDa5m0cgRKTBqO44w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <%- include('../partials/header') %> 
+    <main class="container-separator">
+        <aside class="sidebar-container">
+            <ul class="people" id="people-list">
+                <% for(var i = 0; i < chatrooms.length; i++) {%>
+                    <li class="select-person-chat"
+                    onclick="handleFetchMsg('<%= chatrooms[i].id %>')"   >
+                        <% if(chatrooms[i].users[0] == currUser){%>
+                            <div class="avatar-chat-img">
+                                <span class="people-img-sidebar" id="people-img-sidebar">
+                                    <img src= <%= chatrooms[i].user2Avatar %> 
+                                    alt="avatar image">
+                                </span>  
+                            </div>
+                            <div class="person-chat-info">
+                                <div class="person-fullname" id="person-fullname">
+                                <span class="person-name">
+                                    <%= chatrooms[i].users[1] %>
+                                </span>
+                            </div>
+                            <div class="person-lastmsg">
+                                <%= chatrooms[i].lastMsg.msg %>
+                            </div>
+
+                        </div>
+                            <%}else{%>
+                                <div class="avatar-chat-img">
+                                    <span class="people-img-sidebar" id="people-img-sidebar">
+                                        <img src= <%= chatrooms[i].user1Avatar %> 
+                                        alt="avatar image">
+                                    </span>  
+                                </div>
+                                <div class="person-chat-info">
+                                    <div class="person-fullname" id="person-fullname">
+                                    <span class="person-name">
+                                        <%= chatrooms[i].users[0] %>
+                                    </span>
+                                </div>
+                                <div class="person-lastmsg">
+                                    <%= chatrooms[i].lastMsg.msg %>
+                                </div>
+                            <%}%>   
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </aside>
+
+        <section>
+            <ul id="messages">
+               
+            </ul>
+                <div class="sendMsgBox d-flex align-items-center">
+                    <div class="container">
+                        <div class="d-flex justify-content-center">
+                            <form id="inputMsg" onsubmit="handleSendMsg(event)">
+                                <input type="text" id="textMsg" class="form-control inputMsg" placeholder="Type a message">
+                                <button class="sendBtn" type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <script>
+          let currActiveChatroom = null;
+          let currActiveChatPerson = null;
+          
+          async function handleSendMsg(e) {
+            e.preventDefault();
+
+            console.log("curractive",currActiveChatroom);
+
+            //check if an chatroom has been selected
+            if (!currActiveChatroom) return;
+
+            //get new message value
+            const inputMsg = document.getElementById("textMsg").value;
+            if (!inputMsg) return;
+
+            //firestore chat room reference
+            const chatRoomRef = await db.collection("chats").doc(currActiveChatroom);
+
+            //firestore messages of chatroom reference
+            const messagesRef = await chatRoomRef.collection("messages");
+            
+            //new message object to add to database
+            const newMsg = {
+                roomId: currActiveChatroom,
+                sender: '<%= currUser %>',
+                receiver: currActiveChatPerson,
+                msg: inputMsg,
+                timestamp: Date.now(),
+            };
+
+            //update the chatroom latest message
+            await chatRoomRef.update({
+                lastMsg: newMsg,
+            });
+
+            //add the new message to chatroom's messages
+            await messagesRef.add(newMsg);
+            
+          }
+
+          async function handleFetchMsg(id) { 
+            currActiveChatroom = id;
+            let currUserName = '<%= currUser %>'
+            const msgs = document.getElementById("messages");
+            const chatRoomRef = await db.collection("chats").doc(id);
+            await chatRoomRef.get().then((doc)=>{
+                let chatRoomData = doc.data();
+                currActiveChatPerson = chatRoomData.users.filter(user => user != currUserName)[0];
+            })
+            console.log("this is the room id",chatRoomRef.id);
+            const messagesRef = chatRoomRef.collection("messages");
+            msgs.innerHTML = '';
+            messagesRef.orderBy('timestamp').onSnapshot((querySnapshot) => {
+                
+                // Loop over each document change in the query snapshot
+                querySnapshot.docChanges().forEach((change) => {
+                        if (change.type === 'added') {
+                            // If a document was added, render a new message element and add it to the message list
+                            const messageData = change.doc.data();
+                            const messageElement = document.createElement('li');
+                            messageElement.innerHTML = "<p><strong>"+messageData.sender + ":</strong>" + messageData.msg + "</p>";
+                            msgs.appendChild(messageElement);
+                        }
+                });
+            });
+        }
+
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="/js/chat.js"></script> 
+
+</body>
+</html>

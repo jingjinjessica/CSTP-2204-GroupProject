@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
   const newUser = new User({
     email: data.email,
     password: encryptPassword,
-    userType: data.userType
+    userType: data.userType,
   });
   try {
      const p1 = await newUser.save();
@@ -30,12 +30,11 @@ const registerUser = async (req, res) => {
   }
 };
 
-
 const getProfileByUserEmail = async (email) => {
   //console.info(email);
-  const user = await User.findOne({email: email});
+  const user = await User.findOne({ email: email });
   //console.info(user);
-  const profile = await Profile.findOne({userID: user._id.toString()});
+  const profile = await Profile.findOne({ userID: user._id.toString() });
   //console.info(profile);
   return profile;
 };
@@ -70,11 +69,16 @@ const loginUser = async (req, res) => {
   if (foundUser) {
     // Then we will check for password
     // This will be either true or false
-    const matchPassword = await bcrypt.compare(data.password,foundUser.password);
+    const matchPassword = await bcrypt.compare(
+      data.password,
+      foundUser.password
+    );
     if (matchPassword) {
       // // We are trying to create an access token based on which the user will be able to interact with the website
-      const accessToken = jwt.sign({
-          email: foundUser.email
+      const accessToken = jwt.sign(
+        {
+          email: foundUser.email,
+          sub: foundUser._id,
         },
         process.env.SECRET_KEY
       );
@@ -162,7 +166,7 @@ function formatDate(date){
   date.getDate();
 };
 
-const getHistoryPost = async (req,res) => {
+const getHistoryPost = async (req, res) => {
   const token = req.cookies["access-token"];
   const decodedValues = jwt.verify(token, process.env.SECRET_KEY);
   const post = await getPostByEmail(decodedValues.email);
@@ -176,15 +180,18 @@ const getHistoryPost = async (req,res) => {
   }
 };
 
-const getUser =async (email) => {
+const getUser = async (email) => {
   const user = await User.findOne({ email: email });
   return user;
 };
   
 const getPostByEmail = async (email) => {
   const user = await User.findOne({ email: email });
-  if (user.userType === "owner"){
-    const post = await PetPost.find({userID: user._id.toString() })
+  if (user.userType === "owner") {
+    const post = await PetPost.find({ userID: user._id.toString() });
+    return post;
+  } else if (user.userType === "sitter") {
+    const post = await SitterPost.find({ userID: user._id.toString() });
     return post;
   }
   else if (user.userType === "sitter"){
