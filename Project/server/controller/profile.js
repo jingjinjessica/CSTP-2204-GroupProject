@@ -210,7 +210,8 @@ const createPetSitter = async(req,res) =>{
             avatarImage: "/image/add-img.png",
             photo1: "/image/add-img.png",
             photo2: "/image/add-img.png",
-            photo3: "/image/add-img.png"
+            photo3: "/image/add-img.png",
+            isCreate: true
         });
     }
     else {
@@ -224,7 +225,8 @@ const createPetSitter = async(req,res) =>{
             avatarImage: profileInform.avatar??"/image/add-img.png",
             photo1: profileInform.photo1??"/image/add-img.png",
             photo2: profileInform.photo2??"/image/add-img.png",
-            photo3: profileInform.photo3??"/image/add-img.png"
+            photo3: profileInform.photo3??"/image/add-img.png",
+            isCreate: false
         } );
     }
 };

@@ -101,20 +101,19 @@
             <!-- filter end -->
             <div class="row post-list" id="joblistsview">
                 <% for(var i=result.length - 1; i >= 0 ; i--) {%>
-                    <div class="card mb-3 post-card">
+                    <div class="card mb-3 sitter-post-card">
                         <div class="row no-gutters">
                             <div class="col-md-4 img-area">
-                                <img id="myImg" src="<%= result[i].profile.avatar%>" class="card-img list-img" alt="pet-img">
+                                <img id="myImg" src="<%= result[i].profile.avatar%>" class="card-img sitter-list-img" alt="pet-img">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body card-content-list">
-                                    <h4 class="card-title">
+                                    <h4 class="card-title list-title">
                                         <%= result[i].title %>
                                     </h4>
                                     <h5 class="location">
-                                        Location: <%= result[i].city %> ,<%= result[i].profile.province %>
-                                    </h5>
-                                    <h5 class="location">
+                                        Location: <%= result[i].city %></h5>
+                                    <h5 class="rate">
                                         Rate: $<%= result[i].rate %> Per Day
                                     </h5>
                                     <p class="card-text info text-break">

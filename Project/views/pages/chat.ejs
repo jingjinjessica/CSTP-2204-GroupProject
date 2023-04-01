@@ -119,7 +119,7 @@
         // THE FIRST USER CHAT DEFAULT
         const defaultSelect = document.querySelector('ul.people');
         const defaultIndex = 0;
-        defaultSelect.querySelectorAll('li')[defaultIndex].classList.add("active");
+        defaultSelect.querySelectorAll('li')[defaultIndex].classList.add("active-select");
 
         // THIS IS TO INSERT THE JSON OBJECT VALUES BY QUERYING THE DESTINATION PATH
         let people = {
@@ -141,14 +141,14 @@
 
         people.all.forEach((p) => {
             p.addEventListener("click", () => {
-                p.classList.contains("active") || displayChat(p)
+                p.classList.contains("active-select") || displayChat(p)
             });
         });
 
         function displayChat(p){
 
-            people.list.querySelector(".active").classList.remove("active");
-            p.classList.add("active");
+            people.list.querySelector(".active-select").classList.remove("active-select");
+            p.classList.add("active-select");
 
             // people.avatarImg = p.querySelector(".people-img.sidebar").innerHTML;
             

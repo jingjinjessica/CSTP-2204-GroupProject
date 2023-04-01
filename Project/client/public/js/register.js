@@ -68,7 +68,7 @@ const validateFormRegister = () =>{
 
 const submitRegisterForm = async (event) => {
   event.preventDefault();
-  if(!validateForm()){
+  if(!validateFormRegister()){
     return false;
   }
   //console.log(user);
