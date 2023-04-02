@@ -241,7 +241,7 @@
     }
 }
 
-@media (min-width: 1281px) and (max-width: 1399px) {
+@media (min-width: 1281px) and (max-width: 1300px) {
     .login-img {
         margin-top: 20px;
     }
@@ -251,6 +251,8 @@
     }
 
     .login-title {
+        position: relative;
+        left: -10px;
         margin-left: 0px;
         margin-right: 0px;
     }
@@ -299,7 +301,7 @@
     }
 }
 
-@media (min-width: 1440px) and (max-width: 1500px) {
+@media (min-width: 1400px) and (max-width: 1500px) {
 
     .login-title {
         text-align: center;
