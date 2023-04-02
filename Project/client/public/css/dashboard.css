@@ -8,7 +8,7 @@
     height: 58px;
     font-family: 'Noto Sans';
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
     text-shadow:
         -1px 0px 0px #A4C3B2,
         4px 0px 0px #A4C3B2,
@@ -16,7 +16,6 @@
         0px 4px 0px #A4C3B2;
     color: #6B9080 !important;
 }
-
 
 .dashboard-card-area {
     width: 300px;
@@ -37,6 +36,15 @@
 .dashboard-card-title {
     margin-bottom: 1px;
     font-family: 'Noto Sans';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.dashboard-img {
+    height: 160px;
 }
 
 .dashboard-card-content {
@@ -46,8 +54,11 @@
 
 .dashboard-card-desc {
     overflow: hidden;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .dashboard-card-date {
@@ -95,8 +106,7 @@
     color: #FB5607 !important;
 }
 
-
-@media (max-width: 480px) {
+@media (max-width: 375px) {
 
     .dashboard-title-area {
         padding-top: 25px;
@@ -104,11 +114,11 @@
     }
 
     .dashboard-card-area {
-        width: 265px;
+        width: 230px;
         height: 300px;
         margin-top: 15px;
         position: relative;
-        left: -60px;
+        left: -50px;
     }
 
     .card-title-dashboard {
@@ -122,8 +132,47 @@
 
     .btn-area {
         position: relative;
-        left: 80px;
-        margin-top: -15px;
+        left: 55px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: 0px;
+    }
+
+    .dashboard-next {
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-card-area {
+        width: 250px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: -10px;
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 55px;
+        margin-top: -5px;
     }
 
     .dashboard-prev {
@@ -136,15 +185,431 @@
 }
 
 /* Media Query for low resolution  Tablets, Ipads / */
-@media (min-width: 481px) and (max-width: 767px) {}
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-card-area {
+        width: 250px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: -10px;
+        margin-right: -30px;
+
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 70px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: 0px;
+    }
+
+    .dashboard-next {
+        margin-right: 0px;
+    }
+}
 
 /* / Media Query for Tablets Ipads portrait mode / */
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-card-area {
+        width: 250px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: -55px;
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 70px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: -50px;
+    }
+
+    .dashboard-next {
+        margin-right: -40px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-card-area {
+        width: 150px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: -80px;
+        margin-right: -75px;
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 70px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: 0px;
+    }
+
+    .dashboard-next {
+        margin-right: -40px;
+    }
+}
 
 /* / Media Query for Laptops and Desktops / */
-@media (min-width: 1025px) and (max-width: 1280px) {}
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-title {
+        font-size: 35px;
+    }
+
+    .dashboard-card-area {
+        width: 250px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: 75px;
+        margin-right: -30px;
+
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 70px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: 0px;
+    }
+
+    .dashboard-next {
+        margin-right: 0px;
+    }
+}
+
+/* / Media Query for Tablets Ipads portrait mode / */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .dashboard-title-area {
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-card-area {
+        width: 250px;
+        height: 300px;
+        margin-top: 15px;
+        position: relative;
+        left: -55px;
+    }
+
+    .card-title-dashboard {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+    }
+
+    .dashboard-card-date {
+        margin-top: -10px;
+    }
+
+    .btn-area {
+        position: relative;
+        left: 70px;
+        margin-top: -5px;
+    }
+
+    .dashboard-prev {
+        margin-left: -50px;
+    }
+
+    .dashboard-next {
+        margin-right: -40px;
+    }
+}
 
 /* / Media Query for Large screens / */
-/* @media (min-width: 1281px) {
-  
-  } */
+@media (min-width: 1281px) and (max-width: 1399px) {
+
+    .dashboard-title {
+        position: relative;
+        top: 20px;
+        font-size: 35px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+    
+    .dashboard-area {
+        margin-top: 55px;
+    }
+    
+    .dashboard-card-area {
+        width: 280px;
+        height: 350px;
+        margin-bottom: 20px;
+        margin-right: -20px;
+        margin-left: 10px;
+        margin-left: 100px;
+    }
+
+    .dashboard-card {
+        position: relative;
+        left: -50px;
+    }
+    
+    .dashboard-card-title {
+        font-size: 20px;
+    }
+    
+    .dashboard-card-desc {
+        position: relative;
+        left: 5px;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    
+    .dashboard-card-date {
+        font-family: 'Noto Sans';
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    
+    .btn-area {
+        position: relative;
+        left: 120px;
+        margin-top: -10px;
+    }
+    
+    .edit-btn,
+    .delete-btn {
+        font-family: 'Noto Sans';
+        padding-left: 8px;
+        font-weight: 500;
+        color: #FB5607;
+        text-decoration: none;
+        background: none !important;
+        border: none;
+    }
+    
+    .edit-btn:hover,
+    .delete-btn:hover {
+        color: #FACC22;
+    }
+    
+    .dashboard-prev {
+        margin-left: -80px;
+    }
+    
+    .dashboard-next {
+        margin-right: -80px;
+    }
+    
+    .dashboard-prev-icon, .dashboard-next-icon {
+        color: #339141 !important;
+    }
+    
+    .dashboard-prev-icon:hover, .ashboard-next-icon:hover {
+        color: #FB5607 !important;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1699px) {
+
+    .dashboard-title {
+        position: relative;
+        top: 20px;
+        font-size: 35px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+    
+    .dashboard-area {
+        margin-top: 55px;
+    }
+    
+    .dashboard-card-area {
+        width: 280px;
+        height: 350px;
+    }
+
+    .dashboard-card {
+        position: relative;
+        left: 30px;
+    }
+    
+    .dashboard-card-title {
+        font-size: 20px;
+    }
+    
+    .dashboard-card-desc {
+        position: relative;
+        left: 5px;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    
+    .dashboard-card-date {
+        font-family: 'Noto Sans';
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    
+    .btn-area {
+        position: relative;
+        left: 100px;
+        margin-top: 10px;
+    }
+    
+    .dashboard-prev {
+        margin-left: -80px;
+    }
+    
+    .dashboard-next {
+        margin-right: -80px;
+    }
+}
+
+@media (min-width: 1700px) and (max-width: 1920px) {
+
+    .dashboard-title {
+        position: relative;
+        top: 20px;
+        font-size: 40px;
+    }
+    
+    .dashboard-area {
+        margin-top: 70px;
+    }
+    
+    .dashboard-card-area {
+        width: 300px;
+        height: 350px;
+        margin-bottom: 20px;
+        margin-right: -20px;
+        margin-left: 10px;
+        margin-left: 100px;
+    }
+
+    .dashboard-card-title {
+        margin-bottom: 1px;
+        font-family: 'Noto Sans';
+        font-size: 20px;
+    }
+
+    .dashboard-card-desc {
+        position: relative;
+        margin-top: 10px;
+        padding: 5px 5px;
+    }
+    
+    .dashboard-card-date {
+        font-family: 'Noto Sans';
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    
+    .btn-area {
+        position: relative;
+        left: 120px;
+        margin-top: -10px;
+    }
+    
+    .edit-btn,
+    .delete-btn {
+        font-family: 'Noto Sans';
+        padding-left: 8px;
+        font-weight: 500;
+        color: #FB5607;
+        text-decoration: none;
+        background: none !important;
+        border: none;
+    }
+    
+    .edit-btn:hover,
+    .delete-btn:hover {
+        color: #FACC22;
+    }
+    
+    .dashboard-prev {
+        margin-left: -80px;
+    }
+    
+    .dashboard-next {
+        margin-right: -80px;
+    }
+    
+    .dashboard-prev-icon, .dashboard-next-icon {
+        color: #339141 !important;
+    }
+    
+    .dashboard-prev-icon:hover, .ashboard-next-icon:hover {
+        color: #FB5607 !important;
+    }
+}
