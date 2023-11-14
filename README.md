@@ -2,7 +2,7 @@
 Companion Finder is an app that provides assistance services between pet sitter and pet owner. Users can either become pet sitter or pet owner in order to find trustworthy people to look after their pets. We utilized both familiar and new tools to gain experience in using them respectively.
 
 # Technologies used
-[(https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)]
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)
 
 # Our Team
 
