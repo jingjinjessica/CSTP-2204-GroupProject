@@ -11,7 +11,7 @@ Companion Finder is an app that provides assistance services between pet sitter 
  - [Clarissa Nicole Taswin](https://github.com/Nicole308)
  - [Yifei](https://github.com/MelodyC823)
 
-## Additional details (Wiki)
+## Project Documentation (Github Wiki)
 [Companion Finder wiki](https://github.com/jingjinjessica/CSTP-2204-GroupProject/wiki)
 
 
